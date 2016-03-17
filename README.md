@@ -5,7 +5,7 @@ The source of the website that exposes the Linked Datatype Ontology, and multipl
 See:
 
 - [http://w3id.org/lindt/](http://w3id.org/lindt/)
-- [The Specification](http://w3id.org/lint/spec.html)
+- [The Specification](http://w3id.org/lindt/spec.html)
 
 
 Citation for this work:
