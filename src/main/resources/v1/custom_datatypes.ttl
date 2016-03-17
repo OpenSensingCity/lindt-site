@@ -1,0 +1,25 @@
+﻿@prefix az: <http://zimmer.aprilfoolsreview.com/antoine#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lindt: <http://w3id.org/lindt/v1/custom_datatypes#> .
+@prefix max: <http://www.maxime-lefrancois.info/docs/foaf.rdf#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lindt:length  a  rdfs:Datatype;
+    rdfs:subClassOf  rdfs:Literal;  # Cette ligne est inutile
+    rdfs:label  "length"@en, "longueur"@fr;
+    rdfs:seeAlso  <http://w3id.org/lindt/v1/custom_datatypes.html>,
+        <http://w3id.org/lindt/v1/custom_datatypes.js>;
+    rdfs:isDefinedBy  <http://w3id.org/lindt/v1/custom_datatypes>;
+    rdfs:comment  """A datatype to express length according to the International System of Units or the imperial units. Possible lexical forms of this datatype are: "42 km", "6.66 Gm", "8e17 mi", "0.98 inches"."""@en .
+<http://w3id.org/lindt/v1/custom_datatypes.html>  a  foaf:Document;
+    dc:creator  max:me;
+    dc:modified  "2015-04-24T15h42:42+02:00"^^xsd:dateTimeStamp .
+<http://w3id.org/lindt/v1/custom_datatypes.ttl>  a  foaf:Document;
+    dc:creator  max:me, az:me;
+    dc:modified  "2015-04-24T15h42:42+02:00"^^xsd:dateTimeStamp .
+<http://w3id.org/lindt/v1/custom_datatypes.js>  a  foaf:Document;
+    dc:creator  max:me, az:me;
+    dc:modified  "2015-04-24T15h42:42+02:00"^^xsd:dateTimeStamp .
