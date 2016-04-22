@@ -30,4 +30,6 @@ public class JerseyApp extends ResourceConfig {
     public JerseyApp() {
         packages("com.github.thesmartenergy.mdq.v1");
     }
+    
+    
 }

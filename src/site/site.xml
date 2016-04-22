@@ -17,7 +17,7 @@ See the License for the specific language governing permissions and
 
     <bannerLeft>
         <name>${organization.name}</name>
-        <src>http://the-smart-energy.com/content/themes/xxi/img/logo.png</src>
+        <src>logo.png</src>
         <href>${organization.url}</href>
     </bannerLeft>
     

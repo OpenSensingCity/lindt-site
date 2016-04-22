@@ -15,6 +15,11 @@
  */
 package com.github.thesmartenergy.lindt.v1;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.URI;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -62,21 +67,84 @@ public class OntologyPageResource {
     @Path("custom_datatypes")
     @Produces("text/html")
     public Response getCustomDatatypesAsHtml() {
-        return Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.html"), "text/html").build();
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.html"), "text/turtle");
+        res.header("Content-Disposition", "filename= custom_datatypes.html;");
+        return res.build();
     }
 
     @GET
     @Path("custom_datatypes")
     @Produces("application/javascript")
     public Response getCustomDatatypesAsJavascript() {
-        return Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.js"), "application/javascript").build();
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.js"), "text/turtle");
+        res.header("Content-Disposition", "filename= custom_datatypes.js;");
+        return res.build();
     }
 
     @GET
     @Path("custom_datatypes")
     @Produces("text/turtle")
     public Response getCustomDatatypesAsTurtle() {
-        return Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.ttl"), "text/turtle").build();
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.ttl"), "text/turtle");
+        res.header("Content-Disposition", "filename= custom_datatypes.ttl;");
+        return res.build();
+    }
+    
+    @GET
+    @Path("voc")
+    @Produces("text/turtle")
+    public Response getVocabularyAsTurtle() {
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("ontology/voc.ttl"), "text/turtle");
+        res.header("Content-Disposition", "filename= lindt.ttl;");
+        return res.build();
+    }
+
+    @GET
+    @Path("voc.ttl")
+    public Response getVocabularySpecificallyAsTurtle() {
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("ontology/voc.ttl"), "text/turtle");
+        res.header("Content-Disposition", "filename= lindt.ttl;");
+        return res.build();
+    }
+
+
+    @GET
+    @Path("voc")
+    @Produces("application/rdf+xml")
+    public Response getVocabularyAsXml() {
+        InputStream in = OntologyPageResource.class.getClassLoader().getResourceAsStream("ontology/voc.ttl");
+        Model m = ModelFactory.createDefaultModel().read(in, "https://w3id.org/lindt/voc#", "TTL");
+        StringWriter sw = new StringWriter();
+        m.write(sw);
+        Response.ResponseBuilder res = Response.ok(sw.toString(), "application/rdf+xml");
+        res.header("Content-Disposition", "filename= lindt.rdf;");
+        return res.build();
+    }
+
+    @GET
+    @Path("voc.rdf")
+    public Response getVocabularySpecificallyAsXml() {
+        InputStream in = OntologyPageResource.class.getClassLoader().getResourceAsStream("ontology/voc.ttl");
+        Model m = ModelFactory.createDefaultModel().read(in, "https://w3id.org/lindt/voc#", "TTL");
+        StringWriter sw = new StringWriter();
+        m.write(sw);
+        Response.ResponseBuilder res = Response.ok(sw.toString(), "application/rdf+xml");
+        res.header("Content-Disposition", "filename= lindt.rdf;");
+        return res.build();
+    }
+
+
+    @GET
+    @Path("voc")
+    @Produces("text/html")
+    public Response getVocabularyAsHtml() {
+        return Response.seeOther(URI.create("http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/lindt/voc")).build();
+    }
+
+    @GET
+    @Path("voc.html")
+    public Response getVocabularySpecificallyAsHtml() {
+        return Response.seeOther(URI.create("http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/lindt/voc")).build();
     }
 
 }
