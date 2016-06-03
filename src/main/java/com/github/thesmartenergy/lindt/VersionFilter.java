@@ -42,6 +42,7 @@ public class VersionFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
         System.out.println("inside filter");
+        System.out.println("Filter with " + this.getClass().getName());
 
         HttpServletRequest req = ((HttpServletRequest) request);
         String path = req.getServletPath();

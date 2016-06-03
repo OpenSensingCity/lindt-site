@@ -1,670 +1,667 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
-<head><meta lang="" property="dc:language" content="en">
-    <title>Supporting Arbitrary Custom Datatypes in RDF and SPARQL</title>
-    <meta charset="utf-8">
-    
-    
-  <style>/*****************************************************************
- * ReSpec 3 CSS
- * Robin Berjon - http://berjon.com/
- *****************************************************************/
+    <head><meta lang="" property="dc:language" content="en">
+        <title>Supporting Arbitrary Custom Datatypes in RDF and SPARQL</title>
+        <meta charset="utf-8">
 
-/* --- INLINES --- */
-em.rfc2119 { 
-    text-transform:     lowercase;
-    font-variant:       small-caps;
-    font-style:         normal;
-    color:              #900;
-}
 
-h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
-h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
-    border: none;
-}
+        <style>/*****************************************************************
+       * ReSpec 3 CSS
+       * Robin Berjon - http://berjon.com/
+       *****************************************************************/
 
-dfn {
-    font-weight:    bold;
-}
+            /* --- INLINES --- */
+            em.rfc2119 { 
+                text-transform:     lowercase;
+                font-variant:       small-caps;
+                font-style:         normal;
+                color:              #900;
+            }
 
-a.internalDFN {
-    color:  inherit;
-    border-bottom:  1px solid #99c;
-    text-decoration:    none;
-}
+            h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+            h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+                border: none;
+            }
 
-a.externalDFN {
-    color:  inherit;
-    border-bottom:  1px dotted #ccc;
-    text-decoration:    none;
-}
+            dfn {
+                font-weight:    bold;
+            }
 
-a.bibref {
-    text-decoration:    none;
-}
+            a.internalDFN {
+                color:  inherit;
+                border-bottom:  1px solid #99c;
+                text-decoration:    none;
+            }
 
-cite .bibref {
-    font-style: normal;
-}
+            a.externalDFN {
+                color:  inherit;
+                border-bottom:  1px dotted #ccc;
+                text-decoration:    none;
+            }
 
-code {
-    color:  #C83500;
-}
+            a.bibref {
+                text-decoration:    none;
+            }
 
-/* --- TOC --- */
-.toc a, .tof a {
-    text-decoration:    none;
-}
+            cite .bibref {
+                font-style: normal;
+            }
 
-a .secno, a .figno {
-    color:  #000;
-}
+            code {
+                color:  #C83500;
+            }
 
-ul.tof, ol.tof {
-    list-style: none outside none;
-}
+            /* --- TOC --- */
+            .toc a, .tof a {
+                text-decoration:    none;
+            }
 
-.caption {
-    margin-top: 0.5em;
-    font-style:   italic;
-}
+            a .secno, a .figno {
+                color:  #000;
+            }
 
-/* --- TABLE --- */
-table.simple {
-    border-spacing: 0;
-    border-collapse:    collapse;
-    border-bottom:  3px solid #005a9c;
-}
+            ul.tof, ol.tof {
+                list-style: none outside none;
+            }
 
-.simple th {
-    background: #005a9c;
-    color:  #fff;
-    padding:    3px 5px;
-    text-align: left;
-}
+            .caption {
+                margin-top: 0.5em;
+                font-style:   italic;
+            }
 
-.simple th[scope="row"] {
-    background: inherit;
-    color:  inherit;
-    border-top: 1px solid #ddd;
-}
+            /* --- TABLE --- */
+            table.simple {
+                border-spacing: 0;
+                border-collapse:    collapse;
+                border-bottom:  3px solid #005a9c;
+            }
 
-.simple td {
-    padding:    3px 10px;
-    border-top: 1px solid #ddd;
-}
+            .simple th {
+                background: #005a9c;
+                color:  #fff;
+                padding:    3px 5px;
+                text-align: left;
+            }
 
-.simple tr:nth-child(even) {
-    background: #f0f6ff;
-}
+            .simple th[scope="row"] {
+                background: inherit;
+                color:  inherit;
+                border-top: 1px solid #ddd;
+            }
 
-/* --- DL --- */
-.section dd > p:first-child {
-    margin-top: 0;
-}
+            .simple td {
+                padding:    3px 10px;
+                border-top: 1px solid #ddd;
+            }
 
-.section dd > p:last-child {
-    margin-bottom: 0;
-}
+            .simple tr:nth-child(even) {
+                background: #f0f6ff;
+            }
 
-.section dd {
-    margin-bottom:  1em;
-}
+            /* --- DL --- */
+            .section dd > p:first-child {
+                margin-top: 0;
+            }
 
-.section dl.attrs dd, .section dl.eldef dd {
-    margin-bottom:  0;
-}
+            .section dd > p:last-child {
+                margin-bottom: 0;
+            }
 
-@media print {
-    .removeOnSave {
-        display: none;
-    }
-}
-</style><style>/* --- WEB IDL --- */
-pre.idl {
-    border-top: 1px solid #90b8de;
-    border-bottom: 1px solid #90b8de;
-    padding:    1em;
-    line-height:    120%;
-}
+            .section dd {
+                margin-bottom:  1em;
+            }
 
-pre.idl::before {
-    content:    "WebIDL";
-    display:    block;
-    width:      150px;
-    background: #90b8de;
-    color:  #fff;
-    font-family:    sans-serif;
-    padding:    3px;
-    font-weight:    bold;
-    margin: -1em 0 1em -1em;
-}
+            .section dl.attrs dd, .section dl.eldef dd {
+                margin-bottom:  0;
+            }
 
-.idlType {
-    color:  #ff4500;
-    font-weight:    bold;
-    text-decoration:    none;
-}
+            @media print {
+                .removeOnSave {
+                    display: none;
+                }
+            }
+        </style><style>/* --- WEB IDL --- */
+            pre.idl {
+                border-top: 1px solid #90b8de;
+                border-bottom: 1px solid #90b8de;
+                padding:    1em;
+                line-height:    120%;
+            }
 
-/*.idlModule*/
-/*.idlModuleID*/
-/*.idlInterface*/
-.idlInterfaceID, .idlDictionaryID, .idlCallbackID, .idlEnumID {
-    font-weight:    bold;
-    color:  #005a9c;
-}
-a.idlEnumItem {
-    color:  #000;
-    border-bottom:  1px dotted #ccc;
-    text-decoration: none;
-}
+            pre.idl::before {
+                content:    "WebIDL";
+                display:    block;
+                width:      150px;
+                background: #90b8de;
+                color:  #fff;
+                font-family:    sans-serif;
+                padding:    3px;
+                font-weight:    bold;
+                margin: -1em 0 1em -1em;
+            }
 
-.idlSuperclass {
-    font-style: italic;
-    color:  #005a9c;
-}
+            .idlType {
+                color:  #ff4500;
+                font-weight:    bold;
+                text-decoration:    none;
+            }
 
-/*.idlAttribute*/
-.idlAttrType, .idlFieldType, .idlMemberType {
-    color:  #005a9c;
-}
-.idlAttrName, .idlFieldName, .idlMemberName {
-    color:  #ff4500;
-}
-.idlAttrName a, .idlFieldName a, .idlMemberName a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-}
+            /*.idlModule*/
+            /*.idlModuleID*/
+            /*.idlInterface*/
+            .idlInterfaceID, .idlDictionaryID, .idlCallbackID, .idlEnumID {
+                font-weight:    bold;
+                color:  #005a9c;
+            }
+            a.idlEnumItem {
+                color:  #000;
+                border-bottom:  1px dotted #ccc;
+                text-decoration: none;
+            }
 
-/*.idlMethod*/
-.idlMethType, .idlCallbackType {
-    color:  #005a9c;
-}
-.idlMethName {
-    color:  #ff4500;
-}
-.idlMethName a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-}
+            .idlSuperclass {
+                font-style: italic;
+                color:  #005a9c;
+            }
 
-/*.idlCtor*/
-.idlCtorName {
-    color:  #ff4500;
-}
-.idlCtorName a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-}
+            /*.idlAttribute*/
+            .idlAttrType, .idlFieldType, .idlMemberType {
+                color:  #005a9c;
+            }
+            .idlAttrName, .idlFieldName, .idlMemberName {
+                color:  #ff4500;
+            }
+            .idlAttrName a, .idlFieldName a, .idlMemberName a {
+                color:  #ff4500;
+                border-bottom:  1px dotted #ff4500;
+                text-decoration: none;
+            }
 
-/*.idlParam*/
-.idlParamType {
-    color:  #005a9c;
-}
-.idlParamName, .idlDefaultValue {
-    font-style: italic;
-}
+            /*.idlMethod*/
+            .idlMethType, .idlCallbackType {
+                color:  #005a9c;
+            }
+            .idlMethName {
+                color:  #ff4500;
+            }
+            .idlMethName a {
+                color:  #ff4500;
+                border-bottom:  1px dotted #ff4500;
+                text-decoration: none;
+            }
 
-.extAttr {
-    color:  #666;
-}
+            /*.idlCtor*/
+            .idlCtorName {
+                color:  #ff4500;
+            }
+            .idlCtorName a {
+                color:  #ff4500;
+                border-bottom:  1px dotted #ff4500;
+                text-decoration: none;
+            }
 
-/*.idlSectionComment*/
-.idlSectionComment {
-    color: gray;
-}
+            /*.idlParam*/
+            .idlParamType {
+                color:  #005a9c;
+            }
+            .idlParamName, .idlDefaultValue {
+                font-style: italic;
+            }
 
-/*.idlMaplike*/
-.idlMaplikeKeyType, .idlMaplikeValueType {
-    color:  #005a9c;
-}
+            .extAttr {
+                color:  #666;
+            }
 
-/*.idlConst*/
-.idlConstType {
-    color:  #005a9c;
-}
-.idlConstName {
-    color:  #ff4500;
-}
-.idlConstName a {
-    color:  #ff4500;
-    border-bottom:  1px dotted #ff4500;
-    text-decoration: none;
-}
+            /*.idlSectionComment*/
+            .idlSectionComment {
+                color: gray;
+            }
 
-/*.idlException*/
-.idlExceptionID {
-    font-weight:    bold;
-    color:  #c00;
-}
+            /*.idlMaplike*/
+            .idlMaplikeKeyType, .idlMaplikeValueType {
+                color:  #005a9c;
+            }
 
-.idlTypedefID, .idlTypedefType {
-    color:  #005a9c;
-}
+            /*.idlConst*/
+            .idlConstType {
+                color:  #005a9c;
+            }
+            .idlConstName {
+                color:  #ff4500;
+            }
+            .idlConstName a {
+                color:  #ff4500;
+                border-bottom:  1px dotted #ff4500;
+                text-decoration: none;
+            }
 
-.idlRaises, .idlRaises a.idlType, .idlRaises a.idlType code, .excName a, .excName a code {
-    color:  #c00;
-    font-weight:    normal;
-}
+            /*.idlException*/
+            .idlExceptionID {
+                font-weight:    bold;
+                color:  #c00;
+            }
 
-.excName a {
-    font-family:    monospace;
-}
+            .idlTypedefID, .idlTypedefType {
+                color:  #005a9c;
+            }
 
-.idlRaises a.idlType, .excName a.idlType {
-    border-bottom:  1px dotted #c00;
-}
+            .idlRaises, .idlRaises a.idlType, .idlRaises a.idlType code, .excName a, .excName a code {
+                color:  #c00;
+                font-weight:    normal;
+            }
 
-.excGetSetTrue, .excGetSetFalse, .prmNullTrue, .prmNullFalse, .prmOptTrue, .prmOptFalse {
-    width:  45px;
-    text-align: center;
-}
-.excGetSetTrue, .prmNullTrue, .prmOptTrue { color:  #0c0; }
-.excGetSetFalse, .prmNullFalse, .prmOptFalse { color:  #c00; }
+            .excName a {
+                font-family:    monospace;
+            }
 
-.idlImplements a {
-    font-weight:    bold;
-}
+            .idlRaises a.idlType, .excName a.idlType {
+                border-bottom:  1px dotted #c00;
+            }
 
-dl.attributes, dl.methods, dl.constants, dl.constructors, dl.fields, dl.dictionary-members {
-    margin-left:    2em;
-}
+            .excGetSetTrue, .excGetSetFalse, .prmNullTrue, .prmNullFalse, .prmOptTrue, .prmOptFalse {
+                width:  45px;
+                text-align: center;
+            }
+            .excGetSetTrue, .prmNullTrue, .prmOptTrue { color:  #0c0; }
+            .excGetSetFalse, .prmNullFalse, .prmOptFalse { color:  #c00; }
 
-.attributes dt, .methods dt, .constants dt, .constructors dt, .fields dt, .dictionary-members dt {
-    font-weight:    normal;
-}
+            .idlImplements a {
+                font-weight:    bold;
+            }
 
-.attributes dt code, .methods dt code, .constants dt code, .constructors dt code, .fields dt code, .dictionary-members dt code {
-    font-weight:    bold;
-    color:  #000;
-    font-family:    monospace;
-}
+            dl.attributes, dl.methods, dl.constants, dl.constructors, dl.fields, dl.dictionary-members {
+                margin-left:    2em;
+            }
 
-.attributes dt code, .fields dt code, .dictionary-members dt code {
-    background:  #ffffd2;
-}
+            .attributes dt, .methods dt, .constants dt, .constructors dt, .fields dt, .dictionary-members dt {
+                font-weight:    normal;
+            }
 
-.attributes dt .idlAttrType code, .fields dt .idlFieldType code, .dictionary-members dt .idlMemberType code {
-    color:  #005a9c;
-    background:  transparent;
-    font-family:    inherit;
-    font-weight:    normal;
-    font-style: italic;
-}
+            .attributes dt code, .methods dt code, .constants dt code, .constructors dt code, .fields dt code, .dictionary-members dt code {
+                font-weight:    bold;
+                color:  #000;
+                font-family:    monospace;
+            }
 
-.methods dt code {
-    background:  #d9e6f8;
-}
+            .attributes dt code, .fields dt code, .dictionary-members dt code {
+                background:  #ffffd2;
+            }
 
-.constants dt code {
-    background:  #ddffd2;
-}
+            .attributes dt .idlAttrType code, .fields dt .idlFieldType code, .dictionary-members dt .idlMemberType code {
+                color:  #005a9c;
+                background:  transparent;
+                font-family:    inherit;
+                font-weight:    normal;
+                font-style: italic;
+            }
 
-.constructors dt code {
-    background:  #cfc;
-}
+            .methods dt code {
+                background:  #d9e6f8;
+            }
 
-.attributes dd, .methods dd, .constants dd, .constructors dd, .fields dd, .dictionary-members dd {
-    margin-bottom:  1em;
-}
+            .constants dt code {
+                background:  #ddffd2;
+            }
 
-table.parameters, table.exceptions {
-    border-spacing: 0;
-    border-collapse:    collapse;
-    margin: 0.5em 0;
-    width:  100%;
-}
-table.parameters { border-bottom:  1px solid #90b8de; }
-table.exceptions { border-bottom:  1px solid #deb890; }
+            .constructors dt code {
+                background:  #cfc;
+            }
 
-.parameters th, .exceptions th {
-    color:  #fff;
-    padding:    3px 5px;
-    text-align: left;
-    font-weight:    normal;
-    text-shadow:    #666 1px 1px 0;
-}
-.parameters th { background: #90b8de; }
-.exceptions th { background: #deb890; }
+            .attributes dd, .methods dd, .constants dd, .constructors dd, .fields dd, .dictionary-members dd {
+                margin-bottom:  1em;
+            }
 
-.parameters td, .exceptions td {
-    padding:    3px 10px;
-    border-top: 1px solid #ddd;
-    vertical-align: top;
-}
+            table.parameters, table.exceptions {
+                border-spacing: 0;
+                border-collapse:    collapse;
+                margin: 0.5em 0;
+                width:  100%;
+            }
+            table.parameters { border-bottom:  1px solid #90b8de; }
+            table.exceptions { border-bottom:  1px solid #deb890; }
 
-.parameters tr:first-child td, .exceptions tr:first-child td {
-    border-top: none;
-}
+            .parameters th, .exceptions th {
+                color:  #fff;
+                padding:    3px 5px;
+                text-align: left;
+                font-weight:    normal;
+                text-shadow:    #666 1px 1px 0;
+            }
+            .parameters th { background: #90b8de; }
+            .exceptions th { background: #deb890; }
 
-.parameters td.prmName, .exceptions td.excName, .exceptions td.excCodeName {
-    width:  100px;
-}
+            .parameters td, .exceptions td {
+                padding:    3px 10px;
+                border-top: 1px solid #ddd;
+                vertical-align: top;
+            }
 
-.parameters td.prmType {
-    width:  120px;
-}
+            .parameters tr:first-child td, .exceptions tr:first-child td {
+                border-top: none;
+            }
 
-table.exceptions table {
-    border-spacing: 0;
-    border-collapse:    collapse;
-    width:  100%;
-}
-</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/w3c-unofficial"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
-  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
-  <p>
-      
-        
-      
-  </p>
-  <h1 class="title p-name" id="title" property="dcterms:title">Supporting Arbitrary Custom Datatypes in RDF and SPARQL</h1>
-  
-    <h2 property="bibo:subtitle" id="subtitle">Towards a web of Linked Datatypes</h2>
-  
-  <h2 id="unofficial-draft-30-april-2015">Unofficial Draft <time property="dcterms:issued" class="dt-published" datetime="2015-04-30">30 April 2015</time></h2>
-  <dl>
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt>Editors:</dt>
-    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Maxime Lefrançois"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.maxime-lefrancois.info/">Maxime Lefrançois</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:maxime.lefrancois@emse.fr">maxime.lefrancois@emse.fr</a></span></span>
-<span property="rdf:rest" resource="_:editor1"></span>
-</dd>
-<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Antoine Zimmermann"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.emse.fr/~zimmermann/">Antoine Zimmermann</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:antone.zimmermann@emse.fr">antone.zimmermann@emse.fr</a></span></span>
-<span property="rdf:rest" resource="rdf:nil"></span>
-</dd>
+            .parameters td.prmName, .exceptions td.excName, .exceptions td.excCodeName {
+                width:  100px;
+            }
 
-    
-    
-  </dl>
-  
-  
-  
-  
-    
-      
-        <p class="copyright">
-          This document is licensed under a
-          <a class="subfoot" href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons
-          Attribution 3.0 License</a>.
-        </p>
-      
-    
-  
-  <hr>
-</div>
-    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
-      <p>
-        In the Resource Description Framework, literals are composed of a UNICODE string (the lexical form), a datatype IRI, and optionally, when the datatype IRI is <code>rdf:langString</code>, a language tag. Any IRI can take the place of a datatype IRI, but the specification only defines the precise meaning of a literal when the datatype IRI is among a predefined subset. Custom datatypes have reported use on the web of data, but their support by RDF processors is rare and implementation specific. 
-        We propose a mechanism for a generic support of custom datatypes. 
-        Following simple guidelines, (i) definitions of arbitrary custom datatypes may be published on the web, and (ii) a generic RDF processor or SPARQL query engine can discover datatypes on-the-fly, and perform operations uniformly.
-      </p>
-      <p>
-        This document provides:
-        </p><ul>
-          <li>The complete description of an Application Programming Interface for Custom Datatypes;</li>
-          <li>resources and instructions to reproduce the experiments of research paper "Supporting Arbitrary Custom Datatypes in RDF and SPARQL", published at ESWC'2016 (see <a href="LefrancoisZimmermann-ESWC2016-Supporting.pdf">paper</a>).</li>
-      <p></p>
-    </ul></section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
-  
-    <p>
-      This document is merely a public working draft of a potential specification. It has
-      no official standing of any kind and does not represent the support or consensus of any
-      standards organisation.
-    </p>
-    
-    
-  
-</section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">1. </span>Conformance</a></li><li class="tocline"><a href="#recommendations-for-custom-datatype-publishers" class="tocxref"><span class="secno">2. </span>Recommendations for Custom Datatype Publishers</a></li><li class="tocline"><a href="#the-application-programming-interface" class="tocxref"><span class="secno">3. </span>The Application Programming Interface</a><ul class="toc"><li class="tocline"><a href="#interface-customdatatypefactory" class="tocxref"><span class="secno">3.1 </span>Interface <code>CustomDatatypeFactory</code></a><ul class="toc"><li class="tocline"><a href="#methods" class="tocxref"><span class="secno">3.1.1 </span>Methods</a></li></ul></li><li class="tocline"><a href="#interface-customdatatype" class="tocxref"><span class="secno">3.2 </span>Interface <code>CustomDatatype</code></a><ul class="toc"><li class="tocline"><a href="#methods-1" class="tocxref"><span class="secno">3.2.1 </span>Methods</a></li></ul></li><li class="tocline"><a href="#intra-conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.3 </span>Intra-conformance Constraints for interface <code>CustomDatatype</code></a></li><li class="tocline"><a href="#extra-conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.4 </span>Extra-conformance Constraints for interface <code>CustomDatatype</code></a></li><li class="tocline"><a href="#inter-conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.5 </span>Inter-conformance Constraints for interface <code>CustomDatatype</code></a></li><li class="tocline"><a href="#conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.6 </span>Conformance Constraints for interface <code>CustomDatatype</code></a></li></ul></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">A. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#implementation-of-custom-datatype-length" class="tocxref"><span class="secno">A.1 </span>Implementation of Custom Datatype Length</a></li><li class="tocline"><a href="#implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" class="tocxref"><span class="secno">A.2 </span>Implementation in the Jena RDF processor and the ARQ SPARQL engine</a></li></ul></li><li class="tocline"><a href="#experiments" class="tocxref"><span class="secno">B. </span>Experiments</a><ul class="toc"><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">B.1 </span>Resources</a></li><li class="tocline"><a href="#sparql-queries" class="tocxref"><span class="secno">B.2 </span>SPARQL Queries</a></li><li class="tocline"><a href="#instructions-to-reproduce-the-experiment" class="tocxref"><span class="secno">B.3 </span>Instructions to reproduce the experiment</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></section>
+            .parameters td.prmType {
+                width:  120px;
+            }
 
-    
+            table.exceptions table {
+                border-spacing: 0;
+                border-collapse:    collapse;
+                width:  100%;
+            }
+        </style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/w3c-unofficial"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
+    <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+            <p>
 
-    <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart"><!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Conformance</span></h2>
-<p>
-  As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
-  and notes in this specification are non-normative. Everything else in this specification is
-  normative.
-</p>
-<p id="respecRFC2119">The key words <em class="rfc2119" title="MUST">MUST</em> and <em class="rfc2119" title="SHOULD">SHOULD</em> are 
-  to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
-</p>
 
-      <p>
-      Custom Datatypes <em class="rfc2119" title="MUST">MUST</em> conform to these guidelines. 
-      </p>
-      <p>
-      RDF processors and SPARQL query engines <em class="rfc2119" title="SHOULD">SHOULD</em> take care of the code they process.
-      </p>
-    </section>
-    
-    <section id="recommendations-for-custom-datatype-publishers" typeof="bibo:Chapter" resource="#recommendations-for-custom-datatype-publishers" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-recommendations-for-custom-datatype-publishers" resource="#h-recommendations-for-custom-datatype-publishers"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Recommendations for Custom Datatype Publishers</span></h2>
-      <p>
-      Recommendations for Custom Datatype Publishers are as follows.
-      </p>
-        <ol>
-         <li>Use a HTTP IRI <code>aaa</code> to identify custom datatype <em>D<sub>a</sub></em>.</li>
-         <li>When a RDF processor looks up <code>aaa</code>, let it retrieve a document that contains executable code.</li>
-         <li>The executable code implements <code>CustomDatatypeFactory</code>, an interface with a unique function <code>getDatatype( iri )</code>, whose behaviour is described below.</li>
-         <li> When called with parameter <code>aaa</code>, function <code>getDatatype( iri )</code> returns an object that implements interface <code>CustomDatatype</code>  described below.</li>
-        </ol>
-    </section>
 
-    <section id="the-application-programming-interface" typeof="bibo:Chapter" resource="#the-application-programming-interface" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-the-application-programming-interface" resource="#h-the-application-programming-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>The Application Programming Interface</span></h2>
-      <p>
-      This API provides mechanisms that enable developers to process custom datatypes and custom literals uniformly.
-      </p>
-      <section id="interface-customdatatypefactory" typeof="bibo:Chapter" resource="#interface-customdatatypefactory" property="bibo:hasPart">
-        <h3 id="h-interface-customdatatypefactory" resource="#h-interface-customdatatypefactory"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Interface <code>CustomDatatypeFactory</code></span></h3>
-        <p>Interface <code>CustomDatatypeFactory</code> <em class="rfc2119" title="MUST">MUST</em> implement the following methods.</p>
-        <pre class="idl"><span class="idlInterface" id="idl-def-CustomDatatypeFactory">[<span class="extAttr">Constructor</span>]
+            </p>
+            <h1 class="title p-name" id="title" property="dcterms:title">Supporting Arbitrary Custom Datatypes in RDF and SPARQL</h1>
+
+            <h2 property="bibo:subtitle" id="subtitle">Towards a web of Linked Datatypes</h2>
+
+            <h2 id="unofficial-draft-30-april-2015">Unofficial Draft <time property="dcterms:issued" class="dt-published" datetime="2015-04-30">30 April 2015</time></h2>
+            <dl>
+
+
+
+
+
+
+
+
+                <dt>Editors:</dt>
+                <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Maxime Lefrançois"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.maxime-lefrancois.info/">Maxime Lefrançois</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:maxime.lefrancois@emse.fr">maxime.lefrancois@emse.fr</a></span></span>
+                    <span property="rdf:rest" resource="_:editor1"></span>
+                </dd>
+                <dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><meta property="foaf:name" content="Antoine Zimmermann"><a class="u-url url p-name fn" property="foaf:homepage" href="http://www.emse.fr/~zimmermann/">Antoine Zimmermann</a>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>, <span class="ed_mailto"><a class="u-email email" property="foaf:mbox" href="mailto:antone.zimmermann@emse.fr">antone.zimmermann@emse.fr</a></span></span>
+                    <span property="rdf:rest" resource="rdf:nil"></span>
+                </dd>
+
+
+
+            </dl>
+
+
+
+
+
+
+            <p class="copyright">
+                This document is licensed under a
+                <a class="subfoot" href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons
+                    Attribution 3.0 License</a>.
+            </p>
+
+
+
+            <hr>
+        </div>
+        <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2>
+            <p>
+                In the Resource Description Framework, literals are composed of a UNICODE string (the lexical form), a datatype IRI, and optionally, when the datatype IRI is <code>rdf:langString</code>, a language tag. Any IRI can take the place of a datatype IRI, but the specification only defines the precise meaning of a literal when the datatype IRI is among a predefined subset. Custom datatypes have reported use on the web of data, but their support by RDF processors is rare and implementation specific. 
+                We propose a mechanism for a generic support of custom datatypes. 
+                Following simple guidelines, (i) definitions of arbitrary custom datatypes may be published on the web, and (ii) a generic RDF processor or SPARQL query engine can discover datatypes on-the-fly, and perform operations uniformly.
+            </p>
+            <p>
+                This document provides:
+            </p><ul>
+                <li>The complete description of an Application Programming Interface for Custom Datatypes;</li>
+                <li>resources and instructions to reproduce the experiments of research paper "Supporting Arbitrary Custom Datatypes in RDF and SPARQL", published at ESWC'2016 (see <a href="LefrancoisZimmermann-ESWC2016-Supporting.pdf">paper</a>).</li>
+                <p></p>
+            </ul></section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+
+            <p>
+                This document is merely a public working draft of a potential specification. It has
+                no official standing of any kind and does not represent the support or consensus of any
+                standards organisation.
+            </p>
+
+
+
+        </section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">1. </span>Conformance</a></li><li class="tocline"><a href="#recommendations-for-custom-datatype-publishers" class="tocxref"><span class="secno">2. </span>Recommendations for Custom Datatype Publishers</a></li><li class="tocline"><a href="#the-application-programming-interface" class="tocxref"><span class="secno">3. </span>The Application Programming Interface</a><ul class="toc"><li class="tocline"><a href="#interface-customdatatypefactory" class="tocxref"><span class="secno">3.1 </span>Interface <code>CustomDatatypeFactory</code></a><ul class="toc"><li class="tocline"><a href="#methods" class="tocxref"><span class="secno">3.1.1 </span>Methods</a></li></ul></li><li class="tocline"><a href="#interface-customdatatype" class="tocxref"><span class="secno">3.2 </span>Interface <code>CustomDatatype</code></a><ul class="toc"><li class="tocline"><a href="#methods-1" class="tocxref"><span class="secno">3.2.1 </span>Methods</a></li></ul></li><li class="tocline"><a href="#intra-conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.3 </span>Intra-conformance Constraints for interface <code>CustomDatatype</code></a></li><li class="tocline"><a href="#extra-conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.4 </span>Extra-conformance Constraints for interface <code>CustomDatatype</code></a></li><li class="tocline"><a href="#inter-conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.5 </span>Inter-conformance Constraints for interface <code>CustomDatatype</code></a></li><li class="tocline"><a href="#conformance-constraints-for-interface-customdatatype" class="tocxref"><span class="secno">3.6 </span>Conformance Constraints for interface <code>CustomDatatype</code></a></li></ul></li><li class="tocline"><a href="#implementations" class="tocxref"><span class="secno">A. </span>Implementations</a><ul class="toc"><li class="tocline"><a href="#implementation-of-custom-datatype-length" class="tocxref"><span class="secno">A.1 </span>Implementation of Custom Datatype Length</a></li><li class="tocline"><a href="#implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" class="tocxref"><span class="secno">A.2 </span>Implementation in the Jena RDF processor and the ARQ SPARQL engine</a></li></ul></li><li class="tocline"><a href="#experiments" class="tocxref"><span class="secno">B. </span>Experiments</a><ul class="toc"><li class="tocline"><a href="#resources" class="tocxref"><span class="secno">B.1 </span>Resources</a></li><li class="tocline"><a href="#sparql-queries" class="tocxref"><span class="secno">B.2 </span>SPARQL Queries</a></li><li class="tocline"><a href="#instructions-to-reproduce-the-experiment" class="tocxref"><span class="secno">B.3 </span>Instructions to reproduce the experiment</a></li></ul></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">C. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">C.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">C.2 </span>Informative references</a></li></ul></li></ul></section>
+
+
+
+        <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart"><!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Conformance</span></h2>
+            <p>
+                As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
+                and notes in this specification are non-normative. Everything else in this specification is
+                normative.
+            </p>
+            <p id="respecRFC2119">The key words <em class="rfc2119" title="MUST">MUST</em> and <em class="rfc2119" title="SHOULD">SHOULD</em> are 
+                to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+            </p>
+
+            <p>
+                Custom Datatypes <em class="rfc2119" title="MUST">MUST</em> conform to these guidelines. 
+            </p>
+            <p>
+                RDF processors and SPARQL query engines <em class="rfc2119" title="SHOULD">SHOULD</em> take care of the code they process.
+            </p>
+        </section>
+
+        <section id="recommendations-for-custom-datatype-publishers" typeof="bibo:Chapter" resource="#recommendations-for-custom-datatype-publishers" property="bibo:hasPart">
+            <!--OddPage--><h2 id="h-recommendations-for-custom-datatype-publishers" resource="#h-recommendations-for-custom-datatype-publishers"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>Recommendations for Custom Datatype Publishers</span></h2>
+            <p>
+                Recommendations for Custom Datatype Publishers are as follows.
+            </p>
+            <ol>
+                <li>Use a HTTP IRI <code>aaa</code> to identify custom datatype <em>D<sub>a</sub></em>.</li>
+                <li>When a RDF processor looks up <code>aaa</code>, let it retrieve a document that contains executable code.</li>
+                <li>The executable code implements <code>CustomDatatypeFactory</code>, an interface with a unique function <code>getDatatype( iri )</code>, whose behaviour is described below.</li>
+                <li> When called with parameter <code>aaa</code>, function <code>getDatatype( iri )</code> returns an object that implements interface <code>CustomDatatype</code>  described below.</li>
+            </ol>
+        </section>
+
+        <section id="the-application-programming-interface" typeof="bibo:Chapter" resource="#the-application-programming-interface" property="bibo:hasPart">
+            <!--OddPage--><h2 id="h-the-application-programming-interface" resource="#h-the-application-programming-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>The Application Programming Interface</span></h2>
+            <p>
+                This API provides mechanisms that enable developers to process custom datatypes and custom literals uniformly.
+            </p>
+            <section id="interface-customdatatypefactory" typeof="bibo:Chapter" resource="#interface-customdatatypefactory" property="bibo:hasPart">
+                <h3 id="h-interface-customdatatypefactory" resource="#h-interface-customdatatypefactory"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1 </span>Interface <code>CustomDatatypeFactory</code></span></h3>
+                <p>Interface <code>CustomDatatypeFactory</code> <em class="rfc2119" title="MUST">MUST</em> implement the following methods.</p>
+                <pre class="idl"><span class="idlInterface" id="idl-def-CustomDatatypeFactory">[<span class="extAttr">Constructor</span>]
 interface <span class="idlInterfaceID">CustomDatatypeFactory</span> {
 <span class="idlMethod">    <span class="idlMethType"><a href="#idl-def-CustomDatatype" class="idlType"><code>CustomDatatype</code></a></span> <span class="idlMethName"><a href="#widl-CustomDatatypeFactory-getDatatype-CustomDatatype-String-iri">getDatatype</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">iri</span></span>);</span>
 };</span></pre><section id="methods" typeof="bibo:Chapter" resource="#methods" property="bibo:hasPart"><h4 id="h-methods" resource="#h-methods"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.1.1 </span>Methods</span></h4><dl class="methods"><dt id="widl-CustomDatatypeFactory-getDatatype-CustomDatatype-String-iri"><code>getDatatype</code></dt><dd>
-            <p>In the context of the code contained in a custom datatype specification file, i.e., an instance of interface <code>CustomDatatypeFactory</code>, <code>getDatatype(uri)</code> returns an instance of interface <code>CustomDatatype</code>, or throws an exception.</p>
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">iri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code><a href="#idl-def-CustomDatatype" class="idlType"><code>CustomDatatype</code></a></code></div></dd></dl></section>
-      </section>
-      <section id="interface-customdatatype" typeof="bibo:Chapter" resource="#interface-customdatatype" property="bibo:hasPart">
-        <h3 id="h-interface-customdatatype" resource="#h-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Interface <code>CustomDatatype</code></span></h3>
-        <p>Interface <code>CustomDatatype</code> <em class="rfc2119" title="MUST">MUST</em> implement the following methods.</p>
-        <pre class="idl"><span class="idlInterface" id="idl-def-CustomDatatype">[<span class="extAttr">Constructor</span>]
+                            <p>In the context of the code contained in a custom datatype specification file, i.e., an instance of interface <code>CustomDatatypeFactory</code>, <code>getDatatype(uri)</code> returns an instance of interface <code>CustomDatatype</code>, or throws an exception.</p>
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">iri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code><a href="#idl-def-CustomDatatype" class="idlType"><code>CustomDatatype</code></a></code></div></dd></dl></section>
+            </section>
+            <section id="interface-customdatatype" typeof="bibo:Chapter" resource="#interface-customdatatype" property="bibo:hasPart">
+                <h3 id="h-interface-customdatatype" resource="#h-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2 </span>Interface <code>CustomDatatype</code></span></h3>
+                <p>Interface <code>CustomDatatype</code> <em class="rfc2119" title="MUST">MUST</em> implement the following methods.</p>
+                <pre class="idl"><span class="idlInterface" id="idl-def-CustomDatatype">[<span class="extAttr">Constructor</span>]
 interface <span class="idlInterfaceID">CustomDatatype</span> {
 <span class="idlMethod">    <span class="idlMethType">String</span>   <span class="idlMethName"><a href="#widl-CustomDatatype-getIri-String">getIri</a></span> ();</span>
 <span class="idlMethod">    <span class="idlMethType">Boolean</span>  <span class="idlMethName"><a href="#widl-CustomDatatype-isWellFormed-Boolean-String-lexicalForm">isWellFormed</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm</span></span>);</span>
 <span class="idlMethod">    <span class="idlMethType">Boolean</span>  <span class="idlMethName"><a href="#widl-CustomDatatype-recognisesDatatype-Boolean-String-datatypeIri">recognisesDatatype</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">datatypeIri</span></span>);</span>
 <span class="idlMethod">    <span class="idlMethType">String[]</span> <span class="idlMethName"><a href="#widl-CustomDatatype-getRecognisedDatatypes-String">getRecognisedDatatypes</a></span> ();</span>
 <span class="idlMethod">    <span class="idlMethType">Boolean</span>  <span class="idlMethName"><a href="#widl-CustomDatatype-isEqual-Boolean-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2">isEqual</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm1</span></span>, <span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm2</span></span>, <span class="idlParam">optional <span class="idlParamType">String</span> <span class="idlParamName">datatypeIri2</span></span>);</span>
-<span class="idlMethod">    <span class="idlMethType">Inte</span>     <span class="idlMethName"><a href="#widl-CustomDatatype-compare-Inte-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2">compare</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm1</span></span>, <span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm2</span></span>, <span class="idlParam">optional <span class="idlParamType">String</span> <span class="idlParamName">datatypeIri2</span></span>);</span>
-<span class="idlMethod">    <span class="idlMethType">Short</span>    <span class="idlMethName"><a href="#widl-CustomDatatype-compare-Short-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2">compare</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm1</span></span>, <span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm2</span></span>, <span class="idlParam">optional <span class="idlParamType">String</span> <span class="idlParamName">datatypeIri2</span></span>);</span>
+<span class="idlMethod">    <span class="idlMethType">Integer</span>  <span class="idlMethName"><a href="#widl-CustomDatatype-compare-Inte-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2">compare</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm1</span></span>, <span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm2</span></span>, <span class="idlParam">optional <span class="idlParamType">String</span> <span class="idlParamName">datatypeIri2</span></span>);</span>
 <span class="idlMethod">    <span class="idlMethType">String</span>   <span class="idlMethName"><a href="#widl-CustomDatatype-getNormalForm-String-String-lexicalForm">getNormalForm</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm</span></span>);</span>
 <span class="idlMethod">    <span class="idlMethType">String</span>   <span class="idlMethName"><a href="#widl-CustomDatatype-importLiteral-String-String-lexicalForm-String-datatypeIri">importLiteral</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm</span></span>, <span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">datatypeIri</span></span>);</span>
 <span class="idlMethod">    <span class="idlMethType">String</span>   <span class="idlMethName"><a href="#widl-CustomDatatype-exportLiteral-String-String-lexicalForm-String-datatypeIri">exportLiteral</a></span> (<span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">lexicalForm</span></span>, <span class="idlParam"><span class="idlParamType">String</span> <span class="idlParamName">datatypeIri</span></span>);</span>
 };</span></pre><section id="methods-1" typeof="bibo:Chapter" resource="#methods-1" property="bibo:hasPart"><h4 id="h-methods-1" resource="#h-methods-1"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.2.1 </span>Methods</span></h4><dl class="methods"><dt id="widl-CustomDatatype-compare-Inte-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2"><code>compare</code></dt><dd>
-            Answers if the value of literal with lexical form <code>lexicalForm</code> and this datatype is lower, equal, or greater than the value of literal with lexical form <code>lexicalForm2</code> and datatype identified by IRI <code>datatypeIri2</code>. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm1</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">lexicalForm2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptTrue"><span role="img" aria-label="True">✔</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Inte</code></div></dd><dt id="widl-CustomDatatype-compare-Short-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2"><code>compare</code></dt><dd>
-            Answers if the value of literal with lexical form <code>lexicalForm</code> and this datatype is lower, equal, or greater than the value of literal with lexical form <code>lexicalForm2</code> and datatype identified by IRI <code>datatypeIri2</code>. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm1</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">lexicalForm2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptTrue"><span role="img" aria-label="True">✔</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Short</code></div></dd><dt id="widl-CustomDatatype-exportLiteral-String-String-lexicalForm-String-datatypeIri"><code>exportLiteral</code></dt><dd>
-            Answers the lexical form of a literal with datatype identified by <code>datatypeIri</code>, with a value equal to that of a literal with lexical form <code>lexicalForm</code> and this datatype. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-getIri-String"><code>getIri</code></dt><dd>
-            Returns the IRI of this custom datatype. 
-          <div><em>No parameters.</em></div><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-getNormalForm-String-String-lexicalForm"><code>getNormalForm</code></dt><dd>
-            Answers the normalized lexical form of the literal with lexical form <code>lexicalForm</code> and this datatype. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-getRecognisedDatatypes-String"><code>getRecognisedDatatypes</code></dt><dd>
-            Answers an array of datatypes IRI this custom datatype recognises. 
-          <div><em>No parameters.</em></div><div><em>Return type: </em><code>String[]</code></div></dd><dt id="widl-CustomDatatype-importLiteral-String-String-lexicalForm-String-datatypeIri"><code>importLiteral</code></dt><dd>
-            Answers the lexical form of a literal with this datatype, with a value equal to that of a literal with lexical form <code>lexicalForm</code> and datatype identified by <code>datatypeIri</code>. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-isEqual-Boolean-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2"><code>isEqual</code></dt><dd>
-            Answers if literal with lexical form <code>lexicalForm1</code> and this datatype has the same value as literal with lexical form <code>lexicalForm2</code> and datatype identified by IRI <code>datatypeIri2</code>. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm1</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">lexicalForm2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptTrue"><span role="img" aria-label="True">✔</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Boolean</code></div></dd><dt id="widl-CustomDatatype-isWellFormed-Boolean-String-lexicalForm"><code>isWellFormed</code></dt><dd>
-            Answers if this lexical form is well formed. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Boolean</code></div></dd><dt id="widl-CustomDatatype-recognisesDatatype-Boolean-String-datatypeIri"><code>recognisesDatatype</code></dt><dd>
-            Answers if this custom datatype recognises the datatype with the given IRI. 
-          <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">datatypeIri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Boolean</code></div></dd></dl></section>
-      </section>
-      <section id="intra-conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#intra-conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
-        <h3 id="h-intra-conformance-constraints-for-interface-customdatatype" resource="#h-intra-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Intra-conformance Constraints for interface <code>CustomDatatype</code></span></h3>
-          <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>, i.e., an instance of interface <code>CustomDatatype</code> returned by a call to method <code>getDatatype(aaa)</code>. <code>da</code> is <strong>intra-conformant</strong> if and only if all of the following is true</p>
+                            Answers if the value of literal with lexical form <code>lexicalForm</code> and this datatype is lower, equal, or greater than the value of literal with lexical form <code>lexicalForm2</code> and datatype identified by IRI <code>datatypeIri2</code>. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm1</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">lexicalForm2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptTrue"><span role="img" aria-label="True">✔</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Integer</code></div></dd><dt id="widl-CustomDatatype-exportLiteral-String-String-lexicalForm-String-datatypeIri"><code>exportLiteral</code></dt><dd>
+                            Answers the lexical form of a literal with datatype identified by <code>datatypeIri</code>, with a value equal to that of a literal with lexical form <code>lexicalForm</code> and this datatype. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-getIri-String"><code>getIri</code></dt><dd>
+                            Returns the IRI of this custom datatype. 
+                            <div><em>No parameters.</em></div><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-getNormalForm-String-String-lexicalForm"><code>getNormalForm</code></dt><dd>
+                            Answers the normalized lexical form of the literal with lexical form <code>lexicalForm</code> and this datatype. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-getRecognisedDatatypes-String"><code>getRecognisedDatatypes</code></dt><dd>
+                            Answers an array of datatypes IRI this custom datatype recognises. 
+                            <div><em>No parameters.</em></div><div><em>Return type: </em><code>String[]</code></div></dd><dt id="widl-CustomDatatype-importLiteral-String-String-lexicalForm-String-datatypeIri"><code>importLiteral</code></dt><dd>
+                            Answers the lexical form of a literal with this datatype, with a value equal to that of a literal with lexical form <code>lexicalForm</code> and datatype identified by <code>datatypeIri</code>. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>String</code></div></dd><dt id="widl-CustomDatatype-isEqual-Boolean-String-lexicalForm1-String-lexicalForm2-String-datatypeIri2"><code>isEqual</code></dt><dd>
+                            Answers if literal with lexical form <code>lexicalForm1</code> and this datatype has the same value as literal with lexical form <code>lexicalForm2</code> and datatype identified by IRI <code>datatypeIri2</code>. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm1</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">lexicalForm2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr><tr><td class="prmName">datatypeIri2</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptTrue"><span role="img" aria-label="True">✔</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Boolean</code></div></dd><dt id="widl-CustomDatatype-isWellFormed-Boolean-String-lexicalForm"><code>isWellFormed</code></dt><dd>
+                            Answers if this lexical form is well formed. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">lexicalForm</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Boolean</code></div></dd><dt id="widl-CustomDatatype-recognisesDatatype-Boolean-String-datatypeIri"><code>recognisesDatatype</code></dt><dd>
+                            Answers if this custom datatype recognises the datatype with the given IRI. 
+                            <table class="parameters"><tbody><tr><th>Parameter</th><th>Type</th><th>Nullable</th><th>Optional</th><th>Description</th></tr><tr><td class="prmName">datatypeIri</td><td class="prmType"><code>String</code></td><td class="prmNullFalse"><span role="img" aria-label="False">✘</span></td><td class="prmOptFalse"><span role="img" aria-label="False">✘</span></td><td class="prmDesc"></td></tr></tbody></table><div><em>Return type: </em><code>Boolean</code></div></dd></dl></section>
+            </section>
+            <section id="intra-conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#intra-conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
+                <h3 id="h-intra-conformance-constraints-for-interface-customdatatype" resource="#h-intra-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.3 </span>Intra-conformance Constraints for interface <code>CustomDatatype</code></span></h3>
+                <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>, i.e., an instance of interface <code>CustomDatatype</code> returned by a call to method <code>getDatatype(aaa)</code>. <code>da</code> is <strong>intra-conformant</strong> if and only if all of the following is true</p>
 
-          Method <code>getIri</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li><code>da.getIri()</code> returns a string</li>
-           <li><code>da.getIri() = aaa</code></li>
-          </ul>
+                Method <code>getIri</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.getIri()</code> returns a string</li>
+                    <li><code>da.getIri() = aaa</code></li>
+                </ul>
 
-          Method <code>isWellFormed</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-          <li><code>da.isWellFormed(sss)</code> returns a boolean if <code>sss</code> is a string, and throws an exception otherwise</li>
-          </ul>
+                Method <code>isWellFormed</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.isWellFormed(sss)</code> returns a boolean if <code>sss</code> is a string, and throws an exception otherwise</li>
+                </ul>
 
-          Method <code>getNormalForm</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li><code>da.getNormalForm(sss)</code> returns a string if <code>da.isWellFormed(sss) = true</code>, and throws an exception otherwise</li>
-           <li>if <code>da.isWellFormed(sss) = true</code>, then <code>da.isWellFormed( da.getNormalForm(sss) ) = true</code></li>
-           <li>if <code>da.isWellFormed(sss) = true</code>, then <code>da.getNormalForm( da.getNormalForm(sss) ) = da.getNormalForm(sss)</code></li>
-          </ul>
+                Method <code>getNormalForm</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.getNormalForm(sss)</code> returns a string if <code>da.isWellFormed(sss) = true</code>, and throws an exception otherwise</li>
+                    <li>if <code>da.isWellFormed(sss) = true</code>, then <code>da.isWellFormed( da.getNormalForm(sss) ) = true</code></li>
+                    <li>if <code>da.isWellFormed(sss) = true</code>, then <code>da.getNormalForm( da.getNormalForm(sss) ) = da.getNormalForm(sss)</code></li>
+                </ul>
 
-          Method <code>recognisesDatatype</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li><code>da.recognisesDatatype(bbb)</code> returns a boolean if <code>bbb</code> is a string, and throws an exception otherwise</li>
-           <li><code>da.recognisesDatatype(aaa) = true</code></li>
-          </ul>
+                Method <code>recognisesDatatype</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.recognisesDatatype(bbb)</code> returns a boolean if <code>bbb</code> is a string, and throws an exception otherwise</li>
+                    <li><code>da.recognisesDatatype(aaa) = true</code></li>
+                </ul>
 
-          Method <code>recognisedDatatypes</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li><code>da.recognisedDatatypes()</code> is the set of strings <code>bbb</code> such that <code>da.recognisesDatatype(bbb) = true</code></li>
-          </ul>
+                Method <code>recognisedDatatypes</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.recognisedDatatypes()</code> is the set of strings <code>bbb</code> such that <code>da.recognisesDatatype(bbb) = true</code></li>
+                </ul>
 
-          Method <code>importLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.recognisesDatatype(bbb) = true</code> and <code>ttt</code> is a string, then <code>da.importLiteral(ttt, bbb)</code> either returns a string, or throws an exception. Else, it throws an exception.</li>
-           <li>if <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>isWellFormed( da.importLiteral(ttt, bbb) ) = true</code></li>
-           <li>if <code>da.isWellFormed(sss) = true</code>, then <code>da.importLiteral(sss, aaa)</code> returns a string, and <code>da.getNormalForm(sss) = da.getNormalForm( da.importLiteral(sss, aaa) )</code></li>
-          </ul>
+                Method <code>importLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.recognisesDatatype(bbb) = true</code> and <code>ttt</code> is a string, then <code>da.importLiteral(ttt, bbb)</code> either returns a string, or throws an exception. Else, it throws an exception.</li>
+                    <li>if <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>isWellFormed( da.importLiteral(ttt, bbb) ) = true</code></li>
+                    <li>if <code>da.isWellFormed(sss) = true</code>, then <code>da.importLiteral(sss, aaa)</code> returns a string, and <code>da.getNormalForm(sss) = da.getNormalForm( da.importLiteral(sss, aaa) )</code></li>
+                </ul>
 
-          Method <code>exportLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.recognisesDatatype(bbb) = true</code> and <code>da.isWellFormed(sss) = true</code>, then <code>da.exportLiteral(sss, bbb)</code> either returns a string, or throws an exception. Else, it throws an exception.</li>
-           <li>if <code>da.exportLiteral(sss, bbb)</code> returns a string, then <code>da.getNormalForm(sss) = da.getNormalForm( da.importLiteral( da.exportLiteral(sss, bbb), bbb) )</code></li>
-          </ul>
+                Method <code>exportLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.recognisesDatatype(bbb) = true</code> and <code>da.isWellFormed(sss) = true</code>, then <code>da.exportLiteral(sss, bbb)</code> either returns a string, or throws an exception. Else, it throws an exception.</li>
+                    <li>if <code>da.exportLiteral(sss, bbb)</code> returns a string, then <code>da.getNormalForm(sss) = da.getNormalForm( da.importLiteral( da.exportLiteral(sss, bbb), bbb) )</code></li>
+                </ul>
 
 
-          Method <code>isEqual</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.isEqual(sss, ttt, bbb)</code> returns a boolean. Else, it throws an exception.</li>
-           <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.isEqual(sss, uuu, ccc) = true</code> if and only if <code>da.getNormalForm(sss) = da.getNormalForm( da.importLiteral(uuu, ccc) )</code></li>
-           <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.isWellFormed(ttt) = true</code>, then <code>da.isEqual(sss, ttt) = da.isEqual(sss, ttt, aaa)</code>. Else, it throws an exception.</li>
-           <li>if <code>da.isWellFormed(sss) = true</code>, <code>da.isWellFormed(ttt) = true</code>, and <code>da.isWellFormed(uuu) = true</code>, then:
-            <ul>
-             <li><code>da.isEqual(sss, ttt) = da.isEqual(ttt, sss)</code></li>
-             <li>if <code>da.isEqual(sss, ttt)</code> and <code>da.isEqual(ttt, uuu)</code>, then <code>da.isEqual(sss, uuu)</code></li>
-            </ul>
-           </li>
-          </ul>
+                Method <code>isEqual</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.isEqual(sss, ttt, bbb)</code> returns a boolean. Else, it throws an exception.</li>
+                    <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.isEqual(sss, uuu, ccc) = true</code> if and only if <code>da.getNormalForm(sss) = da.getNormalForm( da.importLiteral(uuu, ccc) )</code></li>
+                    <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.isWellFormed(ttt) = true</code>, then <code>da.isEqual(sss, ttt) = da.isEqual(sss, ttt, aaa)</code>. Else, it throws an exception.</li>
+                    <li>if <code>da.isWellFormed(sss) = true</code>, <code>da.isWellFormed(ttt) = true</code>, and <code>da.isWellFormed(uuu) = true</code>, then:
+                        <ul>
+                            <li><code>da.isEqual(sss, ttt) = da.isEqual(ttt, sss)</code></li>
+                            <li>if <code>da.isEqual(sss, ttt)</code> and <code>da.isEqual(ttt, uuu)</code>, then <code>da.isEqual(sss, uuu)</code></li>
+                        </ul>
+                    </li>
+                </ul>
 
-          Method <code>compare</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.compare(sss, ttt, bbb)</code> returns an integer. Else, it throws an exception.</li>
-           <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.compare(sss, uuu, ccc) = 0</code> if and only if <code>da.isEqual(sss, uuu, ccc) = true</code></li>
-           <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.isWellFormed(ttt) = true</code>, then <code>da.compare(sss, ttt) = da.compare(sss, ttt, aaa)</code>. Else, it throws an exception.</li>
-           <li>if <code>da.isWellFormed(sss) = true</code>, <code>da.isWellFormed(ttt) = true</code>, and <code>da.isWellFormed(uuu) = true</code>, then:
-            <ul>
-             <li><code>da.compare(sss, ttt)</code> and <code>da.compare(ttt, sss)</code> have opposite signs</li>
-             <li>if <code>da.compare(sss, ttt) ≤ 0</code> and <code>da.compare(ttt, uuu) ≤ 0</code>, then <code>da.compare(sss, uuu) ≤ 0</code></li>
-            </ul>
-           </li>
-          </ul>
+                Method <code>compare</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.compare(sss, ttt, bbb)</code> returns an integer. Else, it throws an exception.</li>
+                    <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.importLiteral(ttt, bbb)</code> returns a string, then <code>da.compare(sss, uuu, ccc) = 0</code> if and only if <code>da.isEqual(sss, uuu, ccc) = true</code></li>
+                    <li>if <code>da.isWellFormed(sss) = true</code> and <code>da.isWellFormed(ttt) = true</code>, then <code>da.compare(sss, ttt) = da.compare(sss, ttt, aaa)</code>. Else, it throws an exception.</li>
+                    <li>if <code>da.isWellFormed(sss) = true</code>, <code>da.isWellFormed(ttt) = true</code>, and <code>da.isWellFormed(uuu) = true</code>, then:
+                        <ul>
+                            <li><code>da.compare(sss, ttt)</code> and <code>da.compare(ttt, sss)</code> have opposite signs</li>
+                            <li>if <code>da.compare(sss, ttt) ≤ 0</code> and <code>da.compare(ttt, uuu) ≤ 0</code>, then <code>da.compare(sss, uuu) ≤ 0</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section id="extra-conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#extra-conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
+                <h3 id="h-extra-conformance-constraints-for-interface-customdatatype" resource="#h-extra-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Extra-conformance Constraints for interface <code>CustomDatatype</code></span></h3>
+                <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>. <code>da</code> is <strong>extra-conformant</strong> if and only if, for every <code>bbb</code> in <code>da.getRecognisedDatatypes()</code>, all of the following is true.</p>
+
+                Method <code>importLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>db.isWellFormed(ttt) = false</code>, then <code>da.importLiteral(ttt, bbb)</code> throws an exception.</li>
+                </ul>
+
+                Method <code>exportLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.exportLiteral(sss, bbb)</code> returns a string, then <code>db.isWellFormed( da.exportLiteral(sss, bbb) )</code>.</li>
+                </ul>
+
+                Method <code>isEqual</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.isEqual(sss, ttt, bbb) = true</code> and <code>db.isEqual(ttt, uuu, ccc) = true</code>, then <code>da.isEqual(sss, ttt, bbb) = true</code>
+                    </li>
+                </ul>
+
+                Method <code>compare</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.compare(sss, ttt, bbb) ≤ 0</code> and <code>db.compare(ttt, uuu, ccc) ≤ 0</code>, then <code>da.compare(sss, ttt, bbb) ≤ 0 </code>
+                    </li>
+                    <li>if <code>da.compare(sss, ttt, bbb) ≥ 0</code> and <code>db.compare(ttt, uuu, ccc) ≥ 0</code>, then <code>da.compare(sss, ttt, bbb) ≥ 0 </code>
+                    </li>
+                </ul>
+            </section>
+            <section id="inter-conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#inter-conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
+                <h3 id="h-inter-conformance-constraints-for-interface-customdatatype" resource="#h-inter-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Inter-conformance Constraints for interface <code>CustomDatatype</code></span></h3>
+                <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>. <code>da</code> is <strong>inter-conformant</strong> if and only if, for every <code>bbb</code> in <code>da.getRecognisedDatatypes()</code> such that one may retrieve a specification object <code>db</code> of the custom datatype <em>D<sub>b</sub></em> identified by IRI <code>bbb</code>, then <code>db</code> is conformant, and all of the following is true.</p>
+
+                Method <code>importLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.importLiteral(ttt, bbb)</code> returns a string if and only if <code>db.exportLiteral(ttt, aaa)</code> returns a string</li>
+                </ul>
+
+                Method <code>isEqual</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li><code>da.isEqual(sss, ttt, bbb) = true</code> if and only if <code>db.isEqual(ttt, sss, aaa) = true</code>
+                    </li>
+                </ul>
+
+                Method <code>compare</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
+                <ul>
+                    <li>if <code>da.importLiteral(sss, bbb)</code> and <code>db.exportLiteral(sss, aaa)</code> returns a string, then <code>da.compare(sss, ttt, bbb)</code> and <code>db.compare(ttt, sss, aaa)</code> have opposite signs</li>
+                </ul>
+            </section>
+            <section id="conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
+                <h3 id="h-conformance-constraints-for-interface-customdatatype" resource="#h-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Conformance Constraints for interface <code>CustomDatatype</code></span></h3>
+
+                <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>. <code>da</code> is conformant if and only if it is intra-, extra-, and inter-conformant altogether.</p>
+            </section>
         </section>
-        <section id="extra-conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#extra-conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
-          <h3 id="h-extra-conformance-constraints-for-interface-customdatatype" resource="#h-extra-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.4 </span>Extra-conformance Constraints for interface <code>CustomDatatype</code></span></h3>
-          <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>. <code>da</code> is <strong>extra-conformant</strong> if and only if, for every <code>bbb</code> in <code>da.getRecognisedDatatypes()</code>, all of the following is true.</p>
 
-          Method <code>importLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>db.isWellFormed(ttt) = false</code>, then <code>da.importLiteral(ttt, bbb)</code> throws an exception.</li>
-          </ul>
 
-          Method <code>exportLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.exportLiteral(sss, bbb)</code> returns a string, then <code>db.isWellFormed( da.exportLiteral(sss, bbb) )</code>.</li>
-          </ul>
 
-          Method <code>isEqual</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.isEqual(sss, ttt, bbb) = true</code> and <code>db.isEqual(ttt, uuu, ccc) = true</code>, then <code>da.isEqual(sss, ttt, bbb) = true</code>
-           </li>
-          </ul>
-
-          Method <code>compare</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-          <ul>
-           <li>if <code>da.compare(sss, ttt, bbb) ≤ 0</code> and <code>db.compare(ttt, uuu, ccc) ≤ 0</code>, then <code>da.compare(sss, ttt, bbb) ≤ 0 </code>
-           </li>
-           <li>if <code>da.compare(sss, ttt, bbb) ≥ 0</code> and <code>db.compare(ttt, uuu, ccc) ≥ 0</code>, then <code>da.compare(sss, ttt, bbb) ≥ 0 </code>
-           </li>
-          </ul>
+        <section class="appendix" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
+            <!--OddPage--><h2 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Implementations</span></h2>
+            <section id="implementation-of-custom-datatype-length" typeof="bibo:Chapter" resource="#implementation-of-custom-datatype-length" property="bibo:hasPart">
+                <h3 id="h-implementation-of-custom-datatype-length" resource="#h-implementation-of-custom-datatype-length"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Implementation of Custom Datatype Length</span></h3>
+                <p>The implementation of Custom Datatype Length is available at URL <a href="v1/custom_datatypes">http://w3id.org/lindt/v1/custom_datatypes</a></p>
+            </section>
+            <section id="implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" typeof="bibo:Chapter" resource="#implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" property="bibo:hasPart">
+                <h3 id="h-implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" resource="#h-implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.2 </span>Implementation in the Jena RDF processor and the ARQ SPARQL engine</span></h3>
+                <p>The implementation of Jena and ARQ with support for on-the-fly recognition of custom datatypes is available at URL <a href="https://github.com/thesmartenergy/jena">https://github.com/thesmartenergy/jena</a></p>
+            </section>
         </section>
-        <section id="inter-conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#inter-conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
-          <h3 id="h-inter-conformance-constraints-for-interface-customdatatype" resource="#h-inter-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.5 </span>Inter-conformance Constraints for interface <code>CustomDatatype</code></span></h3>
-            <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>. <code>da</code> is <strong>inter-conformant</strong> if and only if, for every <code>bbb</code> in <code>da.getRecognisedDatatypes()</code> such that one may retrieve a specification object <code>db</code> of the custom datatype <em>D<sub>b</sub></em> identified by IRI <code>bbb</code>, then <code>db</code> is conformant, and all of the following is true.</p>
-
-            Method <code>importLiteral</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-            <ul>
-             <li><code>da.importLiteral(ttt, bbb)</code> returns a string if and only if <code>db.exportLiteral(ttt, aaa)</code> returns a string</li>
-            </ul>
-
-            Method <code>isEqual</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-            <ul>
-             <li><code>da.isEqual(sss, ttt, bbb) = true</code> if and only if <code>db.isEqual(ttt, sss, aaa) = true</code>
-             </li>
-            </ul>
-
-            Method <code>compare</code> <em class="rfc2119" title="MUST">MUST</em> be such that:
-            <ul>
-             <li>if <code>da.importLiteral(sss, bbb)</code> and <code>db.exportLiteral(sss, aaa)</code> returns a string, then <code>da.compare(sss, ttt, bbb)</code> and <code>db.compare(ttt, sss, aaa)</code> have opposite signs</li>
-            </ul>
-          </section>
-          <section id="conformance-constraints-for-interface-customdatatype" typeof="bibo:Chapter" resource="#conformance-constraints-for-interface-customdatatype" property="bibo:hasPart">
-            <h3 id="h-conformance-constraints-for-interface-customdatatype" resource="#h-conformance-constraints-for-interface-customdatatype"><span property="xhv:role" resource="xhv:heading"><span class="secno">3.6 </span>Conformance Constraints for interface <code>CustomDatatype</code></span></h3>
-
-            <p>Let <code>da</code> be the specification object of a custom datatype <em>D<sub>a</sub></em> identified by IRI <code>aaa</code>. <code>da</code> is conformant if and only if it is intra-, extra-, and inter-conformant altogether.</p>
-          </section>
-    </section>
-
-    
-
-    <section class="appendix" id="implementations" typeof="bibo:Chapter" resource="#implementations" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-implementations" resource="#h-implementations"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>Implementations</span></h2>
-      <section id="implementation-of-custom-datatype-length" typeof="bibo:Chapter" resource="#implementation-of-custom-datatype-length" property="bibo:hasPart">
-        <h3 id="h-implementation-of-custom-datatype-length" resource="#h-implementation-of-custom-datatype-length"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.1 </span>Implementation of Custom Datatype Length</span></h3>
-        <p>The implementation of Custom Datatype Length is available at URL <a href="v1/custom_datatypes">http://w3id.org/lindt/v1/custom_datatypes</a></p>
-      </section>
-      <section id="implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" typeof="bibo:Chapter" resource="#implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" property="bibo:hasPart">
-        <h3 id="h-implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine" resource="#h-implementation-in-the-jena-rdf-processor-and-the-arq-sparql-engine"><span property="xhv:role" resource="xhv:heading"><span class="secno">A.2 </span>Implementation in the Jena RDF processor and the ARQ SPARQL engine</span></h3>
-        <p>The implementation of Jena and ARQ with support for on-the-fly recognition of custom datatypes is available at URL <a href="https://github.com/thesmartenergy/jena">https://github.com/thesmartenergy/jena</a></p>
-      </section>
-    </section>
 
 
-    <section class="appendix" id="experiments" typeof="bibo:Chapter" resource="#experiments" property="bibo:hasPart">
-      <!--OddPage--><h2 id="h-experiments" resource="#h-experiments"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Experiments</span></h2>
-      <section id="resources" typeof="bibo:Chapter" resource="#resources" property="bibo:hasPart">
-        <h3 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>Resources</span></h3>
-        <p><a href="v1/dbpedia.zip">datasets files</a>, are based on DBpedia 2014 English specific mapping-based properties dataset.</p>
-        <p>The test program is bundled in a Maven project <a href="v1/DBpediaLengthQueries.zip">DBpediaLengthQueries</a></p>
-      </section>
-      <section id="sparql-queries" typeof="bibo:Chapter" resource="#sparql-queries" property="bibo:hasPart">
-        <h3 id="h-sparql-queries" resource="#h-sparql-queries"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span>SPARQL Queries</span></h3>
-        <p>The following are the [<cite><a class="bibref" href="#bib-sparql11-query">sparql11-query</a></cite>] requests that are evaluated on each dataset.</p>
-          <strong>Dataset <em>dbpedia</em></strong>
-          <pre>          PREFIX dbpdt: &lt;http://dbpedia.org/datatype/&gt;
+        <section class="appendix" id="experiments" typeof="bibo:Chapter" resource="#experiments" property="bibo:hasPart">
+            <!--OddPage--><h2 id="h-experiments" resource="#h-experiments"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>Experiments</span></h2>
+            <section id="resources" typeof="bibo:Chapter" resource="#resources" property="bibo:hasPart">
+                <h3 id="h-resources" resource="#h-resources"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>Resources</span></h3>
+                <p><a href="v1/dbpedia.zip">datasets files</a>, are based on DBpedia 2014 English specific mapping-based properties dataset.</p>
+                <p>The test program is bundled in a Maven project <a href="v1/DBpediaLengthQueries.zip">DBpediaLengthQueries</a></p>
+            </section>
+            <section id="sparql-queries" typeof="bibo:Chapter" resource="#sparql-queries" property="bibo:hasPart">
+                <h3 id="h-sparql-queries" resource="#h-sparql-queries"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span>SPARQL Queries</span></h3>
+                <p>The following are the [<cite><a class="bibref" href="#bib-sparql11-query">sparql11-query</a></cite>] requests that are evaluated on each dataset.</p>
+                <strong>Dataset <em>dbpedia</em></strong>
+                <pre>          PREFIX dbpdt: &lt;http://dbpedia.org/datatype/&gt;
           SELECT ?x ?prop ?length ?metres WHERE {
             VALUES (?factor ?unit)
             { (0.001 dbpdt:millimetre)
@@ -679,10 +676,10 @@ interface <span class="idlInterfaceID">CustomDatatype</span> {
           } 
           ORDER BY DESC ( ?metres )
           LIMIT 100
-          </pre>
+                </pre>
 
-          <strong>Dataset <em>custom</em></strong>
-          <pre>          PREFIX cdt: &lt;http://w3id.org/lindt/v1/custom_datatypes#&gt;
+                <strong>Dataset <em>custom</em></strong>
+                <pre>          PREFIX cdt: &lt;http://w3id.org/lindt/v1/custom_datatypes#&gt;
           SELECT ?x ?prop ?length WHERE {
             ?x ?prop ?length .
             FILTER(datatype(?length) = cdt:length )
@@ -690,10 +687,10 @@ interface <span class="idlInterfaceID">CustomDatatype</span> {
           } 
           ORDER BY DESC (?length)
           LIMIT 100
-          </pre>
+                </pre>
 
-          <strong>Dataset <em>qudt</em></strong>
-          <pre>          PREFIX qudt: &lt;http://qudt.org/schema/qudt#&gt;
+                <strong>Dataset <em>qudt</em></strong>
+                <pre>          PREFIX qudt: &lt;http://qudt.org/schema/qudt#&gt;
           PREFIX qudt-unit: &lt;http://qudt.org/vocab/unit#&gt;
           SELECT ?x ?prop ?length (?factor*?length as ?metres) WHERE {
           VALUES (?factor ?unit)
@@ -710,24 +707,24 @@ interface <span class="idlInterfaceID">CustomDatatype</span> {
           }
           ORDER BY DESC (?metres)
           LIMIT 100
-          </pre>
-      </section>
-      <section id="instructions-to-reproduce-the-experiment" typeof="bibo:Chapter" resource="#instructions-to-reproduce-the-experiment" property="bibo:hasPart">
-          <h3 id="h-instructions-to-reproduce-the-experiment" resource="#h-instructions-to-reproduce-the-experiment"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.3 </span>Instructions to reproduce the experiment</span></h3>
-         <ol>
-         <li>Clone the <a href="https://github.com/thesmartenergy/jena">Jena fork with support for on-the-fly recognition of custom datatypes</a>.</li>
-         <li>Run Maven clean and build on project Jena - Core</li>
-         <li>Run Maven clean and build on project Jena - ARQ</li>
-         <li>Download and unzip <a href="v1/DBpediaLengthQueries.zip">Maven project DBpediaLengthQueries</a>.</li>
-         <li>Download <a href="v1/dbpedia.zip">datasets files</a>, which are based on DBpedia 2014 English specific mapping-based properties dataset. Unzip them in directory DBpediaLengthQueries/dbpedia.</li>
-         <li>Run Maven clean and build on project DBpediaLengthQueries. Note: the number of iterations has been reduced to 10 in the source file.</li>
-         <li>Run java program <code>lindt.dbpedialengthqueries.Main</code></li>
-         <li>Results are available in file DBpediaLengthQueries/results.txt</li>
-        </ol>      
-      </section>
-    </section>
+                </pre>
+            </section>
+            <section id="instructions-to-reproduce-the-experiment" typeof="bibo:Chapter" resource="#instructions-to-reproduce-the-experiment" property="bibo:hasPart">
+                <h3 id="h-instructions-to-reproduce-the-experiment" resource="#h-instructions-to-reproduce-the-experiment"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.3 </span>Instructions to reproduce the experiment</span></h3>
+                <ol>
+                    <li>Clone the <a href="https://github.com/thesmartenergy/jena">Jena fork with support for on-the-fly recognition of custom datatypes</a>.</li>
+                    <li>Run Maven clean and build on project Jena - Core</li>
+                    <li>Run Maven clean and build on project Jena - ARQ</li>
+                    <li>Download and unzip <a href="v1/DBpediaLengthQueries.zip">Maven project DBpediaLengthQueries</a>.</li>
+                    <li>Download <a href="v1/dbpedia.zip">datasets files</a>, which are based on DBpedia 2014 English specific mapping-based properties dataset. Unzip them in directory DBpediaLengthQueries/dbpedia.</li>
+                    <li>Run Maven clean and build on project DBpediaLengthQueries. Note: the number of iterations has been reduced to 10 in the source file.</li>
+                    <li>Run java program <code>lindt.dbpedialengthqueries.Main</code></li>
+                    <li>Results are available in file DBpediaLengthQueries/results.txt</li>
+                </ol>      
+            </section>
+        </section>
 
-    
-<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
-</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-sparql11-query">[sparql11-query]</dt><dd>Steven Harris; Andy Seaborne. <a href="http://www.w3.org/TR/sparql11-query/" property="dc:references"><cite>SPARQL 1.1 Query Language</cite></a>. 21 March 2013. W3C Recommendation. URL: <a href="http://www.w3.org/TR/sparql11-query/" property="dc:references">http://www.w3.org/TR/sparql11-query/</a>
-</dd></dl></section></section></body></html>
+
+        <section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+                    </dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">C.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-sparql11-query">[sparql11-query]</dt><dd>Steven Harris; Andy Seaborne. <a href="http://www.w3.org/TR/sparql11-query/" property="dc:references"><cite>SPARQL 1.1 Query Language</cite></a>. 21 March 2013. W3C Recommendation. URL: <a href="http://www.w3.org/TR/sparql11-query/" property="dc:references">http://www.w3.org/TR/sparql11-query/</a>
+                    </dd></dl></section></section></body></html>

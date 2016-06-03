@@ -67,7 +67,7 @@ public class OntologyPageResource {
     @Path("custom_datatypes")
     @Produces("text/html")
     public Response getCustomDatatypesAsHtml() {
-        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.html"), "text/turtle");
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.html"), "text/html");
         res.header("Content-Disposition", "filename= custom_datatypes.html;");
         return res.build();
     }
@@ -76,7 +76,7 @@ public class OntologyPageResource {
     @Path("custom_datatypes")
     @Produces("application/javascript")
     public Response getCustomDatatypesAsJavascript() {
-        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.js"), "text/turtle");
+        Response.ResponseBuilder res = Response.ok(OntologyPageResource.class.getClassLoader().getResourceAsStream("v1/custom_datatypes.js"), "application/javascript");
         res.header("Content-Disposition", "filename= custom_datatypes.js;");
         return res.build();
     }
