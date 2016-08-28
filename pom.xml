@@ -68,7 +68,7 @@
 
         <repository.domain>github.com</repository.domain>
         <repository.user>thesmartenergy</repository.user>
-        <repository.name>sparql-generate-jena</repository.name>
+        <repository.name>lindt</repository.name>
     </properties>
     
     <dependencyManagement>
@@ -90,7 +90,6 @@
             <version>6.0</version>
             <scope>provided</scope>
         </dependency>
-        
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -124,23 +123,23 @@
             <artifactId>jersey-server</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.ext.cdi</groupId>
-            <artifactId>jersey-weld2-se</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.ext.cdi</groupId>
-            <artifactId>jersey-cdi1x</artifactId>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
+            <groupId>com.github.thesmartenergy</groupId>
+            <artifactId>resource-platform</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
+<!--        <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-arq</artifactId>
             <version>2.13.1-dev-SNAPSHOT</version>
-        </dependency>
-
+        </dependency>-->
+<!--        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-arq</artifactId>
+            <version>3.0.1</version>
+        </dependency>-->
 
         <dependency>
             <groupId>junit</groupId>
@@ -152,6 +151,7 @@
 
 
     <build>
+        <finalName>lindt</finalName>
         <pluginManagement>
             <plugins>
                 <!-- ========================  -->

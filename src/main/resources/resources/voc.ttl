@@ -26,22 +26,23 @@
 @prefix az: <http://zimmer.aprilfoolsreview.com/antoine#> .
 @prefix fn: <http://semweb.mmlab.be/ns/function#> .
 
-<https://w3id.org/lindt/voc> a owl:Ontology, voaf:Vocabulary;
+<https://w3id.org/lindt/voc> a owl:Ontology, voaf:Vocabulary, foaf:Document;
   dc:title "The Lindt Vocabulary "@en ;
   dc:description "The Lindt (Linked Datatypes) vocabulary that enables to describe custom datatypes, this vocabulary may be used by RDF processors and SPARQL engines to recognize custom datatypes on the fly."@en ;
   dc:issued "2016-04-22"^^xsd:date ;
+  dc:modified  "2016-04-22T10:42:42+02:00"^^xsd:dateTime ;
+  dc:modified  "2016-06-03T10:46:00+02:00"^^xsd:dateTime ;
   dc:modified "2016-04-22"^^xsd:date ;
   dc:creator max:, az:me ;
   vann:preferredNamespacePrefix "lindt" ;
-  vann:preferredNamespaceUri <https://w3id.org/lindt/voc#> ;
+  vann:preferredNamespaceUri <https://w3id.org/lindt/voc> ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
   owl:imports <http://semweb.mmlab.be/ns/function> ;
   owl:versionInfo "v1.1" .
 
 <https://w3id.org/lindt/voc.ttl>  a  foaf:Document;
-    dc:creator  max:, az:me;
-    dc:modified  "2016-04-22T10:42:42+02:00"^^xsd:dateTimeStamp ;
-    dc:modified  "2016-06-03T10:46:00+02:00"^^xsd:dateTimeStamp .
+    dc:creator  max:, az:me .
+
 
 lindt:Datatype a owl:Class ;
   rdfs:subClassOf [ owl:onProperty lindt:implements ; owl:hasValue lindt:getIri ] ;
@@ -57,28 +58,28 @@ lindt:Datatype a owl:Class ;
   rdfs:subClassOf rdfs:Datatype ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:CompoundDatatype  a  owl:Class;
    rdfs:comment  "The class of datatypes that are composed of multiple values inside delimiting characters and separated by a certain string. For instance \"(0.234,846)\"^^my:pair."@en;
    rdfs:label  "compound datatype"@en;
    rdfs:subClassOf  lindt:Datatype ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:ListDatatype  a  owl:Class;
    rdfs:comment  "The class of datatypes where literals consist of a starting string, followed by a possibly empty list of values in a given datatype separated by a separating string, and finishing with an ending string. For instance \"{35,42,12000,14,-3,33}\"^^my:ListOfIntegers."@en;
    rdfs:label  "list datatype"@en;
    rdfs:subClassOf  lindt:CompoundDatatype ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:TupleDatatype  a  owl:Class;
    rdfs:comment  "The class of datatypes where literals consist of a starting string, followed by a sequence of values from a predefined list of datatypes. For instance \"(2013-10-09T11:14:22Z,129,metre)\"^^my:sensorData."@en;
    rdfs:label  "tuple datatype"@en;
    rdfs:subClassOf  lindt:CompoundDatatype ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:hasComponentType  a  owl:ObjectProperty ;
    rdfs:comment  "The datatype of the components of a list in this list datatype. For instance, the list datatype my:ListOfIntegers, having literals such as \"{35,42,12000,14,-3,33}\"^^my:ListOfIntegers, has component type xsd:integer."@en;
@@ -86,16 +87,15 @@ lindt:hasComponentType  a  owl:ObjectProperty ;
    rdfs:label  "has component type"@en;
    rdfs:range  rdfs:Datatype ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:hasComponentTypes  a  rdf:Property;
-   rdfs:comment  "The datatypes of the components of a tuple in this tuple datatype. For instance, the tuple datatype my:sensorData, having literals such as \"(2013-10-09T11:14:22Z,129,metre)\"^^my:sensorData,
-has component types (xsd:dateTime, xsd:integer, xsd:string)."@en;
+   rdfs:comment  "The datatypes of the components of a tuple in this tuple datatype. For instance, the tuple datatype my:sensorData, having literals such as \"(2013-10-09T11:14:22Z,129,metre)\"^^my:sensorData, has component types (xsd:dateTime, xsd:integer, xsd:string)."@en;
    rdfs:domain  lindt:TupleDatatype;
    rdfs:label  "has component types"@en;
    rdfs:range  rdf:List ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:literalsEndWith  a  owl:DatatypeProperty , owl:FunctionalProperty ;
    rdfs:comment  "The string that must be present at the end of a literal of a compound datatype, when excluding the starting string. For instance \")\"."@en;
@@ -103,7 +103,7 @@ lindt:literalsEndWith  a  owl:DatatypeProperty , owl:FunctionalProperty ;
    rdfs:label  "literals end with"@en;
    rdfs:range  xsd:string ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:literalsStartWith  a  owl:DatatypeProperty , owl:FunctionalProperty ;
    rdfs:comment  "The string that must be present at the beginning of a literal of a compound datatype. For instance \"(\"."@en;
@@ -111,7 +111,7 @@ lindt:literalsStartWith  a  owl:DatatypeProperty , owl:FunctionalProperty ;
    rdfs:label  "literals start with"@en;
    rdfs:range  xsd:string ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:separator  a  owl:DatatypeProperty , owl:FunctionalProperty ;
    rdfs:comment  "The string that must separate two values within a literal of a compound datatype. For instance \",\"."@en;
@@ -119,7 +119,7 @@ lindt:separator  a  owl:DatatypeProperty , owl:FunctionalProperty ;
    rdfs:label  "separator"@en;
    rdfs:range  xsd:string ;
    vs:term_status "testing" ;
-   rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+   rdfs:isDefinedBy <https://w3id.org/lindt/voc> .
 
 lindt:base a owl:ObjectProperty ;
    rdfs:label "base"@en ;
@@ -131,7 +131,7 @@ lindt:base a owl:ObjectProperty ;
   rdfs:range lindt:Datatype ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .  
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .  
 
 
 lindt:implements a owl:ObjectProperty ;
@@ -141,7 +141,7 @@ lindt:implements a owl:ObjectProperty ;
   rdfs:range lindt:Function ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 
 lindt:Function a owl:Class ;
@@ -150,9 +150,9 @@ lindt:Function a owl:Class ;
   rdfs:subClassOf fn:Function ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
-lindt:compare a lindt:Function ;
+lindt:compare a lindt:Function ; 
   rdfs:label "compare"@en ;
   fn:name "compare" ;
   rdfs:comment """Answers if the value of literal with lexical form lexicalForm1 and this datatype is lower, equal, or greater than the value of literal with lexical form lexicalForm2 and datatype identified by IRI datatypeIri2."""@en ;
@@ -164,7 +164,7 @@ lindt:compare a lindt:Function ;
   fn:outputs [ a fn:Output ; fn:type xsd:integer ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:exportLiteral a lindt:Function ;
   rdfs:label "exportLiteral"@en ;
@@ -177,7 +177,7 @@ lindt:exportLiteral a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:getIri a lindt:Function ;
   rdfs:label "getIri"@en ;
@@ -187,7 +187,7 @@ lindt:getIri a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:getNormalForm a lindt:Function ;
   rdfs:label "getNormalForm"@en ;
@@ -199,7 +199,7 @@ lindt:getNormalForm a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:getRecognisedDatatypes a lindt:Function ;
   rdfs:label "getRecognisedDatatypes"@en ;
@@ -209,7 +209,7 @@ lindt:getRecognisedDatatypes a lindt:Function ;
   fn:outputs [ fn:type lindt:stringListDatatype ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:importLiteral a lindt:Function ;
   rdfs:label "importLiteral"@en ;
@@ -222,7 +222,7 @@ lindt:importLiteral a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:isEqual a lindt:Function ;
   rdfs:label "isEqual"@en ;
@@ -236,7 +236,7 @@ lindt:isEqual a lindt:Function ;
   fn:outputs [ fn:type xsd:boolean ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:isWellFormed a lindt:Function ;
   rdfs:label "isWellFormed"@en ;
@@ -248,7 +248,7 @@ lindt:isWellFormed a lindt:Function ;
   fn:outputs [ fn:type xsd:boolean ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:recognisesDatatype a lindt:Function ;
   rdfs:label "recognisesDatatype"@en ;
@@ -260,7 +260,7 @@ lindt:recognisesDatatype a lindt:Function ;
   fn:outputs [ fn:type xsd:boolean ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:add a lindt:Function ;
   rdfs:label "add"@en ;
@@ -274,7 +274,7 @@ lindt:add a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:substract a lindt:Function ;
   rdfs:label "substract"@en ;
@@ -288,7 +288,7 @@ lindt:substract a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:additiveIdentity a lindt:Function ;
   rdfs:label "additiveIdentity"@en ;
@@ -298,7 +298,7 @@ lindt:additiveIdentity a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:multiply a lindt:Function ;
   rdfs:label "multiply"@en ;
@@ -312,7 +312,7 @@ lindt:multiply a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:divide a lindt:Function ;
   rdfs:label "divide"@en ;
@@ -326,7 +326,7 @@ lindt:divide a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:multiplicativeIdentity a lindt:Function ;
   rdfs:label "multiplicativeIdentity"@en ;
@@ -336,7 +336,7 @@ lindt:multiplicativeIdentity a lindt:Function ;
   fn:outputs [ fn:type xsd:string ] ;
   vs:term_status "testing" ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 
 lindt:TotallyOrdered a owl:Class ;
@@ -347,7 +347,7 @@ lindt:TotallyOrdered a owl:Class ;
   rdfs:label "TotallyOrdered"@en ;
   rdfs:comment """The class of datatypes that are totally ordered. The Javascript object representing this datatype should implement function compare(lexicalForm1:string, lexicalForm2:string):string, to compare two literals with this datatype."""@en ;
   vs:term_status "testing" ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:Group a owl:Class ;
   rdfs:subClassOf lindt:Datatype ;
@@ -357,7 +357,7 @@ lindt:Group a owl:Class ;
   rdfs:label "Group"@en ;
   rdfs:comment """The class of datatypes that are algebraic groups. The Javascript object representing this datatype should implement functions add(lexicalForm1:string, lexicalForm2:string):string and substract(lexicalForm1:string, lexicalForm2:string):string to add and substract two literals with this datatype. It should also implement function additiveIdentity():string to retrieve the additive identity element."""@en ;
   vs:term_status "testing" ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 lindt:Ring a owl:Class ;
   rdfs:subClassOf lindt:Datatype ;
@@ -367,7 +367,7 @@ lindt:Ring a owl:Class ;
   rdfs:label "Ring"@en ;
   rdfs:comment """The class of datatypes that are algebraic rings, which are also algebraic groups. The Javascript object representing this datatype should implement functions add, substract, and additiveIdentity as specified by class lindt:Group. Furthermore, it should also implement functions multiply(lexicalForm1:string, lexicalForm2:string):string and divide(lexicalForm1:string, lexicalForm2:string):string to multiply and divide two literals with this datatype. It should also implement function multiplicativeIdentity():string to retrieve the multiplicative identity element."""@en ;
   vs:term_status "testing" ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .   
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .   
 
 
 lindt:stringListDatatype a lindt:ListDatatype ;
@@ -377,4 +377,4 @@ lindt:stringListDatatype a lindt:ListDatatype ;
   lindt:literalsEndsWith ")" ;
   lindt:separator "," ;
   vs:term_status "testing" ;
-  rdfs:isDefinedBy <https://w3id.org/lindt/voc#> .
+  rdfs:isDefinedBy <https://w3id.org/lindt/voc> .

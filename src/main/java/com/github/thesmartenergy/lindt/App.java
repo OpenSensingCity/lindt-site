@@ -13,23 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.thesmartenergy.lindt.v1;
+package com.github.thesmartenergy.lindt;
 
-import java.util.logging.Logger;
-import javax.ws.rs.ApplicationPath;
-import org.glassfish.jersey.server.ResourceConfig;
+import com.github.thesmartenergy.rp.BaseURI;
+import javax.enterprise.inject.Produces;
 
 /**
- * @author maxime.lefrancois
+ *
+ * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
  */
-@ApplicationPath("v1")
-public class JerseyApp extends ResourceConfig {
-
-    private static final Logger LOG = Logger.getLogger(JerseyApp.class.getSimpleName());
-
-    public JerseyApp() {
-        packages("com.github.thesmartenergy.mdq.v1");
+public class App {
+    
+    @Produces
+    @BaseURI
+    public String getBase() {
+        return "https://w3id.org/lindt/";
     }
-    
-    
 }
