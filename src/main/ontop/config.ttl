@@ -20,14 +20,15 @@
 [] a ontop:Ontology ; 
   ontop:filePath "lindt-1.1.ttl" .
 
-<custom_datatypes> a rdfp:Graph ; 
-  rdfp:alias <v1/custom_datatypes> ;
-  ontop:filePath "custom_datatypes.ttl" ;
+<custom_datatypes> a rdfp:Resource ; 
+  rdfp:representedBy [ ontop:filePath "custom_datatypes.ttl" ; rdfp:mediaType "text/turtle;q=0.9" ] ;
+  rdfp:representedBy [ ontop:filePath "custom_datatypes.rdf" ; rdfp:mediaType "application/rdf+xml;q=0.8" ] ;
   rdfp:representedBy [ ontop:filePath "custom_datatypes.html" ; rdfp:mediaType "text/html;q=1.0" ] ;
   rdfp:representedBy [ ontop:filePath "custom_datatypes.js" ;  rdfp:mediaType "application/javascript;q=0.8" ] .
 
-<v1/custom_datatypes> a rdfp:Graph ; 
-  ontop:filePath "custom_datatypes.ttl" ;
+<v1/custom_datatypes> a rdfp:Resource ; 
+  rdfp:representedBy [ ontop:filePath "custom_datatypes.ttl" ; rdfp:mediaType "text/turtle;q=0.9" ] ;
+  rdfp:representedBy [ ontop:filePath "custom_datatypes.rdf" ; rdfp:mediaType "application/rdf+xml;q=0.8" ] ;
   rdfp:representedBy [ ontop:filePath "custom_datatypes.html" ; rdfp:mediaType "text/html;q=1.0" ] ;
   rdfp:representedBy [ ontop:filePath "custom_datatypes.js" ;  rdfp:mediaType "application/javascript;q=0.8" ] .
 

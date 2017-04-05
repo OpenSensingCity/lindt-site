@@ -36,7 +36,7 @@ var getDatatype = function (uri) {
         Z: 21, zeta: 21,
         Y: 24, yotta: 14
     };
-    var factors = {
+    var lengthfactors = {
         m: 1, metre: 1, metres: 1,
         th: 0.0000254, thou: 0.0000254, thousand: 0.0000254, thousandth: 0.0000254, thousands: 0.0000254, thousandths: 0.0000254, mil: 0.0000254, mils: 0.0000254,
         in: 0.0254, inch: 0.0254, inches: 0.0254,
@@ -53,9 +53,8 @@ var getDatatype = function (uri) {
         rod: 5.0292, rods: 5.0292
     };
     var lengthRegex = /^([-+]?[0-9]*\.?[0-9]+)([eE]([-+]?[0-9]+))? ?(((y|z|a|f|p|n|μ|m|c|d|da|h|k|M|G|T|P|E|Z|Y)?m)|(yocto|zepto|atto|femto|pico|nano|micro|milli|centi|deci|deca|hecto|kilo|mega|giga|tera|peta|exa|zeta|yota)?metres?|th(ou(sand(th)?s?)?)?|mils?|in(ch(es)?)?|f(ts?|oot|eet)|y(d|ards?)|ch(ains?)?|fur(longs?)?|mi(les?)?|lea(gues?)?|ftm|fathoms?|cb|cables?|NM|nmi|nautical miles?|links?|rods?)$/;
-    var floatRegex = /^([-+]?[0-9]*\.?[0-9]+)([eE]([-+]?[0-9]+))?$/;
     var Length = {
-        getMetres: function (lexicalForm) {
+        getVoltage: function (lexicalForm) {
             var parse = lexicalForm.match(lengthRegex);
             if (parse === null) {
                 throw new Error("illegal lexical form");
@@ -70,7 +69,7 @@ var getDatatype = function (uri) {
             if (prefix !== undefined) {
                 value *= Math.pow(10, metricprefixes[prefix]);
             }
-            var factor = factors[parse[4]];
+            var factor = lengthfactors[parse[4]];
             if (factor === undefined) {
                 factor = 1;
             }
@@ -94,7 +93,7 @@ var getDatatype = function (uri) {
                 datatypeUri2 = this.getUri();
             }
             if (this.getUri() === datatypeUri2) {
-                return this.getMetres(lexicalForm1) === this.getMetres(lexicalForm2);
+                return this.getVoltage(lexicalForm1) === this.getVoltage(lexicalForm2);
             }
             return false;
         },
@@ -103,8 +102,8 @@ var getDatatype = function (uri) {
                 datatypeUri2 = this.getUri();
             }
             if (this.getUri() === datatypeUri2) {
-                var metres1 = this.getMetres(lexicalForm1);
-                var metres2 = this.getMetres(lexicalForm2);
+                var metres1 = this.getVoltage(lexicalForm1);
+                var metres2 = this.getVoltage(lexicalForm2);
                 if (metres1 < metres2) {
                     return -1;
                 } else if (metres1 === metres2) {
@@ -119,7 +118,7 @@ var getDatatype = function (uri) {
             if (!Length.isLegal(lexicalForm)) {
                 throw new Error("Non legal lexical form");
             }
-            return this.getMetres(lexicalForm) + "m";
+            return this.getVoltage(lexicalForm) + " m";
         },
         importLiteral: function (lexicalForm, datatypeUri) {
             // transforms lexicalForm^^datatypeUri to return^^this.getUri() 
@@ -138,8 +137,344 @@ var getDatatype = function (uri) {
     };
 
 
+    var volumeRegex = /^([-+]?[0-9]*\.?[0-9]+)([eE]([-+]?[0-9]+))? ?((y|z|a|f|p|n|μ|m|c|d|da|h|k|M|G|T|P|E|Z|Y)?(l|m3))$/;
+    var Volume = {
+        getCubicMeter: function (lexicalForm) {
+            var parse = lexicalForm.match(volumeRegex);
+            if (parse === null) {
+                throw new Error("illegal lexical form");
+            }
+            var value = parse[1];
+            var sigNum = Math.max(value.length,7);
+            var exponent = parse[3];
+            if (exponent !== undefined) {
+                value *= Math.pow(10, exponent);
+            }
+            if (parse[6] === "l") {
+                value *= Math.pow(10, 3*metricprefixes[prefix]);
+                var prefix = parse[5];
+                if (prefix !== undefined) {
+                    value *= Math.pow(10, metricprefixes[prefix]);
+                }
+            } else {
+                var prefix = parse[5];
+                if (prefix !== undefined) {
+                    value *= Math.pow(10, 3*metricprefixes[prefix]);
+                }
+            }
+            return Math.round(value*Math.pow(10, sigNum))/Math.pow(10, sigNum);
+        },
+        getUri: function () {
+            return "https://w3id.org/lindt/custom_datatypes#volume";
+        },
+        isLegal: function (lexicalForm) {
+            return volumeRegex.test(lexicalForm);
+        },
+        recognisesDatatype: function (datatypeUri) {
+            return this.getUri() === datatypeUri;
+        },
+        getRecognisedDatatypes: function () {
+            return [this.getUri()];
+        },
+        isEqual: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                return this.getCubicMeter(lexicalForm1) === this.getCubicMeter(lexicalForm2);
+            }
+            return false;
+        },
+        compare: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                var volume1 = this.getCubicMeter(lexicalForm1);
+                var volume2 = this.getCubicMeter(lexicalForm2);
+                if (volume1 < volume2) {
+                    return -1;
+                } else if (volume1 === volume2) {
+                    return 0;
+                } else if (volume1 > volume2) {
+                    return 1;
+                }
+            }
+            return false;
+        },
+        getNormalForm: function (lexicalForm) {
+            if (!Volume.isLegal(lexicalForm)) {
+                throw new Error("Non legal lexical form");
+            }
+            return this.getCubicMeter(lexicalForm) + " m3";
+        },
+        importLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^datatypeUri to return^^this.getUri() 
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        },
+        exportLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^this.getUri() to return^^datatypeUri  
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        }
+    };
+
+
+    var tempRegex = /^([-+]?[0-9]*\.?[0-9]+)([eE]([-+]?[0-9]+))? ?°(F|C|K)$/;
+    var Temperature = {
+        getCelsius: function (lexicalForm) {
+            var parse = lexicalForm.match(tempRegex);
+            if (parse === null) {
+                throw new Error("illegal lexical form");
+            }
+            var value = parse[1];
+            var sigNum = Math.max(value.length,7);
+            var exponent = parse[3];
+            if (exponent !== undefined) {
+                value *= Math.pow(10, exponent);
+            }
+            if (parse[4] === "F") {
+                value = ( value - 32 ) * 5/9;
+            } else if (parse[4] === "K") {
+                value = value + 273.15;
+            }
+            return Math.round(value*Math.pow(10, sigNum))/Math.pow(10, sigNum);
+        },
+        getUri: function () {
+            return "https://w3id.org/lindt/custom_datatypes#temperature";
+        },
+        isLegal: function (lexicalForm) {
+            return tempRegex.test(lexicalForm);
+        },
+        recognisesDatatype: function (datatypeUri) {
+            return this.getUri() === datatypeUri;
+        },
+        getRecognisedDatatypes: function () {
+            return [this.getUri()];
+        },
+        isEqual: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                return this.getCelsius(lexicalForm1) === this.getCelsius(lexicalForm2);
+            }
+            return false;
+        },
+        compare: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                var temp1 = this.getCelsius(lexicalForm1);
+                var temp2 = this.getCelsius(lexicalForm2);
+                if (temp1 < temp2) {
+                    return -1;
+                } else if (temp1 === temp2) {
+                    return 0;
+                } else if (temp1 > temp2) {
+                    return 1;
+                }
+            }
+            return false;
+        },
+        getNormalForm: function (lexicalForm) {
+            if (!Length.isLegal(lexicalForm)) {
+                throw new Error("Non legal lexical form");
+            }
+            return this.getCelsius(lexicalForm) + " °C";
+        },
+        importLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^datatypeUri to return^^this.getUri() 
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        },
+        exportLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^this.getUri() to return^^datatypeUri  
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        }
+    };
+
+
+    var voltageRegex = /^([-+]?[0-9]*\.?[0-9]+)([eE]([-+]?[0-9]+))? ?((y|z|a|f|p|n|μ|m|c|d|da|h|k|M|G|T|P|E|Z|Y)?V)$/;
+    var Voltage = {
+        getVoltage: function (lexicalForm) {
+            var parse = lexicalForm.match(voltageRegex);
+            if (parse === null) {
+                throw new Error("illegal lexical form");
+            }
+            var value = parse[1];
+            var sigNum = Math.max(value.length,7);
+            var exponent = parse[3];
+            if (exponent !== undefined) {
+                value *= Math.pow(10, exponent);
+            }
+            var prefix = parse[5];
+            if (prefix !== undefined) {
+                value *= Math.pow(10, metricprefixes[prefix]);
+            }
+            return Math.round(value*Math.pow(10, sigNum))/Math.pow(10, sigNum);
+        },
+        getUri: function () {
+            return "https://w3id.org/lindt/custom_datatypes#voltage";
+        },
+        isLegal: function (lexicalForm) {
+            return voltageRegex.test(lexicalForm);
+        },
+        recognisesDatatype: function (datatypeUri) {
+            return this.getUri() === datatypeUri;
+        },
+        getRecognisedDatatypes: function () {
+            return [this.getUri()];
+        },
+        isEqual: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                return this.getVoltage(lexicalForm1) === this.getVoltage(lexicalForm2);
+            }
+            return false;
+        },
+        compare: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                var voltage1 = this.getVoltage(lexicalForm1);
+                var voltage2 = this.getVoltage(lexicalForm2);
+                if (voltage1 < voltage2) {
+                    return -1;
+                } else if (voltage1 === voltage2) {
+                    return 0;
+                } else if (voltage1 > voltage2) {
+                    return 1;
+                }
+            }
+            return false;
+        },
+        getNormalForm: function (lexicalForm) {
+            if (!Length.isLegal(lexicalForm)) {
+                throw new Error("Non legal lexical form");
+            }
+            return this.getVoltage(lexicalForm) + " V";
+        },
+        importLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^datatypeUri to return^^this.getUri() 
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        },
+        exportLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^this.getUri() to return^^datatypeUri  
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        }
+    };
+    
+    
+    var electricIntensityRegex = /^([-+]?[0-9]*\.?[0-9]+)([eE]([-+]?[0-9]+))? ?((y|z|a|f|p|n|μ|m|c|d|da|h|k|M|G|T|P|E|Z|Y)?A)$/;
+    var ElectricIntensity = {
+        getAmpere: function (lexicalForm) {
+            var parse = lexicalForm.match(electricIntensityRegex);
+            if (parse === null) {
+                throw new Error("illegal lexical form");
+            }
+            var value = parse[1];
+            var sigNum = Math.max(value.length,7);
+            var exponent = parse[3];
+            if (exponent !== undefined) {
+                value *= Math.pow(10, exponent);
+            }
+            var prefix = parse[5];
+            if (prefix !== undefined) {
+                value *= Math.pow(10, metricprefixes[prefix]);
+            }
+            return Math.round(value*Math.pow(10, sigNum))/Math.pow(10, sigNum);
+        },
+        getUri: function () {
+            return "https://w3id.org/lindt/custom_datatypes#electricIntensity";
+        },
+        isLegal: function (lexicalForm) {
+            return electricIntensityRegex.test(lexicalForm);
+        },
+        recognisesDatatype: function (datatypeUri) {
+            return this.getUri() === datatypeUri;
+        },
+        getRecognisedDatatypes: function () {
+            return [this.getUri()];
+        },
+        isEqual: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                return this.getAmpere(lexicalForm1) === this.getAmpere(lexicalForm2);
+            }
+            return false;
+        },
+        compare: function (lexicalForm1, lexicalForm2, datatypeUri2) {
+            if(datatypeUri2 === undefined) {
+                datatypeUri2 = this.getUri();
+            }
+            if (this.getUri() === datatypeUri2) {
+                var ampere1 = this.getAmpere(lexicalForm1);
+                var ampere2 = this.getAmpere(lexicalForm2);
+                if (ampere1 < ampere2) {
+                    return -1;
+                } else if (ampere1 === ampere2) {
+                    return 0;
+                } else if (ampere1 > ampere2) {
+                    return 1;
+                }
+            }
+            return false;
+        },
+        getNormalForm: function (lexicalForm) {
+            if (!Length.isLegal(lexicalForm)) {
+                throw new Error("Non legal lexical form");
+            }
+            return this.getAmpere(lexicalForm) + " A";
+        },
+        importLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^datatypeUri to return^^this.getUri() 
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        },
+        exportLiteral: function (lexicalForm, datatypeUri) {
+            // transforms lexicalForm^^this.getUri() to return^^datatypeUri  
+            if (this.getUri() === datatypeUri) {
+                return lexicalForm;
+            }
+            throw new Error("datatype " + this.getUri() + " does not recognize datatype " + datatypeUri);
+        }
+    };
 
     if (uri === Length.getUri() || uri ==="http://w3id.org/lindt/v1/custom_datatypes#length") {
         return Length;
+    } else if (uri === Volume.getUri() || uri === "http://w3id.org/lindt/v1/custom_datatypes#volume") {
+        return Volume;
+    } else if (uri === Temperature.getUri() || uri === "http://w3id.org/lindt/v1/custom_datatypes#temperature") {
+        return Temperature;
+    } else if (uri === Voltage.getUri() || uri === "http://w3id.org/lindt/v1/custom_datatypes#voltage") {
+        return Voltage;
+    } else if (uri === ElectricIntensity.getUri() || uri === "http://w3id.org/lindt/v1/custom_datatypes#electricIntensity") {
+        return ElectricIntensity;
     } 
+    
 };

@@ -47,7 +47,7 @@ See also:
   dc:creator max:, az:me ;
   vann:preferredNamespacePrefix "lindt" ;
   vann:preferredNamespaceUri <https://w3id.org/lindt/> ;
-  cc:license <https://creativecommons.org/licenses/by/4.0> ;
+  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   rdfs:seeAlso <https://w3id.org/lindt/spec.html> ;
   owl:imports <http://semweb.mmlab.be/ns/function> ;
   owl:versionIRI <https://w3id.org/lindt/lindt-1.1> ;

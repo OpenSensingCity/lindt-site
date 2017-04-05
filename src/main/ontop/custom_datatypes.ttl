@@ -50,3 +50,35 @@
     rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
     rdfs:isDefinedBy  <custom_datatypes>;
     rdfs:comment  """A datatype to express length according to the International System of Units or the imperial units. Possible lexical forms of this datatype are: "42 km", "6.66 Gm", "8e17 mi", "0.98 inches"."""@en .
+
+:volume  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "volume"@en, "volume"@fr;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """A datatype to express volume according to the International System of Units."""@en .
+
+:temperature  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "temperature"@en, "temperature"@fr;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """A datatype to express temperature in Kelvin, Celsius, or Farenheit."""@en .
+
+:voltage  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "voltage"@en, "voltage"@fr;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """A datatype to express voltage."""@en .
+
+:electricIntensity  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electric intensity"@en, "intensité éléctrique"@fr;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """A datatype to express electric intensity."""@en .

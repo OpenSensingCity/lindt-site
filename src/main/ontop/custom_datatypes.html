@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Implementation of a Custom Datatype</title>
+    <title>Implementation of Custom Datatypes</title>
     <meta charset='utf-8'>
     <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
             async class='remove'></script>
@@ -47,7 +47,7 @@
   <body>
     <section id='abstract'>
       <p>
-        This document describes the implementation of a conformant <a href="../index.html">custom datatype</a>.
+        This document describes the implementation of conformant <a href="../index.html">custom datatypes</a>.
       </p>
      <p>See this <a href="../spec.html">link</a> for the useful resources for paper "Supporting Arbitrary Custom Datatypes in RDF and SPARQL", published at ESWC'2016 (see <a href="../LefrancoisZimmermann-ESWC2016-Supporting.pdf">paper</a>).</p>
     </section>
@@ -80,12 +80,13 @@
     <section class="informative">
       <h2>Datatype <em>Length</em></h2>
         <p>
-        Datatype datatype is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#length">http://w3id.org/lindt/custom_datatypes#length</a>, abbreviated as <code>cdt:length</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that can be either a metric length unit, or an imperial length unit, in abbreviated form or as full words, in singular or plural form. The value space correspond to the set of lengths, as defined by the International Systems of Quantities, i.e., any quantity with dimension distance. The lexical-to-value mapping maps lexical forms with units in the metric system to their corresponding length according to the International Systems of Quantities, while the forms with an imperial unit are mapped to their equivalent length according to the International yard and pound agreement.
+        Datatype Length is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#length">http://w3id.org/lindt/custom_datatypes#length</a>, abbreviated as <code>cdt:length</code>. 
+        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that can be either a metric length unit, or an imperial length unit, in abbreviated form or as full words, in singular or plural form. The value space corresponds to the set of lengths, as defined by the International Systems of Quantities, i.e., any quantity with dimension distance. The lexical-to-value mapping maps lexical forms with units in the metric system to their corresponding length according to the International Systems of Quantities, while the forms with an imperial unit are mapped to their equivalent length according to the International yard and pound agreement.
         </p>
 
         <p>
         For example, all literals below are well formed and share the same value.
+        </p>
 
         <pre class="example highlight">
         "1 mile"^^cdt:length
@@ -95,11 +96,80 @@
         "1609.344 metre"^^cdt:length
         "1.609344E+6 mm"^^cdt:length
         </pre>
-
-        </p>
-
     </section>
 
+    <section class="informative">
+      <h2>Datatype <em>Volume</em></h2>
+        <p>
+        Datatype Volume is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#volulme">http://w3id.org/lindt/custom_datatypes#volume</a>, abbreviated as <code>cdt:volume</code>. 
+        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a metric volume unit, in abbreviated form or as full words, in singular or plural form. The value space corresponds to the set of volumes, as defined by the International Systems of Quantities, i.e., any quantity with dimension volulme. The lexical-to-value mapping maps lexical forms with units in the metric system to their corresponding length according to the International Systems of Quantities.
+        </p>
+
+        <p>
+        For example, all literals below are well formed.
+        </p>
+
+        <pre class="example highlight">
+        "1000 l"^^cdt:volume
+        "100 cl"^^cdt:volume
+        "1000000cm3"^^cdt:volume
+        "1 m3"^^cdt:volume
+        </pre>
+    </section>
+
+    <section class="informative">
+      <h2>Datatype <em>Temperature</em></h2>
+        <p>
+        Datatype Temperature is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#temperature">http://w3id.org/lindt/custom_datatypes#temperature</a>, abbreviated as <code>cdt:temperature</code>. 
+        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that can be either °C, °K, or °F. The value space corresponds to the set of temperatures.
+        </p>
+
+        <p>
+        For example, all literals below are well formed and share the same value.
+        </p>
+
+        <pre class="example highlight">
+        "27315e-2 °K"^^cdt:temperature
+        "0 °C"^^cdt:temperature
+        ".32e2 °F"^^cdt:temperature
+        </pre>
+    </section>
+
+    <section class="informative">
+      <h2>Datatype <em>Voltage</em></h2>
+        <p>
+        Datatype Voltage is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#voltage">http://w3id.org/lindt/custom_datatypes#voltage</a>, abbreviated as <code>cdt:voltage</code>. 
+        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that is V prefixed by some metric prefix. The value space corresponds to the set of voltage.
+        </p>
+
+        <p>
+        For example, all literals below are well formed and share the same value.
+        </p>
+
+        <pre class="example highlight">
+        "230.7 V"^^cdt:voltage
+        "2.307e2 V"^^cdt:voltage
+        ".2307 kV"^^cdt:voltage
+        </pre>
+    </section>
+
+    <section class="informative">
+      <h2>Datatype <em>ElectricIntensity</em></h2>
+        <p>
+        Datatype ElectricIntensity is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#electricIntensity">http://w3id.org/lindt/custom_datatypes#electricIntensity</a>, abbreviated as <code>cdt:electricIntensity</code>. 
+        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that is A prefixed by some metric prefix. The value space corresponds to the set of electric intensities.
+        </p>
+
+        <p>
+        For example, all literals below are well formed and share the same value.
+        </p>
+
+        <pre class="example highlight">
+        "4.7 A"^^cdt:electricIntensity
+        "47e-1 A"^^cdt:electricIntensity
+        "4700 mA"^^cdt:electricIntensity
+        </pre>
+    </section>
 
 </body>
 </html>

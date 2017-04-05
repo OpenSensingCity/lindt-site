@@ -68,7 +68,7 @@
         <repository.user>thesmartenergy</repository.user>
         <repository.name>lindt</repository.name>
         
-        <ontop.version>1.1-SNAPSHOT</ontop.version>
+        <ontop.version>1.2-SNAPSHOT</ontop.version>
     </properties>
     
     <dependencyManagement>
@@ -177,6 +177,7 @@
                             <exclude>**/src**/*.js</exclude>
                             <exclude>**/src**/*.rqg</exclude>
                             <exclude>**/src/**/*.json</exclude>
+                            <exclude>**/src/**/*.rdf</exclude>
                             <exclude>**/src/main/**/*.html</exclude>
                             <exclude>**/src/test/**/*.*</exclude>
                             <exclude>**/src/**/package-info.java</exclude>
