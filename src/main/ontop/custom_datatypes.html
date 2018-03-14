@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Custom Datatypes for Quantity Values</title>
+    <title>Custom Datatypes</title>
     <meta charset='utf-8'>
-    <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
-            async class='remove'></script>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script class='remove'>
       var respecConfig = {
-          specStatus: "unofficial",
+          specStatus:  "unofficial",
           subtitle:  "Towards a web of Linked Datatypes",
           shortName:  "cdt",
-          noTOC:  true,
+          publishDate:  "2018-03-14",
+          previousPublishDate: "2017-04-05",
           editors: [
                 {   name:       "Maxime Lefrançois",
                     url:        "http://www.maxime-lefrancois.info/",
@@ -30,19 +31,91 @@
               { uri: "custom_datatypes.js",
                 label: "Javascript specification code (application/javascript)", 
               },
-          ]
+          ],
+          inlineCSS: true
       };
+      $("document").ready(function() { 
+        document.respecIsReady.then(() => { 
+        $(".head").prepend(`<a href="http://mines-stetienne.fr" class="logo">
+        <img alt="Mines Saint-Étienne" width="150" height="150" src="mines-logo_400x400.jpg">
+      </a>`); });
+      });
     </script>
-<script>
+    <style>
+html {
+  background: white !important; 
+}
+
+/* Styles to replicate key SpecGen styles */
+
+.specterm {
+    margin-top: 1em;
+}
+
+.specterm h4 {
+    margin-top: 1em;
+}
+
+.specterm table {
+    margin-top: 0.5em;
+}
+
+section.specterm {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 0.1ex;
+    padding-bottom: 0.1ex;
+}
+
+.azlist {
+  margin-top: 10pt;
+  padding: 5px;
+  border: 1px solid #e3dcf2;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    border: .5em;
+    border-left-style: solid;
+    page-break-inside: avoid;
+    border-color: #52E052;
+    background: #E9FBE9;
+    overflow: auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.specterm h5 , .specterm h6 {
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+    </style>
+<!-- <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-72284702-1', 'auto');
+  ga('create', 'UA-74855518-6', 'auto');
   ga('send', 'pageview');
 
-</script>
+</script> -->
   </head>
   <body>
     <section id='abstract'>
@@ -76,117 +149,1261 @@
     </section>
 
 
-    <section>
-      <h2>Datatype <em>Unified Code for Units of Measure (UCUM)</em></h2>
+    <section id="measurements">
+      <h2>Custom Datatypes for Measurements</h2>
         <p>
-        Datatype UCUM is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#ucum">http://w3id.org/lindt/custom_datatypes#ucum</a>, abbreviated as <code>cdt:ucum</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>: a code system indented to include <emph>all</emph> units of measures being contemporarily used in international science, engineering, and business. The value space corresponds to the set of measures, or quantity values as defined by the International Systems of Quantities. The lexical-to-value mapping maps lexical forms with a UCUM unit to their corresponding measures according to the International Systems of Quantities.
+        Being able to describe measurements and their unit is a requirement that is common for many applications in several industrial sectors such as manufacturing, transport and logistics, personal and public health, smart cities, energy, environment, buildings, agriculture. Different ontologies have been developed to describe units, their relations, and measurements.
+        </p>
+        <p>
+        we propose an alternative approach based on RDF Datatypes, that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a>, a code system intended to <emph>include \emph{all} units of measures being contemporarily used in international science, engineering, and business.</emph>
+        </p>
+        <p>
+          The custom datatypes introduced in this section can be used for lightweight encoding and querying of measurements, in a wide range of applications where representing and reasoning with values is more important than reasoning with unit.
         </p>
 
-        <p>
-        For example, all literals below are well formed and share the same value.
-        </p>
+        <section class="informative" id="overview-of-measurement-datatypes">
+          <h3>Overview of Datatypes</h3>
+          <div id="index-of-measurement-ucum">
+            <div class="azlist">
+              <p>Main datatype: <a href="#ucum">cdt:ucum</a>
+              </p>
+            </div>
+          </div>
+          <div id="index-of-measurement-datatypes">
+            <div class="azlist">
+              <p>Sub-datatypes: <a href="#acceleration">cdt:acceleration</a>
+              , <a href="#amountOfSubstance">cdt:amountOfSubstance</a>
+              , <a href="#angle">cdt:angle</a>
+              , <a href="#area">cdt:area</a>
+              , <a href="#catalyticActivity">cdt:catalyticActivity</a>
+              , <a href="#dimensionless">cdt:dimensionless</a>
+              , <a href="#electricCapacitance">cdt:electricCapacitance</a>
+              , <a href="#electricCharge">cdt:electricCharge</a>
+              , <a href="#electricConductance">cdt:electricConductance</a>
+              , <a href="#electricCurrent">cdt:electricCurrent</a>
+              , <a href="#electricInductance">cdt:electricInductance</a>
+              , <a href="#electricPotential">cdt:electricPotential</a>
+              , <a href="#electricResistance">cdt:electricResistance</a>
+              , <a href="#energy">cdt:energy</a>
+              , <a href="#force">cdt:force</a>
+              , <a href="#frequency">cdt:frequency</a>
+              , <a href="#illuminance">cdt:illuminance</a>
+              , <a href="#length">cdt:length</a>
+              , <a href="#luminousFlux">cdt:luminousFlux</a>
+              , <a href="#luminousIntensity">cdt:luminousIntensity</a>
+              , <a href="#magneticFlux">cdt:magneticFlux</a>
+              , <a href="#magneticFluxDensity">cdt:magneticFluxDensity</a>
+              , <a href="#mass">cdt:mass</a>
+              , <a href="#power">cdt:power</a>
+              , <a href="#pressure">cdt:pressure</a>
+              , <a href="#radiationDoseAbsorbed">cdt:radiationDoseAbsorbed</a>
+              , <a href="#radiationDoseEffective">cdt:radiationDoseEffective</a>
+              , <a href="#radioactivity">cdt:radioactivity</a>
+              , <a href="#solidAngle">cdt:solidAngle</a>
+              , <a href="#speed">cdt:speed</a>
+              , <a href="#temperature">cdt:temperature</a>
+              , <a href="#time">cdt:time</a>
+              , <a href="#volume">cdt:volume</a>
+              </p>
+            </div>
+          </div>
+        </section>
 
-        <pre class="example highlight">
-        "1 m"^^cdt:ucum
-        "1.0e+9 nm"^^cdt:ucum
-        "1e+10 Ao"^^cdt:ucum
-        "1 m/s.s"^^cdt:ucum
-        </pre>
+
+        <section class="specterm" id="ucum"  about="cdt:ucum" typeof="rdf:Datatype">
+          <h3><a href="#ucum">cdt:ucum</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#ucum">http://w3id.org/lindt/custom_datatypes#ucum</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">UCUM Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurements in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of measures, or quantity values as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a UCUM unit to their corresponding measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all literals below are well formed and share the same value.</p>
+<pre class="example highlight">
+"1 m"^^cdt:ucum
+"1.0e+9 nm"^^cdt:ucum
+"1e+10 Ao"^^cdt:ucum
+"1 m/s.s"^^cdt:ucum
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+
+        <section class="specterm" id="acceleration"  about="cdt:acceleration" typeof="rdf:Datatype">
+          <h3><a href="#acceleration">cdt:acceleration</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#acceleration">http://w3id.org/lindt/custom_datatypes#acceleration</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">acceleration Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind acceleration in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a acceleration unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of acceleration as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a acceleration unit to their corresponding acceleration measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all acceleration literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:acceleration
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="amountOfSubstance"  about="cdt:amountOfSubstance" typeof="rdf:Datatype">
+          <h3><a href="#amountOfSubstance">cdt:amountOfSubstance</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#amountOfSubstance">http://w3id.org/lindt/custom_datatypes#amountOfSubstance</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">amountOfSubstance Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind amountOfSubstance in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a amountOfSubstance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of amountOfSubstance as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a amountOfSubstance unit to their corresponding amountOfSubstance measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all amountOfSubstance literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:amountOfSubstance
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="angle"  about="cdt:angle" typeof="rdf:Datatype">
+          <h3><a href="#angle">cdt:angle</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#angle">http://w3id.org/lindt/custom_datatypes#angle</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">angle Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind angle in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a angle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of angle as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a angle unit to their corresponding angle measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all angle literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:angle
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="area"  about="cdt:area" typeof="rdf:Datatype">
+          <h3><a href="#area">cdt:area</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#area">http://w3id.org/lindt/custom_datatypes#area</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">area Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind area in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a area unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of area as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a area unit to their corresponding area measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all area literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:area
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="catalyticActivity"  about="cdt:catalyticActivity" typeof="rdf:Datatype">
+          <h3><a href="#catalyticActivity">cdt:catalyticActivity</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#catalyticActivity">http://w3id.org/lindt/custom_datatypes#catalyticActivity</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">catalyticActivity Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind catalyticActivity in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a catalyticActivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of catalyticActivity as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a catalyticActivity unit to their corresponding catalyticActivity measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all catalyticActivity literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:catalyticActivity
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="dimensionless"  about="cdt:dimensionless" typeof="rdf:Datatype">
+          <h3><a href="#dimensionless">cdt:dimensionless</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#dimensionless">http://w3id.org/lindt/custom_datatypes#dimensionless</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">dimensionless Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind dimensionless in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a dimensionless unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of dimensionless as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a dimensionless unit to their corresponding dimensionless measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all dimensionless literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:dimensionless
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricCapacitance"  about="cdt:electricCapacitance" typeof="rdf:Datatype">
+          <h3><a href="#electricCapacitance">cdt:electricCapacitance</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricCapacitance">http://w3id.org/lindt/custom_datatypes#electricCapacitance</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricCapacitance Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricCapacitance in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricCapacitance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricCapacitance as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricCapacitance unit to their corresponding electricCapacitance measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricCapacitance literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:electricCapacitance
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricCharge"  about="cdt:electricCharge" typeof="rdf:Datatype">
+          <h3><a href="#electricCharge">cdt:electricCharge</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricCharge">http://w3id.org/lindt/custom_datatypes#electricCharge</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricCharge Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricCharge in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricCharge unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricCharge as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricCharge unit to their corresponding electricCharge measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricCharge literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:electricCharge
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricConductance"  about="cdt:electricConductance" typeof="rdf:Datatype">
+          <h3><a href="#electricConductance">cdt:electricConductance</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricConductance">http://w3id.org/lindt/custom_datatypes#electricConductance</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricConductance Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricConductance in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricConductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricConductance as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricConductance unit to their corresponding electricConductance measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricConductance literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:electricConductance
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricCurrent"  about="cdt:electricCurrent" typeof="rdf:Datatype">
+          <h3><a href="#electricCurrent">cdt:electricCurrent</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricCurrent">http://w3id.org/lindt/custom_datatypes#electricCurrent</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricCurrent Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricCurrent in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricCurrent unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricCurrent as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricCurrent unit to their corresponding electricCurrent measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricCurrent literals below are well formed.</p>
+<pre class="example highlight">
+"4.7 A"^^cdt:electricCurrent
+"47e-1 A"^^cdt:electricCurrent
+"4700 mA"^^cdt:electricCurrent
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricInductance"  about="cdt:electricInductance" typeof="rdf:Datatype">
+          <h3><a href="#electricInductance">cdt:electricInductance</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricInductance">http://w3id.org/lindt/custom_datatypes#electricInductance</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricInductance Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricInductance in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricInductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricInductance as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricInductance unit to their corresponding electricInductance measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricInductance literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:electricInductance
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricPotential"  about="cdt:electricPotential" typeof="rdf:Datatype">
+          <h3><a href="#electricPotential">cdt:electricPotential</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricPotential">http://w3id.org/lindt/custom_datatypes#electricPotential</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricPotential Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricPotential in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricPotential unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricPotential as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricPotential unit to their corresponding electricPotential measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricPotential literals below are well formed.</p>
+<pre class="example highlight">
+"230.7 V"^^cdt:electricPotential
+"2.307e2 V"^^cdt:electricPotential
+".2307 kV"^^cdt:electricPotential</pre>
+</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="electricResistance"  about="cdt:electricResistance" typeof="rdf:Datatype">
+          <h3><a href="#electricResistance">cdt:electricResistance</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricResistance">http://w3id.org/lindt/custom_datatypes#electricResistance</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">electricResistance Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind electricResistance in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricResistance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of electricResistance as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a electricResistance unit to their corresponding electricResistance measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all electricResistance literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:electricResistance
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="energy"  about="cdt:energy" typeof="rdf:Datatype">
+          <h3><a href="#energy">cdt:energy</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#energy">http://w3id.org/lindt/custom_datatypes#energy</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">energy Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind energy in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a energy unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of energy as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a energy unit to their corresponding energy measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all energy literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:energy
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="force"  about="cdt:force" typeof="rdf:Datatype">
+          <h3><a href="#force">cdt:force</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#force">http://w3id.org/lindt/custom_datatypes#force</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">force Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind force in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a force unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of force as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a force unit to their corresponding force measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all force literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:force
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="frequency"  about="cdt:frequency" typeof="rdf:Datatype">
+          <h3><a href="#frequency">cdt:frequency</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#frequency">http://w3id.org/lindt/custom_datatypes#frequency</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">frequency Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind frequency in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a frequency unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of frequency as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a frequency unit to their corresponding frequency measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all frequency literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:frequency
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="illuminance"  about="cdt:illuminance" typeof="rdf:Datatype">
+          <h3><a href="#illuminance">cdt:illuminance</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#illuminance">http://w3id.org/lindt/custom_datatypes#illuminance</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">illuminance Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind illuminance in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a illuminance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of illuminance as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a illuminance unit to their corresponding illuminance measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all illuminance literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:illuminance
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="length"  about="cdt:length" typeof="rdf:Datatype">
+          <h3><a href="#length">cdt:length</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#length">http://w3id.org/lindt/custom_datatypes#length</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">length Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind length in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a length unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of length as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a length unit to their corresponding length measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all length literals below are well formed.</p>
+<pre class="example highlight">
+"1 km"^^cdt:length
+"1.609344E+6 mm"^^cdt:length
+"5280 [ft_i]"^^cdt:length
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="luminousFlux"  about="cdt:luminousFlux" typeof="rdf:Datatype">
+          <h3><a href="#luminousFlux">cdt:luminousFlux</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#luminousFlux">http://w3id.org/lindt/custom_datatypes#luminousFlux</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">luminousFlux Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind luminousFlux in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a luminousFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of luminousFlux as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a luminousFlux unit to their corresponding luminousFlux measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all luminousFlux literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:luminousFlux
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="luminousIntensity"  about="cdt:luminousIntensity" typeof="rdf:Datatype">
+          <h3><a href="#luminousIntensity">cdt:luminousIntensity</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#luminousIntensity">http://w3id.org/lindt/custom_datatypes#luminousIntensity</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">luminousIntensity Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind luminousIntensity in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a luminousIntensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of luminousIntensity as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a luminousIntensity unit to their corresponding luminousIntensity measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all luminousIntensity literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:luminousIntensity
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="magneticFlux"  about="cdt:magneticFlux" typeof="rdf:Datatype">
+          <h3><a href="#magneticFlux">cdt:magneticFlux</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#magneticFlux">http://w3id.org/lindt/custom_datatypes#magneticFlux</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">magneticFlux Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind magneticFlux in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a magneticFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of magneticFlux as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a magneticFlux unit to their corresponding magneticFlux measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all magneticFlux literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:magneticFlux
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="magneticFluxDensity"  about="cdt:magneticFluxDensity" typeof="rdf:Datatype">
+          <h3><a href="#magneticFluxDensity">cdt:magneticFluxDensity</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#magneticFluxDensity">http://w3id.org/lindt/custom_datatypes#magneticFluxDensity</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">magneticFluxDensity Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind magneticFluxDensity in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a magneticFluxDensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of magneticFluxDensity as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a magneticFluxDensity unit to their corresponding magneticFluxDensity measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all magneticFluxDensity literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:magneticFluxDensity
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="mass"  about="cdt:mass" typeof="rdf:Datatype">
+          <h3><a href="#mass">cdt:mass</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#mass">http://w3id.org/lindt/custom_datatypes#mass</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">mass Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind mass in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a mass unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of mass as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a mass unit to their corresponding mass measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all mass literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:mass
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="power"  about="cdt:power" typeof="rdf:Datatype">
+          <h3><a href="#power">cdt:power</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#power">http://w3id.org/lindt/custom_datatypes#power</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">power Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind power in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a power unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of power as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a power unit to their corresponding power measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all power literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:power
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="pressure"  about="cdt:pressure" typeof="rdf:Datatype">
+          <h3><a href="#pressure">cdt:pressure</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#pressure">http://w3id.org/lindt/custom_datatypes#pressure</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">pressure Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind pressure in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a pressure unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of pressure as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a pressure unit to their corresponding pressure measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all pressure literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:pressure
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="radiationDoseAbsorbed"  about="cdt:radiationDoseAbsorbed" typeof="rdf:Datatype">
+          <h3><a href="#radiationDoseAbsorbed">cdt:radiationDoseAbsorbed</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#radiationDoseAbsorbed">http://w3id.org/lindt/custom_datatypes#radiationDoseAbsorbed</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">radiationDoseAbsorbed Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind radiationDoseAbsorbed in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a radiationDoseAbsorbed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of radiationDoseAbsorbed as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a radiationDoseAbsorbed unit to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all radiationDoseAbsorbed literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:radiationDoseAbsorbed
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="radiationDoseEffective"  about="cdt:radiationDoseEffective" typeof="rdf:Datatype">
+          <h3><a href="#radiationDoseEffective">cdt:radiationDoseEffective</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#radiationDoseEffective">http://w3id.org/lindt/custom_datatypes#radiationDoseEffective</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">radiationDoseEffective Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind radiationDoseEffective in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a radiationDoseEffective unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of radiationDoseEffective as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a radiationDoseEffective unit to their corresponding radiationDoseEffective measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all radiationDoseEffective literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:radiationDoseEffective
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="radioactivity"  about="cdt:radioactivity" typeof="rdf:Datatype">
+          <h3><a href="#radioactivity">cdt:radioactivity</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#radioactivity">http://w3id.org/lindt/custom_datatypes#radioactivity</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">radioactivity Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind radioactivity in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a radioactivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of radioactivity as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a radioactivity unit to their corresponding radioactivity measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all radioactivity literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:radioactivity
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="solidAngle"  about="cdt:solidAngle" typeof="rdf:Datatype">
+          <h3><a href="#solidAngle">cdt:solidAngle</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#solidAngle">http://w3id.org/lindt/custom_datatypes#solidAngle</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">solidAngle Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind solidAngle in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a solidAngle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of solidAngle as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a solidAngle unit to their corresponding solidAngle measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all solidAngle literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:solidAngle
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="speed"  about="cdt:speed" typeof="rdf:Datatype">
+          <h3><a href="#speed">cdt:speed</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#speed">http://w3id.org/lindt/custom_datatypes#speed</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">speed Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind speed in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a speed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of speed as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a speed unit to their corresponding speed measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all speed literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:speed
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="temperature"  about="cdt:temperature" typeof="rdf:Datatype">
+          <h3><a href="#temperature">cdt:temperature</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#temperature">http://w3id.org/lindt/custom_datatypes#temperature</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">temperature Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind temperature in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a temperature unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of temperature as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a temperature unit to their corresponding temperature measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all temperature literals below are well formed.</p>
+<pre class="example highlight">
+"27315e-2 K"^^cdt:temperature
+"0 CEL"^^cdt:temperature
+".32e2 [DEGF]"^^cdt:temperature
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="time"  about="cdt:time" typeof="rdf:Datatype">
+          <h3><a href="#time">cdt:time</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#time">http://w3id.org/lindt/custom_datatypes#time</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">time Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind time in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a time unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of time as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a time unit to their corresponding time measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all time literals below are well formed.</p>
+<pre class="example highlight">
+"todo"^^cdt:time
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="specterm" id="volume"  about="cdt:volume" typeof="rdf:Datatype">
+          <h3><a href="#volume">cdt:volume</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#volume">http://w3id.org/lindt/custom_datatypes#volume</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">volume Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement of quantity kind volume in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a volume unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of volume as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps lexical forms with a volume unit to their corresponding volume measures according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all volume literals below are well formed.</p>
+<pre class="example highlight">
+"1000 l"^^cdt:volume
+"100 cl"^^cdt:volume
+"1000000 cm3"^^cdt:volume
+"1 m3"^^cdt:volume
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
     </section>
-    <section>
-      <h2>Datatype <em>Length</em></h2>
-        <p>
-        Datatype Length is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#length">http://w3id.org/lindt/custom_datatypes#length</a>, abbreviated as <code>cdt:length</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that can be either a metric length unit, or an imperial length unit, in abbreviated form or as full words, in singular or plural form. The value space corresponds to the set of lengths, as defined by the International Systems of Quantities, i.e., any quantity with dimension distance. The lexical-to-value mapping maps lexical forms with units in the metric system to their corresponding length according to the International Systems of Quantities, while the forms with an imperial unit are mapped to their equivalent length according to the International yard and pound agreement.
-        </p>
 
-        <p>
-        For example, all literals below are well formed and share the same value.
-        </p>
-
-        <pre class="example highlight">
-        "1 mile"^^cdt:length
-        "5280 ft"^^cdt:length
-        "63360 inches"^^cdt:length
-        "1.609344km"^^cdt:length
-        "1609.344 metre"^^cdt:length
-        "1.609344E+6 mm"^^cdt:length
-        </pre>
-    </section>
-
-    <section>
-      <h2>Datatype <em>Volume</em></h2>
-        <p>
-        Datatype Volume is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#volulme">http://w3id.org/lindt/custom_datatypes#volume</a>, abbreviated as <code>cdt:volume</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a metric volume unit, in abbreviated form or as full words, in singular or plural form. The value space corresponds to the set of volumes, as defined by the International Systems of Quantities, i.e., any quantity with dimension volulme. The lexical-to-value mapping maps lexical forms with units in the metric system to their corresponding length according to the International Systems of Quantities.
-        </p>
-
-        <p>
-        For example, all literals below are well formed.
-        </p>
-
-        <pre class="example highlight">
-        "1000 l"^^cdt:volume
-        "100 cl"^^cdt:volume
-        "1000000cm3"^^cdt:volume
-        "1 m3"^^cdt:volume
-        </pre>
-    </section>
-
-    <section>
-      <h2>Datatype <em>Temperature</em></h2>
-        <p>
-        Datatype Temperature is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#temperature">http://w3id.org/lindt/custom_datatypes#temperature</a>, abbreviated as <code>cdt:temperature</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that can be either °C, °K, or °F. The value space corresponds to the set of temperatures.
-        </p>
-
-        <p>
-        For example, all literals below are well formed and share the same value.
-        </p>
-
-        <pre class="example highlight">
-        "27315e-2 °K"^^cdt:temperature
-        "0 °C"^^cdt:temperature
-        ".32e2 °F"^^cdt:temperature
-        </pre>
-    </section>
-
-    <section>
-      <h2>Datatype <em>Voltage</em></h2>
-        <p>
-        Datatype Voltage is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#voltage">http://w3id.org/lindt/custom_datatypes#voltage</a>, abbreviated as <code>cdt:voltage</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that is V prefixed by some metric prefix. The value space corresponds to the set of voltage.
-        </p>
-
-        <p>
-        For example, all literals below are well formed and share the same value.
-        </p>
-
-        <pre class="example highlight">
-        "230.7 V"^^cdt:voltage
-        "2.307e2 V"^^cdt:voltage
-        ".2307 kV"^^cdt:voltage
-        </pre>
-    </section>
-
-    <section>
-      <h2>Datatype <em>ElectricIntensity</em></h2>
-        <p>
-        Datatype ElectricIntensity is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#electricIntensity">http://w3id.org/lindt/custom_datatypes#electricIntensity</a>, abbreviated as <code>cdt:electricIntensity</code>. 
-        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that is A prefixed by some metric prefix. The value space corresponds to the set of electric intensities.
-        </p>
-
-        <p>
-        For example, all literals below are well formed and share the same value.
-        </p>
-
-        <pre class="example highlight">
-        "4.7 A"^^cdt:electricIntensity
-        "47e-1 A"^^cdt:electricIntensity
-        "4700 mA"^^cdt:electricIntensity
-        </pre>
-    </section>
-
-</body>
+      <section>
+        <h2>Implementation</h2>
+        <section>
+          <h2>On Apache Jena</h2>
+            <p>See <a href="https://github.com/OpenSensingCity/jena-ucum">https://github.com/OpenSensingCity/jena-ucum</a></p>
+            <iframe src="https://ghbtns.com/github-btn.html?user=OpenSensingCity&repo=jena-ucum&type=star&count=true&size=medium" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+            <p>Features</p>
+             <ul>
+              <li><strong>Overload of SPARQL operators</strong> (=, <, etc.) to compare measurement literals;</li>
+              <li><strong>Overload of algebraic function</strong> (+, -, *, /) to manipulate measurement literals:
+                <ul>
+                  <li>Add two commensurable measurement literals</li>
+                  <li>Subtract a measurement literals to a commensurable one</li>
+                  <li>Multiply two measurement literals, or a measurement literal and a scalar (<code>xsd:int</code>, <code>xsd:decimal</code>, <code>xsd:float</code>, <code>xsd:double</code>)</li>
+                  <li>Divide a measurement literal by a measurement literal, a measurement literal by a scalar, or a scalar by a measurement literal</li>
+                </ul>
+              </li>
+              <li><strong>Custom SPARQL function with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#sameDimension">http://w3id.org/lindt/custom_datatypes#sameDimension</a>(<code>arg1</code>, <code>arg2</code>) to check if two measurement literals are commensurable (returns a <code>xsd:boolean</code>).</li>
+            </ul>
+          </section>
+      </section>
+    </body>
 </html>
