@@ -1,5 +1,5 @@
 <!--
-Copyright 2016 ITEA 12004 SEAS Project.
+Copyright 2016 Ecole des Mines de Saint-Etienne.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -13,42 +13,112 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.6.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
-
-    <bannerLeft>
-        <name>${organization.name}</name>
-        <src>logo.png</src>
-        <href>${organization.url}</href>
-    </bannerLeft>
+<project name="Linked Datatypes"
+         xmlns="http://maven.apache.org/DECORATION/1.3.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd">
     
-    <body>
-        
-        <menu name="Overview">
-            <item name="Introduction" href="index.html"/>
-            <item name="Specification" href="spec.html"/>
-        </menu>
-
-        <menu ref="reports" inherit="top"/>
-    </body>
-    <skin>
-        <groupId>org.apache.maven.skins</groupId>
-        <artifactId>maven-fluido-skin</artifactId>
-        <version>1.5</version>
-    </skin>
-    <custom>
-        <fluidoSkin>
-            <sideBarEnabled>true</sideBarEnabled>
-            <googleSearch>
-                <sitesearch>${project.url}</sitesearch>
-            </googleSearch>
-            <gitHub>
-                <projectId>thesmartenergy/lindt-site</projectId>
-                <ribbonOrientation>right</ribbonOrientation>
-                <ribbonColor>green</ribbonColor>
-            </gitHub>
-        </fluidoSkin>
-    </custom>
-
+    <publishDate position="bottom" format="yyyy-MM-dd" />
+    <version position="bottom" />
     <googleAnalyticsAccountId>UA-74855518-6</googleAnalyticsAccountId>
 
+    <skin>
+        <groupId>lt.velykis.maven.skins</groupId>
+        <artifactId>reflow-maven-skin</artifactId>
+        <version>1.1.1</version>
+    </skin>
+    <custom>
+        <reflowSkin>
+            <protocolRelativeURLs>true</protocolRelativeURLs>
+            <smoothScroll>true</smoothScroll>
+            <theme>default</theme>
+            <skinAttribution>false</skinAttribution>
+            <highlightJs>true</highlightJs>
+            <highlightJsTheme>github</highlightJsTheme>
+            <brand>
+                <name><![CDATA[<span class="color-highlight">Linked Datatypes</span>]]></name>
+                <href>https://w3id.org/lindt/</href>
+            </brand>
+            <slogan>Towards a Web of Linked Datatypes.</slogan>
+            <titleTemplate>%2$s | %1$s</titleTemplate>
+            <!-- Use Table of Contents at the top of the page (max 6 elements) -->
+            <toc>top</toc>
+            <tocTopMax>6</tocTopMax>-->
+            <topNav>Specifications</topNav>-->
+            <bottomNav>
+                <column>Main</column>
+                <column>Specifications</column>
+            </bottomNav>
+            <bottomDescription>
+        <![CDATA[ The Linked Datatypes initative aims at enabling lightweight descriptions of useful knowledge on the Web of Data, using 
+        simple RDF literals empowered by RDF Datatypes. The flagship Datatype is <a href="/lindt/custom_datatypes#ucum">cdt:ucum</a> that
+        can be used to describe measurements with any unit defined in <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure</a>.]]>
+            </bottomDescription>
+            <pages>
+                <markPageHeader>false</markPageHeader>
+                <index  >
+                    <titleTemplate>Linked Datatypes</titleTemplate>
+                    <breadcrumbs>false</breadcrumbs>
+                    <toc>false</toc>
+                    <markPageHeader>false</markPageHeader>
+                    <sections>
+                        <body />
+                        <columns>2</columns>
+                        <body />
+                    </sections>
+                </index>
+                <playground>
+                    <titleTemplate>Linked Datatypes - Playground</titleTemplate>
+                    <breadcrumbs>false</breadcrumbs>
+                    <toc>false</toc>
+                    <markPageHeader>false</markPageHeader>
+                </playground>
+                <team-list>
+                    <titleTemplate>Linked Datatypes - Team</titleTemplate>
+                    <breadcrumbs>false</breadcrumbs>
+                    <toc>false</toc>
+                    <markPageHeader>false</markPageHeader>
+                </team-list>
+            </pages>
+
+        </reflowSkin>            
+        
+    </custom>
+    
+    <body>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="stylesheet" type="text/css" href="css/base.css" />
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.css"/>
+      
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/mode/loadmode.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/meta.min.js"></script>
+
+            <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        </head>
+        
+        <links>
+            <item name="Overview" href="index.html"/>
+            <item name="Playground" href="playground.html"/>
+            <item name="Team" href="team-list.html"/>
+        </links>
+
+        <menu name="Main" inherit="top">
+            <item name="Overview" href="index.html"/>
+            <item name="Playground" href="playground.html"/>
+            <item name="Team" href="team-list.html"/>
+        </menu>
+        
+        <menu name="Specifications">
+            <item name="Custom Datatypes" href="custom_datatypes.html"/>
+            <item name="On-the-fly support" href="spec.html"/>
+        </menu>
+    </body>
+    
+   
 </project>

@@ -1,0 +1,558 @@
+# Copyright 2018 École des Mines de Saint-Étienne.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix az: <http://zimmer.aprilfoolsreview.com/antoine#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix max: <http://maxime-lefrancois.info/me#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lindt: <https://w3id.org/lindt/> .
+
+@base <https://w3id.org/lindt/> .
+
+@prefix : <https://w3id.org/lindt/custom_datatypes#> .
+
+<custom_datatypes> a foaf:Document ;
+  dc:creator max: , az:me ;
+  dc:modified  "2015-04-24T15:42:42+02:00"^^xsd:dateTimeStamp ;
+  dc:modified  "2016-08-25T17:26:00+01:00"^^xsd:dateTimeStamp ;
+  dc:modified  "2018-03-14T19:52:00+01:00"^^xsd:dateTimeStamp .
+
+<custom_datatypes.html> a foaf:Document;
+    dc:creator  max:;
+    dc:modified  "2016-04-22T10:42:42+02:00"^^xsd:dateTimeStamp ;
+    dc:modified  "2018-03-14T19:52:00+01:00"^^xsd:dateTimeStamp .
+ 
+<custom_datatypes.ttl> a foaf:Document;
+  dc:creator max: , az:me ;
+  dc:modified  "2015-04-24T15:42:42+02:00"^^xsd:dateTimeStamp ;
+  dc:modified  "2016-08-25T17:26:00+01:00"^^xsd:dateTimeStamp ;
+  dc:modified  "2018-03-15T13:46:00+01:00"^^xsd:dateTimeStamp .
+
+<custom_datatypes.js> a foaf:Document;
+    dc:creator  max:, az:me;
+    dc:modified  "2015-04-24T15:42:42+02:00"^^xsd:dateTimeStamp .
+
+
+
+:ucum  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "ucum"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurements in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of measurements as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a UCUM unit to their corresponding measures according to the International Systems of Quantities."""@en .
+
+
+:acceleration  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "acceleration"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind acceleration in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a acceleration unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of acceleration as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a acceleration unit to their corresponding acceleration measures according to the International Systems of Quantities."""@en .
+
+
+:amountOfSubstance  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "amountOfSubstance"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind amountOfSubstance in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a amountOfSubstance unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of amountOfSubstance as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a amountOfSubstance unit to their corresponding amountOfSubstance measures according to the International Systems of Quantities."""@en .
+
+
+:angle  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "angle"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind angle in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a angle unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of angle as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a angle unit to their corresponding angle measures according to the International Systems of Quantities."""@en .
+
+
+:area  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "area"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind area in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a area unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of area as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a area unit to their corresponding area measures according to the International Systems of Quantities."""@en .
+
+
+:catalyticActivity  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "catalyticActivity"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind catalyticActivity in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a catalyticActivity unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of catalyticActivity as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a catalyticActivity unit to their corresponding catalyticActivity measures according to the International Systems of Quantities."""@en .
+
+
+:dimensionless  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "dimensionless"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind dimensionless in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a dimensionless unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of dimensionless as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a dimensionless unit to their corresponding dimensionless measures according to the International Systems of Quantities."""@en .
+
+
+:electricCapacitance  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricCapacitance"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricCapacitance in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricCapacitance unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricCapacitance as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricCapacitance unit to their corresponding electricCapacitance measures according to the International Systems of Quantities."""@en .
+
+
+:electricCharge  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricCharge"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricCharge in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricCharge unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricCharge as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricCharge unit to their corresponding electricCharge measures according to the International Systems of Quantities."""@en .
+
+
+:electricConductance  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricConductance"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricConductance in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricConductance unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricConductance as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricConductance unit to their corresponding electricConductance measures according to the International Systems of Quantities."""@en .
+
+
+:electricCurrent  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricCurrent"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricCurrent in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricCurrent unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricCurrent as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricCurrent unit to their corresponding electricCurrent measures according to the International Systems of Quantities."""@en .
+
+
+:electricInductance  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricInductance"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricInductance in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricInductance unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricInductance as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricInductance unit to their corresponding electricInductance measures according to the International Systems of Quantities."""@en .
+
+
+:electricPotential  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricPotential"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricPotential in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricPotential unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricPotential as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricPotential unit to their corresponding electricPotential measures according to the International Systems of Quantities."""@en .
+
+
+:electricResistance  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "electricResistance"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind electricResistance in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a electricResistance unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of electricResistance as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a electricResistance unit to their corresponding electricResistance measures according to the International Systems of Quantities."""@en .
+
+
+:energy  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "energy"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind energy in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a energy unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of energy as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a energy unit to their corresponding energy measures according to the International Systems of Quantities."""@en .
+
+
+:force  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "force"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind force in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a force unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of force as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a force unit to their corresponding force measures according to the International Systems of Quantities."""@en .
+
+
+:frequency  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "frequency"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind frequency in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a frequency unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of frequency as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a frequency unit to their corresponding frequency measures according to the International Systems of Quantities."""@en .
+
+
+:illuminance  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "illuminance"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind illuminance in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a illuminance unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of illuminance as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a illuminance unit to their corresponding illuminance measures according to the International Systems of Quantities."""@en .
+
+
+:length  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "length"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind length in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a length unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of length as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a length unit to their corresponding length measures according to the International Systems of Quantities."""@en .
+
+
+:luminousFlux  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "luminousFlux"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind luminousFlux in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a luminousFlux unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of luminousFlux as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a luminousFlux unit to their corresponding luminousFlux measures according to the International Systems of Quantities."""@en .
+
+
+:luminousIntensity  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "luminousIntensity"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind luminousIntensity in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a luminousIntensity unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of luminousIntensity as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a luminousIntensity unit to their corresponding luminousIntensity measures according to the International Systems of Quantities."""@en .
+
+
+:magneticFlux  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "magneticFlux"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind magneticFlux in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a magneticFlux unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of magneticFlux as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a magneticFlux unit to their corresponding magneticFlux measures according to the International Systems of Quantities."""@en .
+
+
+:magneticFluxDensity  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "magneticFluxDensity"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind magneticFluxDensity in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a magneticFluxDensity unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of magneticFluxDensity as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a magneticFluxDensity unit to their corresponding magneticFluxDensity measures according to the International Systems of Quantities."""@en .
+
+
+:mass  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "mass"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind mass in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a mass unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of mass as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a mass unit to their corresponding mass measures according to the International Systems of Quantities."""@en .
+
+
+:power  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "power"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind power in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a power unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of power as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a power unit to their corresponding power measures according to the International Systems of Quantities."""@en .
+
+
+:pressure  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "pressure"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind pressure in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a pressure unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of pressure as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a pressure unit to their corresponding pressure measures according to the International Systems of Quantities."""@en .
+
+
+:radiationDoseAbsorbed  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "radiationDoseAbsorbed"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind radiationDoseAbsorbed in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a radiationDoseAbsorbed unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of radiationDoseAbsorbed as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a radiationDoseAbsorbed unit to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities."""@en .
+
+
+:radiationDoseEffective  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "radiationDoseEffective"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind radiationDoseEffective in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a radiationDoseEffective unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of radiationDoseEffective as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a radiationDoseEffective unit to their corresponding radiationDoseEffective measures according to the International Systems of Quantities."""@en .
+
+
+:radioactivity  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "radioactivity"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind radioactivity in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a radioactivity unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of radioactivity as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a radioactivity unit to their corresponding radioactivity measures according to the International Systems of Quantities."""@en .
+
+
+:solidAngle  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "solidAngle"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind solidAngle in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a solidAngle unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of solidAngle as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a solidAngle unit to their corresponding solidAngle measures according to the International Systems of Quantities."""@en .
+
+
+:speed  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "speed"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind speed in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a speed unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of speed as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a speed unit to their corresponding speed measures according to the International Systems of Quantities."""@en .
+
+
+:temperature  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "temperature"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind temperature in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a temperature unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of temperature as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a temperature unit to their corresponding temperature measures according to the International Systems of Quantities."""@en .
+
+
+:time  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "time"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind time in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a time unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of time as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a time unit to their corresponding time measures according to the International Systems of Quantities."""@en .
+
+
+:volume  a  lindt:Datatype , rdfs:Datatype ;
+    rdfs:subClassOf  rdfs:Literal;  # This line is useless
+    rdfs:label  "volume"@en ;
+    lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
+    rdfs:seeAlso  <custom_datatypes.html>, <custom_datatypes.js>;
+    rdfs:isDefinedBy  <custom_datatypes>;
+    rdfs:comment  """Datatype to encode measurement of quantity kind volume in a simple literal. 
+
+Lexical space is the concatenation of the lexical form of an xsd:double, a space, and a volume unit chosen in the Unified Code for Units of Measure code system. 
+
+Value space is the set of volume as defined by the International Systems of Quantities.
+
+Lexical-to-value mapping maps lexical forms with a volume unit to their corresponding volume measures according to the International Systems of Quantities."""@en .

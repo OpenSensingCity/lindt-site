@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Implementation of a Custom Datatype</title>
+    <meta charset='utf-8'>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "unofficial",
+          subtitle:  "Towards a web of Linked Datatypes",
+          shortName:  "cdt",
+          noTOC:  true,
+          editors: [
+                {   name:       "Maxime Lefrançois",
+                    url:        "http://www.maxime-lefrancois.info/",
+                    company:    "Armines Fayol",
+                    companyURL: "http://www.mines-stetienne.fr/",
+                    mailto: "maxime.lefrancois@emse.fr"          },
+                {   name:       "Antoine Zimmermann",
+                    url:        "http://www.emse.fr/~zimmermann/",
+                    company:    "Armines Fayol",
+                    companyURL: "http://www.mines-stetienne.fr/",
+                    mailto: "antone.zimmermann@emse.fr" }
+          ],
+          alternateFormats: [
+              { uri: "custom_datatypes.ttl",
+                label: "Turtle RDF document (text/turtle)", 
+              },
+              { uri: "custom_datatypes.js",
+                label: "Javascript specification code (application/javascript)", 
+              },
+          ]
+      };
+    </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-74855518-6', 'auto');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body>
+    <section id='abstract'>
+      <p>
+        This document describes the implementation of a conformant <a href="../index.html">custom datatype</a>.
+      </p>
+     <p>See this <a href="../spec.html">link</a> for the useful resources for paper "Supporting Arbitrary Custom Datatypes in RDF and SPARQL", published at ESWC'2016 (see <a href="../LefrancoisZimmermann-ESWC2016-Supporting.pdf">paper</a>).</p>
+    </section>
+
+    <section id='sotd'>
+       <p>This document is a HTML representation of custom datatypes with URI starting with <code>http://w3id.org/lindt/custom_datatypes#</code>. The following files are accessible:</p>
+       <ul>
+       <li>This HTML file is accessible:
+        <ul>
+         <li>at URL <a href="http://w3id.org/lindt/custom_datatypes"><code>http://w3id.org/lindt/custom_datatypes</code></a> with HTTP Accept header containing text/html or application/xhtml+xml;</li>
+         <li>at URL <a href="http://w3id.org/lindt/custom_datatypes.html"><code>http://w3id.org/lindt/custom_datatypes.html</code></a>.</li>
+        </ul>
+       </li>
+       <li>A simple RDF description of custom datatypes is accessible in Turtle format:
+        <ul>
+         <li>at URL <a href="http://w3id.org/lindt/custom_datatypes"><code>http://w3id.org/lindt/custom_datatypes</code></a> with HTTP Accept header containing text/turtle;</li>
+         <li>at URL <a href="http://w3id.org/lindt/custom_datatypes.ttl"><code>http://w3id.org/lindt/custom_datatypes.ttl</code></a>.</li>
+        </ul>
+       </li>
+       <li>The formal specification of custom datatypes is accessible in JavaScript format:
+        <ul>
+         <li>at URL <a href="http://w3id.org/lindt/custom_datatypes"><code>http://w3id.org/lindt/custom_datatypes</code></a> with HTTP Accept header containing application/javascript;</li>
+         <li>at URL <a href="http://w3id.org/lindt/custom_datatypes.js"><code>http://w3id.org/lindt/custom_datatypes.js</code></a>.</li>
+        </ul>
+       </li>
+      </ul>
+    </section>
+
+
+    <section class="informative">
+      <h2>Datatype <em>Length</em></h2>
+        <p>
+        Datatype datatype is identified by IRI <a href="http://w3id.org/lindt/custom_datatypes#length">http://w3id.org/lindt/custom_datatypes#length</a>, abbreviated as <code>cdt:length</code>. 
+        Its lexical space is the concatenation of the lexical form of an <code>xsd:decimal</code>, an optional space, and a unit that can be either a metric length unit, or an imperial length unit, in abbreviated form or as full words, in singular or plural form. The value space correspond to the set of lengths, as defined by the International Systems of Quantities, i.e., any quantity with dimension distance. The lexical-to-value mapping maps lexical forms with units in the metric system to their corresponding length according to the International Systems of Quantities, while the forms with an imperial unit are mapped to their equivalent length according to the International yard and pound agreement.
+        </p>
+
+        <p>
+        For example, all literals below are well formed and share the same value.
+
+        <pre class="example highlight">
+        "1 mile"^^cdt:length
+        "5280 ft"^^cdt:length
+        "63360 inches"^^cdt:length
+        "1.609344km"^^cdt:length
+        "1609.344 metre"^^cdt:length
+        "1.609344E+6 mm"^^cdt:length
+        </pre>
+
+        </p>
+
+    </section>
+
+
+</body>
+</html>

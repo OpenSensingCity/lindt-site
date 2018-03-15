@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 ITEA 12004 SEAS Project.
+ * Copyright 2015 École des Mines de Saint-Étienne.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,26 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.thesmartenergy.lindt;
+package com.github.thesmartenergy.lindt.api;
 
-import com.github.thesmartenergy.rdfp.BaseURI;
-import com.github.thesmartenergy.rdfp.DevelopmentBaseURI;
-import javax.enterprise.inject.Produces;
+import javax.ws.rs.ApplicationPath;
+import org.glassfish.jersey.server.ResourceConfig;
 
 /**
  *
  * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
  */
-public class App {
-    
-    static final boolean DEV = false;
-            
-    @Produces
-    @BaseURI
-    static final String BASE = "https://w3id.org/lindt/"; 
-    
-    @Produces
-    @DevelopmentBaseURI
-    static final String DEV_BASE = DEV ? "http://localhost:8080/lindt/" : BASE; 
-    
+@ApplicationPath("api")
+public class JerseyApp extends ResourceConfig {
+
+    public JerseyApp() {
+        packages("com.github.thesmartenergy.lindt.api");
+    }
 }
