@@ -1,0 +1,21 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 LM/M2"^^cdt:illuminance # lumen per square meter
+    "1 LX"^^cdt:illuminance # lux
+    "1 PHT "^^cdt:illuminance # phot
+
+  }
+
+  # normalize 
+  BIND("0 HZ"^^cdt:frequency + ?value AS ?normalized )
+  
+}

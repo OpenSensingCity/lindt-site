@@ -1,0 +1,10 @@
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
+@prefix ex: <http://example.org/> .
+
+<observation1> ex:position "0 m"^^cdt:length ; ex:time "0 s"^^cdt:ucum .
+<observation2> ex:position "0.5 m"^^cdt:length ; ex:time "0.6 s"^^cdt:time .
+<observation3> ex:position "13 m"^^cdt:length ; ex:time "0.8 s"^^cdt:ucum .
+<observation4> ex:position "150 [ft_i]"^^cdt:length ; ex:time "18 s"^^cdt:time .
+<observation5> ex:position "1.6e-15 ASU"^^cdt:length ; ex:time "357 min"^^cdt:ucum .
+<observation6> ex:position "16.8 km"^^cdt:length ; ex:time "16.8 HR"^^cdt:time .
+<observation7> ex:position "185 Mm"^^cdt:length ; ex:time "1863 d"^^cdt:ucum .

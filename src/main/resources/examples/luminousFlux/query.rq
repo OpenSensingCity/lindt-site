@@ -1,0 +1,19 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 LM"^^cdt:luminousFlux # lumen
+
+  }
+
+  # normalize 
+  BIND("0 LM"^^cdt:luminousFlux + ?value AS ?normalized )
+  
+}

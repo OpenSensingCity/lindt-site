@@ -1,0 +1,26 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT  ?norm_position ?norm_time ?norm_speed  
+WHERE{
+
+  ?observation ex:position ?position ; ex:time ?time .
+
+  # all the basic comparison operators are available
+
+  FILTER ( ?position >= "0 m"^^cdt:length )
+
+  # compute speed
+  
+  BIND( ?position / ?time AS ?speed )
+
+  # convert speed
+
+  BIND( "0 m"^^cdt:ucum + ?position AS ?norm_position ) 
+  BIND( "0 s"^^cdt:ucum + ?time AS ?norm_time )
+  BIND( "0 KM/HR"^^cdt:ucum + ?speed AS ?norm_speed )
+
+
+} ORDER BY ?position 

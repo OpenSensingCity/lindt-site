@@ -1,0 +1,20 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "120 M/S"^^cdt:speed # meter per second 
+    "90 KM/HR"^^cdt:speed # kilometer per hour
+
+  }
+
+  # normalize 
+  BIND("0 M/S"^^cdt:speed + ?value AS ?normalized )
+  
+}

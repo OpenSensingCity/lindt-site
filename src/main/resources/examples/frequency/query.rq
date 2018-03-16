@@ -1,0 +1,23 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 HZ"^^cdt:frequency # Hertz
+    "1 MAHZ"^^cdt:frequency # MegaHertz
+    "1 s-1"^^cdt:frequency # per second
+    "1 /s"^^cdt:frequency # per second
+    "1 1/s"^^cdt:frequency # per second
+
+  }
+
+  # normalize 
+  BIND("0 HZ"^^cdt:frequency + ?value AS ?normalized )
+  
+}

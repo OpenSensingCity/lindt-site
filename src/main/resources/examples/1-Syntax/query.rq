@@ -1,0 +1,44 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?position ?normalized 
+
+WHERE{ 
+
+  VALUES ?position {
+
+    # valid length 
+
+    "1 UM"^^cdt:length
+    "1 UM"^^cdt:ucum 
+
+    "1 M"^^cdt:length
+    "1.0 M"^^cdt:length
+    "-1.0 M"^^cdt:length
+    "1.0e-3 M"^^cdt:length
+
+    "1 KM"^^cdt:length 
+    "1 KM"^^cdt:ucum
+
+    "1 MAM"^^cdt:length 
+    "1 GAM"^^cdt:length 
+    "1 [FT_I]"^^cdt:length 
+    "1 [NMI_I]"^^cdt:length 
+    "1 [HD_I]"^^cdt:length 
+    "1 [FT_BR]"^^cdt:length 
+
+    "1 [FT_B]HR/S"^^cdt:length 
+
+    # not valid length
+
+    "abc M"^^cdt:length
+    "1M"^^cdt:length 
+    "abc1 KM"^^cdt:length  
+    "1 M/S"^^cdt:length }
+
+  # convert to meters
+  BIND("0 M"^^cdt:ucum + ?position AS ?normalized )
+  
+}

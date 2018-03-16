@@ -1,0 +1,26 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 L"^^cdt:volume # liter
+    "1 DM3"^^cdt:volume 
+    "1 M3"^^cdt:volume # cubic meter
+    "1 M.M.M"^^cdt:volume # cubic meter
+    "100 [CIN_I]"^^cdt:volume # cubic inch (International customary units)
+    "100 [GAL_BR]"^^cdt:volume # gallon (British Imperial volumes)
+    "100 [PT_BR]"^^cdt:volume # pint (British Imperial volumes)
+
+
+  }
+
+  # normalize 
+  BIND("0 L"^^cdt:volume + ?value AS ?normalized )
+  
+}

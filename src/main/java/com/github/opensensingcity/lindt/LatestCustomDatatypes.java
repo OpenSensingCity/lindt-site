@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.thesmartenergy.lindt;
+package com.github.opensensingcity.lindt;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -26,25 +26,28 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author maxime.lefrancois
  */
-@WebServlet("/v2/custom_datatypes")
-public class CustomDatatypesV2 extends HttpServlet {
+@WebServlet({"/custom_datatypes","/custom_datatypes.html","/custom_datatypes.ttl","/custom_datatypes.js"})
+public class LatestCustomDatatypes extends HttpServlet {
     
-    final String path = "/v2/custom_datatypes"; 
+    final String path = "/v2";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
         final String context = req.getSession().getServletContext().getContextPath();
- 
-        String accept = req.getHeader("Accept");
+        final String pathInfo = req.getServletPath();
+        if(pathInfo.contains(".")) {
+            resp.sendRedirect(context + path + pathInfo);
+            return; 
+        }
+        final String accept = req.getHeader("Accept");
         if(accept == null) {
-            resp.sendRedirect(context + path + ".html");
+            resp.sendRedirect(context + path + pathInfo + ".html");
         } else if (accept.contains("text/turtle")) {
-            resp.sendRedirect(context + path + ".ttl");
+            resp.sendRedirect(context + path + pathInfo + ".ttl");
         } else if (accept.contains("application/javascript")) {
-            resp.sendRedirect(context + path + ".js");
+            resp.sendRedirect(context + path + pathInfo + ".js");
         } else {
-            resp.sendRedirect(context + path + ".html");
+            resp.sendRedirect(context + path + pathInfo + ".html");
         }
     }
 

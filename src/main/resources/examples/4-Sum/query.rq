@@ -1,0 +1,27 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value1 ?value2 ?sum
+
+WHERE{ 
+
+  VALUES ( ?value1 ?value2 ) {
+
+    ( "1 M"^^cdt:length "2 UM"^^cdt:length )
+
+    ( "1 M"^^cdt:ucum "1 M"^^cdt:ucum )
+    ( "1 M"^^cdt:ucum "1 S"^^cdt:ucum )
+    ( "1 M"^^cdt:length "1 S"^^cdt:length )
+    ( "1 M"^^cdt:length "1 S"^^cdt:time )
+
+    # stored as double -> 15 to 17 significant digits
+    ( "1.0123456789123456789 M"^^cdt:ucum "0.0 M"^^cdt:length )
+
+    ( "3.6 KM/HR"^^cdt:ucum "-1 M/S"^^cdt:ucum )
+  }
+
+  BIND( ?value1 + ?value2 AS ?sum )
+  
+}

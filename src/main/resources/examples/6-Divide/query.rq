@@ -1,0 +1,37 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value1 ?value2 ?result
+
+WHERE{ 
+
+  VALUES ( ?value1 ?value2 ) {
+
+    # divide measures
+    
+    ( "1.0 m"^^cdt:ucum "2 s"^^cdt:time )
+    ( "1.0 m"^^cdt:length "2 s"^^cdt:ucum )
+    ( "1.0 m"^^cdt:length "2 s"^^cdt:ucum )
+    ( "1.0 m"^^cdt:ucum "2 s"^^cdt:ucum )
+
+    # divide measure by scalar
+    
+    ( "1.0 m"^^cdt:length "2"^^xsd:int )
+    ( "1.0 m"^^cdt:length "2"^^xsd:double )
+    ( "1.0 m"^^cdt:length "2"^^xsd:int )
+    ( "1.0 m"^^cdt:length "2"^^xsd:decimal )
+
+    # divide scalar by measure
+
+    ( "2"^^xsd:int "0.5 m"^^cdt:length )
+    ( "2"^^xsd:double "0.5 m"^^cdt:length )
+    ( "2"^^xsd:int "0.5 m"^^cdt:length )
+    ( "2"^^xsd:decimal "0.50 m"^^cdt:length )
+
+  }
+
+  BIND( ?value1 / ?value2 AS ?result )
+  
+}

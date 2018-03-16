@@ -1,0 +1,23 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 V/A"^^cdt:electricResistance
+    "1 OHM"^^cdt:electricResistance # Ohm
+    "1 KOHM"^^cdt:electricResistance # kiloOhm
+    "1 MOHM"^^cdt:electricResistance # milliOhm
+    "1 MAOHM"^^cdt:electricResistance # MegaOhm
+
+  }
+
+  # normalize 
+  BIND("0 V"^^cdt:electricPotential + ?value AS ?normalized )
+  
+}

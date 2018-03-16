@@ -1,0 +1,23 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "360 DEG"^^cdt:angle # degree
+    "1 '"^^cdt:angle # minute
+    "1 ''"^^cdt:angle # second
+    "1 RAD"^^cdt:angle # radian
+    "1 CIRC"^^cdt:angle # circle    
+
+  }
+
+  # normalize
+  BIND("0 DEG"^^cdt:ucum + ?value AS ?normalized )
+  
+}

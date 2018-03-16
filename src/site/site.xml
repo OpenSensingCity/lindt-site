@@ -91,8 +91,10 @@ See the License for the specific language governing permissions and
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" type="text/css" href="css/base.css" />
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+            <link href='//cdn.jsdelivr.net/npm/yasgui-yasqe@2.11.18/dist/yasqe.min.css' rel='stylesheet' type='text/css'/>
+            <link href='https://perfectkb.github.io/yate/dist/yate.min.css' rel='stylesheet' type='text/css'/>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.css"/>
-      
+
             <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/mode/loadmode.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/meta.min.js"></script>
@@ -100,6 +102,8 @@ See the License for the specific language governing permissions and
             <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
             <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script src='//cdn.jsdelivr.net/npm/yasgui-yasqe@2.11.18/dist/yasqe.min.js'></script>
+            <script src='https://perfectkb.github.io/yate/dist/yate.bundled.min.js'></script>
         </head>
         
         <links>

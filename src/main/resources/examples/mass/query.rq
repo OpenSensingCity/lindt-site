@@ -1,0 +1,25 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 G"^^cdt:mass # gram
+    "1 KG"^^cdt:mass # kilogram
+    "1 TNE"^^cdt:mass # tonne
+    "1 AMU"^^cdt:mass # unified atomic mass unit 
+    "1 [M_E]"^^cdt:mass # electron mass 
+    "1 [GR]"^^cdt:mass # grain (avoirdupois weight system)
+    "1 [OZ_AV]"^^cdt:mass # ounce (avoirdupois weight system)
+
+  }
+
+  # normalize 
+  BIND("0 KG"^^cdt:mass + ?value AS ?normalized )
+  
+}

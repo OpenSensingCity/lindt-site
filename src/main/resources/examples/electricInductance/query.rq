@@ -1,0 +1,21 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 Wb/A"^^cdt:electricInductance # weber per ampère
+    "1 V.s/A"^^cdt:electricInductance # volt second per ampère
+    "1 H"^^cdt:electricInductance # henry 
+
+  }
+
+  # normalize 
+  BIND("0 V.s/A"^^cdt:electricInductance + ?value AS ?normalized )
+  
+}

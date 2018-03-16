@@ -1,0 +1,22 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "230.7 V"^^cdt:electricPotential
+    "2.307e2 V"^^cdt:electricPotential
+    ".2307 kV"^^cdt:electricPotential
+    ".2307 J/C"^^cdt:electricPotential
+
+  }
+
+  # normalize 
+  BIND("0 V"^^cdt:electricPotential + ?value AS ?normalized )
+  
+}

@@ -1,0 +1,22 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 PAL"^^cdt:pressure # pascal
+    "1 BAR"^^cdt:pressure # bar
+    "1 ATM"^^cdt:pressure # standard atmosphere 
+    "1 ATT"^^cdt:pressure # technical atmosphere
+
+  }
+
+  # normalize 
+  BIND("0 PAL"^^cdt:pressure + ?value AS ?normalized )
+  
+}

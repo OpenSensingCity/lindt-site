@@ -1,0 +1,25 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?x ?y ?eq ?neq ?gt ?lt ?geq ?leq
+
+WHERE{ 
+
+  VALUES ( ?x ?y) {
+
+    ( "1 [FT_BR]"^^cdt:ucum "1 M"^^cdt:ucum )
+    ( "1 [FT_BR]"^^cdt:ucum "0.1 M"^^cdt:ucum )
+    ( "1 [FT_BR]"^^cdt:ucum "0.01 M"^^cdt:ucum )
+
+  }
+
+  BIND( ?x = ?y AS ?eq )
+  BIND( ?x != ?y AS ?neq )
+  BIND( ?x > ?y AS ?gt )
+  BIND( ?x < ?y AS ?lt )
+  BIND( ?x >= ?y AS ?geq )
+  BIND( ?x <= ?y AS ?leq )
+  
+}

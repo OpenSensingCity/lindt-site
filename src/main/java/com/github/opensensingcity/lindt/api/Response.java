@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 École des Mines de Saint-Étienne.
+ * Copyright 2017 École des Mines de Saint-Étienne.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.thesmartenergy.lindt.api;
-
-import javax.ws.rs.ApplicationPath;
-import org.glassfish.jersey.server.ResourceConfig;
+package com.github.opensensingcity.lindt.api;
 
 /**
  *
- * @author Maxime Lefrançois <maxime.lefrancois at emse.fr>
+ * @author maxime.lefrancois
  */
-@ApplicationPath("api")
-public class JerseyApp extends ResourceConfig {
+public class Response {
+    public String log;
+    public String result;
+    public String resultType;
+    public boolean clear;
 
-    public JerseyApp() {
-        packages("com.github.thesmartenergy.lindt.api");
+    public Response(String log, String result, String resultType, boolean clear) {
+        this.log = log;
+        this.result = result;
+        this.resultType = resultType;
+        this.clear = clear;
     }
 }

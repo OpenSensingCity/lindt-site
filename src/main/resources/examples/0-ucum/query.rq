@@ -1,0 +1,43 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value
+
+WHERE{ 
+
+  VALUES ?value {
+
+    #
+    # DISCLAIMER
+    #
+    # any unit defined in http://unitsofmeasure.org/ucum.html should work
+    #
+    # any issue (e.g., degree Réaumur temperature unit is not supported)
+    # is to be reported to the developers of the UCUM implementation that is used in 
+    # this extension of jena
+    # 
+    #       https://github.com/unitsofmeasurement/uom-systems/issues
+    #
+    
+    "1 m"^^cdt:ucum
+    "1.0e+9 nm"^^cdt:ucum
+    "1e+10 Ao"^^cdt:ucum
+    "1 m/s.s"^^cdt:ucum
+
+    #
+    # WARNING 
+    # 
+    # if the lexical form of a literal is not valid, nothing breaks. 
+    # 
+    # only: this is a ill-typed literal. See RDF 1.1 Semantics
+    # 
+    # https://www.w3.org/TR/rdf11-mt/#dfn-ill-typed
+    #
+
+    "abc"^^cdt:ucum
+
+  }
+  
+}
