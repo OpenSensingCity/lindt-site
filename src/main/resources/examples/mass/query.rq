@@ -9,17 +9,17 @@ WHERE{
 
   VALUES ?value {
 
-    "1 G"^^cdt:mass # gram
-    "1 KG"^^cdt:mass # kilogram
-    "1 TNE"^^cdt:mass # tonne
-    "1 AMU"^^cdt:mass # unified atomic mass unit 
-    "1 [M_E]"^^cdt:mass # electron mass 
-    "1 [GR]"^^cdt:mass # grain (avoirdupois weight system)
-    "1 [OZ_AV]"^^cdt:mass # ounce (avoirdupois weight system)
+    "1 g"^^cdt:mass # gram
+    "1 kg"^^cdt:mass # kilogram
+    "1 t"^^cdt:mass # tonne
+    "1 u"^^cdt:mass # unified atomic mass unit 
+    "1 [m_e]"^^cdt:mass # electron mass 
+    "1 [gr]"^^cdt:mass # grain (avoirdupois weight system)
+    "1 [oz_av]"^^cdt:mass # ounce (avoirdupois weight system)
 
   }
 
   # normalize 
-  BIND("0 KG"^^cdt:mass + ?value AS ?normalized )
+  BIND("0 kg"^^cdt:mass + ?value AS ?normalized )
   
 }

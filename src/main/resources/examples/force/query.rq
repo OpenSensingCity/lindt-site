@@ -9,16 +9,16 @@ WHERE{
 
   VALUES ?value {
 
-    "1 KG.M/S2"^^cdt:force # S.I. equiv. of Newton
+    "1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
     "1 N"^^cdt:force # Newton
-    "1 GF"^^cdt:force # gram-force
-    "1 G.[G]"^^cdt:force # gram-force
-    "1 DYN"^^cdt:force # dyne
+    "1 gf"^^cdt:force # gram-force
+    "1 g.[g]"^^cdt:force # definition of gram-force
+    "1 dyn"^^cdt:force # dyne
     "1 g.cm/s2"^^cdt:force # S.I. equiv. of dyne
 
   }
 
   # normalize 
-  BIND("0 KG.M/S2"^^cdt:force + ?value AS ?normalized )
+  BIND("0 kg.m/s2"^^cdt:force + ?value AS ?normalized )
   
 }

@@ -9,12 +9,11 @@ WHERE{
 
   VALUES ?value {
 
-    "1 m2"^^cdt:area # degree
-    "1 AR"^^cdt:area # are
-    "1 [SIN_I]"^^cdt:area # square inch International customary units
-    "1 [IN_I]2"^^cdt:area # square inch International customary units
-    "1 [SMI_US]"^^cdt:area # square mile Older U.S. “survey” lengths (also called "statute" lengths)
-    "1 [SMI_US]"^^cdt:area # square mile Older U.S. “survey” lengths (also called "statute" lengths)
+    "1 m2"^^cdt:area # square meter
+    "1 ar"^^cdt:area # are
+    "1 [sin_i]"^^cdt:area # square inch International customary units
+    "1 [in_i]2"^^cdt:area # square inch International customary units
+    "1 [smi_us]"^^cdt:area # square mile Older U.S. “survey” lengths (also called "statute" lengths)
 
   }
 

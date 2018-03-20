@@ -20,7 +20,7 @@ WHERE{
 
   BIND( "0 m"^^cdt:ucum + ?position AS ?norm_position ) 
   BIND( "0 s"^^cdt:ucum + ?time AS ?norm_time )
-  BIND( "0 KM/HR"^^cdt:ucum + ?speed AS ?norm_speed )
+  BIND( "0 km/h"^^cdt:ucum + ?speed AS ?norm_speed )
 
 
 } ORDER BY ?position 

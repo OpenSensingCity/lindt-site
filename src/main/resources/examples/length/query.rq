@@ -9,12 +9,13 @@ WHERE{
 
   VALUES ?value {
 
-    "1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
-    "1 RAD"^^cdt:radiationDoseAbsorbed # radiation absorbed dose
+    "1 km"^^cdt:length
+    "1.609344E+6 mm"^^cdt:length
+    "5280 [ft_i]"^^cdt:length
 
   }
 
   # normalize 
-  BIND("0 RAD"^^cdt:radiationDoseAbsorbed + ?value AS ?normalized )
+  BIND("0 m"^^cdt:length + ?value AS ?normalized )
   
 }

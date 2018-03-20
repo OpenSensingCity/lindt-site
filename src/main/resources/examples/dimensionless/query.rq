@@ -10,12 +10,12 @@ WHERE{
   VALUES ?value {
 
     "1 "^^cdt:dimensionless # Unit (empty string)
-    "1 [PI]"^^cdt:dimensionless # PI
-    "1 %"^^cdt:dimensionless # mole per second
-    "1 [PPTH]"^^cdt:dimensionless # perts per thousand
-    "1 [PPM]"^^cdt:dimensionless # perts per million
-    "1 [PPB]"^^cdt:dimensionless # perts per billion
-    "1 [PPTR]"^^cdt:dimensionless # perts per trillion
+    "1 [pi]"^^cdt:dimensionless # pi
+    "1 %"^^cdt:dimensionless # percent
+    "1 [ppth]"^^cdt:dimensionless # parts per thousand
+    "1 [ppm]"^^cdt:dimensionless # parts per million
+    "1 [ppb]"^^cdt:dimensionless # parts per billion
+    "1 [pptr]"^^cdt:dimensionless # parts per trillion
 
   }
 

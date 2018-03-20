@@ -1,0 +1,32 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value ?normalized 
+
+WHERE{ 
+
+  VALUES ?value {
+
+    "1 ns"^^cdt:time # nanosecond
+    "1 s"^^cdt:time # second
+    "1 min"^^cdt:time # minute
+    "1 h"^^cdt:time # hour
+    "1 d"^^cdt:time # day
+    "1 a_t"^^cdt:time # tropical year 
+    "1 a_j"^^cdt:time # mean Julian year  
+    "1 a_g"^^cdt:time # mean Gregorian year  
+    "1 a"^^cdt:time # year  
+    "1 wk"^^cdt:time # week  
+    "1 mo_s"^^cdt:time # synodal month   
+    "1 mo_j"^^cdt:time # mean Julian month   
+    "1 mo_g"^^cdt:time # mean Gregorian month   
+    "1 mo"^^cdt:time # month   
+
+  }
+
+  # normalize 
+  BIND("0 s"^^cdt:time + ?value AS ?normalized )
+  
+}

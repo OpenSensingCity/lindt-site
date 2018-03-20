@@ -10,12 +10,12 @@ WHERE{
   VALUES ?value {
 
     "1 s-1"^^cdt:radioactivity # per second 
-    "1 BQ"^^cdt:radioactivity # becquerel
-    "1 CI"^^cdt:radioactivity # Curie 
+    "1 Bq"^^cdt:radioactivity # becquerel
+    "1 Ci"^^cdt:radioactivity # Curie 
 
   }
 
   # normalize 
-  BIND("0 BQ"^^cdt:radioactivity + ?value AS ?normalized )
+  BIND("0 Bq"^^cdt:radioactivity + ?value AS ?normalized )
   
 }

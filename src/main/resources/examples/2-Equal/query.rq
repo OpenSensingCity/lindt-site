@@ -9,18 +9,18 @@ WHERE{
 
   VALUES ( ?position1 ?position2) {
 
-    ( "1 M"^^cdt:ucum "1 M"^^cdt:ucum )
-    ( "1 M"^^cdt:length "1.0e6 UM"^^cdt:length )
+    ( "1 m"^^cdt:ucum "1 m"^^cdt:ucum )
+    ( "1 m"^^cdt:length "1.0e6 um"^^cdt:length )
 
-    ( "1 M"^^cdt:ucum "1 M"^^cdt:length )
-    ( "1 M"^^cdt:length "1 M"^^cdt:ucum )
+    ( "1 m"^^cdt:ucum "1 m"^^cdt:length )
+    ( "1 m"^^cdt:length "1 m"^^cdt:ucum )
 
-    ( "1 [FT_BR]"^^cdt:length "0.30479976 M"^^cdt:length )
+    ( "1 [ft_br]"^^cdt:length "0.30479976 m"^^cdt:length )
 
     # stored as double -> 15 to 17 significant digits
-    ( "1.01204507800120450 M"^^cdt:ucum "1.01204507800120459 M"^^cdt:ucum )
+    ( "1.01204507800120450 m"^^cdt:ucum "1.01204507800120459 m"^^cdt:ucum )
 
-    ( "3.6 KM/HR"^^cdt:ucum "1 M/S"^^cdt:ucum )
+    ( "3.6 km/h"^^cdt:ucum "1 m/s"^^cdt:ucum )
   }
 
   BIND( ?position1 = ?position2 AS ?equal )

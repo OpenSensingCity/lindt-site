@@ -9,12 +9,12 @@ WHERE{
 
   VALUES ?value {
 
-    "1 SR"^^cdt:solidAngle # steradian 
-    "1 SPH"^^cdt:solidAngle # sphere
+    "1 sr"^^cdt:solidAngle # steradian 
+    "1 sph"^^cdt:solidAngle # sphere
 
   }
 
   # normalize 
-  BIND("0 SR"^^cdt:solidAngle + ?value AS ?normalized )
+  BIND("0 sr"^^cdt:solidAngle + ?value AS ?normalized )
   
 }

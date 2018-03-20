@@ -9,15 +9,15 @@ WHERE{
 
   VALUES ?value {
 
-    "1 KG.M2/S2"^^cdt:energy # S.I. unit for energy
-    "1 N.M"^^cdt:energy # Newton meter
-    "1 W.S"^^cdt:energy # Watt second
-    "1 KW.HR"^^cdt:energy # kiloWatt hour
-    "1 ERG "^^cdt:energy # erg 
-    "1 EV"^^cdt:energy # electronvolt 
+    "1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
+    "1 N.m"^^cdt:energy # Newton meter
+    "1 W.s"^^cdt:energy # Watt second
+    "1 kW.h"^^cdt:energy # kiloWatt hour
+    "1 erg "^^cdt:energy # erg 
+    "1 eV"^^cdt:energy # electronvolt 
     "1 J"^^cdt:energy # joule
-    "1 CAL"^^cdt:energy # calorie
-    "1 [CAL]"^^cdt:energy # nutrition label Calories
+    "1 cal"^^cdt:energy # calorie
+    "1 [Cal]"^^cdt:energy # nutrition label Calories
 
   }
 

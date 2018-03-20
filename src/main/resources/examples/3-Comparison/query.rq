@@ -9,9 +9,9 @@ WHERE{
 
   VALUES ( ?x ?y) {
 
-    ( "1 [FT_BR]"^^cdt:ucum "1 M"^^cdt:ucum )
-    ( "1 [FT_BR]"^^cdt:ucum "0.1 M"^^cdt:ucum )
-    ( "1 [FT_BR]"^^cdt:ucum "0.01 M"^^cdt:ucum )
+    ( "1 [ft_br]"^^cdt:ucum "1 m"^^cdt:ucum )
+    ( "1 [ft_br]"^^cdt:ucum "0.1 m"^^cdt:ucum )
+    ( "1 [ft_br]"^^cdt:ucum "0.01 m"^^cdt:ucum )
 
   }
 

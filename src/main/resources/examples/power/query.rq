@@ -9,9 +9,9 @@ WHERE{
 
   VALUES ?value {
 
-    "1 J/S"^^cdt:power # joule per second
+    "1 J/s"^^cdt:power # joule per second
     "1 W"^^cdt:power # watt
-    "1 [FT_I].[LBF_AV]/S"^^cdt:power # definition of horse power
+    "1 [ft_i].[lbf_av]/s"^^cdt:power # definition of horse power
     "1 [HP]"^^cdt:power # horsepower
 
   }

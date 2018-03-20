@@ -12,7 +12,7 @@ WHERE{
     "1 C/s"^^cdt:electricCurrent # coulomb per second
     "1 A"^^cdt:electricCurrent # ampère 
     "1 mA"^^cdt:electricCurrent # milliampère 
-    "1 BI"^^cdt:electricCurrent # Biot 
+    "1 Bi"^^cdt:electricCurrent # Biot 
 
   }
 

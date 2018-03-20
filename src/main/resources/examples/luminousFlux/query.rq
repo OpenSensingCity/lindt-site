@@ -9,11 +9,11 @@ WHERE{
 
   VALUES ?value {
 
-    "1 LM"^^cdt:luminousFlux # lumen
+    "1 lm"^^cdt:luminousFlux # lumen
 
   }
 
   # normalize 
-  BIND("0 LM"^^cdt:luminousFlux + ?value AS ?normalized )
+  BIND("0 lm"^^cdt:luminousFlux + ?value AS ?normalized )
   
 }
