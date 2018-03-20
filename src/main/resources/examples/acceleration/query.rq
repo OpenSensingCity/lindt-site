@@ -9,15 +9,15 @@ WHERE{
 
   VALUES ?value {
 
-      "1 M/S2 "^^cdt:acceleration # S.I.
-      "3.8 [G]"^^cdt:acceleration # standard acceleration of free fall
-      "1.57e-2 CM/S2"^^cdt:acceleration # S.I. equiv. of Gal
-      "1.57e-2 GL"^^cdt:acceleration # Gal
+      "1 m/s2 "^^cdt:acceleration # S.I.
+      "3.8 [g]"^^cdt:acceleration # standard acceleration of free fall
+      "1.57e-2 cm/s2"^^cdt:acceleration # S.I. equiv. of Gal
+      "1.57e-2 Gal"^^cdt:acceleration # Gal
 
 
   }
 
   # normalize 
-  BIND("0 M/S2"^^cdt:acceleration + ?value AS ?normalized )
+  BIND("0 m/s2"^^cdt:acceleration + ?value AS ?normalized )
   
 }

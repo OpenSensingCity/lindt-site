@@ -10,12 +10,12 @@ WHERE{
   VALUES ?value {
 
     "1 L"^^cdt:volume # liter
-    "1 DM3"^^cdt:volume 
-    "1 M3"^^cdt:volume # cubic meter
-    "1 M.M.M"^^cdt:volume # cubic meter
-    "100 [CIN_I]"^^cdt:volume # cubic inch (International customary units)
-    "100 [GAL_BR]"^^cdt:volume # gallon (British Imperial volumes)
-    "100 [PT_BR]"^^cdt:volume # pint (British Imperial volumes)
+    "1 dm3"^^cdt:volume 
+    "1 m3"^^cdt:volume # cubic meter
+    "1 m.m.m"^^cdt:volume # cubic meter
+    "100 [cin_i]"^^cdt:volume # cubic inch (International customary units)
+    "100 [gal_br]"^^cdt:volume # gallon (British Imperial volumes)
+    "100 [pt_br]"^^cdt:volume # pint (British Imperial volumes)
 
 
   }

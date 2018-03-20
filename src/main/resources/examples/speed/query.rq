@@ -9,12 +9,13 @@ WHERE{
 
   VALUES ?value {
 
-    "120 M/S"^^cdt:speed # meter per second 
-    "90 KM/HR"^^cdt:speed # kilometer per hour
+    "120 m/s"^^cdt:speed # meter per second 
+    "90 km/h"^^cdt:speed # kilometer per hour
+    "90 km.h-1"^^cdt:speed # kilometer per hour
 
   }
 
   # normalize 
-  BIND("0 M/S"^^cdt:speed + ?value AS ?normalized )
+  BIND("0 m/s"^^cdt:speed + ?value AS ?normalized )
   
 }

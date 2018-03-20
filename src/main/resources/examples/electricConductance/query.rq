@@ -9,13 +9,13 @@ WHERE{
 
   VALUES ?value {
 
-    "1 /OHM"^^cdt:electricConductance # inverse of Ohm 
-    "1 OHM-1"^^cdt:electricConductance # inverse of Ohm 
-    "1 SIE"^^cdt:electricConductance # siemens 
+    "1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
+    "1 Ohm-1"^^cdt:electricConductance # inverse of Ohm 
+    "1 S"^^cdt:electricConductance # siemens 
 
   }
 
   # normalize 
-  BIND("0 /OHM"^^cdt:electricConductance + ?value AS ?normalized )
+  BIND("0 /Ohm"^^cdt:electricConductance + ?value AS ?normalized )
   
 }

@@ -37,7 +37,7 @@ public class CustomDatatypesV1 extends HttpServlet {
         final String accept = req.getHeader("Accept");
         if(accept == null) {
             resp.sendRedirect(context + path + ".html");
-        } else if (accept.contains("text/turtl  e")) {
+        } else if (accept.contains("text/turtle")) {
             resp.sendRedirect(context + path + ".ttl");
         } else if (accept.contains("application/javascript")) {
             resp.sendRedirect(context + path + ".js");

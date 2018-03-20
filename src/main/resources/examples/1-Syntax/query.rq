@@ -11,34 +11,34 @@ WHERE{
 
     # valid length 
 
-    "1 UM"^^cdt:length
-    "1 UM"^^cdt:ucum 
+    "1 um"^^cdt:length
+    "1 um"^^cdt:ucum 
 
-    "1 M"^^cdt:length
-    "1.0 M"^^cdt:length
-    "-1.0 M"^^cdt:length
-    "1.0e-3 M"^^cdt:length
+    "1 m"^^cdt:length
+    "1.0 m"^^cdt:length
+    "-1.0 m"^^cdt:length
+    "1.0e-3 m"^^cdt:length
 
-    "1 KM"^^cdt:length 
-    "1 KM"^^cdt:ucum
+    "1 km"^^cdt:length 
+    "1 km"^^cdt:ucum
 
-    "1 MAM"^^cdt:length 
-    "1 GAM"^^cdt:length 
-    "1 [FT_I]"^^cdt:length 
-    "1 [NMI_I]"^^cdt:length 
-    "1 [HD_I]"^^cdt:length 
-    "1 [FT_BR]"^^cdt:length 
+    "1 Mm"^^cdt:length 
+    "1 Gm"^^cdt:length 
+    "1 [ft_i]"^^cdt:length 
+    "1 [nmi_i]"^^cdt:length 
+    "1 [hd_i]"^^cdt:length 
+    "1 [ft_br]"^^cdt:length 
 
-    "1 [FT_B]HR/S"^^cdt:length 
+    "1 [ft_br].h/s"^^cdt:length 
 
     # not valid length
 
-    "abc M"^^cdt:length
-    "1M"^^cdt:length 
-    "abc1 KM"^^cdt:length  
-    "1 M/S"^^cdt:length }
+    "abc m"^^cdt:length
+    "1m"^^cdt:length 
+    "abc1 km"^^cdt:length  
+    "1 m/s"^^cdt:length }
 
   # convert to meters
-  BIND("0 M"^^cdt:ucum + ?position AS ?normalized )
+  BIND("0 m"^^cdt:ucum + ?position AS ?normalized )
   
 }

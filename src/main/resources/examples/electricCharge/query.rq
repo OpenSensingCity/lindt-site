@@ -10,7 +10,7 @@ WHERE{
   VALUES ?value {
 
     "1 C"^^cdt:electricCharge # coulomb 
-    "1 [E]"^^cdt:electricCharge # elementary charge  
+    "1 [e]"^^cdt:electricCharge # elementary charge  
 
   }
 

@@ -9,11 +9,11 @@ WHERE{
 
   VALUES ?value {
 
-    "1 WB"^^cdt:magneticFlux # weber
+    "1 Wb"^^cdt:magneticFlux # weber
 
   }
 
   # normalize 
-  BIND("0 WB"^^cdt:magneticFlux + ?value AS ?normalized )
+  BIND("0 Wb"^^cdt:magneticFlux + ?value AS ?normalized )
   
 }

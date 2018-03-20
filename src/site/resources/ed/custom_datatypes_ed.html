@@ -259,9 +259,9 @@ th, td {
                   <p>For example, all acceleration literals below are well formed, <a class="playground" href="/lindt/playground.html?example=acceleration">test them online</a>.</p>
 <pre class="example highlight">
 "1 m/s2 "^^cdt:acceleration # S.I.
-"3.8 [G]"^^cdt:acceleration # standard acceleration of free fall
-"1.57e-2 CM/S2"^^cdt:acceleration # S.I. equiv. of Gal
-"1.57e-2 GL"^^cdt:acceleration # Gal
+"3.8 [g]"^^cdt:acceleration # standard acceleration of free fall
+"1.57e-2 cm/s2"^^cdt:acceleration # S.I. equiv. of Gal
+"1.57e-2 Gal"^^cdt:acceleration # Gal
 </pre></td>
               </tr>
             </tbody>
@@ -295,7 +295,7 @@ th, td {
                 <td>
                   <p>For example, the amountOfSubstance literal below is well formed.</p>
 <pre class="example highlight">
-"1.2 MOL"^^cdt:amountOfSubstance
+"1.2 mol"^^cdt:amountOfSubstance
 </pre></td>
               </tr>
             </tbody>
@@ -329,11 +329,11 @@ th, td {
                 <td>
                   <p>For example, all angle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=angle">test them online</a>.</p>
 <pre class="example highlight">
-"360 DEG"^^cdt:angle # degree
+"360 deg"^^cdt:angle # degree
 "1 '"^^cdt:angle # minute
 "1 ''"^^cdt:angle # second
-"1 RAD"^^cdt:angle # circle
-"1 CIRC"^^cdt:angle # circle
+"1 rad"^^cdt:angle # radian
+"1 circ"^^cdt:angle # circle  
 </pre></td>
               </tr>
             </tbody>
@@ -367,12 +367,12 @@ th, td {
                 <td>
                   <p>For example, all area literals below are well formed, <a class="playground" href="/lindt/playground.html?example=area">test them online</a>.</p>
 <pre class="example highlight">
-"1 m2"^^cdt:area # degree
-"1 AR"^^cdt:area # are
-"1 [SIN_I]"^^cdt:area # square inch International customary units
-"1 [IN_I]2"^^cdt:area # square inch International customary units
-"1 [SMI_US]"^^cdt:area # square mile Older U.S. “survey” lengths (also called "statute" lengths)
-"1 [SMI_US]"^^cdt:area # square mile Older U.S. “survey” lengths (also called "statute" lengths)</pre></td>
+"1 m2"^^cdt:area # square meter
+"1 ar"^^cdt:area # are
+"1 [sin_i]"^^cdt:area # square inch International customary units
+"1 [in_i]2"^^cdt:area # square inch International customary units
+"1 [smi_us]"^^cdt:area # square mile Older U.S. “survey” lengths (also called "statute" lengths)
+</pre></td>
               </tr>
             </tbody>
           </table>
@@ -405,8 +405,8 @@ th, td {
                 <td>
                   <p>For example, all catalyticActivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=catalyticActivity">test them online</a>.</p>
 <pre class="example highlight">
-"1 MOL/S"^^cdt:catalyticActivity # mole per second
-"1 KAT"^^cdt:catalyticActivity # KATAL
+"1 mol/s"^^cdt:catalyticActivity # mole per second
+"1 kat"^^cdt:catalyticActivity # KATAL
 "1 U"^^cdt:catalyticActivity # Unit
 </pre></td>
               </tr>
@@ -442,12 +442,12 @@ th, td {
                   <p>For example, all dimensionless literals below are well formed, <a class="playground" href="/lindt/playground.html?example=dimensionless">test them online</a>.</p>
 <pre class="example highlight">
 "1 "^^cdt:dimensionless # Unit (empty string)
-"1 [PI]"^^cdt:dimensionless # PI
-"1 %"^^cdt:dimensionless # mole per second
-"1 [PPTH]"^^cdt:dimensionless # perts per thousand
-"1 [PPM]"^^cdt:dimensionless # perts per million
-"1 [PPB]"^^cdt:dimensionless # perts per billion
-"1 [PPTR]"^^cdt:dimensionless # perts per trillion
+"1 [pi]"^^cdt:dimensionless # pi
+"1 %"^^cdt:dimensionless # percent
+"1 [ppth]"^^cdt:dimensionless # parts per thousand
+"1 [ppm]"^^cdt:dimensionless # parts per million
+"1 [ppb]"^^cdt:dimensionless # parts per billion
+"1 [pptr]"^^cdt:dimensionless # parts per trillion
 </pre></td>
               </tr>
             </tbody>
@@ -482,7 +482,7 @@ th, td {
                   <p>For example, all electricCapacitance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCapacitance">test them online</a>.</p>
 <pre class="example highlight">
 "1 C/V"^^cdt:electricCapacitance # coulomb per volt 
-"1 F"^^cdt:electricCapacitance # farad
+"1 F"^^cdt:electricCapacitance # farad 
 </pre></td>
               </tr>
             </tbody>
@@ -517,7 +517,7 @@ th, td {
                   <p>For example, all electricCharge literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCharge">test them online</a>.</p>
 <pre class="example highlight">
 "1 C"^^cdt:electricCharge # coulomb 
-"1 [E]"^^cdt:electricCharge # elementary charge
+"1 [e]"^^cdt:electricCharge # elementary charge  
 </pre></td>
               </tr>
             </tbody>
@@ -551,9 +551,9 @@ th, td {
                 <td>
                   <p>For example, all electricConductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricConductance">test them online</a>.</p>
 <pre class="example highlight">
-"1 /OHM"^^cdt:electricConductance # inverse of Ohm 
-"1 OHM-1"^^cdt:electricConductance # inverse of Ohm 
-"1 SIE"^^cdt:electricConductance # siemens
+"1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
+"1 Ohm-1"^^cdt:electricConductance # inverse of Ohm 
+"1 S"^^cdt:electricConductance # siemens 
 </pre></td>
               </tr>
             </tbody>
@@ -590,7 +590,7 @@ th, td {
 "1 C/s"^^cdt:electricCurrent # coulomb per second
 "1 A"^^cdt:electricCurrent # ampère 
 "1 mA"^^cdt:electricCurrent # milliampère 
-"1 BI"^^cdt:electricCurrent # Biot 
+"1 Bi"^^cdt:electricCurrent # Biot 
 </pre></td>
               </tr>
             </tbody>
@@ -626,7 +626,7 @@ th, td {
 <pre class="example highlight">
 "1 Wb/A"^^cdt:electricInductance # weber per ampère
 "1 V.s/A"^^cdt:electricInductance # volt second per ampère
-"1 H"^^cdt:electricInductance # henry
+"1 H"^^cdt:electricInductance # henry 
 </pre></td>
               </tr>
             </tbody>
@@ -660,10 +660,10 @@ th, td {
                 <td>
                   <p>For example, all electricPotential literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricPotential">test them online</a>.</p>
 <pre class="example highlight">
-"230.7 V"^^cdt:electricPotential # volt
-"2.307e2 V"^^cdt:electricPotential # volt
-".2307 kV"^^cdt:electricPotential # kiloVolt
-".2307 J/C"^^cdt:electricPotential # kilojoule per coulomb
+"230.7 V"^^cdt:electricPotential
+"2.307e2 V"^^cdt:electricPotential
+".2307 kV"^^cdt:electricPotential
+".2307 J/C"^^cdt:electricPotential
 </pre></td>
               </tr>
             </tbody>
@@ -698,10 +698,10 @@ th, td {
                   <p>For example, all electricResistance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricResistance">test them online</a>.</p>
 <pre class="example highlight">
 "1 V/A"^^cdt:electricResistance
-"1 OHM"^^cdt:electricResistance # Ohm
-"1 KOHM"^^cdt:electricResistance # kiloOhm
-"1 MOHM"^^cdt:electricResistance # milliOhm
-"1 MAOHM"^^cdt:electricResistance # MegaOhm
+"1 Ohm"^^cdt:electricResistance # Ohm
+"1 kOhm"^^cdt:electricResistance # kiloOhm
+"1 mOhm"^^cdt:electricResistance # milliOhm
+"1 MOhm"^^cdt:electricResistance # MegaOhm
 </pre></td>
               </tr>
             </tbody>
@@ -735,15 +735,15 @@ th, td {
                 <td>
                   <p>For example, all energy literals below are well formed, <a class="playground" href="/lindt/playground.html?example=energy">test them online</a>.</p>
 <pre class="example highlight">
-"1 KG.M2/S2"^^cdt:energy # S.I. unit for energy
-"1 N.M"^^cdt:energy # Newton meter
-"1 W.S"^^cdt:energy # Watt second
-"1 KW.HR"^^cdt:energy # kiloWatt hour
-"1 ERG "^^cdt:energy # erg 
-"1 EV"^^cdt:energy # electronvolt 
+"1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
+"1 N.m"^^cdt:energy # Newton meter
+"1 W.s"^^cdt:energy # Watt second
+"1 kW.h"^^cdt:energy # kiloWatt hour
+"1 erg "^^cdt:energy # erg 
+"1 eV"^^cdt:energy # electronvolt 
 "1 J"^^cdt:energy # joule
-"1 CAL"^^cdt:energy # calorie
-"1 [CAL]"^^cdt:energy # nutrition label Calories
+"1 cal"^^cdt:energy # calorie
+"1 [Cal]"^^cdt:energy # nutrition label Calories
 </pre></td>
               </tr>
             </tbody>
@@ -777,11 +777,11 @@ th, td {
                 <td>
                   <p>For example, all force literals below are well formed, <a class="playground" href="/lindt/playground.html?example=force">test them online</a>.</p>
 <pre class="example highlight">
-"1 KG.M/S2"^^cdt:force # S.I. equiv. of Newton
+"1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
 "1 N"^^cdt:force # Newton
-"1 GF"^^cdt:force # gram-force
-"1 G.[G]"^^cdt:force # gram-force
-"1 DYN"^^cdt:force # dyne
+"1 gf"^^cdt:force # gram-force
+"1 g.[g]"^^cdt:force # definition of gram-force
+"1 dyn"^^cdt:force # dyne
 "1 g.cm/s2"^^cdt:force # S.I. equiv. of dyne
 </pre></td>
               </tr>
@@ -816,8 +816,8 @@ th, td {
                 <td>
                   <p>For example, all frequency literals below are well formed, <a class="playground" href="/lindt/playground.html?example=frequency">test them online</a>.</p>
 <pre class="example highlight">
-"1 HZ"^^cdt:frequency # Hertz
-"1 MAHZ"^^cdt:frequency # MegaHertz
+"1 Hz"^^cdt:frequency # Hertz
+"1 MHz"^^cdt:frequency # MegaHertz
 "1 s-1"^^cdt:frequency # per second
 "1 /s"^^cdt:frequency # per second
 "1 1/s"^^cdt:frequency # per second
@@ -854,9 +854,9 @@ th, td {
                 <td>
                   <p>For example, all illuminance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=illuminance">test them online</a>.</p>
 <pre class="example highlight">
-"1 LM/M2"^^cdt:illuminance # lumen per square meter
-"1 LX"^^cdt:illuminance # lux
-"1 PHT "^^cdt:illuminance # phot
+"1 lm/m2"^^cdt:illuminance # lumen per square meter
+"1 lx"^^cdt:illuminance # lux
+"1 ph"^^cdt:illuminance # phot
 </pre></td>
               </tr>
             </tbody>
@@ -926,7 +926,7 @@ th, td {
                 <td>
                   <p>For example, all luminousFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousFlux">test them online</a>.</p>
 <pre class="example highlight">
-"1 LM"^^cdt:luminousFlux # lumen
+"1 lm"^^cdt:luminousFlux # lumen
 </pre></td>
               </tr>
             </tbody>
@@ -960,7 +960,7 @@ th, td {
                 <td>
                   <p>For example, all luminousIntensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousIntensity">test them online</a>.</p>
 <pre class="example highlight">
-"1 CD"^^cdt:luminousIntensity # candela
+"1 cd"^^cdt:luminousIntensity # candela
 </pre></td>
               </tr>
             </tbody>
@@ -994,7 +994,7 @@ th, td {
                 <td>
                   <p>For example, all magneticFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFlux">test them online</a>.</p>
 <pre class="example highlight">
-"1 WB"^^cdt:magneticFlux # weber
+"1 Wb"^^cdt:magneticFlux # weber
 </pre></td>
               </tr>
             </tbody>
@@ -1028,9 +1028,9 @@ th, td {
                 <td>
                   <p>For example, all magneticFluxDensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFluxDensity">test them online</a>.</p>
 <pre class="example highlight">
-"1 WB/M2"^^cdt:magneticFluxDensity # weber per square meter
+"1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
 "1 T"^^cdt:magneticFluxDensity # tesla
-"1 GS"^^cdt:magneticFluxDensity # gauss
+"1 G"^^cdt:magneticFluxDensity # gauss
 </pre></td>
               </tr>
             </tbody>
@@ -1064,13 +1064,13 @@ th, td {
                 <td>
                   <p>For example, all mass literals below are well formed, <a class="playground" href="/lindt/playground.html?example=mass">test them online</a>.</p>
 <pre class="example highlight">
-"1 G"^^cdt:mass # gram
-"1 KG"^^cdt:mass # kilogram
-"1 TNE"^^cdt:mass # tonne
-"1 AMU"^^cdt:mass # unified atomic mass unit 
-"1 [M_E]"^^cdt:mass # electron mass 
-"1 [GR]"^^cdt:mass # grain (avoirdupois weight system)
-"1 [OZ_AV]"^^cdt:mass # ounce (avoirdupois weight system)
+"1 g"^^cdt:mass # gram
+"1 kg"^^cdt:mass # kilogram
+"1 t"^^cdt:mass # tonne
+"1 u"^^cdt:mass # unified atomic mass unit 
+"1 [m_e]"^^cdt:mass # electron mass 
+"1 [gr]"^^cdt:mass # grain (avoirdupois weight system)
+"1 [oz_av]"^^cdt:mass # ounce (avoirdupois weight system)
 </pre></td>
               </tr>
             </tbody>
@@ -1104,9 +1104,9 @@ th, td {
                 <td>
                   <p>For example, all power literals below are well formed, <a class="playground" href="/lindt/playground.html?example=power">test them online</a>.</p>
 <pre class="example highlight">
-"1 J/S"^^cdt:power # joule per second
+"1 J/s"^^cdt:power # joule per second
 "1 W"^^cdt:power # watt
-"1 [FT_I].[LBF_AV]/S"^^cdt:power # definition of horse power
+"1 [ft_i].[lbf_av]/s"^^cdt:power # definition of horse power
 "1 [HP]"^^cdt:power # horsepower
 </pre></td>
               </tr>
@@ -1141,10 +1141,10 @@ th, td {
                 <td>
                   <p>For example, all pressure literals below are well formed, <a class="playground" href="/lindt/playground.html?example=pressure">test them online</a>.</p>
 <pre class="example highlight">
-"1 PAL"^^cdt:pressure # pascal
-"1 BAR"^^cdt:pressure # bar
-"1 ATM"^^cdt:pressure # standard atmosphere 
-"1 ATT"^^cdt:pressure # technical atmosphere
+"1 Pa"^^cdt:pressure # pascal
+"1 bar"^^cdt:pressure # bar
+"1 atm"^^cdt:pressure # standard atmosphere 
+"1 att"^^cdt:pressure # technical atmosphere
 </pre></td>
               </tr>
             </tbody>
@@ -1178,8 +1178,8 @@ th, td {
                 <td>
                   <p>For example, all radiationDoseAbsorbed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseAbsorbed">test them online</a>.</p>
 <pre class="example highlight">
-"1 ERG/G"^^cdt:radiationDoseAbsorbed # erg per gram
-"1 [RAD]"^^cdt:radiationDoseAbsorbed # radiation absorbed dose
+"1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
+"1 RAD"^^cdt:radiationDoseAbsorbed # radiation absorbed dose
 </pre></td>
               </tr>
             </tbody>
@@ -1214,7 +1214,7 @@ th, td {
                   <p>For example, all radiationDoseEffective literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseEffective">test them online</a>.</p>
 <pre class="example highlight">
 "1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
-"1 SV"^^cdt:radiationDoseEffective # sievert
+"1 Sv"^^cdt:radiationDoseEffective # sievert
 </pre></td>
               </tr>
             </tbody>
@@ -1249,8 +1249,8 @@ th, td {
                   <p>For example, all radioactivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radioactivity">test them online</a>.</p>
 <pre class="example highlight">
 "1 s-1"^^cdt:radioactivity # per second 
-"1 BQ"^^cdt:radioactivity # becquerel
-"1 CI"^^cdt:radioactivity # Curie 
+"1 Bq"^^cdt:radioactivity # becquerel
+"1 Ci"^^cdt:radioactivity # Curie 
 </pre></td>
               </tr>
             </tbody>
@@ -1284,8 +1284,8 @@ th, td {
                 <td>
                   <p>For example, all solidAngle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=solidAngle">test them online</a>.</p>
 <pre class="example highlight">
-"1 SR"^^cdt:solidAngle # steradian 
-"1 SPH"^^cdt:solidAngle # sphere
+"1 sr"^^cdt:solidAngle # steradian 
+"1 sph"^^cdt:solidAngle # sphere
 </pre></td>
               </tr>
             </tbody>
@@ -1319,8 +1319,9 @@ th, td {
                 <td>
                   <p>For example, all speed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=speed">test them online</a>.</p>
 <pre class="example highlight">
-"120 M/S"^^cdt:speed # meter per second 
-"90 KM/HR"^^cdt:speed # kilometer per hour
+"120 m/s"^^cdt:speed # meter per second 
+"90 km/h"^^cdt:speed # kilometer per hour
+"90 km.h-1"^^cdt:speed # kilometer per hour
 </pre></td>
               </tr>
             </tbody>
@@ -1355,10 +1356,10 @@ th, td {
                   <p>For example, all temperature literals below are well formed, <a class="playground" href="/lindt/playground.html?example=temperature">test them online</a>.</p>
 <pre class="example highlight">
 "273.15 K"^^cdt:temperature # kelvin 
-"37.5 CEL"^^cdt:temperature # degree Celsius
-"100 [DEGF]"^^cdt:temperature # degree Fahrenheit
-"100 [DEGR]"^^cdt:temperature # degree Rankine
-"100 [DEGRE]"^^cdt:temperature # degree Réaumur 
+"37.5 Cel"^^cdt:temperature # degree Celsius
+"100 [degF]"^^cdt:temperature # degree Fahrenheit
+"100 [degR]"^^cdt:temperature # degree Rankine
+"100 [degRe]"^^cdt:temperature # degree Réaumur 
 </pre></td>
               </tr>
             </tbody>
@@ -1392,7 +1393,20 @@ th, td {
                 <td>
                   <p>For example, all time literals below are well formed, <a class="playground" href="/lindt/playground.html?example=time">test them online</a>.</p>
 <pre class="example highlight">
-"todo"^^cdt:time
+"1 ns"^^cdt:time # nanosecond
+"1 s"^^cdt:time # second
+"1 min"^^cdt:time # minute
+"1 h"^^cdt:time # hour
+"1 d"^^cdt:time # day
+"1 a_t"^^cdt:time # tropical year 
+"1 a_j"^^cdt:time # mean Julian year  
+"1 a_g"^^cdt:time # mean Gregorian year  
+"1 a"^^cdt:time # year  
+"1 wk"^^cdt:time # week  
+"1 mo_s"^^cdt:time # synodal month   
+"1 mo_j"^^cdt:time # mean Julian month   
+"1 mo_g"^^cdt:time # mean Gregorian month   
+"1 mo"^^cdt:time # month
 </pre></td>
               </tr>
             </tbody>
@@ -1427,12 +1441,12 @@ th, td {
                   <p>For example, all volume literals below are well formed, <a class="playground" href="/lindt/playground.html?example=volume">test them online</a>.</p>
 <pre class="example highlight">
 "1 L"^^cdt:volume # liter
-"1 DM3"^^cdt:volume 
-"1 M3"^^cdt:volume # cubic meter
-"1 M.M.M"^^cdt:volume # cubic meter
-"100 [CIN_I]"^^cdt:volume # cubic inch (International customary units)
-"100 [GAL_BR]"^^cdt:volume # gallon (British Imperial volumes)
-"100 [PT_BR]"^^cdt:volume # pint (British Imperial volumes)
+"1 dm3"^^cdt:volume 
+"1 m3"^^cdt:volume # cubic meter
+"1 m.m.m"^^cdt:volume # cubic meter
+"100 [cin_i]"^^cdt:volume # cubic inch (International customary units)
+"100 [gal_br]"^^cdt:volume # gallon (British Imperial volumes)
+"100 [pt_br]"^^cdt:volume # pint (British Imperial volumes)
 </pre></td>
               </tr>
             </tbody>

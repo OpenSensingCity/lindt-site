@@ -9,13 +9,13 @@ WHERE{
 
   VALUES ?value {
 
-    "1 LM/M2"^^cdt:illuminance # lumen per square meter
-    "1 LX"^^cdt:illuminance # lux
-    "1 PHT "^^cdt:illuminance # phot
+    "1 lm/m2"^^cdt:illuminance # lumen per square meter
+    "1 lx"^^cdt:illuminance # lux
+    "1 ph"^^cdt:illuminance # phot
 
   }
 
   # normalize 
-  BIND("0 HZ"^^cdt:frequency + ?value AS ?normalized )
+  BIND("0 lx"^^cdt:illuminance + ?value AS ?normalized )
   
 }

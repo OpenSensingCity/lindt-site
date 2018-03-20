@@ -10,14 +10,14 @@ WHERE{
   VALUES ?value {
 
     "273.15 K"^^cdt:temperature # kelvin 
-    "37.5 CEL"^^cdt:temperature # degree Celsius
-    "100 [DEGF]"^^cdt:temperature # degree Fahrenheit
-    "100 [DEGR]"^^cdt:temperature # degree Rankine
-    "100 [DEGRE]"^^cdt:temperature # degree Réaumur 
+    "37.5 Cel"^^cdt:temperature # degree Celsius
+    "100 [degF]"^^cdt:temperature # degree Fahrenheit
+    "100 [degR]"^^cdt:temperature # degree Rankine
+    "100 [degRe]"^^cdt:temperature # degree Réaumur 
 
   }
 
   # normalize 
-  BIND("0 CEL"^^cdt:temperature + ?value AS ?normalized )
+  BIND("0 Cel"^^cdt:temperature + ?value AS ?normalized )
   
 }

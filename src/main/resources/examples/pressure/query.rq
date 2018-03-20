@@ -9,14 +9,14 @@ WHERE{
 
   VALUES ?value {
 
-    "1 PAL"^^cdt:pressure # pascal
-    "1 BAR"^^cdt:pressure # bar
-    "1 ATM"^^cdt:pressure # standard atmosphere 
-    "1 ATT"^^cdt:pressure # technical atmosphere
+    "1 Pa"^^cdt:pressure # pascal
+    "1 bar"^^cdt:pressure # bar
+    "1 atm"^^cdt:pressure # standard atmosphere 
+    "1 att"^^cdt:pressure # technical atmosphere
 
   }
 
   # normalize 
-  BIND("0 PAL"^^cdt:pressure + ?value AS ?normalized )
+  BIND("0 Pa"^^cdt:pressure + ?value AS ?normalized )
   
 }

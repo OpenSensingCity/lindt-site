@@ -9,17 +9,17 @@ WHERE{
 
   VALUES ( ?value1 ?value2 ) {
 
-    ( "1 M"^^cdt:length "2 UM"^^cdt:length )
+    ( "1 m"^^cdt:length "2 um"^^cdt:length )
 
-    ( "1 M"^^cdt:ucum "1 M"^^cdt:ucum )
-    ( "1 M"^^cdt:ucum "1 S"^^cdt:ucum )
-    ( "1 M"^^cdt:length "1 S"^^cdt:length )
-    ( "1 M"^^cdt:length "1 S"^^cdt:time )
+    ( "1 m"^^cdt:ucum "1 m"^^cdt:ucum )
+    ( "1 m"^^cdt:ucum "1 s"^^cdt:ucum )
+    ( "1 m"^^cdt:length "1 s"^^cdt:length )
+    ( "1 m"^^cdt:length "1 s"^^cdt:time )
 
     # stored as double -> 15 to 17 significant digits
-    ( "1.0123456789123456789 M"^^cdt:ucum "0.0 M"^^cdt:length )
+    ( "1.0123456789123456789 m"^^cdt:ucum "0.0 m"^^cdt:length )
 
-    ( "3.6 KM/HR"^^cdt:ucum "-1 M/S"^^cdt:ucum )
+    ( "3.6 km/h"^^cdt:ucum "-1 m/s"^^cdt:ucum )
   }
 
   BIND( ?value1 + ?value2 AS ?sum )

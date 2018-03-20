@@ -9,8 +9,8 @@ WHERE{
 
   VALUES ?value {
 
-    "1 HZ"^^cdt:frequency # Hertz
-    "1 MAHZ"^^cdt:frequency # MegaHertz
+    "1 Hz"^^cdt:frequency # Hertz
+    "1 MHz"^^cdt:frequency # MegaHertz
     "1 s-1"^^cdt:frequency # per second
     "1 /s"^^cdt:frequency # per second
     "1 1/s"^^cdt:frequency # per second
@@ -18,6 +18,6 @@ WHERE{
   }
 
   # normalize 
-  BIND("0 HZ"^^cdt:frequency + ?value AS ?normalized )
+  BIND("0 Hz"^^cdt:frequency + ?value AS ?normalized )
   
 }

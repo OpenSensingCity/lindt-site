@@ -10,14 +10,14 @@ WHERE{
   VALUES ?value {
 
     "1 V/A"^^cdt:electricResistance
-    "1 OHM"^^cdt:electricResistance # Ohm
-    "1 KOHM"^^cdt:electricResistance # kiloOhm
-    "1 MOHM"^^cdt:electricResistance # milliOhm
-    "1 MAOHM"^^cdt:electricResistance # MegaOhm
+    "1 Ohm"^^cdt:electricResistance # Ohm
+    "1 kOhm"^^cdt:electricResistance # kiloOhm
+    "1 mOhm"^^cdt:electricResistance # milliOhm
+    "1 MOhm"^^cdt:electricResistance # MegaOhm
 
   }
 
   # normalize 
-  BIND("0 V"^^cdt:electricPotential + ?value AS ?normalized )
+  BIND("0 Ohm"^^cdt:electricResistance + ?value AS ?normalized )
   
 }

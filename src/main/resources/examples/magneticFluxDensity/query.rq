@@ -9,9 +9,9 @@ WHERE{
 
   VALUES ?value {
 
-    "1 WB/M2"^^cdt:magneticFluxDensity # weber per square meter
+    "1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
     "1 T"^^cdt:magneticFluxDensity # tesla
-    "1 GS"^^cdt:magneticFluxDensity # gauss
+    "1 G"^^cdt:magneticFluxDensity # gauss
 
   }
 

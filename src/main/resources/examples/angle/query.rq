@@ -9,15 +9,15 @@ WHERE{
 
   VALUES ?value {
 
-    "360 DEG"^^cdt:angle # degree
+    "360 deg"^^cdt:angle # degree
     "1 '"^^cdt:angle # minute
     "1 ''"^^cdt:angle # second
-    "1 RAD"^^cdt:angle # radian
-    "1 CIRC"^^cdt:angle # circle    
+    "1 rad"^^cdt:angle # radian
+    "1 circ"^^cdt:angle # circle    
 
   }
 
   # normalize
-  BIND("0 DEG"^^cdt:ucum + ?value AS ?normalized )
+  BIND("0 deg"^^cdt:ucum + ?value AS ?normalized )
   
 }

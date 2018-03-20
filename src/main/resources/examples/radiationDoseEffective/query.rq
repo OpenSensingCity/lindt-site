@@ -10,11 +10,11 @@ WHERE{
   VALUES ?value {
 
     "1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
-    "1 SV"^^cdt:radiationDoseEffective # sievert
+    "1 Sv"^^cdt:radiationDoseEffective # sievert
 
   }
 
   # normalize 
-  BIND("0 SV"^^cdt:radiationDoseEffective + ?value AS ?normalized )
+  BIND("0 Sv"^^cdt:radiationDoseEffective + ?value AS ?normalized )
   
 }
