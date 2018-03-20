@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 20.0.5"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html dir="ltr" class="gr__" lang="en"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 20.1.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -388,8 +388,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   "specStatus": "unofficial",
   "subtitle": "Towards a web of Linked Datatypes",
   "shortName": "cdt",
-  "publishDate": "2018-03-14",
-  "previousPublishDate": "2017-04-05",
+  "publishDate": "2018-03-20",
+  "previousPublishDate": "2018-03-14",
+  "previousMaturity": "unofficial",
   "previousURI": "https://w3id.org/lindt/v1/custom_datatypes",
   "editors": [
     {
@@ -418,16 +419,16 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   ],
   "inlineCSS": true,
-  "publishISODate": "2018-03-14T00:00:00.000Z",
-  "generatedSubtitle": "Unofficial Draft 14 March 2018"
+  "publishISODate": "2018-03-20T00:00:00.000Z",
+  "generatedSubtitle": "Unofficial Draft 20 March 2018"
 }</script><meta name="description" content="This document describes datatypes designed to concisely encode important information."></head>
-  <body class="h-entry"><div class="head"><a href="http://mines-stetienne.fr" class="logo">
-        <img alt="Mines Saint-Étienne" width="150" height="150" src="/lindt/logo.png">
+  <body data-gr-c-s-loaded="true" class="h-entry"><div class="head"><a href="http://mines-stetienne.fr" class="logo">
+        <img alt="Mines Saint-Étienne" src="/lindt/logo.png" width="150" height="150">
       </a>
   
-  <h1 class="title p-name" id="title">Custom Datatypes</h1>
-  <h2 id="subtitle">Towards a web of Linked Datatypes</h2>
-  <h2 id="unofficial-draft-14-march-2018">Unofficial Draft <time class="dt-published" datetime="2018-03-14">14 March 2018</time></h2>
+  <h1 id="title" class="title p-name">Custom Datatypes</h1>
+  <h2 id="subtitle" class="subtitle">Towards a web of Linked Datatypes</h2>
+  <h2 id="unofficial-draft20-march-2018">Unofficial Draft<time class="dt-published" datetime="2018-03-20">20 March 2018</time></h2>
   <dl>
     
     
@@ -438,7 +439,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://www.maxime-lefrancois.info/">Maxime Lefrançois</a>, <a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>, <a class="ed_mailto u-email email" href="mailto:maxime.lefrancois@emse.fr">maxime.lefrancois@emse.fr</a></dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://www.emse.fr/~zimmermann/">Antoine Zimmermann</a>, <a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>, <a class="ed_mailto u-email email" href="mailto:antone.zimmermann@emse.fr">antone.zimmermann@emse.fr</a></dd>
+    <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:maxime.lefrancois@emse.fr">Maxime Lefrançois</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>)</dd><dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:antone.zimmermann@emse.fr">Antoine Zimmermann</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>)</dd>
+    
     
     
   </dl>
@@ -541,7 +543,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -555,7 +557,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>Check out <a href="/lindt/playground.html">the playground</a></p>
-                  <p>For example, all literals below are well formed and share the same value, <a class="playground" href="/lindt/playground.html?example=0-ucum">test them online</a>.</p>
+                  <p>For example, all literals below are well formed, <a class="playground" href="/lindt/playground.html?example=0-ucum">test them online</a> and share the same value.</p>
 <div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight hljs javascript" aria-busy="false"><span class="hljs-string">"1 m"</span>^^cdt:ucum
 <span class="hljs-string">"1.0e+9 nm"</span>^^cdt:ucum
 <span class="hljs-string">"1e+10 Ao"</span>^^cdt:ucum
@@ -579,7 +581,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a acceleration unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an acceleration unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -594,9 +596,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all acceleration literals below are well formed, <a class="playground" href="/lindt/playground.html?example=acceleration">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight hljs" aria-busy="false">"1 m/s2 "^^cdt:acceleration # S.I.
-"3.8 [G]"^^cdt:acceleration # standard acceleration of free fall
-"1.57e-2 CM/S2"^^cdt:acceleration # S.I. equiv. of Gal
-"1.57e-2 GL"^^cdt:acceleration # Gal</pre></div></td>
+"3.8 [g]"^^cdt:acceleration # standard acceleration of free fall
+"1.57e-2 cm/s2"^^cdt:acceleration # S.I. equiv. of Gal
+"1.57e-2 Gal"^^cdt:acceleration # Gal</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -614,7 +616,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a amountOfSubstance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an amountOfSubstance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -628,7 +630,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, the amountOfSubstance literal below is well formed.</p>
-<div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight hljs css" aria-busy="false">"1<span class="hljs-selector-class">.2</span> <span class="hljs-selector-tag">MOL</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:amountOfSubstance</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight hljs css" aria-busy="false">"1<span class="hljs-selector-class">.2</span> <span class="hljs-selector-tag">mol</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:amountOfSubstance</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -646,7 +648,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a angle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an angle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -660,11 +662,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all angle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=angle">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="highlight hljs" aria-busy="false">"360 DEG"^^cdt:angle # degree
+<div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="highlight hljs" aria-busy="false">"360 deg"^^cdt:angle # degree
 "1 '"^^cdt:angle # minute
 "1 ''"^^cdt:angle # second
-"1 RAD"^^cdt:angle # circle
-"1 CIRC"^^cdt:angle # circle</pre></div></td>
+"1 rad"^^cdt:angle # radian
+"1 circ"^^cdt:angle # circle  </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -682,7 +684,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a area unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an area unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -696,12 +698,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all area literals below are well formed, <a class="playground" href="/lindt/playground.html?example=area">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">m2</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">degree</span>
-"1 <span class="hljs-selector-tag">AR</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">are</span>
-"1 <span class="hljs-selector-attr">[SIN_I]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
-"1 <span class="hljs-selector-attr">[IN_I]</span>2"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
-"1 <span class="hljs-selector-attr">[SMI_US]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">mile</span> <span class="hljs-selector-tag">Older</span> <span class="hljs-selector-tag">U</span><span class="hljs-selector-class">.S</span>. “<span class="hljs-selector-tag">survey</span>” <span class="hljs-selector-tag">lengths</span> (<span class="hljs-selector-tag">also</span> <span class="hljs-selector-tag">called</span> "<span class="hljs-selector-tag">statute</span>" <span class="hljs-selector-tag">lengths</span>)
-"1 <span class="hljs-selector-attr">[SMI_US]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">mile</span> <span class="hljs-selector-tag">Older</span> <span class="hljs-selector-tag">U</span><span class="hljs-selector-class">.S</span>. “<span class="hljs-selector-tag">survey</span>” <span class="hljs-selector-tag">lengths</span> (<span class="hljs-selector-tag">also</span> <span class="hljs-selector-tag">called</span> "<span class="hljs-selector-tag">statute</span>" <span class="hljs-selector-tag">lengths</span>)</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">m2</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">meter</span>
+"1 <span class="hljs-selector-tag">ar</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">are</span>
+"1 <span class="hljs-selector-attr">[sin_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
+"1 <span class="hljs-selector-attr">[in_i]</span>2"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
+"1 <span class="hljs-selector-attr">[smi_us]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">mile</span> <span class="hljs-selector-tag">Older</span> <span class="hljs-selector-tag">U</span><span class="hljs-selector-class">.S</span>. “<span class="hljs-selector-tag">survey</span>” <span class="hljs-selector-tag">lengths</span> (<span class="hljs-selector-tag">also</span> <span class="hljs-selector-tag">called</span> "<span class="hljs-selector-tag">statute</span>" <span class="hljs-selector-tag">lengths</span>)</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -719,7 +720,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a catalyticActivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a catalyticActivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -733,8 +734,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all catalyticActivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=catalyticActivity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="highlight hljs" aria-busy="false">"1 MOL/S"^^cdt:catalyticActivity # mole per second
-"1 KAT"^^cdt:catalyticActivity # KATAL
+<div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="highlight hljs" aria-busy="false">"1 mol/s"^^cdt:catalyticActivity # mole per second
+"1 kat"^^cdt:catalyticActivity # KATAL
 "1 U"^^cdt:catalyticActivity # Unit</pre></div></td>
               </tr>
             </tbody>
@@ -753,7 +754,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a dimensionless unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a dimensionless unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -768,12 +769,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all dimensionless literals below are well formed, <a class="playground" href="/lindt/playground.html?example=dimensionless">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="highlight hljs css" aria-busy="false">"1 "^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">Unit</span> (<span class="hljs-selector-tag">empty</span> <span class="hljs-selector-tag">string</span>)
-"1 <span class="hljs-selector-attr">[PI]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">PI</span>
-"1 %"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">mole</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">second</span>
-"1 <span class="hljs-selector-attr">[PPTH]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">perts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">thousand</span>
-"1 <span class="hljs-selector-attr">[PPM]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">perts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">million</span>
-"1 <span class="hljs-selector-attr">[PPB]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">perts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">billion</span>
-"1 <span class="hljs-selector-attr">[PPTR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">perts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">trillion</span></pre></div></td>
+"1 <span class="hljs-selector-attr">[pi]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">pi</span>
+"1 %"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">percent</span>
+"1 <span class="hljs-selector-attr">[ppth]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">thousand</span>
+"1 <span class="hljs-selector-attr">[ppm]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">million</span>
+"1 <span class="hljs-selector-attr">[ppb]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">billion</span>
+"1 <span class="hljs-selector-attr">[pptr]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">trillion</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -791,7 +792,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricCapacitance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCapacitance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -806,7 +807,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all electricCapacitance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCapacitance">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="highlight hljs" aria-busy="false">"1 C/V"^^cdt:electricCapacitance # coulomb per volt 
-"1 F"^^cdt:electricCapacitance # farad</pre></div></td>
+"1 F"^^cdt:electricCapacitance # farad </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -824,7 +825,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricCharge unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCharge unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -839,7 +840,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all electricCharge literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCharge">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">C</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">coulomb</span> 
-"1 <span class="hljs-selector-attr">[E]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">elementary</span> <span class="hljs-selector-tag">charge</span></pre></div></td>
+"1 <span class="hljs-selector-attr">[e]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">elementary</span> <span class="hljs-selector-tag">charge</span>  </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -857,7 +858,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricConductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricConductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -871,9 +872,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricConductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricConductance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="highlight hljs" aria-busy="false">"1 /OHM"^^cdt:electricConductance # inverse of Ohm 
-"1 OHM-1"^^cdt:electricConductance # inverse of Ohm 
-"1 SIE"^^cdt:electricConductance # siemens</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="highlight hljs" aria-busy="false">"1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
+"1 Ohm-1"^^cdt:electricConductance # inverse of Ohm 
+"1 S"^^cdt:electricConductance # siemens </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -891,7 +892,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricCurrent unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCurrent unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -908,7 +909,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="highlight hljs" aria-busy="false">"1 C/s"^^cdt:electricCurrent # coulomb per second
 "1 A"^^cdt:electricCurrent # ampère 
 "1 mA"^^cdt:electricCurrent # milliampère 
-"1 BI"^^cdt:electricCurrent # Biot </pre></div></td>
+"1 Bi"^^cdt:electricCurrent # Biot </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -926,7 +927,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricInductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricInductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -942,7 +943,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                   <p>For example, all electricInductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricInductance">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="highlight hljs" aria-busy="false">"1 Wb/A"^^cdt:electricInductance # weber per ampère
 "1 V.s/A"^^cdt:electricInductance # volt second per ampère
-"1 H"^^cdt:electricInductance # henry</pre></div></td>
+"1 H"^^cdt:electricInductance # henry </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -960,7 +961,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricPotential unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricPotential unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -974,10 +975,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricPotential literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricPotential">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="highlight hljs" aria-busy="false">"230.7 V"^^cdt:electricPotential # volt
-"2.307e2 V"^^cdt:electricPotential # volt
-".2307 kV"^^cdt:electricPotential # kiloVolt
-".2307 J/C"^^cdt:electricPotential # kilojoule per coulomb</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="highlight hljs javascript" aria-busy="false"><span class="hljs-string">"230.7 V"</span>^^cdt:electricPotential
+<span class="hljs-string">"2.307e2 V"</span>^^cdt:electricPotential
+<span class="hljs-string">".2307 kV"</span>^^cdt:electricPotential
+<span class="hljs-string">".2307 J/C"</span>^^cdt:electricPotential</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -995,7 +996,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a electricResistance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricResistance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1010,10 +1011,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all electricResistance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricResistance">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="highlight hljs" aria-busy="false">"1 V/A"^^cdt:electricResistance
-"1 OHM"^^cdt:electricResistance # Ohm
-"1 KOHM"^^cdt:electricResistance # kiloOhm
-"1 MOHM"^^cdt:electricResistance # milliOhm
-"1 MAOHM"^^cdt:electricResistance # MegaOhm</pre></div></td>
+"1 Ohm"^^cdt:electricResistance # Ohm
+"1 kOhm"^^cdt:electricResistance # kiloOhm
+"1 mOhm"^^cdt:electricResistance # milliOhm
+"1 MOhm"^^cdt:electricResistance # MegaOhm</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1031,7 +1032,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a energy unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an energy unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1045,15 +1046,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all energy literals below are well formed, <a class="playground" href="/lindt/playground.html?example=energy">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="highlight hljs" aria-busy="false">"1 KG.M2/S2"^^cdt:energy # S.I. unit for energy
-"1 N.M"^^cdt:energy # Newton meter
-"1 W.S"^^cdt:energy # Watt second
-"1 KW.HR"^^cdt:energy # kiloWatt hour
-"1 ERG "^^cdt:energy # erg 
-"1 EV"^^cdt:energy # electronvolt 
+<div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="highlight hljs" aria-busy="false">"1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
+"1 N.m"^^cdt:energy # Newton meter
+"1 W.s"^^cdt:energy # Watt second
+"1 kW.h"^^cdt:energy # kiloWatt hour
+"1 erg "^^cdt:energy # erg 
+"1 eV"^^cdt:energy # electronvolt 
 "1 J"^^cdt:energy # joule
-"1 CAL"^^cdt:energy # calorie
-"1 [CAL]"^^cdt:energy # nutrition label Calories</pre></div></td>
+"1 cal"^^cdt:energy # calorie
+"1 [Cal]"^^cdt:energy # nutrition label Calories</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1071,7 +1072,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a force unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a force unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1085,11 +1086,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all force literals below are well formed, <a class="playground" href="/lindt/playground.html?example=force">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="highlight hljs" aria-busy="false">"1 KG.M/S2"^^cdt:force # S.I. equiv. of Newton
+<div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="highlight hljs" aria-busy="false">"1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
 "1 N"^^cdt:force # Newton
-"1 GF"^^cdt:force # gram-force
-"1 G.[G]"^^cdt:force # gram-force
-"1 DYN"^^cdt:force # dyne
+"1 gf"^^cdt:force # gram-force
+"1 g.[g]"^^cdt:force # definition of gram-force
+"1 dyn"^^cdt:force # dyne
 "1 g.cm/s2"^^cdt:force # S.I. equiv. of dyne</pre></div></td>
               </tr>
             </tbody>
@@ -1108,7 +1109,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a frequency unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a frequency unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1122,8 +1123,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all frequency literals below are well formed, <a class="playground" href="/lindt/playground.html?example=frequency">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="highlight hljs" aria-busy="false">"1 HZ"^^cdt:frequency # Hertz
-"1 MAHZ"^^cdt:frequency # MegaHertz
+<div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="highlight hljs" aria-busy="false">"1 Hz"^^cdt:frequency # Hertz
+"1 MHz"^^cdt:frequency # MegaHertz
 "1 s-1"^^cdt:frequency # per second
 "1 /s"^^cdt:frequency # per second
 "1 1/s"^^cdt:frequency # per second</pre></div></td>
@@ -1144,7 +1145,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a illuminance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an illuminance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1158,9 +1159,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all illuminance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=illuminance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="highlight hljs" aria-busy="false">"1 LM/M2"^^cdt:illuminance # lumen per square meter
-"1 LX"^^cdt:illuminance # lux
-"1 PHT "^^cdt:illuminance # phot</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="highlight hljs" aria-busy="false">"1 lm/m2"^^cdt:illuminance # lumen per square meter
+"1 lx"^^cdt:illuminance # lux
+"1 ph"^^cdt:illuminance # phot</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1178,7 +1179,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a length unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a length unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1212,7 +1213,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a luminousFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1226,7 +1227,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all luminousFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousFlux">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">LM</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousFlux</span> # <span class="hljs-selector-tag">lumen</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">lm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousFlux</span> # <span class="hljs-selector-tag">lumen</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1244,7 +1245,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a luminousIntensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousIntensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1258,7 +1259,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all luminousIntensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousIntensity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">CD</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousIntensity</span> # <span class="hljs-selector-tag">candela</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">cd</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousIntensity</span> # <span class="hljs-selector-tag">candela</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1276,7 +1277,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a magneticFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1290,7 +1291,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all magneticFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFlux">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">WB</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:magneticFlux</span> # <span class="hljs-selector-tag">weber</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Wb</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:magneticFlux</span> # <span class="hljs-selector-tag">weber</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1308,7 +1309,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a magneticFluxDensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFluxDensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1322,9 +1323,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all magneticFluxDensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFluxDensity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="highlight hljs" aria-busy="false">"1 WB/M2"^^cdt:magneticFluxDensity # weber per square meter
+<div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="highlight hljs" aria-busy="false">"1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
 "1 T"^^cdt:magneticFluxDensity # tesla
-"1 GS"^^cdt:magneticFluxDensity # gauss</pre></div></td>
+"1 G"^^cdt:magneticFluxDensity # gauss</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1342,7 +1343,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a mass unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a mass unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1356,13 +1357,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all mass literals below are well formed, <a class="playground" href="/lindt/playground.html?example=mass">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">G</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">gram</span>
-"1 <span class="hljs-selector-tag">KG</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">kilogram</span>
-"1 <span class="hljs-selector-tag">TNE</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">tonne</span>
-"1 <span class="hljs-selector-tag">AMU</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">unified</span> <span class="hljs-selector-tag">atomic</span> <span class="hljs-selector-tag">mass</span> <span class="hljs-selector-tag">unit</span> 
-"1 <span class="hljs-selector-attr">[M_E]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">electron</span> <span class="hljs-selector-tag">mass</span> 
-"1 <span class="hljs-selector-attr">[GR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">grain</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)
-"1 <span class="hljs-selector-attr">[OZ_AV]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">ounce</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">gram</span>
+"1 <span class="hljs-selector-tag">kg</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">kilogram</span>
+"1 <span class="hljs-selector-tag">t</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">tonne</span>
+"1 <span class="hljs-selector-tag">u</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">unified</span> <span class="hljs-selector-tag">atomic</span> <span class="hljs-selector-tag">mass</span> <span class="hljs-selector-tag">unit</span> 
+"1 <span class="hljs-selector-attr">[m_e]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">electron</span> <span class="hljs-selector-tag">mass</span> 
+"1 <span class="hljs-selector-attr">[gr]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">grain</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)
+"1 <span class="hljs-selector-attr">[oz_av]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">ounce</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1380,7 +1381,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a power unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a power unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1394,9 +1395,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all power literals below are well formed, <a class="playground" href="/lindt/playground.html?example=power">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="highlight hljs" aria-busy="false">"1 J/S"^^cdt:power # joule per second
+<div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="highlight hljs" aria-busy="false">"1 J/s"^^cdt:power # joule per second
 "1 W"^^cdt:power # watt
-"1 [FT_I].[LBF_AV]/S"^^cdt:power # definition of horse power
+"1 [ft_i].[lbf_av]/s"^^cdt:power # definition of horse power
 "1 [HP]"^^cdt:power # horsepower</pre></div></td>
               </tr>
             </tbody>
@@ -1415,7 +1416,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a pressure unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a pressure unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1429,10 +1430,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all pressure literals below are well formed, <a class="playground" href="/lindt/playground.html?example=pressure">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">PAL</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">pascal</span>
-"1 <span class="hljs-selector-tag">BAR</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">bar</span>
-"1 <span class="hljs-selector-tag">ATM</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">standard</span> <span class="hljs-selector-tag">atmosphere</span> 
-"1 <span class="hljs-selector-tag">ATT</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">technical</span> <span class="hljs-selector-tag">atmosphere</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Pa</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">pascal</span>
+"1 <span class="hljs-selector-tag">bar</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">bar</span>
+"1 <span class="hljs-selector-tag">atm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">standard</span> <span class="hljs-selector-tag">atmosphere</span> 
+"1 <span class="hljs-selector-tag">att</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">technical</span> <span class="hljs-selector-tag">atmosphere</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1450,7 +1451,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a radiationDoseAbsorbed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseAbsorbed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1464,8 +1465,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radiationDoseAbsorbed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseAbsorbed">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="highlight hljs" aria-busy="false">"1 ERG/G"^^cdt:radiationDoseAbsorbed # erg per gram
-"1 [RAD]"^^cdt:radiationDoseAbsorbed # radiation absorbed dose</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="highlight hljs" aria-busy="false">"1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
+"1 RAD"^^cdt:radiationDoseAbsorbed # radiation absorbed dose</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1483,7 +1484,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a radiationDoseEffective unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseEffective unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1498,7 +1499,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all radiationDoseEffective literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseEffective">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="highlight hljs" aria-busy="false">"1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
-"1 SV"^^cdt:radiationDoseEffective # sievert</pre></div></td>
+"1 Sv"^^cdt:radiationDoseEffective # sievert</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1516,7 +1517,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a radioactivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radioactivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1531,8 +1532,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all radioactivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radioactivity">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">s-1</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">second</span> 
-"1 <span class="hljs-selector-tag">BQ</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">becquerel</span>
-"1 <span class="hljs-selector-tag">CI</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">Curie</span> </pre></div></td>
+"1 <span class="hljs-selector-tag">Bq</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">becquerel</span>
+"1 <span class="hljs-selector-tag">Ci</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">Curie</span> </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1550,7 +1551,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a solidAngle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a solidAngle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1564,8 +1565,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all solidAngle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=solidAngle">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">SR</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">steradian</span> 
-"1 <span class="hljs-selector-tag">SPH</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">sphere</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">sr</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">steradian</span> 
+"1 <span class="hljs-selector-tag">sph</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">sphere</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1583,7 +1584,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a speed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a speed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1597,8 +1598,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all speed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=speed">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 31</span></div><pre class="highlight hljs" aria-busy="false">"120 M/S"^^cdt:speed # meter per second 
-"90 KM/HR"^^cdt:speed # kilometer per hour</pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 31</span></div><pre class="highlight hljs" aria-busy="false">"120 m/s"^^cdt:speed # meter per second 
+"90 km/h"^^cdt:speed # kilometer per hour
+"90 km.h-1"^^cdt:speed # kilometer per hour</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1616,7 +1618,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a temperature unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a temperature unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1631,10 +1633,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all temperature literals below are well formed, <a class="playground" href="/lindt/playground.html?example=temperature">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 32</span></div><pre class="highlight hljs css" aria-busy="false">"273<span class="hljs-selector-class">.15</span> <span class="hljs-selector-tag">K</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">kelvin</span> 
-"37<span class="hljs-selector-class">.5</span> <span class="hljs-selector-tag">CEL</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Celsius</span>
-"100 <span class="hljs-selector-attr">[DEGF]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Fahrenheit</span>
-"100 <span class="hljs-selector-attr">[DEGR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Rankine</span>
-"100 <span class="hljs-selector-attr">[DEGRE]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">R</span>é<span class="hljs-selector-tag">aumur</span> </pre></div></td>
+"37<span class="hljs-selector-class">.5</span> <span class="hljs-selector-tag">Cel</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Celsius</span>
+"100 <span class="hljs-selector-attr">[degF]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Fahrenheit</span>
+"100 <span class="hljs-selector-attr">[degR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Rankine</span>
+"100 <span class="hljs-selector-attr">[degRe]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">R</span>é<span class="hljs-selector-tag">aumur</span> </pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1652,7 +1654,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a time unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a time unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1666,7 +1668,20 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all time literals below are well formed, <a class="playground" href="/lindt/playground.html?example=time">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 33</span></div><pre class="highlight hljs css" aria-busy="false">"<span class="hljs-selector-tag">todo</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 33</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">ns</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">nanosecond</span>
+"1 <span class="hljs-selector-tag">s</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">second</span>
+"1 <span class="hljs-selector-tag">min</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">minute</span>
+"1 <span class="hljs-selector-tag">h</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">hour</span>
+"1 <span class="hljs-selector-tag">d</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">day</span>
+"1 <span class="hljs-selector-tag">a_t</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">tropical</span> <span class="hljs-selector-tag">year</span> 
+"1 <span class="hljs-selector-tag">a_j</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">mean</span> <span class="hljs-selector-tag">Julian</span> <span class="hljs-selector-tag">year</span>  
+"1 <span class="hljs-selector-tag">a_g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">mean</span> <span class="hljs-selector-tag">Gregorian</span> <span class="hljs-selector-tag">year</span>  
+"1 <span class="hljs-selector-tag">a</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">year</span>  
+"1 <span class="hljs-selector-tag">wk</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">week</span>  
+"1 <span class="hljs-selector-tag">mo_s</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">synodal</span> <span class="hljs-selector-tag">month</span>   
+"1 <span class="hljs-selector-tag">mo_j</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">mean</span> <span class="hljs-selector-tag">Julian</span> <span class="hljs-selector-tag">month</span>   
+"1 <span class="hljs-selector-tag">mo_g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">mean</span> <span class="hljs-selector-tag">Gregorian</span> <span class="hljs-selector-tag">month</span>   
+"1 <span class="hljs-selector-tag">mo</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">month</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1684,7 +1699,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:double</code>, a space, and a volume unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a volume unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1699,12 +1714,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>For example, all volume literals below are well formed, <a class="playground" href="/lindt/playground.html?example=volume">test them online</a>.</p>
 <div class="example"><div class="example-title marker"><span>Example 34</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">L</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">liter</span>
-"1 <span class="hljs-selector-tag">DM3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> 
-"1 <span class="hljs-selector-tag">M3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
-"1 <span class="hljs-selector-tag">M</span><span class="hljs-selector-class">.M</span><span class="hljs-selector-class">.M</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
-"100 <span class="hljs-selector-attr">[CIN_I]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">inch</span> (<span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>)
-"100 <span class="hljs-selector-attr">[GAL_BR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">gallon</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)
-"100 <span class="hljs-selector-attr">[PT_BR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">pint</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)</pre></div></td>
+"1 <span class="hljs-selector-tag">dm3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> 
+"1 <span class="hljs-selector-tag">m3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
+"1 <span class="hljs-selector-tag">m</span><span class="hljs-selector-class">.m</span><span class="hljs-selector-class">.m</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
+"100 <span class="hljs-selector-attr">[cin_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">inch</span> (<span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>)
+"100 <span class="hljs-selector-attr">[gal_br]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">gallon</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)
+"100 <span class="hljs-selector-attr">[pt_br]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">pint</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)</pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1716,7 +1731,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         <section id="on-apache-jena">
           <h3 id="x2-1-on-apache-jena"><span class="secno">2.1 </span>On Apache Jena</h3>
             <p>See <a href="https://github.com/OpenSensingCity/jena-ucum">https://github.com/OpenSensingCity/jena-ucum</a></p>
-            <iframe src="https://ghbtns.com/github-btn.html?user=OpenSensingCity&amp;repo=jena-ucum&amp;type=star&amp;count=true&amp;size=medium" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=OpenSensingCity&amp;repo=jena-ucum&amp;type=star&amp;count=true&amp;size=medium" scrolling="0" width="160px" height="30px" frameborder="0"></iframe>
             <p>Features</p>
              <ul>
               <li><strong>Overload of SPARQL operators</strong> (=, &lt;, etc.) to compare measurement literals;</li>
