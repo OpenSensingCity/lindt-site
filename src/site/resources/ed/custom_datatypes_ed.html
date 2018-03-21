@@ -122,7 +122,7 @@ th, td {
   <body>
     <section id='abstract'>
       <p>
-        This document describes datatypes designed to concisely encode important information.
+        This document specifies custom datatypes designed to concisely encode important information.
       </p>
     </section>
 
@@ -131,15 +131,15 @@ th, td {
 
 
     <section id="measurements">
-      <h2>Custom Datatypes for Measurements</h2>
+      <h2>Custom Datatypes for Quantity Values</h2>
         <p>
-        Being able to describe measurements and their unit is a requirement that is common for many applications in several industrial sectors such as manufacturing, transport and logistics, personal and public health, smart cities, energy, environment, buildings, agriculture. Different ontologies have been developed to describe units, their relations, and measurements.
+        Being able to describe quantity values and their unit is a requirement that is common for many applications in several industrial sectors such as manufacturing, transport and logistics, personal and public health, smart cities, energy, environment, buildings, agriculture. Different ontologies have been developed to describe units, their relations, and quantities with their values. 
         </p>
         <p>
-        we propose an alternative approach based on RDF Datatypes, that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a>, a code system intended to <emph>include \emph{all} units of measures being contemporarily used in international science, engineering, and business.</emph>
+        We propose an alternative approach based on RDF Datatypes, that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a>, a code system intended to <emph>include \emph{all} units of measures being contemporarily used in international science, engineering, and business.</emph>. 
         </p>
         <p>
-          The custom datatypes introduced in this section can be used for lightweight encoding and querying of measurements, in a wide range of applications where representing and reasoning with values is more important than reasoning with unit.
+          The custom datatypes introduced in this section can be used for lightweight encoding and querying of quantity values, in a wide range of applications where representing and reasoning with quantity kinds and values is more important than reasoning with units.
         </p>
 
         <section class="informative" id="overview-of-measurement-datatypes">
@@ -1473,6 +1473,7 @@ th, td {
                 </ul>
               </li>
               <li><strong>Custom SPARQL function with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#sameDimension">http://w3id.org/lindt/custom_datatypes#sameDimension</a>(<code>arg1</code>, <code>arg2</code>) to check if two measurement literals are commensurable (returns a <code>xsd:boolean</code>).</li>
+              <li><strong>Cast to XSD numeric datatypes:</strong> <a class="playground" href="/lindt/playground.html?example=09-Cast">Test it online</a>.</li>
             </ul>
           </section>
       </section>

@@ -1,0 +1,42 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ssn-system: <http://www.w3.org/ns/ssn/systems/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/> 
+PREFIX schema: <http://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+CONSTRUCT {
+
+[] a  ex:OutOfOperatingRangeException ;
+   ex:onSensor ?sensor ;
+   ex:atTime ?resultTime ;
+   ex:observed ?temperature .
+  
+}
+WHERE{
+
+?sensorType a owl:Class ;
+  rdfs:subClassOf [
+    owl:onProperty ssn-system:hasOperatingRange ;
+    owl:hasValue ?operatingRange ] .
+
+?operatingRange a ssn-system:OperatingRange , ssn:Property ;
+  ssn-system:inCondition ?condition .
+
+?condition a ssn-system:Condition , schema:PropertyValue ;
+  schema:minValue ?minTemperature ;
+  schema:maxValue ?maxTemperature .
+
+?sensor a ?sensorType .
+
+?observation a sosa:Observation ;
+    sosa:hasSimpleResult ?temperature ;
+    sosa:madeBySensor ?sensor ;
+    sosa:resultTime ?resultTime .
+
+FILTER( ?temperature < ?minTemperature || ?temperature > ?maxTemperature )
+}

@@ -1,0 +1,20 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT *
+
+WHERE{ 
+
+  BIND( xsd:integer('1e0 Cel'^^cdt:ucum) AS ?cast1 )
+  BIND( xsd:nonNegativeInteger('2e3 m'^^cdt:length) AS ?cast2 )
+  BIND( xsd:integer('1.6e2 km'^^cdt:ucum) AS ?cast5 )
+  BIND( xsd:integer('1.2 km'^^cdt:ucum) AS ?cast6 )
+  BIND( xsd:integer('1.8 km'^^cdt:ucum) AS ?cast7 )
+  BIND( xsd:decimal('1.2 Cel'^^cdt:ucum) AS ?cast8 )
+  BIND( xsd:decimal('1.2e-4 Cel'^^cdt:temperature) AS ?cast9 )
+  BIND( xsd:float('1.2e-4 Cel'^^cdt:temperature) AS ?cast11 )
+  BIND( xsd:double('1.2e-4 Cel'^^cdt:temperature) AS ?cast13 )
+  
+}
