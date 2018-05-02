@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 20.1.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 20.10.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 div.example-title {
     min-width: 7.5em;
     color: #b9ab2d;
@@ -396,14 +396,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     {
       "name": "Maxime Lefrançois",
       "url": "http://www.maxime-lefrancois.info/",
-      "company": "Armines Fayol",
+      "company": "École Nationale Supérieure des Mines de Saint-Étienne",
       "companyURL": "http://www.mines-stetienne.fr/",
       "mailto": "maxime.lefrancois@emse.fr"
     },
     {
       "name": "Antoine Zimmermann",
       "url": "http://www.emse.fr/~zimmermann/",
-      "company": "Armines Fayol",
+      "company": "École Nationale Supérieure des Mines de Saint-Étienne",
       "companyURL": "http://www.mines-stetienne.fr/",
       "mailto": "antone.zimmermann@emse.fr"
     }
@@ -419,6 +419,17 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     }
   ],
   "inlineCSS": true,
+  "localBiblio": {
+    "UCUM": {
+      "href": "http://unitsofmeasure.org/ucum.html",
+      "title": "The Unified Code for Units of Measure",
+      "authors": [
+        "Gunther Schadow",
+        "Clement J. McDonald"
+      ],
+      "date": "21 November 2017"
+    }
+  },
   "publishISODate": "2018-03-20T00:00:00.000Z",
   "generatedSubtitle": "Unofficial Draft 20 March 2018"
 }</script><meta name="description" content="This document specifies custom datatypes designed to concisely encode important information."></head>
@@ -428,7 +439,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   
   <h1 id="title" class="title p-name">Custom Datatypes</h1>
   <h2 id="subtitle" class="subtitle">Towards a web of Linked Datatypes</h2>
-  <h2 id="unofficial-draft20-march-2018">Unofficial Draft<time class="dt-published" datetime="2018-03-20">20 March 2018</time></h2>
+  <h2 id="unofficial-draft-20-march-2018">Unofficial Draft <time class="dt-published" datetime="2018-03-20">20 March 2018</time></h2>
   <dl>
     
     
@@ -439,7 +450,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:maxime.lefrancois@emse.fr">Maxime Lefrançois</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>)</dd><dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:antone.zimmermann@emse.fr">Antoine Zimmermann</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">Armines Fayol</a>)</dd>
+    <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:maxime.lefrancois@emse.fr">Maxime Lefrançois</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">École Nationale Supérieure des Mines de Saint-Étienne</a>)</dd><dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:antone.zimmermann@emse.fr">Antoine Zimmermann</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">École Nationale Supérieure des Mines de Saint-Étienne</a>)</dd>
     
     
     
@@ -466,7 +477,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     <section id="sotd" class="introductory"><h2 id="status-of-this-document">Status of This Document</h2><p>
     This document is draft of a potential specification. It has no official standing of
     any kind and does not represent the support or consensus of any standards organisation.
-  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#measurements" class="tocxref"><span class="secno">1. </span>Custom Datatypes for Quantity Values</a><ol class="toc"><li class="tocline"><a href="#overview-of-measurement-datatypes" class="tocxref"><span class="secno">1.1 </span>Overview of Datatypes</a></li><li class="tocline"><a href="#ucum" class="tocxref"><span class="secno">1.2 </span><span class="formerLink">cdt:ucum</span></a></li><li class="tocline"><a href="#acceleration" class="tocxref"><span class="secno">1.3 </span><span class="formerLink">cdt:acceleration</span></a></li><li class="tocline"><a href="#amountOfSubstance" class="tocxref"><span class="secno">1.4 </span><span class="formerLink">cdt:amountOfSubstance</span></a></li><li class="tocline"><a href="#angle" class="tocxref"><span class="secno">1.5 </span><span class="formerLink">cdt:angle</span></a></li><li class="tocline"><a href="#area" class="tocxref"><span class="secno">1.6 </span><span class="formerLink">cdt:area</span></a></li><li class="tocline"><a href="#catalyticActivity" class="tocxref"><span class="secno">1.7 </span><span class="formerLink">cdt:catalyticActivity</span></a></li><li class="tocline"><a href="#dimensionless" class="tocxref"><span class="secno">1.8 </span><span class="formerLink">cdt:dimensionless</span></a></li><li class="tocline"><a href="#electricCapacitance" class="tocxref"><span class="secno">1.9 </span><span class="formerLink">cdt:electricCapacitance</span></a></li><li class="tocline"><a href="#electricCharge" class="tocxref"><span class="secno">1.10 </span><span class="formerLink">cdt:electricCharge</span></a></li><li class="tocline"><a href="#electricConductance" class="tocxref"><span class="secno">1.11 </span><span class="formerLink">cdt:electricConductance</span></a></li><li class="tocline"><a href="#electricCurrent" class="tocxref"><span class="secno">1.12 </span><span class="formerLink">cdt:electricCurrent</span></a></li><li class="tocline"><a href="#electricInductance" class="tocxref"><span class="secno">1.13 </span><span class="formerLink">cdt:electricInductance</span></a></li><li class="tocline"><a href="#electricPotential" class="tocxref"><span class="secno">1.14 </span><span class="formerLink">cdt:electricPotential</span></a></li><li class="tocline"><a href="#electricResistance" class="tocxref"><span class="secno">1.15 </span><span class="formerLink">cdt:electricResistance</span></a></li><li class="tocline"><a href="#energy" class="tocxref"><span class="secno">1.16 </span><span class="formerLink">cdt:energy</span></a></li><li class="tocline"><a href="#force" class="tocxref"><span class="secno">1.17 </span><span class="formerLink">cdt:force</span></a></li><li class="tocline"><a href="#frequency" class="tocxref"><span class="secno">1.18 </span><span class="formerLink">cdt:frequency</span></a></li><li class="tocline"><a href="#illuminance" class="tocxref"><span class="secno">1.19 </span><span class="formerLink">cdt:illuminance</span></a></li><li class="tocline"><a href="#length" class="tocxref"><span class="secno">1.20 </span><span class="formerLink">cdt:length</span></a></li><li class="tocline"><a href="#luminousFlux" class="tocxref"><span class="secno">1.21 </span><span class="formerLink">cdt:luminousFlux</span></a></li><li class="tocline"><a href="#luminousIntensity" class="tocxref"><span class="secno">1.22 </span><span class="formerLink">cdt:luminousIntensity</span></a></li><li class="tocline"><a href="#magneticFlux" class="tocxref"><span class="secno">1.23 </span><span class="formerLink">cdt:magneticFlux</span></a></li><li class="tocline"><a href="#magneticFluxDensity" class="tocxref"><span class="secno">1.24 </span><span class="formerLink">cdt:magneticFluxDensity</span></a></li><li class="tocline"><a href="#mass" class="tocxref"><span class="secno">1.25 </span><span class="formerLink">cdt:mass</span></a></li><li class="tocline"><a href="#power" class="tocxref"><span class="secno">1.26 </span><span class="formerLink">cdt:power</span></a></li><li class="tocline"><a href="#pressure" class="tocxref"><span class="secno">1.27 </span><span class="formerLink">cdt:pressure</span></a></li><li class="tocline"><a href="#radiationDoseAbsorbed" class="tocxref"><span class="secno">1.28 </span><span class="formerLink">cdt:radiationDoseAbsorbed</span></a></li><li class="tocline"><a href="#radiationDoseEffective" class="tocxref"><span class="secno">1.29 </span><span class="formerLink">cdt:radiationDoseEffective</span></a></li><li class="tocline"><a href="#radioactivity" class="tocxref"><span class="secno">1.30 </span><span class="formerLink">cdt:radioactivity</span></a></li><li class="tocline"><a href="#solidAngle" class="tocxref"><span class="secno">1.31 </span><span class="formerLink">cdt:solidAngle</span></a></li><li class="tocline"><a href="#speed" class="tocxref"><span class="secno">1.32 </span><span class="formerLink">cdt:speed</span></a></li><li class="tocline"><a href="#temperature" class="tocxref"><span class="secno">1.33 </span><span class="formerLink">cdt:temperature</span></a></li><li class="tocline"><a href="#time" class="tocxref"><span class="secno">1.34 </span><span class="formerLink">cdt:time</span></a></li><li class="tocline"><a href="#volume" class="tocxref"><span class="secno">1.35 </span><span class="formerLink">cdt:volume</span></a></li></ol></li><li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2. </span>Implementation</a><ol class="toc"><li class="tocline"><a href="#on-apache-jena" class="tocxref"><span class="secno">2.1 </span>On Apache Jena</a></li></ol></li></ol></nav>
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#measurements" class="tocxref"><span class="secno">1. </span>Custom Datatypes for Quantity Values</a><ol class="toc"><li class="tocline"><a href="#overview-of-measurement-datatypes" class="tocxref"><span class="secno">1.1 </span>Overview of Datatypes</a></li><li class="tocline"><a href="#ucum" class="tocxref"><span class="secno">1.2 </span><span class="formerLink">cdt:ucum</span></a></li><li class="tocline"><a href="#acceleration" class="tocxref"><span class="secno">1.3 </span><span class="formerLink">cdt:acceleration</span></a></li><li class="tocline"><a href="#amountOfSubstance" class="tocxref"><span class="secno">1.4 </span><span class="formerLink">cdt:amountOfSubstance</span></a></li><li class="tocline"><a href="#angle" class="tocxref"><span class="secno">1.5 </span><span class="formerLink">cdt:angle</span></a></li><li class="tocline"><a href="#area" class="tocxref"><span class="secno">1.6 </span><span class="formerLink">cdt:area</span></a></li><li class="tocline"><a href="#catalyticActivity" class="tocxref"><span class="secno">1.7 </span><span class="formerLink">cdt:catalyticActivity</span></a></li><li class="tocline"><a href="#dimensionless" class="tocxref"><span class="secno">1.8 </span><span class="formerLink">cdt:dimensionless</span></a></li><li class="tocline"><a href="#electricCapacitance" class="tocxref"><span class="secno">1.9 </span><span class="formerLink">cdt:electricCapacitance</span></a></li><li class="tocline"><a href="#electricCharge" class="tocxref"><span class="secno">1.10 </span><span class="formerLink">cdt:electricCharge</span></a></li><li class="tocline"><a href="#electricConductance" class="tocxref"><span class="secno">1.11 </span><span class="formerLink">cdt:electricConductance</span></a></li><li class="tocline"><a href="#electricCurrent" class="tocxref"><span class="secno">1.12 </span><span class="formerLink">cdt:electricCurrent</span></a></li><li class="tocline"><a href="#electricInductance" class="tocxref"><span class="secno">1.13 </span><span class="formerLink">cdt:electricInductance</span></a></li><li class="tocline"><a href="#electricPotential" class="tocxref"><span class="secno">1.14 </span><span class="formerLink">cdt:electricPotential</span></a></li><li class="tocline"><a href="#electricResistance" class="tocxref"><span class="secno">1.15 </span><span class="formerLink">cdt:electricResistance</span></a></li><li class="tocline"><a href="#energy" class="tocxref"><span class="secno">1.16 </span><span class="formerLink">cdt:energy</span></a></li><li class="tocline"><a href="#force" class="tocxref"><span class="secno">1.17 </span><span class="formerLink">cdt:force</span></a></li><li class="tocline"><a href="#frequency" class="tocxref"><span class="secno">1.18 </span><span class="formerLink">cdt:frequency</span></a></li><li class="tocline"><a href="#illuminance" class="tocxref"><span class="secno">1.19 </span><span class="formerLink">cdt:illuminance</span></a></li><li class="tocline"><a href="#length" class="tocxref"><span class="secno">1.20 </span><span class="formerLink">cdt:length</span></a></li><li class="tocline"><a href="#luminousFlux" class="tocxref"><span class="secno">1.21 </span><span class="formerLink">cdt:luminousFlux</span></a></li><li class="tocline"><a href="#luminousIntensity" class="tocxref"><span class="secno">1.22 </span><span class="formerLink">cdt:luminousIntensity</span></a></li><li class="tocline"><a href="#magneticFlux" class="tocxref"><span class="secno">1.23 </span><span class="formerLink">cdt:magneticFlux</span></a></li><li class="tocline"><a href="#magneticFluxDensity" class="tocxref"><span class="secno">1.24 </span><span class="formerLink">cdt:magneticFluxDensity</span></a></li><li class="tocline"><a href="#mass" class="tocxref"><span class="secno">1.25 </span><span class="formerLink">cdt:mass</span></a></li><li class="tocline"><a href="#power" class="tocxref"><span class="secno">1.26 </span><span class="formerLink">cdt:power</span></a></li><li class="tocline"><a href="#pressure" class="tocxref"><span class="secno">1.27 </span><span class="formerLink">cdt:pressure</span></a></li><li class="tocline"><a href="#radiationDoseAbsorbed" class="tocxref"><span class="secno">1.28 </span><span class="formerLink">cdt:radiationDoseAbsorbed</span></a></li><li class="tocline"><a href="#radiationDoseEffective" class="tocxref"><span class="secno">1.29 </span><span class="formerLink">cdt:radiationDoseEffective</span></a></li><li class="tocline"><a href="#radioactivity" class="tocxref"><span class="secno">1.30 </span><span class="formerLink">cdt:radioactivity</span></a></li><li class="tocline"><a href="#solidAngle" class="tocxref"><span class="secno">1.31 </span><span class="formerLink">cdt:solidAngle</span></a></li><li class="tocline"><a href="#speed" class="tocxref"><span class="secno">1.32 </span><span class="formerLink">cdt:speed</span></a></li><li class="tocline"><a href="#temperature" class="tocxref"><span class="secno">1.33 </span><span class="formerLink">cdt:temperature</span></a></li><li class="tocline"><a href="#time" class="tocxref"><span class="secno">1.34 </span><span class="formerLink">cdt:time</span></a></li><li class="tocline"><a href="#volume" class="tocxref"><span class="secno">1.35 </span><span class="formerLink">cdt:volume</span></a></li></ol></li><li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2. </span>Implementation</a><ol class="toc"><li class="tocline"><a href="#on-apache-jena" class="tocxref"><span class="secno">2.1 </span>On Apache Jena</a></li></ol></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.1 </span>Informative references</a></li></ol></li></ol></nav>
 
 
     <section id="measurements">
@@ -475,7 +486,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         Being able to describe quantity values and their unit is a requirement that is common for many applications in several industrial sectors such as manufacturing, transport and logistics, personal and public health, smart cities, energy, environment, buildings, agriculture. Different ontologies have been developed to describe units, their relations, and quantities with their values. 
         </p>
         <p>
-        We propose an alternative approach based on RDF Datatypes, that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a>, a code system intended to <emph>include \emph{all} units of measures being contemporarily used in international science, engineering, and business.</emph>. 
+        We propose an alternative approach based on RDF Datatypes [<cite><a class="bibref" href="#bib-rdf11-concepts">rdf11-concepts</a></cite>], that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a> [<cite><a class="bibref" href="#bib-UCUM">UCUM</a></cite>], a code system intended to <emph>include all units of measures being contemporarily used in international science, engineering, and business.</emph>. 
         </p>
         <p>
           The custom datatypes introduced in this section can be used for lightweight encoding and querying of quantity values, in a wide range of applications where representing and reasoning with quantity kinds and values is more important than reasoning with units.
@@ -491,7 +502,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           </div>
           <div id="index-of-measurement-datatypes">
             <div class="azlist">
-              <p>More specific datatypes: <a href="#acceleration">cdt:acceleration</a>
+              <p>Current list of more specific datatypes: <a href="#acceleration">cdt:acceleration</a>
               , <a href="#amountOfSubstance">cdt:amountOfSubstance</a>
               , <a href="#angle">cdt:angle</a>
               , <a href="#area">cdt:area</a>
@@ -558,7 +569,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>
                   <p>Check out <a href="/lindt/playground.html">the playground</a></p>
                   <p>For example, all literals below are well formed, <a class="playground" href="/lindt/playground.html?example=0-ucum">test them online</a> and share the same value.</p>
-<div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="highlight hljs javascript" aria-busy="false"><span class="hljs-string">"1 m"</span>^^cdt:ucum
+<div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"1 m"</span>^^cdt:ucum
 <span class="hljs-string">"1.0e+9 nm"</span>^^cdt:ucum
 <span class="hljs-string">"1e+10 Ao"</span>^^cdt:ucum
 <span class="hljs-string">"1 m/s.s"</span>^^cdt:ucum</pre></div></td>
@@ -595,7 +606,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all acceleration literals below are well formed, <a class="playground" href="/lindt/playground.html?example=acceleration">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="highlight hljs" aria-busy="false">"1 m/s2 "^^cdt:acceleration # S.I.
+<div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="hljs" aria-busy="false">"1 m/s2 "^^cdt:acceleration # S.I.
 "3.8 [g]"^^cdt:acceleration # standard acceleration of free fall
 "1.57e-2 cm/s2"^^cdt:acceleration # S.I. equiv. of Gal
 "1.57e-2 Gal"^^cdt:acceleration # Gal</pre></div></td>
@@ -630,7 +641,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, the amountOfSubstance literal below is well formed.</p>
-<div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="highlight hljs css" aria-busy="false">"1<span class="hljs-selector-class">.2</span> <span class="hljs-selector-tag">mol</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:amountOfSubstance</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="hljs css" aria-busy="false">"1<span class="hljs-selector-class">.2</span> <span class="hljs-selector-tag">mol</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:amountOfSubstance</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -662,7 +673,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all angle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=angle">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="highlight hljs" aria-busy="false">"360 deg"^^cdt:angle # degree
+<div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="hljs" aria-busy="false">"360 deg"^^cdt:angle # degree
 "1 '"^^cdt:angle # minute
 "1 ''"^^cdt:angle # second
 "1 rad"^^cdt:angle # radian
@@ -698,7 +709,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all area literals below are well formed, <a class="playground" href="/lindt/playground.html?example=area">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">m2</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">meter</span>
+<div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">m2</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">meter</span>
 "1 <span class="hljs-selector-tag">ar</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">are</span>
 "1 <span class="hljs-selector-attr">[sin_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
 "1 <span class="hljs-selector-attr">[in_i]</span>2"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
@@ -734,7 +745,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all catalyticActivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=catalyticActivity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="highlight hljs" aria-busy="false">"1 mol/s"^^cdt:catalyticActivity # mole per second
+<div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="hljs" aria-busy="false">"1 mol/s"^^cdt:catalyticActivity # mole per second
 "1 kat"^^cdt:catalyticActivity # KATAL
 "1 U"^^cdt:catalyticActivity # Unit</pre></div></td>
               </tr>
@@ -768,7 +779,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all dimensionless literals below are well formed, <a class="playground" href="/lindt/playground.html?example=dimensionless">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="highlight hljs css" aria-busy="false">"1 "^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">Unit</span> (<span class="hljs-selector-tag">empty</span> <span class="hljs-selector-tag">string</span>)
+<div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="hljs css" aria-busy="false">"1 "^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">Unit</span> (<span class="hljs-selector-tag">empty</span> <span class="hljs-selector-tag">string</span>)
 "1 <span class="hljs-selector-attr">[pi]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">pi</span>
 "1 %"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">percent</span>
 "1 <span class="hljs-selector-attr">[ppth]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">thousand</span>
@@ -806,7 +817,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricCapacitance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCapacitance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="highlight hljs" aria-busy="false">"1 C/V"^^cdt:electricCapacitance # coulomb per volt 
+<div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="hljs" aria-busy="false">"1 C/V"^^cdt:electricCapacitance # coulomb per volt 
 "1 F"^^cdt:electricCapacitance # farad </pre></div></td>
               </tr>
             </tbody>
@@ -839,7 +850,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricCharge literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCharge">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">C</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">coulomb</span> 
+<div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">C</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">coulomb</span> 
 "1 <span class="hljs-selector-attr">[e]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">elementary</span> <span class="hljs-selector-tag">charge</span>  </pre></div></td>
               </tr>
             </tbody>
@@ -872,7 +883,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricConductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricConductance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="highlight hljs" aria-busy="false">"1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
+<div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="hljs" aria-busy="false">"1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
 "1 Ohm-1"^^cdt:electricConductance # inverse of Ohm 
 "1 S"^^cdt:electricConductance # siemens </pre></div></td>
               </tr>
@@ -906,7 +917,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricCurrent literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCurrent">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="highlight hljs" aria-busy="false">"1 C/s"^^cdt:electricCurrent # coulomb per second
+<div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="hljs" aria-busy="false">"1 C/s"^^cdt:electricCurrent # coulomb per second
 "1 A"^^cdt:electricCurrent # ampère 
 "1 mA"^^cdt:electricCurrent # milliampère 
 "1 Bi"^^cdt:electricCurrent # Biot </pre></div></td>
@@ -941,7 +952,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricInductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricInductance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="highlight hljs" aria-busy="false">"1 Wb/A"^^cdt:electricInductance # weber per ampère
+<div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="hljs" aria-busy="false">"1 Wb/A"^^cdt:electricInductance # weber per ampère
 "1 V.s/A"^^cdt:electricInductance # volt second per ampère
 "1 H"^^cdt:electricInductance # henry </pre></div></td>
               </tr>
@@ -975,7 +986,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricPotential literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricPotential">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="highlight hljs javascript" aria-busy="false"><span class="hljs-string">"230.7 V"</span>^^cdt:electricPotential
+<div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"230.7 V"</span>^^cdt:electricPotential
 <span class="hljs-string">"2.307e2 V"</span>^^cdt:electricPotential
 <span class="hljs-string">".2307 kV"</span>^^cdt:electricPotential
 <span class="hljs-string">".2307 J/C"</span>^^cdt:electricPotential</pre></div></td>
@@ -1010,7 +1021,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricResistance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricResistance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="highlight hljs" aria-busy="false">"1 V/A"^^cdt:electricResistance
+<div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="hljs" aria-busy="false">"1 V/A"^^cdt:electricResistance
 "1 Ohm"^^cdt:electricResistance # Ohm
 "1 kOhm"^^cdt:electricResistance # kiloOhm
 "1 mOhm"^^cdt:electricResistance # milliOhm
@@ -1046,7 +1057,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all energy literals below are well formed, <a class="playground" href="/lindt/playground.html?example=energy">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="highlight hljs" aria-busy="false">"1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
+<div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="hljs" aria-busy="false">"1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
 "1 N.m"^^cdt:energy # Newton meter
 "1 W.s"^^cdt:energy # Watt second
 "1 kW.h"^^cdt:energy # kiloWatt hour
@@ -1086,7 +1097,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all force literals below are well formed, <a class="playground" href="/lindt/playground.html?example=force">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="highlight hljs" aria-busy="false">"1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
+<div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="hljs" aria-busy="false">"1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
 "1 N"^^cdt:force # Newton
 "1 gf"^^cdt:force # gram-force
 "1 g.[g]"^^cdt:force # definition of gram-force
@@ -1123,7 +1134,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all frequency literals below are well formed, <a class="playground" href="/lindt/playground.html?example=frequency">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="highlight hljs" aria-busy="false">"1 Hz"^^cdt:frequency # Hertz
+<div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="hljs" aria-busy="false">"1 Hz"^^cdt:frequency # Hertz
 "1 MHz"^^cdt:frequency # MegaHertz
 "1 s-1"^^cdt:frequency # per second
 "1 /s"^^cdt:frequency # per second
@@ -1159,7 +1170,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all illuminance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=illuminance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="highlight hljs" aria-busy="false">"1 lm/m2"^^cdt:illuminance # lumen per square meter
+<div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="hljs" aria-busy="false">"1 lm/m2"^^cdt:illuminance # lumen per square meter
 "1 lx"^^cdt:illuminance # lux
 "1 ph"^^cdt:illuminance # phot</pre></div></td>
               </tr>
@@ -1193,7 +1204,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all length literals below are well formed, <a class="playground" href="/lindt/playground.html?example=length">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 19</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">km</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span>
+<div class="example"><div class="example-title marker"><span>Example 19</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">km</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span>
 "1<span class="hljs-selector-class">.609344E</span>+6 <span class="hljs-selector-tag">mm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span>
 "5280 <span class="hljs-selector-attr">[ft_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span></pre></div></td>
               </tr>
@@ -1227,7 +1238,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all luminousFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousFlux">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">lm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousFlux</span> # <span class="hljs-selector-tag">lumen</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">lm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousFlux</span> # <span class="hljs-selector-tag">lumen</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1259,7 +1270,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all luminousIntensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousIntensity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">cd</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousIntensity</span> # <span class="hljs-selector-tag">candela</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">cd</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousIntensity</span> # <span class="hljs-selector-tag">candela</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1291,7 +1302,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all magneticFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFlux">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Wb</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:magneticFlux</span> # <span class="hljs-selector-tag">weber</span></pre></div></td>
+<div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Wb</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:magneticFlux</span> # <span class="hljs-selector-tag">weber</span></pre></div></td>
               </tr>
             </tbody>
           </table>
@@ -1323,7 +1334,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all magneticFluxDensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFluxDensity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="highlight hljs" aria-busy="false">"1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
+<div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="hljs" aria-busy="false">"1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
 "1 T"^^cdt:magneticFluxDensity # tesla
 "1 G"^^cdt:magneticFluxDensity # gauss</pre></div></td>
               </tr>
@@ -1357,7 +1368,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all mass literals below are well formed, <a class="playground" href="/lindt/playground.html?example=mass">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">gram</span>
+<div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">gram</span>
 "1 <span class="hljs-selector-tag">kg</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">kilogram</span>
 "1 <span class="hljs-selector-tag">t</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">tonne</span>
 "1 <span class="hljs-selector-tag">u</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">unified</span> <span class="hljs-selector-tag">atomic</span> <span class="hljs-selector-tag">mass</span> <span class="hljs-selector-tag">unit</span> 
@@ -1395,7 +1406,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all power literals below are well formed, <a class="playground" href="/lindt/playground.html?example=power">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="highlight hljs" aria-busy="false">"1 J/s"^^cdt:power # joule per second
+<div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="hljs" aria-busy="false">"1 J/s"^^cdt:power # joule per second
 "1 W"^^cdt:power # watt
 "1 [ft_i].[lbf_av]/s"^^cdt:power # definition of horse power
 "1 [HP]"^^cdt:power # horsepower</pre></div></td>
@@ -1430,7 +1441,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all pressure literals below are well formed, <a class="playground" href="/lindt/playground.html?example=pressure">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Pa</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">pascal</span>
+<div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Pa</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">pascal</span>
 "1 <span class="hljs-selector-tag">bar</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">bar</span>
 "1 <span class="hljs-selector-tag">atm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">standard</span> <span class="hljs-selector-tag">atmosphere</span> 
 "1 <span class="hljs-selector-tag">att</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">technical</span> <span class="hljs-selector-tag">atmosphere</span></pre></div></td>
@@ -1465,7 +1476,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radiationDoseAbsorbed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseAbsorbed">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="highlight hljs" aria-busy="false">"1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
+<div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="hljs" aria-busy="false">"1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
 "1 RAD"^^cdt:radiationDoseAbsorbed # radiation absorbed dose</pre></div></td>
               </tr>
             </tbody>
@@ -1498,7 +1509,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radiationDoseEffective literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseEffective">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="highlight hljs" aria-busy="false">"1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
+<div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="hljs" aria-busy="false">"1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
 "1 Sv"^^cdt:radiationDoseEffective # sievert</pre></div></td>
               </tr>
             </tbody>
@@ -1531,7 +1542,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radioactivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radioactivity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">s-1</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">second</span> 
+<div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">s-1</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">second</span> 
 "1 <span class="hljs-selector-tag">Bq</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">becquerel</span>
 "1 <span class="hljs-selector-tag">Ci</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">Curie</span> </pre></div></td>
               </tr>
@@ -1565,7 +1576,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all solidAngle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=solidAngle">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">sr</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">steradian</span> 
+<div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">sr</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">steradian</span> 
 "1 <span class="hljs-selector-tag">sph</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">sphere</span></pre></div></td>
               </tr>
             </tbody>
@@ -1598,7 +1609,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all speed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=speed">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 31</span></div><pre class="highlight hljs" aria-busy="false">"120 m/s"^^cdt:speed # meter per second 
+<div class="example"><div class="example-title marker"><span>Example 31</span></div><pre class="hljs" aria-busy="false">"120 m/s"^^cdt:speed # meter per second 
 "90 km/h"^^cdt:speed # kilometer per hour
 "90 km.h-1"^^cdt:speed # kilometer per hour</pre></div></td>
               </tr>
@@ -1632,7 +1643,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all temperature literals below are well formed, <a class="playground" href="/lindt/playground.html?example=temperature">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 32</span></div><pre class="highlight hljs css" aria-busy="false">"273<span class="hljs-selector-class">.15</span> <span class="hljs-selector-tag">K</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">kelvin</span> 
+<div class="example"><div class="example-title marker"><span>Example 32</span></div><pre class="hljs css" aria-busy="false">"273<span class="hljs-selector-class">.15</span> <span class="hljs-selector-tag">K</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">kelvin</span> 
 "37<span class="hljs-selector-class">.5</span> <span class="hljs-selector-tag">Cel</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Celsius</span>
 "100 <span class="hljs-selector-attr">[degF]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Fahrenheit</span>
 "100 <span class="hljs-selector-attr">[degR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Rankine</span>
@@ -1668,7 +1679,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all time literals below are well formed, <a class="playground" href="/lindt/playground.html?example=time">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 33</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">ns</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">nanosecond</span>
+<div class="example"><div class="example-title marker"><span>Example 33</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">ns</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">nanosecond</span>
 "1 <span class="hljs-selector-tag">s</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">second</span>
 "1 <span class="hljs-selector-tag">min</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">minute</span>
 "1 <span class="hljs-selector-tag">h</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">hour</span>
@@ -1713,7 +1724,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <th>Examples</th>
                 <td>
                   <p>For example, all volume literals below are well formed, <a class="playground" href="/lindt/playground.html?example=volume">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 34</span></div><pre class="highlight hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">L</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">liter</span>
+<div class="example"><div class="example-title marker"><span>Example 34</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">L</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">liter</span>
 "1 <span class="hljs-selector-tag">dm3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> 
 "1 <span class="hljs-selector-tag">m3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
 "1 <span class="hljs-selector-tag">m</span><span class="hljs-selector-class">.m</span><span class="hljs-selector-class">.m</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
@@ -1749,4 +1760,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           </section>
       </section>
     
-<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+<section id="references" class="appendix"><!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References</h2><section id="informative-references"><h3 id="a-1-informative-references"><span class="secno">A.1 </span>Informative references</h3><dl class="bibliography"><dt id="bib-rdf11-concepts">[rdf11-concepts]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
+</dd><dt id="bib-UCUM">[UCUM]</dt><dd><a href="http://unitsofmeasure.org/ucum.html"><cite>The Unified Code for Units of Measure</cite></a>. Gunther Schadow; Clement J. McDonald.21 November 2017. URL: <a href="http://unitsofmeasure.org/ucum.html">http://unitsofmeasure.org/ucum.html</a>
+</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

@@ -19,27 +19,27 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix lindt: <https://w3id.org/lindt/voc#> .
+@prefix lindt: <http://w3id.org/lindt/voc#> .
 
-@base <https://w3id.org/lindt/custom_datatypes#> .
+@base <http://w3id.org/lindt/custom_datatypes#> .
 
 <length>  a  lindt:Datatype ; rdfs:Datatype;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "length"@en, "longueur"@fr;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
-    rdfs:seeAlso  <https://w3id.org/lindt/custom_datatypes.html>,
-        <https://w3id.org/lindt/custom_datatypes.js>;
+    rdfs:seeAlso  <http://w3id.org/lindt/custom_datatypes.html>,
+        <http://w3id.org/lindt/custom_datatypes.js> ;
     rdfs:isDefinedBy  <>;
     rdfs:comment  """A datatype to express length according to the International System of Units or the imperial units. Possible lexical forms of this datatype are: "42 km", "6.66 Gm", "8e17 mi", "0.98 inches"."""@en .
 
-<https://w3id.org/lindt/custom_datatypes.html>  a  foaf:Document;
+<http://w3id.org/lindt/custom_datatypes.html>  a  foaf:Document;
     dc:creator  max:;
     dc:modified  "2016-04-22T10h42:42+02:00"^^xsd:dateTimeStamp .
 
-<https://w3id.org/lindt/custom_datatypes.ttl>  a  foaf:Document;
+<http://w3id.org/lindt/custom_datatypes.ttl>  a  foaf:Document;
     dc:creator  max:, az:me;
     dc:modified  "2015-04-24T15h42:42+02:00"^^xsd:dateTimeStamp .
 
-<https://w3id.org/lindt/custom_datatypes.js>  a  foaf:Document;
+<http://w3id.org/lindt/custom_datatypes.js>  a  foaf:Document;
     dc:creator  max:, az:me;
     dc:modified  "2015-04-24T15h42:42+02:00"^^xsd:dateTimeStamp .

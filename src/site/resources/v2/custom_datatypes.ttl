@@ -19,11 +19,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix lindt: <https://w3id.org/lindt/> .
+@prefix lindt: <http://w3id.org/lindt/voc#> .
 
-@base <https://w3id.org/lindt/> .
+@base <http://w3id.org/lindt/> .
 
-@prefix : <https://w3id.org/lindt/custom_datatypes#> .
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
 
 <custom_datatypes> a foaf:Document ;
   dc:creator max: , az:me ;
@@ -51,7 +51,7 @@
 
 
 
-:ucum  a  lindt:Datatype , rdfs:Datatype ;
+cdt:ucum  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "ucum"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -66,7 +66,7 @@ Value space is the set of measurements as defined by the International Systems o
 Lexical-to-value mapping maps lexical forms with a UCUM unit to their corresponding measures according to the International Systems of Quantities."""@en .
 
 
-:acceleration  a  lindt:Datatype , rdfs:Datatype ;
+cdt:acceleration  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "acceleration"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -81,7 +81,7 @@ Value space is the set of acceleration as defined by the International Systems o
 Lexical-to-value mapping maps lexical forms with a acceleration unit to their corresponding acceleration measures according to the International Systems of Quantities."""@en .
 
 
-:amountOfSubstance  a  lindt:Datatype , rdfs:Datatype ;
+cdt:amountOfSubstance  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "amountOfSubstance"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -96,7 +96,7 @@ Value space is the set of amountOfSubstance as defined by the International Syst
 Lexical-to-value mapping maps lexical forms with a amountOfSubstance unit to their corresponding amountOfSubstance measures according to the International Systems of Quantities."""@en .
 
 
-:angle  a  lindt:Datatype , rdfs:Datatype ;
+cdt:angle  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "angle"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -111,7 +111,7 @@ Value space is the set of angle as defined by the International Systems of Quant
 Lexical-to-value mapping maps lexical forms with a angle unit to their corresponding angle measures according to the International Systems of Quantities."""@en .
 
 
-:area  a  lindt:Datatype , rdfs:Datatype ;
+cdt:area  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "area"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -126,7 +126,7 @@ Value space is the set of area as defined by the International Systems of Quanti
 Lexical-to-value mapping maps lexical forms with a area unit to their corresponding area measures according to the International Systems of Quantities."""@en .
 
 
-:catalyticActivity  a  lindt:Datatype , rdfs:Datatype ;
+cdt:catalyticActivity  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "catalyticActivity"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -141,7 +141,7 @@ Value space is the set of catalyticActivity as defined by the International Syst
 Lexical-to-value mapping maps lexical forms with a catalyticActivity unit to their corresponding catalyticActivity measures according to the International Systems of Quantities."""@en .
 
 
-:dimensionless  a  lindt:Datatype , rdfs:Datatype ;
+cdt:dimensionless  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "dimensionless"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -156,7 +156,7 @@ Value space is the set of dimensionless as defined by the International Systems 
 Lexical-to-value mapping maps lexical forms with a dimensionless unit to their corresponding dimensionless measures according to the International Systems of Quantities."""@en .
 
 
-:electricCapacitance  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricCapacitance  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricCapacitance"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -171,7 +171,7 @@ Value space is the set of electricCapacitance as defined by the International Sy
 Lexical-to-value mapping maps lexical forms with a electricCapacitance unit to their corresponding electricCapacitance measures according to the International Systems of Quantities."""@en .
 
 
-:electricCharge  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricCharge  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricCharge"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -186,7 +186,7 @@ Value space is the set of electricCharge as defined by the International Systems
 Lexical-to-value mapping maps lexical forms with a electricCharge unit to their corresponding electricCharge measures according to the International Systems of Quantities."""@en .
 
 
-:electricConductance  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricConductance  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricConductance"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -201,7 +201,7 @@ Value space is the set of electricConductance as defined by the International Sy
 Lexical-to-value mapping maps lexical forms with a electricConductance unit to their corresponding electricConductance measures according to the International Systems of Quantities."""@en .
 
 
-:electricCurrent  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricCurrent  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricCurrent"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -216,7 +216,7 @@ Value space is the set of electricCurrent as defined by the International System
 Lexical-to-value mapping maps lexical forms with a electricCurrent unit to their corresponding electricCurrent measures according to the International Systems of Quantities."""@en .
 
 
-:electricInductance  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricInductance  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricInductance"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -231,7 +231,7 @@ Value space is the set of electricInductance as defined by the International Sys
 Lexical-to-value mapping maps lexical forms with a electricInductance unit to their corresponding electricInductance measures according to the International Systems of Quantities."""@en .
 
 
-:electricPotential  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricPotential  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricPotential"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -246,7 +246,7 @@ Value space is the set of electricPotential as defined by the International Syst
 Lexical-to-value mapping maps lexical forms with a electricPotential unit to their corresponding electricPotential measures according to the International Systems of Quantities."""@en .
 
 
-:electricResistance  a  lindt:Datatype , rdfs:Datatype ;
+cdt:electricResistance  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "electricResistance"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -261,7 +261,7 @@ Value space is the set of electricResistance as defined by the International Sys
 Lexical-to-value mapping maps lexical forms with a electricResistance unit to their corresponding electricResistance measures according to the International Systems of Quantities."""@en .
 
 
-:energy  a  lindt:Datatype , rdfs:Datatype ;
+cdt:energy  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "energy"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -276,7 +276,7 @@ Value space is the set of energy as defined by the International Systems of Quan
 Lexical-to-value mapping maps lexical forms with a energy unit to their corresponding energy measures according to the International Systems of Quantities."""@en .
 
 
-:force  a  lindt:Datatype , rdfs:Datatype ;
+cdt:force  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "force"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -291,7 +291,7 @@ Value space is the set of force as defined by the International Systems of Quant
 Lexical-to-value mapping maps lexical forms with a force unit to their corresponding force measures according to the International Systems of Quantities."""@en .
 
 
-:frequency  a  lindt:Datatype , rdfs:Datatype ;
+cdt:frequency  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "frequency"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -306,7 +306,7 @@ Value space is the set of frequency as defined by the International Systems of Q
 Lexical-to-value mapping maps lexical forms with a frequency unit to their corresponding frequency measures according to the International Systems of Quantities."""@en .
 
 
-:illuminance  a  lindt:Datatype , rdfs:Datatype ;
+cdt:illuminance  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "illuminance"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -321,7 +321,7 @@ Value space is the set of illuminance as defined by the International Systems of
 Lexical-to-value mapping maps lexical forms with a illuminance unit to their corresponding illuminance measures according to the International Systems of Quantities."""@en .
 
 
-:length  a  lindt:Datatype , rdfs:Datatype ;
+cdt:length  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "length"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -336,7 +336,7 @@ Value space is the set of length as defined by the International Systems of Quan
 Lexical-to-value mapping maps lexical forms with a length unit to their corresponding length measures according to the International Systems of Quantities."""@en .
 
 
-:luminousFlux  a  lindt:Datatype , rdfs:Datatype ;
+cdt:luminousFlux  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "luminousFlux"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -351,7 +351,7 @@ Value space is the set of luminousFlux as defined by the International Systems o
 Lexical-to-value mapping maps lexical forms with a luminousFlux unit to their corresponding luminousFlux measures according to the International Systems of Quantities."""@en .
 
 
-:luminousIntensity  a  lindt:Datatype , rdfs:Datatype ;
+cdt:luminousIntensity  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "luminousIntensity"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -366,7 +366,7 @@ Value space is the set of luminousIntensity as defined by the International Syst
 Lexical-to-value mapping maps lexical forms with a luminousIntensity unit to their corresponding luminousIntensity measures according to the International Systems of Quantities."""@en .
 
 
-:magneticFlux  a  lindt:Datatype , rdfs:Datatype ;
+cdt:magneticFlux  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "magneticFlux"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -381,7 +381,7 @@ Value space is the set of magneticFlux as defined by the International Systems o
 Lexical-to-value mapping maps lexical forms with a magneticFlux unit to their corresponding magneticFlux measures according to the International Systems of Quantities."""@en .
 
 
-:magneticFluxDensity  a  lindt:Datatype , rdfs:Datatype ;
+cdt:magneticFluxDensity  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "magneticFluxDensity"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -396,7 +396,7 @@ Value space is the set of magneticFluxDensity as defined by the International Sy
 Lexical-to-value mapping maps lexical forms with a magneticFluxDensity unit to their corresponding magneticFluxDensity measures according to the International Systems of Quantities."""@en .
 
 
-:mass  a  lindt:Datatype , rdfs:Datatype ;
+cdt:mass  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "mass"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -411,7 +411,7 @@ Value space is the set of mass as defined by the International Systems of Quanti
 Lexical-to-value mapping maps lexical forms with a mass unit to their corresponding mass measures according to the International Systems of Quantities."""@en .
 
 
-:power  a  lindt:Datatype , rdfs:Datatype ;
+cdt:power  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "power"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -426,7 +426,7 @@ Value space is the set of power as defined by the International Systems of Quant
 Lexical-to-value mapping maps lexical forms with a power unit to their corresponding power measures according to the International Systems of Quantities."""@en .
 
 
-:pressure  a  lindt:Datatype , rdfs:Datatype ;
+cdt:pressure  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "pressure"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -441,7 +441,7 @@ Value space is the set of pressure as defined by the International Systems of Qu
 Lexical-to-value mapping maps lexical forms with a pressure unit to their corresponding pressure measures according to the International Systems of Quantities."""@en .
 
 
-:radiationDoseAbsorbed  a  lindt:Datatype , rdfs:Datatype ;
+cdt:radiationDoseAbsorbed  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "radiationDoseAbsorbed"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -456,7 +456,7 @@ Value space is the set of radiationDoseAbsorbed as defined by the International 
 Lexical-to-value mapping maps lexical forms with a radiationDoseAbsorbed unit to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities."""@en .
 
 
-:radiationDoseEffective  a  lindt:Datatype , rdfs:Datatype ;
+cdt:radiationDoseEffective  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "radiationDoseEffective"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -471,7 +471,7 @@ Value space is the set of radiationDoseEffective as defined by the International
 Lexical-to-value mapping maps lexical forms with a radiationDoseEffective unit to their corresponding radiationDoseEffective measures according to the International Systems of Quantities."""@en .
 
 
-:radioactivity  a  lindt:Datatype , rdfs:Datatype ;
+cdt:radioactivity  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "radioactivity"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -486,7 +486,7 @@ Value space is the set of radioactivity as defined by the International Systems 
 Lexical-to-value mapping maps lexical forms with a radioactivity unit to their corresponding radioactivity measures according to the International Systems of Quantities."""@en .
 
 
-:solidAngle  a  lindt:Datatype , rdfs:Datatype ;
+cdt:solidAngle  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "solidAngle"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -501,7 +501,7 @@ Value space is the set of solidAngle as defined by the International Systems of 
 Lexical-to-value mapping maps lexical forms with a solidAngle unit to their corresponding solidAngle measures according to the International Systems of Quantities."""@en .
 
 
-:speed  a  lindt:Datatype , rdfs:Datatype ;
+cdt:speed  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "speed"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -516,7 +516,7 @@ Value space is the set of speed as defined by the International Systems of Quant
 Lexical-to-value mapping maps lexical forms with a speed unit to their corresponding speed measures according to the International Systems of Quantities."""@en .
 
 
-:temperature  a  lindt:Datatype , rdfs:Datatype ;
+cdt:temperature  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "temperature"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -531,7 +531,7 @@ Value space is the set of temperature as defined by the International Systems of
 Lexical-to-value mapping maps lexical forms with a temperature unit to their corresponding temperature measures according to the International Systems of Quantities."""@en .
 
 
-:time  a  lindt:Datatype , rdfs:Datatype ;
+cdt:time  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "time"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
@@ -546,7 +546,7 @@ Value space is the set of time as defined by the International Systems of Quanti
 Lexical-to-value mapping maps lexical forms with a time unit to their corresponding time measures according to the International Systems of Quantities."""@en .
 
 
-:volume  a  lindt:Datatype , rdfs:Datatype ;
+cdt:volume  a  lindt:Datatype , rdfs:Datatype ;
     rdfs:subClassOf  rdfs:Literal;  # This line is useless
     rdfs:label  "volume"@en ;
     lindt:implements lindt:compare , lindt:exportLiteral , lindt:getIri , lindt:getNormalForm , lindt:getRecognisedDatatypes , lindt:importLiteral , lindt:isEqual , lindt:isWellFormed , lindt:recognisesDatatype ;
