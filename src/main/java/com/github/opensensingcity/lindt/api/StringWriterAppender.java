@@ -53,9 +53,9 @@ public class StringWriterAppender extends AppenderSkeleton {
                     null, ErrorCode.MISSING_LAYOUT);
             return;
         }
-        String message = this.layout.format(event);
         Session session = sessions.get(event.getThreadName());
         if (session != null) {
+            String message = this.layout.format(event);
             try {
                 session.getBasicRemote().sendText(gson.toJson(new Response(message, "", "", false)));
             } catch (IOException | IllegalStateException ex) {

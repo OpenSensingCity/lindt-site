@@ -97,7 +97,7 @@ public class QueryEndpoint {
                 result.write(sb, "TTL", "http://example.org/");
                 session.getBasicRemote().sendText(gson.toJson(new Response("",sb.toString(),"graph",false)));
             }
-        } catch (IllegalArgumentException | IOException | RiotException | QueryParseException ex) {
+        } catch (IllegalArgumentException | IOException | RiotException | QueryParseException | UnsupportedOperationException ex) {
             LOG.error(ex.getClass().getName() + ": " + ex.getMessage());
             return;
         }
