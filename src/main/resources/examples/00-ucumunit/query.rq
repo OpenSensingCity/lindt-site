@@ -1,0 +1,31 @@
+PREFIX iter: <http://w3id.org/sparql-generate/iter/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cdt: <http://w3id.org/lindt/custom_datatypes#> 
+PREFIX ex: <http://example.org/>
+
+SELECT ?value1 ?value2 ?isEqual
+
+WHERE{ 
+
+  VALUES ( ?value1 ?value2 ) {
+
+    #
+    # DISCLAIMER
+    #
+    # any unit defined in http://unitsofmeasure.org/ucum.html should work
+    #
+    # any issue (e.g., degree Réaumur temperature unit is not supported)
+    # is to be reported to the developers of the UCUM implementation that is used in 
+    # this extension of jena
+    # 
+    #       https://github.com/unitsofmeasurement/uom-systems/issues
+    #
+    
+    ( "km/h"^^cdt:ucumunit "m/s"^^cdt:ucumunit )
+    ( "km/h"^^cdt:ucumunit "km.h-1"^^cdt:ucumunit )
+    ( "km/h"^^cdt:ucumunit "(1000.m)/(60.min)"^^cdt:ucumunit )
+
+  }
+  
+  BIND( ?value1 = ?value2 AS ?isEqual) 
+}

@@ -24,15 +24,7 @@
                     url:        "http://www.emse.fr/~zimmermann/",
                     company:    "École Nationale Supérieure des Mines de Saint-Étienne",
                     companyURL: "http://www.mines-stetienne.fr/",
-                    mailto: "antone.zimmermann@emse.fr" }
-          ],
-          alternateFormats: [
-              { uri: "custom_datatypes.ttl",
-                label: "Turtle RDF document (text/turtle)", 
-              },
-              { uri: "custom_datatypes.js",
-                label: "Javascript specification code (application/javascript)", 
-              },
+                    mailto: "antoine.zimmermann@emse.fr" }
           ],
           inlineCSS: true,
           localBiblio: {
@@ -154,7 +146,8 @@ th, td {
           <h3>Overview of Datatypes</h3>
           <div id="index-of-measurement-ucum">
             <div class="azlist">
-              <p>Main datatype: <a href="#ucum">cdt:ucum</a>
+              <p>Main datatypes: <a href="#ucum">cdt:ucum</a>
+                , <a href="#ucumunit">cdt:ucumunit</a>
               </p>
             </div>
           </div>
@@ -199,6 +192,45 @@ th, td {
         </section>
 
 
+        <section class="specterm" id="ucumunit"  about="cdt:ucumunit" typeof="rdf:Datatype">
+          <h3><a href="#ucumunit">cdt:ucumunit</a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#ucumunit">http://w3id.org/lindt/custom_datatypes#ucumunit</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">UCUM Unit Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement units in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Any unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of units as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps UCUM unit expressions to a unit semantic element according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all literals below are well formed, and share the same value.</p>
+<pre class="example">
+"km.h-1"^^cdt:ucumunit
+"km/h"^^cdt:ucumunit
+"(1000m)/(60min)"^^cdt:ucumunit
+</pre></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+
+
         <section class="specterm" id="ucum"  about="cdt:ucum" typeof="rdf:Datatype">
           <h3><a href="#ucum">cdt:ucum</a></h3>
           <p class="crossreference"></p>
@@ -212,7 +244,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -220,7 +252,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a UCUM unit to their corresponding measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a UCUM unit expression to their corresponding measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -252,7 +284,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an acceleration unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an acceleration unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -260,7 +292,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a acceleration unit to their corresponding acceleration measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a acceleration UCUM unit expression to their corresponding acceleration measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -289,7 +321,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an amountOfSubstance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an amountOfSubstance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -297,7 +329,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a amountOfSubstance unit to their corresponding amountOfSubstance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a amountOfSubstance UCUM unit expression to their corresponding amountOfSubstance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -323,7 +355,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an angle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an angle unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -331,7 +363,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a angle unit to their corresponding angle measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a angle UCUM unit expression to their corresponding angle measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -361,7 +393,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an area unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an area unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -369,7 +401,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a area unit to their corresponding area measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a area UCUM unit expression to their corresponding area measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -399,7 +431,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a catalyticActivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a catalyticActivity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -407,7 +439,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a catalyticActivity unit to their corresponding catalyticActivity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a catalyticActivity UCUM unit expression to their corresponding catalyticActivity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -435,7 +467,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a dimensionless unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a dimensionless unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -443,7 +475,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a dimensionless unit to their corresponding dimensionless measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a dimensionless UCUM unit expression to their corresponding dimensionless measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -475,7 +507,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCapacitance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCapacitance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -483,7 +515,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricCapacitance unit to their corresponding electricCapacitance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricCapacitance UCUM unit expression to their corresponding electricCapacitance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -510,7 +542,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCharge unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCharge unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -518,7 +550,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricCharge unit to their corresponding electricCharge measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricCharge UCUM unit expression to their corresponding electricCharge measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -545,7 +577,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricConductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricConductance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -553,7 +585,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricConductance unit to their corresponding electricConductance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricConductance UCUM unit expression to their corresponding electricConductance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -581,7 +613,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCurrent unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCurrent unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -589,7 +621,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricCurrent unit to their corresponding electricCurrent measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricCurrent UCUM unit expression to their corresponding electricCurrent measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -618,7 +650,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricInductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricInductance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -626,7 +658,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricInductance unit to their corresponding electricInductance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricInductance UCUM unit expression to their corresponding electricInductance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -654,7 +686,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricPotential unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricPotential unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -662,7 +694,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricPotential unit to their corresponding electricPotential measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricPotential UCUM unit expression to their corresponding electricPotential measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -691,7 +723,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricResistance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricResistance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -699,7 +731,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricResistance unit to their corresponding electricResistance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricResistance UCUM unit expression to their corresponding electricResistance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -729,7 +761,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an energy unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an energy unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -737,7 +769,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a energy unit to their corresponding energy measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a energy UCUM unit expression to their corresponding energy measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -771,7 +803,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a force unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a force unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -779,7 +811,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a force unit to their corresponding force measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a force UCUM unit expression to their corresponding force measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -810,7 +842,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a frequency unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a frequency unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -818,7 +850,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a frequency unit to their corresponding frequency measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a frequency UCUM unit expression to their corresponding frequency measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -848,7 +880,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an illuminance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an illuminance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -856,7 +888,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a illuminance unit to their corresponding illuminance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a illuminance UCUM unit expression to their corresponding illuminance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -884,7 +916,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a length unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a length unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -892,7 +924,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a length unit to their corresponding length measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a length UCUM unit expression to their corresponding length measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -920,7 +952,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousFlux unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -928,7 +960,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a luminousFlux unit to their corresponding luminousFlux measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a luminousFlux UCUM unit expression to their corresponding luminousFlux measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -954,7 +986,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousIntensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousIntensity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -962,7 +994,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a luminousIntensity unit to their corresponding luminousIntensity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a luminousIntensity UCUM unit expression to their corresponding luminousIntensity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -988,7 +1020,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFlux unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -996,7 +1028,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a magneticFlux unit to their corresponding magneticFlux measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a magneticFlux UCUM unit expression to their corresponding magneticFlux measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1022,7 +1054,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFluxDensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFluxDensity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1030,7 +1062,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a magneticFluxDensity unit to their corresponding magneticFluxDensity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a magneticFluxDensity UCUM unit expression to their corresponding magneticFluxDensity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1058,7 +1090,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a mass unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a mass unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1066,7 +1098,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a mass unit to their corresponding mass measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a mass UCUM unit expression to their corresponding mass measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1098,7 +1130,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a power unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a power unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1106,7 +1138,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a power unit to their corresponding power measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a power UCUM unit expression to their corresponding power measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1135,7 +1167,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a pressure unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a pressure unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1143,7 +1175,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a pressure unit to their corresponding pressure measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a pressure UCUM unit expression to their corresponding pressure measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1172,7 +1204,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseAbsorbed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseAbsorbed unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1180,7 +1212,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a radiationDoseAbsorbed unit to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a radiationDoseAbsorbed UCUM unit expression to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1207,7 +1239,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseEffective unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseEffective unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1215,7 +1247,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a radiationDoseEffective unit to their corresponding radiationDoseEffective measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a radiationDoseEffective UCUM unit expression to their corresponding radiationDoseEffective measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1242,7 +1274,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radioactivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radioactivity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1250,7 +1282,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a radioactivity unit to their corresponding radioactivity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a radioactivity UCUM unit expression to their corresponding radioactivity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1278,7 +1310,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a solidAngle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a solidAngle unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1286,7 +1318,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a solidAngle unit to their corresponding solidAngle measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a solidAngle UCUM unit expression to their corresponding solidAngle measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1313,7 +1345,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a speed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a speed unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1321,7 +1353,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a speed unit to their corresponding speed measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a speed UCUM unit expression to their corresponding speed measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1349,7 +1381,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a temperature unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a temperature unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1357,7 +1389,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a temperature unit to their corresponding temperature measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a temperature UCUM unit expression to their corresponding temperature measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1387,7 +1419,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a time unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a time unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1395,7 +1427,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a time unit to their corresponding time measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a time UCUM unit expression to their corresponding time measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -1434,7 +1466,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a volume unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a volume unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1442,7 +1474,7 @@ th, td {
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a volume unit to their corresponding volume measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a volume UCUM unit expression to their corresponding volume measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>

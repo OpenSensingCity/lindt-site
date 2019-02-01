@@ -1,10 +1,6 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 20.10.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
-div.example-title {
-    min-width: 7.5em;
-    color: #b9ab2d;
-}
-div.example-title span {
-    text-transform: uppercase;
+<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 23.4.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
 }
 aside.example, div.example, div.illegal-example {
     padding: 0.5em;
@@ -27,7 +23,7 @@ aside.example div.example {
     border-color: #999;
     background: #fff;
 }
-aside.example div.example div.example-title {
+aside.example div.example span.example-title {
     color: #999;
 }
 </style>
@@ -152,6 +148,10 @@ a.bibref {
   text-decoration: none;
 }
 
+#references :target {
+  background: #eaf3ff;
+}
+
 cite .bibref {
   font-style: normal;
 }
@@ -218,11 +218,11 @@ table.simple {
 
 /* --- DL --- */
 
-.section dd > p:first-child {
+.section dd>p:first-child {
   margin-top: 0;
 }
 
-.section dd > p:last-child {
+.section dd>p:last-child {
   margin-bottom: 0;
 }
 
@@ -235,7 +235,7 @@ table.simple {
   margin-bottom: 0;
 }
 
-#issue-summary > ul,
+#issue-summary>ul,
 .respec-dfn-list {
   column-count: 2;
 }
@@ -251,7 +251,7 @@ details.respec-tests-details {
   vertical-align: top;
 }
 
-details.respec-tests-details > * {
+details.respec-tests-details>* {
   padding-right: 2em;
 }
 
@@ -259,25 +259,87 @@ details.respec-tests-details[open] {
   z-index: 999999;
   position: absolute;
   border: thin solid #cad3e2;
-  border-radius: .3em;
+  border-radius: 0.3em;
   background-color: white;
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 
-details.respec-tests-details[open] > summary {
+details.respec-tests-details[open]>summary {
   border-bottom: thin solid #cad3e2;
   padding-left: 1em;
   margin-bottom: 1em;
   line-height: 2em;
 }
 
-details.respec-tests-details > ul {
+details.respec-tests-details>ul {
   width: 100%;
   margin-top: -0.3em;
 }
 
-details.respec-tests-details > li {
+details.respec-tests-details>li {
   padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2>a.self-link,
+h3>a.self-link,
+h4>a.self-link,
+h5>a.self-link,
+h6>a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: .5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity .2s;
+  width: 2em;
+}
+
+h2>a.self-link::before,
+h3>a.self-link::before,
+h4>a.self-link::before,
+h5>a.self-link::before,
+h6>a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2>a.self-link,
+  h3>a.self-link,
+  h4>a.self-link,
+  h5>a.self-link,
+  h6>a.self-link {
+    left: auto;
+    top: auto;
+  }
 }
 
 @media print {
@@ -405,17 +467,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
       "url": "http://www.emse.fr/~zimmermann/",
       "company": "École Nationale Supérieure des Mines de Saint-Étienne",
       "companyURL": "http://www.mines-stetienne.fr/",
-      "mailto": "antone.zimmermann@emse.fr"
-    }
-  ],
-  "alternateFormats": [
-    {
-      "uri": "custom_datatypes.ttl",
-      "label": "Turtle RDF document (text/turtle)"
-    },
-    {
-      "uri": "custom_datatypes.js",
-      "label": "Javascript specification code (application/javascript)"
+      "mailto": "antoine.zimmermann@emse.fr"
     }
   ],
   "inlineCSS": true,
@@ -427,7 +479,8 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         "Gunther Schadow",
         "Clement J. McDonald"
       ],
-      "date": "21 November 2017"
+      "date": "21 November 2017",
+      "id": "ucum"
     }
   },
   "publishISODate": "2018-03-20T00:00:00.000Z",
@@ -436,10 +489,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <body class="h-entry"><div class="head"><a href="http://mines-stetienne.fr" class="logo">
         <img alt="Mines Saint-Étienne" width="150" height="150" src="/lindt/logo.png">
       </a>
-  
+  <a href="https://www.w3.org/" class="logo">
+      <img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C">
+  </a>
   <h1 id="title" class="title p-name">Custom Datatypes</h1>
   <h2 id="subtitle" class="subtitle">Towards a web of Linked Datatypes</h2>
-  <h2 id="unofficial-draft-20-march-2018">Unofficial Draft <time class="dt-published" datetime="2018-03-20">20 March 2018</time></h2>
+  <h2>Unofficial Draft <time class="dt-published" datetime="2018-03-20">20 March 2018</time></h2>
   <dl>
     
     
@@ -450,17 +505,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     
     
     <dt>Editors:</dt>
-    <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:maxime.lefrancois@emse.fr">Maxime Lefrançois</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">École Nationale Supérieure des Mines de Saint-Étienne</a>)</dd><dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:antone.zimmermann@emse.fr">Antoine Zimmermann</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">École Nationale Supérieure des Mines de Saint-Étienne</a>)</dd>
+    <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:maxime.lefrancois@emse.fr">Maxime Lefrançois</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">École Nationale Supérieure des Mines de Saint-Étienne</a>)</dd><dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:antoine.zimmermann@emse.fr">Antoine Zimmermann</a> (<a class="p-org org h-org h-card" href="http://www.mines-stetienne.fr/">École Nationale Supérieure des Mines de Saint-Étienne</a>)</dd>
     
     
     
   </dl>
   
   
-  <p>
-      This document is also available in these non-normative formats:
-      <a rel="alternate" href="custom_datatypes.ttl">Turtle RDF document (text/turtle)</a> and <a rel="alternate" href="custom_datatypes.js">Javascript specification code (application/javascript)</a>
-    </p>
+  
   <p class="copyright">
           This document is licensed under a
           <a class="subfoot" href="https://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons
@@ -468,35 +520,36 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         </p>
   <hr title="Separator for header">
 </div>
-    <section id="abstract" class="introductory"><h2 id="abstract-0">Abstract</h2>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
       <p>
         This document specifies custom datatypes designed to concisely encode important information.
       </p>
     </section>
 
-    <section id="sotd" class="introductory"><h2 id="status-of-this-document">Status of This Document</h2><p>
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
     This document is draft of a potential specification. It has no official standing of
-    any kind and does not represent the support or consensus of any standards organisation.
-  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#measurements" class="tocxref"><span class="secno">1. </span>Custom Datatypes for Quantity Values</a><ol class="toc"><li class="tocline"><a href="#overview-of-measurement-datatypes" class="tocxref"><span class="secno">1.1 </span>Overview of Datatypes</a></li><li class="tocline"><a href="#ucum" class="tocxref"><span class="secno">1.2 </span><span class="formerLink">cdt:ucum</span></a></li><li class="tocline"><a href="#acceleration" class="tocxref"><span class="secno">1.3 </span><span class="formerLink">cdt:acceleration</span></a></li><li class="tocline"><a href="#amountOfSubstance" class="tocxref"><span class="secno">1.4 </span><span class="formerLink">cdt:amountOfSubstance</span></a></li><li class="tocline"><a href="#angle" class="tocxref"><span class="secno">1.5 </span><span class="formerLink">cdt:angle</span></a></li><li class="tocline"><a href="#area" class="tocxref"><span class="secno">1.6 </span><span class="formerLink">cdt:area</span></a></li><li class="tocline"><a href="#catalyticActivity" class="tocxref"><span class="secno">1.7 </span><span class="formerLink">cdt:catalyticActivity</span></a></li><li class="tocline"><a href="#dimensionless" class="tocxref"><span class="secno">1.8 </span><span class="formerLink">cdt:dimensionless</span></a></li><li class="tocline"><a href="#electricCapacitance" class="tocxref"><span class="secno">1.9 </span><span class="formerLink">cdt:electricCapacitance</span></a></li><li class="tocline"><a href="#electricCharge" class="tocxref"><span class="secno">1.10 </span><span class="formerLink">cdt:electricCharge</span></a></li><li class="tocline"><a href="#electricConductance" class="tocxref"><span class="secno">1.11 </span><span class="formerLink">cdt:electricConductance</span></a></li><li class="tocline"><a href="#electricCurrent" class="tocxref"><span class="secno">1.12 </span><span class="formerLink">cdt:electricCurrent</span></a></li><li class="tocline"><a href="#electricInductance" class="tocxref"><span class="secno">1.13 </span><span class="formerLink">cdt:electricInductance</span></a></li><li class="tocline"><a href="#electricPotential" class="tocxref"><span class="secno">1.14 </span><span class="formerLink">cdt:electricPotential</span></a></li><li class="tocline"><a href="#electricResistance" class="tocxref"><span class="secno">1.15 </span><span class="formerLink">cdt:electricResistance</span></a></li><li class="tocline"><a href="#energy" class="tocxref"><span class="secno">1.16 </span><span class="formerLink">cdt:energy</span></a></li><li class="tocline"><a href="#force" class="tocxref"><span class="secno">1.17 </span><span class="formerLink">cdt:force</span></a></li><li class="tocline"><a href="#frequency" class="tocxref"><span class="secno">1.18 </span><span class="formerLink">cdt:frequency</span></a></li><li class="tocline"><a href="#illuminance" class="tocxref"><span class="secno">1.19 </span><span class="formerLink">cdt:illuminance</span></a></li><li class="tocline"><a href="#length" class="tocxref"><span class="secno">1.20 </span><span class="formerLink">cdt:length</span></a></li><li class="tocline"><a href="#luminousFlux" class="tocxref"><span class="secno">1.21 </span><span class="formerLink">cdt:luminousFlux</span></a></li><li class="tocline"><a href="#luminousIntensity" class="tocxref"><span class="secno">1.22 </span><span class="formerLink">cdt:luminousIntensity</span></a></li><li class="tocline"><a href="#magneticFlux" class="tocxref"><span class="secno">1.23 </span><span class="formerLink">cdt:magneticFlux</span></a></li><li class="tocline"><a href="#magneticFluxDensity" class="tocxref"><span class="secno">1.24 </span><span class="formerLink">cdt:magneticFluxDensity</span></a></li><li class="tocline"><a href="#mass" class="tocxref"><span class="secno">1.25 </span><span class="formerLink">cdt:mass</span></a></li><li class="tocline"><a href="#power" class="tocxref"><span class="secno">1.26 </span><span class="formerLink">cdt:power</span></a></li><li class="tocline"><a href="#pressure" class="tocxref"><span class="secno">1.27 </span><span class="formerLink">cdt:pressure</span></a></li><li class="tocline"><a href="#radiationDoseAbsorbed" class="tocxref"><span class="secno">1.28 </span><span class="formerLink">cdt:radiationDoseAbsorbed</span></a></li><li class="tocline"><a href="#radiationDoseEffective" class="tocxref"><span class="secno">1.29 </span><span class="formerLink">cdt:radiationDoseEffective</span></a></li><li class="tocline"><a href="#radioactivity" class="tocxref"><span class="secno">1.30 </span><span class="formerLink">cdt:radioactivity</span></a></li><li class="tocline"><a href="#solidAngle" class="tocxref"><span class="secno">1.31 </span><span class="formerLink">cdt:solidAngle</span></a></li><li class="tocline"><a href="#speed" class="tocxref"><span class="secno">1.32 </span><span class="formerLink">cdt:speed</span></a></li><li class="tocline"><a href="#temperature" class="tocxref"><span class="secno">1.33 </span><span class="formerLink">cdt:temperature</span></a></li><li class="tocline"><a href="#time" class="tocxref"><span class="secno">1.34 </span><span class="formerLink">cdt:time</span></a></li><li class="tocline"><a href="#volume" class="tocxref"><span class="secno">1.35 </span><span class="formerLink">cdt:volume</span></a></li></ol></li><li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2. </span>Implementation</a><ol class="toc"><li class="tocline"><a href="#on-apache-jena" class="tocxref"><span class="secno">2.1 </span>On Apache Jena</a></li></ol></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">A.1 </span>Informative references</a></li></ol></li></ol></nav>
+    any kind and does not represent the support or consensus of any standards organization.
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a href="#measurements" class="tocxref"><span class="secno">1. </span>Custom Datatypes for Quantity Values</a><ol class="toc"><li class="tocline"><a href="#overview-of-measurement-datatypes" class="tocxref"><span class="secno">1.1 </span>Overview of Datatypes</a></li><li class="tocline"><a href="#ucumunit" class="tocxref"><span class="secno">1.2 </span><span class="formerLink">cdt:ucumunit</span></a></li><li class="tocline"><a href="#ucum" class="tocxref"><span class="secno">1.3 </span><span class="formerLink">cdt:ucum</span></a></li><li class="tocline"><a href="#acceleration" class="tocxref"><span class="secno">1.4 </span><span class="formerLink">cdt:acceleration</span></a></li><li class="tocline"><a href="#amountOfSubstance" class="tocxref"><span class="secno">1.5 </span><span class="formerLink">cdt:amountOfSubstance</span></a></li><li class="tocline"><a href="#angle" class="tocxref"><span class="secno">1.6 </span><span class="formerLink">cdt:angle</span></a></li><li class="tocline"><a href="#area" class="tocxref"><span class="secno">1.7 </span><span class="formerLink">cdt:area</span></a></li><li class="tocline"><a href="#catalyticActivity" class="tocxref"><span class="secno">1.8 </span><span class="formerLink">cdt:catalyticActivity</span></a></li><li class="tocline"><a href="#dimensionless" class="tocxref"><span class="secno">1.9 </span><span class="formerLink">cdt:dimensionless</span></a></li><li class="tocline"><a href="#electricCapacitance" class="tocxref"><span class="secno">1.10 </span><span class="formerLink">cdt:electricCapacitance</span></a></li><li class="tocline"><a href="#electricCharge" class="tocxref"><span class="secno">1.11 </span><span class="formerLink">cdt:electricCharge</span></a></li><li class="tocline"><a href="#electricConductance" class="tocxref"><span class="secno">1.12 </span><span class="formerLink">cdt:electricConductance</span></a></li><li class="tocline"><a href="#electricCurrent" class="tocxref"><span class="secno">1.13 </span><span class="formerLink">cdt:electricCurrent</span></a></li><li class="tocline"><a href="#electricInductance" class="tocxref"><span class="secno">1.14 </span><span class="formerLink">cdt:electricInductance</span></a></li><li class="tocline"><a href="#electricPotential" class="tocxref"><span class="secno">1.15 </span><span class="formerLink">cdt:electricPotential</span></a></li><li class="tocline"><a href="#electricResistance" class="tocxref"><span class="secno">1.16 </span><span class="formerLink">cdt:electricResistance</span></a></li><li class="tocline"><a href="#energy" class="tocxref"><span class="secno">1.17 </span><span class="formerLink">cdt:energy</span></a></li><li class="tocline"><a href="#force" class="tocxref"><span class="secno">1.18 </span><span class="formerLink">cdt:force</span></a></li><li class="tocline"><a href="#frequency" class="tocxref"><span class="secno">1.19 </span><span class="formerLink">cdt:frequency</span></a></li><li class="tocline"><a href="#illuminance" class="tocxref"><span class="secno">1.20 </span><span class="formerLink">cdt:illuminance</span></a></li><li class="tocline"><a href="#length" class="tocxref"><span class="secno">1.21 </span><span class="formerLink">cdt:length</span></a></li><li class="tocline"><a href="#luminousFlux" class="tocxref"><span class="secno">1.22 </span><span class="formerLink">cdt:luminousFlux</span></a></li><li class="tocline"><a href="#luminousIntensity" class="tocxref"><span class="secno">1.23 </span><span class="formerLink">cdt:luminousIntensity</span></a></li><li class="tocline"><a href="#magneticFlux" class="tocxref"><span class="secno">1.24 </span><span class="formerLink">cdt:magneticFlux</span></a></li><li class="tocline"><a href="#magneticFluxDensity" class="tocxref"><span class="secno">1.25 </span><span class="formerLink">cdt:magneticFluxDensity</span></a></li><li class="tocline"><a href="#mass" class="tocxref"><span class="secno">1.26 </span><span class="formerLink">cdt:mass</span></a></li><li class="tocline"><a href="#power" class="tocxref"><span class="secno">1.27 </span><span class="formerLink">cdt:power</span></a></li><li class="tocline"><a href="#pressure" class="tocxref"><span class="secno">1.28 </span><span class="formerLink">cdt:pressure</span></a></li><li class="tocline"><a href="#radiationDoseAbsorbed" class="tocxref"><span class="secno">1.29 </span><span class="formerLink">cdt:radiationDoseAbsorbed</span></a></li><li class="tocline"><a href="#radiationDoseEffective" class="tocxref"><span class="secno">1.30 </span><span class="formerLink">cdt:radiationDoseEffective</span></a></li><li class="tocline"><a href="#radioactivity" class="tocxref"><span class="secno">1.31 </span><span class="formerLink">cdt:radioactivity</span></a></li><li class="tocline"><a href="#solidAngle" class="tocxref"><span class="secno">1.32 </span><span class="formerLink">cdt:solidAngle</span></a></li><li class="tocline"><a href="#speed" class="tocxref"><span class="secno">1.33 </span><span class="formerLink">cdt:speed</span></a></li><li class="tocline"><a href="#temperature" class="tocxref"><span class="secno">1.34 </span><span class="formerLink">cdt:temperature</span></a></li><li class="tocline"><a href="#time" class="tocxref"><span class="secno">1.35 </span><span class="formerLink">cdt:time</span></a></li><li class="tocline"><a href="#volume" class="tocxref"><span class="secno">1.36 </span><span class="formerLink">cdt:volume</span></a></li></ol></li><li class="tocline"><a href="#implementation" class="tocxref"><span class="secno">2. </span>Implementation</a><ol class="toc"><li class="tocline"><a href="#on-apache-jena" class="tocxref"><span class="secno">2.1 </span>On Apache Jena</a></li></ol></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">A. </span>References</a><ol class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">A.1 </span>Normative references</a></li></ol></li></ol></nav>
 
 
     <section id="measurements">
-      <!--OddPage--><h2 id="x1-custom-datatypes-for-quantity-values"><span class="secno">1. </span>Custom Datatypes for Quantity Values</h2>
+      <!--OddPage--><h2 id="x1-custom-datatypes-for-quantity-values"><span class="secno">1. </span>Custom Datatypes for Quantity Values<a class="self-link" aria-label="§" href="#measurements"></a></h2>
         <p>
         Being able to describe quantity values and their unit is a requirement that is common for many applications in several industrial sectors such as manufacturing, transport and logistics, personal and public health, smart cities, energy, environment, buildings, agriculture. Different ontologies have been developed to describe units, their relations, and quantities with their values. 
         </p>
         <p>
-        We propose an alternative approach based on RDF Datatypes [<cite><a class="bibref" href="#bib-rdf11-concepts">rdf11-concepts</a></cite>], that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a> [<cite><a class="bibref" href="#bib-UCUM">UCUM</a></cite>], a code system intended to <emph>include all units of measures being contemporarily used in international science, engineering, and business.</emph>. 
+        We propose an alternative approach based on RDF Datatypes [<cite><a class="bibref" href="#bib-rdf11-concepts">rdf11-concepts</a></cite>], that leverages the <a href="http://unitsofmeasure.org/trac">Unified Code of Units of Measures</a> [<cite><a class="bibref" href="#bib-ucum">UCUM</a></cite>], a code system intended to <emph>include all units of measures being contemporarily used in international science, engineering, and business.</emph>. 
         </p>
         <p>
           The custom datatypes introduced in this section can be used for lightweight encoding and querying of quantity values, in a wide range of applications where representing and reasoning with quantity kinds and values is more important than reasoning with units.
         </p>
 
         <section class="informative" id="overview-of-measurement-datatypes">
-          <h3 id="x1-1-overview-of-datatypes"><span class="secno">1.1 </span>Overview of Datatypes</h3><p><em>This section is non-normative.</em></p>
+          <h3 id="x1-1-overview-of-datatypes"><span class="secno">1.1 </span>Overview of Datatypes<a class="self-link" aria-label="§" href="#overview-of-measurement-datatypes"></a></h3><p><em>This section is non-normative.</em></p>
           <div id="index-of-measurement-ucum">
             <div class="azlist">
-              <p>Main datatype: <a href="#ucum">cdt:ucum</a>
+              <p>Main datatypes: <a href="#ucum">cdt:ucum</a>
+                , <a href="#ucumunit">cdt:ucumunit</a>
               </p>
             </div>
           </div>
@@ -541,8 +594,48 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
         </section>
 
 
+        <section class="specterm" id="ucumunit" about="cdt:ucumunit" typeof="rdf:Datatype">
+          <h3 id="x1-2-cdt-ucumunit"><span class="secno">1.2 </span><a href="#ucumunit">cdt:ucumunit</a><a class="self-link" aria-label="§" href="#ucumunit"></a></h3>
+          <p class="crossreference"></p>
+          <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#ucumunit">http://w3id.org/lindt/custom_datatypes#ucumunit</a></p>
+          <table>
+            <tbody>
+              <tr>
+                <th>Definition</th>
+                <td><em property="rdfs:label">UCUM Unit Datatype</em> -
+          <span property="rdfs:comment skos:definition">Datatype to encode measurement units in a simple literal.</span></td>
+              </tr>
+              <tr>
+                <th>Lexical space</th>
+                <td>Any unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
+              </tr>
+              <tr>
+                <th>Value space Includes</th>
+                <td>Set of units as defined by the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Lexical-to-value mapping</th>
+                <td>Maps UCUM unit expressions to a unit semantic element according to the International Systems of Quantities.</td>
+              </tr>
+              <tr>
+                <th>Examples</th>
+                <td>
+                  <p>For example, all literals below are well formed, and share the same value.</p>
+<div class="example" id="ex-1-example-1-km-h-1-cdt-ucumunit-km-h-cdt-ucumunit-1000m-60min-cdt-ucumunit">
+          <div class="marker"><a class="self-link" href="#ex-1-example-1-km-h-1-cdt-ucumunit-km-h-cdt-ucumunit-1000m-60min-cdt-ucumunit">Example 1</a></div>
+          <pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"km.h-1"</span>^^cdt:ucumunit
+<span class="hljs-string">"km/h"</span>^^cdt:ucumunit
+<span class="hljs-string">"(1000m)/(60min)"</span>^^cdt:ucumunit</pre>
+        </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+
+
         <section class="specterm" id="ucum" about="cdt:ucum" typeof="rdf:Datatype">
-          <h3 id="x1-2-cdt-ucum"><span class="secno">1.2 </span><a href="#ucum">cdt:ucum</a></h3>
+          <h3 id="x1-3-cdt-ucum"><span class="secno">1.3 </span><a href="#ucum">cdt:ucum</a><a class="self-link" aria-label="§" href="#ucum"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#ucum">http://w3id.org/lindt/custom_datatypes#ucum</a></p>
           <table>
@@ -554,7 +647,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -562,17 +655,20 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a UCUM unit to their corresponding measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a UCUM unit expression to their corresponding measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>Check out <a href="/lindt/playground.html">the playground</a></p>
                   <p>For example, all literals below are well formed, <a class="playground" href="/lindt/playground.html?example=0-ucum">test them online</a> and share the same value.</p>
-<div class="example"><div class="example-title marker"><span>Example 1</span></div><pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"1 m"</span>^^cdt:ucum
+<div class="example" id="ex-2-example-2-1-m-cdt-ucum-1-0e-9-nm-cdt-ucum-1e-10-ao-cdt-ucum-1-m-s-s-cdt-ucum">
+          <div class="marker"><a class="self-link" href="#ex-2-example-2-1-m-cdt-ucum-1-0e-9-nm-cdt-ucum-1e-10-ao-cdt-ucum-1-m-s-s-cdt-ucum">Example 2</a></div>
+          <pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"1 m"</span>^^cdt:ucum
 <span class="hljs-string">"1.0e+9 nm"</span>^^cdt:ucum
 <span class="hljs-string">"1e+10 Ao"</span>^^cdt:ucum
-<span class="hljs-string">"1 m/s.s"</span>^^cdt:ucum</pre></div></td>
+<span class="hljs-string">"1 m/s.s"</span>^^cdt:ucum</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
@@ -580,7 +676,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 
         <section class="specterm" id="acceleration" about="cdt:acceleration" typeof="rdf:Datatype">
-          <h3 id="x1-3-cdt-acceleration"><span class="secno">1.3 </span><a href="#acceleration">cdt:acceleration</a></h3>
+          <h3 id="x1-4-cdt-acceleration"><span class="secno">1.4 </span><a href="#acceleration">cdt:acceleration</a><a class="self-link" aria-label="§" href="#acceleration"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#acceleration">http://w3id.org/lindt/custom_datatypes#acceleration</a></p>
           <table>
@@ -592,7 +688,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an acceleration unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an acceleration unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -600,22 +696,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a acceleration unit to their corresponding acceleration measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a acceleration UCUM unit expression to their corresponding acceleration measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all acceleration literals below are well formed, <a class="playground" href="/lindt/playground.html?example=acceleration">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 2</span></div><pre class="hljs" aria-busy="false">"1 m/s2 "^^cdt:acceleration # S.I.
+<div class="example" id="ex-3-example-3-1-m-s2-cdt-acceleration-s-i-3-8-g-cdt-acceleration-standard-acceleration-of-free-fall-1-57e-2-cm-s2-cdt-acceleration-s-i-equiv-of-gal-1-57e-2-gal-cdt-acceleration-gal">
+          <div class="marker"><a class="self-link" href="#ex-3-example-3-1-m-s2-cdt-acceleration-s-i-3-8-g-cdt-acceleration-standard-acceleration-of-free-fall-1-57e-2-cm-s2-cdt-acceleration-s-i-equiv-of-gal-1-57e-2-gal-cdt-acceleration-gal">Example 3</a></div>
+          <pre class="hljs" aria-busy="false">"1 m/s2 "^^cdt:acceleration # S.I.
 "3.8 [g]"^^cdt:acceleration # standard acceleration of free fall
 "1.57e-2 cm/s2"^^cdt:acceleration # S.I. equiv. of Gal
-"1.57e-2 Gal"^^cdt:acceleration # Gal</pre></div></td>
+"1.57e-2 Gal"^^cdt:acceleration # Gal</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="amountOfSubstance" about="cdt:amountOfSubstance" typeof="rdf:Datatype">
-          <h3 id="x1-4-cdt-amountofsubstance"><span class="secno">1.4 </span><a href="#amountOfSubstance">cdt:amountOfSubstance</a></h3>
+          <h3 id="x1-5-cdt-amountofsubstance"><span class="secno">1.5 </span><a href="#amountOfSubstance">cdt:amountOfSubstance</a><a class="self-link" aria-label="§" href="#amountOfSubstance"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#amountOfSubstance">http://w3id.org/lindt/custom_datatypes#amountOfSubstance</a></p>
           <table>
@@ -627,7 +726,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an amountOfSubstance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an amountOfSubstance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -635,19 +734,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a amountOfSubstance unit to their corresponding amountOfSubstance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a amountOfSubstance UCUM unit expression to their corresponding amountOfSubstance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, the amountOfSubstance literal below is well formed.</p>
-<div class="example"><div class="example-title marker"><span>Example 3</span></div><pre class="hljs css" aria-busy="false">"1<span class="hljs-selector-class">.2</span> <span class="hljs-selector-tag">mol</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:amountOfSubstance</span></pre></div></td>
+<div class="example" id="ex-4-example-4-1-2-mol-cdt-amountofsubstance">
+          <div class="marker"><a class="self-link" href="#ex-4-example-4-1-2-mol-cdt-amountofsubstance">Example 4</a></div>
+          <pre class="hljs css" aria-busy="false">"1<span class="hljs-selector-class">.2</span> <span class="hljs-selector-tag">mol</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:amountOfSubstance</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="angle" about="cdt:angle" typeof="rdf:Datatype">
-          <h3 id="x1-5-cdt-angle"><span class="secno">1.5 </span><a href="#angle">cdt:angle</a></h3>
+          <h3 id="x1-6-cdt-angle"><span class="secno">1.6 </span><a href="#angle">cdt:angle</a><a class="self-link" aria-label="§" href="#angle"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#angle">http://w3id.org/lindt/custom_datatypes#angle</a></p>
           <table>
@@ -659,7 +761,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an angle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an angle unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -667,23 +769,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a angle unit to their corresponding angle measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a angle UCUM unit expression to their corresponding angle measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all angle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=angle">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 4</span></div><pre class="hljs" aria-busy="false">"360 deg"^^cdt:angle # degree
+<div class="example" id="ex-5-example-5-360-deg-cdt-angle-degree-1-cdt-angle-minute-1-cdt-angle-second-1-rad-cdt-angle-radian-1-circ-cdt-angle-circle">
+          <div class="marker"><a class="self-link" href="#ex-5-example-5-360-deg-cdt-angle-degree-1-cdt-angle-minute-1-cdt-angle-second-1-rad-cdt-angle-radian-1-circ-cdt-angle-circle">Example 5</a></div>
+          <pre class="hljs" aria-busy="false">"360 deg"^^cdt:angle # degree
 "1 '"^^cdt:angle # minute
 "1 ''"^^cdt:angle # second
 "1 rad"^^cdt:angle # radian
-"1 circ"^^cdt:angle # circle  </pre></div></td>
+"1 circ"^^cdt:angle # circle</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="area" about="cdt:area" typeof="rdf:Datatype">
-          <h3 id="x1-6-cdt-area"><span class="secno">1.6 </span><a href="#area">cdt:area</a></h3>
+          <h3 id="x1-7-cdt-area"><span class="secno">1.7 </span><a href="#area">cdt:area</a><a class="self-link" aria-label="§" href="#area"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#area">http://w3id.org/lindt/custom_datatypes#area</a></p>
           <table>
@@ -695,7 +800,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an area unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an area unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -703,23 +808,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a area unit to their corresponding area measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a area UCUM unit expression to their corresponding area measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all area literals below are well formed, <a class="playground" href="/lindt/playground.html?example=area">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 5</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">m2</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">meter</span>
+<div class="example" id="ex-6-example-6-1-m2-cdt-area-square-meter-1-ar-cdt-area-are-1-sin_i-cdt-area-square-inch-international-customary-units-1-in_i-2-cdt-area-square-inch-international-customary-units-1-smi_us-cdt-area-square-mile-older-u-s-survey-lengths-also-called-statute-lengths">
+          <div class="marker"><a class="self-link" href="#ex-6-example-6-1-m2-cdt-area-square-meter-1-ar-cdt-area-are-1-sin_i-cdt-area-square-inch-international-customary-units-1-in_i-2-cdt-area-square-inch-international-customary-units-1-smi_us-cdt-area-square-mile-older-u-s-survey-lengths-also-called-statute-lengths">Example 6</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">m2</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">meter</span>
 "1 <span class="hljs-selector-tag">ar</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">are</span>
 "1 <span class="hljs-selector-attr">[sin_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
 "1 <span class="hljs-selector-attr">[in_i]</span>2"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">inch</span> <span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>
-"1 <span class="hljs-selector-attr">[smi_us]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">mile</span> <span class="hljs-selector-tag">Older</span> <span class="hljs-selector-tag">U</span><span class="hljs-selector-class">.S</span>. “<span class="hljs-selector-tag">survey</span>” <span class="hljs-selector-tag">lengths</span> (<span class="hljs-selector-tag">also</span> <span class="hljs-selector-tag">called</span> "<span class="hljs-selector-tag">statute</span>" <span class="hljs-selector-tag">lengths</span>)</pre></div></td>
+"1 <span class="hljs-selector-attr">[smi_us]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:area</span> # <span class="hljs-selector-tag">square</span> <span class="hljs-selector-tag">mile</span> <span class="hljs-selector-tag">Older</span> <span class="hljs-selector-tag">U</span><span class="hljs-selector-class">.S</span>. “<span class="hljs-selector-tag">survey</span>” <span class="hljs-selector-tag">lengths</span> (<span class="hljs-selector-tag">also</span> <span class="hljs-selector-tag">called</span> "<span class="hljs-selector-tag">statute</span>" <span class="hljs-selector-tag">lengths</span>)</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="catalyticActivity" about="cdt:catalyticActivity" typeof="rdf:Datatype">
-          <h3 id="x1-7-cdt-catalyticactivity"><span class="secno">1.7 </span><a href="#catalyticActivity">cdt:catalyticActivity</a></h3>
+          <h3 id="x1-8-cdt-catalyticactivity"><span class="secno">1.8 </span><a href="#catalyticActivity">cdt:catalyticActivity</a><a class="self-link" aria-label="§" href="#catalyticActivity"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#catalyticActivity">http://w3id.org/lindt/custom_datatypes#catalyticActivity</a></p>
           <table>
@@ -731,7 +839,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a catalyticActivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a catalyticActivity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -739,21 +847,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a catalyticActivity unit to their corresponding catalyticActivity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a catalyticActivity UCUM unit expression to their corresponding catalyticActivity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all catalyticActivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=catalyticActivity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 6</span></div><pre class="hljs" aria-busy="false">"1 mol/s"^^cdt:catalyticActivity # mole per second
+<div class="example" id="ex-7-example-7-1-mol-s-cdt-catalyticactivity-mole-per-second-1-kat-cdt-catalyticactivity-katal-1-u-cdt-catalyticactivity-unit">
+          <div class="marker"><a class="self-link" href="#ex-7-example-7-1-mol-s-cdt-catalyticactivity-mole-per-second-1-kat-cdt-catalyticactivity-katal-1-u-cdt-catalyticactivity-unit">Example 7</a></div>
+          <pre class="hljs" aria-busy="false">"1 mol/s"^^cdt:catalyticActivity # mole per second
 "1 kat"^^cdt:catalyticActivity # KATAL
-"1 U"^^cdt:catalyticActivity # Unit</pre></div></td>
+"1 U"^^cdt:catalyticActivity # Unit</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="dimensionless" about="cdt:dimensionless" typeof="rdf:Datatype">
-          <h3 id="x1-8-cdt-dimensionless"><span class="secno">1.8 </span><a href="#dimensionless">cdt:dimensionless</a></h3>
+          <h3 id="x1-9-cdt-dimensionless"><span class="secno">1.9 </span><a href="#dimensionless">cdt:dimensionless</a><a class="self-link" aria-label="§" href="#dimensionless"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#dimensionless">http://w3id.org/lindt/custom_datatypes#dimensionless</a></p>
           <table>
@@ -765,7 +876,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a dimensionless unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a dimensionless unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -773,25 +884,28 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a dimensionless unit to their corresponding dimensionless measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a dimensionless UCUM unit expression to their corresponding dimensionless measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all dimensionless literals below are well formed, <a class="playground" href="/lindt/playground.html?example=dimensionless">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 7</span></div><pre class="hljs css" aria-busy="false">"1 "^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">Unit</span> (<span class="hljs-selector-tag">empty</span> <span class="hljs-selector-tag">string</span>)
+<div class="example" id="ex-8-example-8-1-cdt-dimensionless-unit-empty-string-1-pi-cdt-dimensionless-pi-1-cdt-dimensionless-percent-1-ppth-cdt-dimensionless-parts-per-thousand-1-ppm-cdt-dimensionless-parts-per-million-1-ppb-cdt-dimensionless-parts-per-billion-1-pptr-cdt-dimensionless-parts-per-trillion">
+          <div class="marker"><a class="self-link" href="#ex-8-example-8-1-cdt-dimensionless-unit-empty-string-1-pi-cdt-dimensionless-pi-1-cdt-dimensionless-percent-1-ppth-cdt-dimensionless-parts-per-thousand-1-ppm-cdt-dimensionless-parts-per-million-1-ppb-cdt-dimensionless-parts-per-billion-1-pptr-cdt-dimensionless-parts-per-trillion">Example 8</a></div>
+          <pre class="hljs css" aria-busy="false">"1 "^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">Unit</span> (<span class="hljs-selector-tag">empty</span> <span class="hljs-selector-tag">string</span>)
 "1 <span class="hljs-selector-attr">[pi]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">pi</span>
 "1 %"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">percent</span>
 "1 <span class="hljs-selector-attr">[ppth]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">thousand</span>
 "1 <span class="hljs-selector-attr">[ppm]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">million</span>
 "1 <span class="hljs-selector-attr">[ppb]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">billion</span>
-"1 <span class="hljs-selector-attr">[pptr]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">trillion</span></pre></div></td>
+"1 <span class="hljs-selector-attr">[pptr]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:dimensionless</span> # <span class="hljs-selector-tag">parts</span> <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">trillion</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricCapacitance" about="cdt:electricCapacitance" typeof="rdf:Datatype">
-          <h3 id="x1-9-cdt-electriccapacitance"><span class="secno">1.9 </span><a href="#electricCapacitance">cdt:electricCapacitance</a></h3>
+          <h3 id="x1-10-cdt-electriccapacitance"><span class="secno">1.10 </span><a href="#electricCapacitance">cdt:electricCapacitance</a><a class="self-link" aria-label="§" href="#electricCapacitance"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricCapacitance">http://w3id.org/lindt/custom_datatypes#electricCapacitance</a></p>
           <table>
@@ -803,7 +917,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCapacitance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCapacitance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -811,20 +925,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricCapacitance unit to their corresponding electricCapacitance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricCapacitance UCUM unit expression to their corresponding electricCapacitance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricCapacitance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCapacitance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 8</span></div><pre class="hljs" aria-busy="false">"1 C/V"^^cdt:electricCapacitance # coulomb per volt 
-"1 F"^^cdt:electricCapacitance # farad </pre></div></td>
+<div class="example" id="ex-9-example-9-1-c-v-cdt-electriccapacitance-coulomb-per-volt-1-f-cdt-electriccapacitance-farad">
+          <div class="marker"><a class="self-link" href="#ex-9-example-9-1-c-v-cdt-electriccapacitance-coulomb-per-volt-1-f-cdt-electriccapacitance-farad">Example 9</a></div>
+          <pre class="hljs" aria-busy="false">"1 C/V"^^cdt:electricCapacitance # coulomb per volt 
+"1 F"^^cdt:electricCapacitance # farad</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricCharge" about="cdt:electricCharge" typeof="rdf:Datatype">
-          <h3 id="x1-10-cdt-electriccharge"><span class="secno">1.10 </span><a href="#electricCharge">cdt:electricCharge</a></h3>
+          <h3 id="x1-11-cdt-electriccharge"><span class="secno">1.11 </span><a href="#electricCharge">cdt:electricCharge</a><a class="self-link" aria-label="§" href="#electricCharge"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricCharge">http://w3id.org/lindt/custom_datatypes#electricCharge</a></p>
           <table>
@@ -836,7 +953,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCharge unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCharge unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -844,20 +961,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricCharge unit to their corresponding electricCharge measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricCharge UCUM unit expression to their corresponding electricCharge measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricCharge literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCharge">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 9</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">C</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">coulomb</span> 
-"1 <span class="hljs-selector-attr">[e]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">elementary</span> <span class="hljs-selector-tag">charge</span>  </pre></div></td>
+<div class="example" id="ex-10-example-10-1-c-cdt-electriccharge-coulomb-1-e-cdt-electriccharge-elementary-charge">
+          <div class="marker"><a class="self-link" href="#ex-10-example-10-1-c-cdt-electriccharge-coulomb-1-e-cdt-electriccharge-elementary-charge">Example 10</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">C</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">coulomb</span> 
+"1 <span class="hljs-selector-attr">[e]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:electricCharge</span> # <span class="hljs-selector-tag">elementary</span> <span class="hljs-selector-tag">charge</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricConductance" about="cdt:electricConductance" typeof="rdf:Datatype">
-          <h3 id="x1-11-cdt-electricconductance"><span class="secno">1.11 </span><a href="#electricConductance">cdt:electricConductance</a></h3>
+          <h3 id="x1-12-cdt-electricconductance"><span class="secno">1.12 </span><a href="#electricConductance">cdt:electricConductance</a><a class="self-link" aria-label="§" href="#electricConductance"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricConductance">http://w3id.org/lindt/custom_datatypes#electricConductance</a></p>
           <table>
@@ -869,7 +989,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricConductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricConductance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -877,21 +997,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricConductance unit to their corresponding electricConductance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricConductance UCUM unit expression to their corresponding electricConductance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricConductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricConductance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 10</span></div><pre class="hljs" aria-busy="false">"1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
+<div class="example" id="ex-11-example-11-1-ohm-cdt-electricconductance-inverse-of-ohm-1-ohm-1-cdt-electricconductance-inverse-of-ohm-1-s-cdt-electricconductance-siemens">
+          <div class="marker"><a class="self-link" href="#ex-11-example-11-1-ohm-cdt-electricconductance-inverse-of-ohm-1-ohm-1-cdt-electricconductance-inverse-of-ohm-1-s-cdt-electricconductance-siemens">Example 11</a></div>
+          <pre class="hljs" aria-busy="false">"1 /Ohm"^^cdt:electricConductance # inverse of Ohm 
 "1 Ohm-1"^^cdt:electricConductance # inverse of Ohm 
-"1 S"^^cdt:electricConductance # siemens </pre></div></td>
+"1 S"^^cdt:electricConductance # siemens</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricCurrent" about="cdt:electricCurrent" typeof="rdf:Datatype">
-          <h3 id="x1-12-cdt-electriccurrent"><span class="secno">1.12 </span><a href="#electricCurrent">cdt:electricCurrent</a></h3>
+          <h3 id="x1-13-cdt-electriccurrent"><span class="secno">1.13 </span><a href="#electricCurrent">cdt:electricCurrent</a><a class="self-link" aria-label="§" href="#electricCurrent"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricCurrent">http://w3id.org/lindt/custom_datatypes#electricCurrent</a></p>
           <table>
@@ -903,7 +1026,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCurrent unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricCurrent unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -911,22 +1034,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricCurrent unit to their corresponding electricCurrent measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricCurrent UCUM unit expression to their corresponding electricCurrent measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricCurrent literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricCurrent">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 11</span></div><pre class="hljs" aria-busy="false">"1 C/s"^^cdt:electricCurrent # coulomb per second
+<div class="example" id="ex-12-example-12-1-c-s-cdt-electriccurrent-coulomb-per-second-1-a-cdt-electriccurrent-ampere-1-ma-cdt-electriccurrent-milliampere-1-bi-cdt-electriccurrent-biot">
+          <div class="marker"><a class="self-link" href="#ex-12-example-12-1-c-s-cdt-electriccurrent-coulomb-per-second-1-a-cdt-electriccurrent-ampere-1-ma-cdt-electriccurrent-milliampere-1-bi-cdt-electriccurrent-biot">Example 12</a></div>
+          <pre class="hljs" aria-busy="false">"1 C/s"^^cdt:electricCurrent # coulomb per second
 "1 A"^^cdt:electricCurrent # ampère 
 "1 mA"^^cdt:electricCurrent # milliampère 
-"1 Bi"^^cdt:electricCurrent # Biot </pre></div></td>
+"1 Bi"^^cdt:electricCurrent # Biot</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricInductance" about="cdt:electricInductance" typeof="rdf:Datatype">
-          <h3 id="x1-13-cdt-electricinductance"><span class="secno">1.13 </span><a href="#electricInductance">cdt:electricInductance</a></h3>
+          <h3 id="x1-14-cdt-electricinductance"><span class="secno">1.14 </span><a href="#electricInductance">cdt:electricInductance</a><a class="self-link" aria-label="§" href="#electricInductance"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricInductance">http://w3id.org/lindt/custom_datatypes#electricInductance</a></p>
           <table>
@@ -938,7 +1064,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricInductance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricInductance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -946,21 +1072,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricInductance unit to their corresponding electricInductance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricInductance UCUM unit expression to their corresponding electricInductance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricInductance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricInductance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 12</span></div><pre class="hljs" aria-busy="false">"1 Wb/A"^^cdt:electricInductance # weber per ampère
+<div class="example" id="ex-13-example-13-1-wb-a-cdt-electricinductance-weber-per-ampere-1-v-s-a-cdt-electricinductance-volt-second-per-ampere-1-h-cdt-electricinductance-henry">
+          <div class="marker"><a class="self-link" href="#ex-13-example-13-1-wb-a-cdt-electricinductance-weber-per-ampere-1-v-s-a-cdt-electricinductance-volt-second-per-ampere-1-h-cdt-electricinductance-henry">Example 13</a></div>
+          <pre class="hljs" aria-busy="false">"1 Wb/A"^^cdt:electricInductance # weber per ampère
 "1 V.s/A"^^cdt:electricInductance # volt second per ampère
-"1 H"^^cdt:electricInductance # henry </pre></div></td>
+"1 H"^^cdt:electricInductance # henry</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricPotential" about="cdt:electricPotential" typeof="rdf:Datatype">
-          <h3 id="x1-14-cdt-electricpotential"><span class="secno">1.14 </span><a href="#electricPotential">cdt:electricPotential</a></h3>
+          <h3 id="x1-15-cdt-electricpotential"><span class="secno">1.15 </span><a href="#electricPotential">cdt:electricPotential</a><a class="self-link" aria-label="§" href="#electricPotential"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricPotential">http://w3id.org/lindt/custom_datatypes#electricPotential</a></p>
           <table>
@@ -972,7 +1101,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricPotential unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricPotential unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -980,22 +1109,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricPotential unit to their corresponding electricPotential measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricPotential UCUM unit expression to their corresponding electricPotential measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricPotential literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricPotential">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 13</span></div><pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"230.7 V"</span>^^cdt:electricPotential
+<div class="example" id="ex-14-example-14-230-7-v-cdt-electricpotential-2-307e2-v-cdt-electricpotential-2307-kv-cdt-electricpotential-2307-j-c-cdt-electricpotential">
+          <div class="marker"><a class="self-link" href="#ex-14-example-14-230-7-v-cdt-electricpotential-2-307e2-v-cdt-electricpotential-2307-kv-cdt-electricpotential-2307-j-c-cdt-electricpotential">Example 14</a></div>
+          <pre class="hljs javascript" aria-busy="false"><span class="hljs-string">"230.7 V"</span>^^cdt:electricPotential
 <span class="hljs-string">"2.307e2 V"</span>^^cdt:electricPotential
 <span class="hljs-string">".2307 kV"</span>^^cdt:electricPotential
-<span class="hljs-string">".2307 J/C"</span>^^cdt:electricPotential</pre></div></td>
+<span class="hljs-string">".2307 J/C"</span>^^cdt:electricPotential</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="electricResistance" about="cdt:electricResistance" typeof="rdf:Datatype">
-          <h3 id="x1-15-cdt-electricresistance"><span class="secno">1.15 </span><a href="#electricResistance">cdt:electricResistance</a></h3>
+          <h3 id="x1-16-cdt-electricresistance"><span class="secno">1.16 </span><a href="#electricResistance">cdt:electricResistance</a><a class="self-link" aria-label="§" href="#electricResistance"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#electricResistance">http://w3id.org/lindt/custom_datatypes#electricResistance</a></p>
           <table>
@@ -1007,7 +1139,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricResistance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an electricResistance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1015,23 +1147,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a electricResistance unit to their corresponding electricResistance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a electricResistance UCUM unit expression to their corresponding electricResistance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all electricResistance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=electricResistance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 14</span></div><pre class="hljs" aria-busy="false">"1 V/A"^^cdt:electricResistance
+<div class="example" id="ex-15-example-15-1-v-a-cdt-electricresistance-1-ohm-cdt-electricresistance-ohm-1-kohm-cdt-electricresistance-kiloohm-1-mohm-cdt-electricresistance-milliohm-1-mohm-cdt-electricresistance-megaohm">
+          <div class="marker"><a class="self-link" href="#ex-15-example-15-1-v-a-cdt-electricresistance-1-ohm-cdt-electricresistance-ohm-1-kohm-cdt-electricresistance-kiloohm-1-mohm-cdt-electricresistance-milliohm-1-mohm-cdt-electricresistance-megaohm">Example 15</a></div>
+          <pre class="hljs" aria-busy="false">"1 V/A"^^cdt:electricResistance
 "1 Ohm"^^cdt:electricResistance # Ohm
 "1 kOhm"^^cdt:electricResistance # kiloOhm
 "1 mOhm"^^cdt:electricResistance # milliOhm
-"1 MOhm"^^cdt:electricResistance # MegaOhm</pre></div></td>
+"1 MOhm"^^cdt:electricResistance # MegaOhm</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="energy" about="cdt:energy" typeof="rdf:Datatype">
-          <h3 id="x1-16-cdt-energy"><span class="secno">1.16 </span><a href="#energy">cdt:energy</a></h3>
+          <h3 id="x1-17-cdt-energy"><span class="secno">1.17 </span><a href="#energy">cdt:energy</a><a class="self-link" aria-label="§" href="#energy"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#energy">http://w3id.org/lindt/custom_datatypes#energy</a></p>
           <table>
@@ -1043,7 +1178,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an energy unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an energy unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1051,13 +1186,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a energy unit to their corresponding energy measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a energy UCUM unit expression to their corresponding energy measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all energy literals below are well formed, <a class="playground" href="/lindt/playground.html?example=energy">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 15</span></div><pre class="hljs" aria-busy="false">"1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
+<div class="example" id="ex-16-example-16-1-kg-m2-s2-cdt-energy-s-i-unit-for-energy-1-n-m-cdt-energy-newton-meter-1-w-s-cdt-energy-watt-second-1-kw-h-cdt-energy-kilowatt-hour-1-erg-cdt-energy-erg-1-ev-cdt-energy-electronvolt-1-j-cdt-energy-joule-1-cal-cdt-energy-calorie-1-cal-cdt-energy-nutrition-label-calories">
+          <div class="marker"><a class="self-link" href="#ex-16-example-16-1-kg-m2-s2-cdt-energy-s-i-unit-for-energy-1-n-m-cdt-energy-newton-meter-1-w-s-cdt-energy-watt-second-1-kw-h-cdt-energy-kilowatt-hour-1-erg-cdt-energy-erg-1-ev-cdt-energy-electronvolt-1-j-cdt-energy-joule-1-cal-cdt-energy-calorie-1-cal-cdt-energy-nutrition-label-calories">Example 16</a></div>
+          <pre class="hljs" aria-busy="false">"1 kg.m2/s2"^^cdt:energy # S.I. unit for energy
 "1 N.m"^^cdt:energy # Newton meter
 "1 W.s"^^cdt:energy # Watt second
 "1 kW.h"^^cdt:energy # kiloWatt hour
@@ -1065,13 +1202,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 "1 eV"^^cdt:energy # electronvolt 
 "1 J"^^cdt:energy # joule
 "1 cal"^^cdt:energy # calorie
-"1 [Cal]"^^cdt:energy # nutrition label Calories</pre></div></td>
+"1 [Cal]"^^cdt:energy # nutrition label Calories</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="force" about="cdt:force" typeof="rdf:Datatype">
-          <h3 id="x1-17-cdt-force"><span class="secno">1.17 </span><a href="#force">cdt:force</a></h3>
+          <h3 id="x1-18-cdt-force"><span class="secno">1.18 </span><a href="#force">cdt:force</a><a class="self-link" aria-label="§" href="#force"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#force">http://w3id.org/lindt/custom_datatypes#force</a></p>
           <table>
@@ -1083,7 +1221,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a force unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a force unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1091,24 +1229,27 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a force unit to their corresponding force measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a force UCUM unit expression to their corresponding force measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all force literals below are well formed, <a class="playground" href="/lindt/playground.html?example=force">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 16</span></div><pre class="hljs" aria-busy="false">"1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
+<div class="example" id="ex-17-example-17-1-kg-m-s2-cdt-force-s-i-equiv-of-newton-1-n-cdt-force-newton-1-gf-cdt-force-gram-force-1-g-g-cdt-force-definition-of-gram-force-1-dyn-cdt-force-dyne-1-g-cm-s2-cdt-force-s-i-equiv-of-dyne">
+          <div class="marker"><a class="self-link" href="#ex-17-example-17-1-kg-m-s2-cdt-force-s-i-equiv-of-newton-1-n-cdt-force-newton-1-gf-cdt-force-gram-force-1-g-g-cdt-force-definition-of-gram-force-1-dyn-cdt-force-dyne-1-g-cm-s2-cdt-force-s-i-equiv-of-dyne">Example 17</a></div>
+          <pre class="hljs" aria-busy="false">"1 kg.m/s2"^^cdt:force # S.I. equiv. of Newton
 "1 N"^^cdt:force # Newton
 "1 gf"^^cdt:force # gram-force
 "1 g.[g]"^^cdt:force # definition of gram-force
 "1 dyn"^^cdt:force # dyne
-"1 g.cm/s2"^^cdt:force # S.I. equiv. of dyne</pre></div></td>
+"1 g.cm/s2"^^cdt:force # S.I. equiv. of dyne</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="frequency" about="cdt:frequency" typeof="rdf:Datatype">
-          <h3 id="x1-18-cdt-frequency"><span class="secno">1.18 </span><a href="#frequency">cdt:frequency</a></h3>
+          <h3 id="x1-19-cdt-frequency"><span class="secno">1.19 </span><a href="#frequency">cdt:frequency</a><a class="self-link" aria-label="§" href="#frequency"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#frequency">http://w3id.org/lindt/custom_datatypes#frequency</a></p>
           <table>
@@ -1120,7 +1261,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a frequency unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a frequency unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1128,23 +1269,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a frequency unit to their corresponding frequency measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a frequency UCUM unit expression to their corresponding frequency measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all frequency literals below are well formed, <a class="playground" href="/lindt/playground.html?example=frequency">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 17</span></div><pre class="hljs" aria-busy="false">"1 Hz"^^cdt:frequency # Hertz
+<div class="example" id="ex-18-example-18-1-hz-cdt-frequency-hertz-1-mhz-cdt-frequency-megahertz-1-s-1-cdt-frequency-per-second-1-s-cdt-frequency-per-second-1-1-s-cdt-frequency-per-second">
+          <div class="marker"><a class="self-link" href="#ex-18-example-18-1-hz-cdt-frequency-hertz-1-mhz-cdt-frequency-megahertz-1-s-1-cdt-frequency-per-second-1-s-cdt-frequency-per-second-1-1-s-cdt-frequency-per-second">Example 18</a></div>
+          <pre class="hljs" aria-busy="false">"1 Hz"^^cdt:frequency # Hertz
 "1 MHz"^^cdt:frequency # MegaHertz
 "1 s-1"^^cdt:frequency # per second
 "1 /s"^^cdt:frequency # per second
-"1 1/s"^^cdt:frequency # per second</pre></div></td>
+"1 1/s"^^cdt:frequency # per second</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="illuminance" about="cdt:illuminance" typeof="rdf:Datatype">
-          <h3 id="x1-19-cdt-illuminance"><span class="secno">1.19 </span><a href="#illuminance">cdt:illuminance</a></h3>
+          <h3 id="x1-20-cdt-illuminance"><span class="secno">1.20 </span><a href="#illuminance">cdt:illuminance</a><a class="self-link" aria-label="§" href="#illuminance"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#illuminance">http://w3id.org/lindt/custom_datatypes#illuminance</a></p>
           <table>
@@ -1156,7 +1300,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an illuminance unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and an illuminance unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1164,21 +1308,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a illuminance unit to their corresponding illuminance measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a illuminance UCUM unit expression to their corresponding illuminance measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all illuminance literals below are well formed, <a class="playground" href="/lindt/playground.html?example=illuminance">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 18</span></div><pre class="hljs" aria-busy="false">"1 lm/m2"^^cdt:illuminance # lumen per square meter
+<div class="example" id="ex-19-example-19-1-lm-m2-cdt-illuminance-lumen-per-square-meter-1-lx-cdt-illuminance-lux-1-ph-cdt-illuminance-phot">
+          <div class="marker"><a class="self-link" href="#ex-19-example-19-1-lm-m2-cdt-illuminance-lumen-per-square-meter-1-lx-cdt-illuminance-lux-1-ph-cdt-illuminance-phot">Example 19</a></div>
+          <pre class="hljs" aria-busy="false">"1 lm/m2"^^cdt:illuminance # lumen per square meter
 "1 lx"^^cdt:illuminance # lux
-"1 ph"^^cdt:illuminance # phot</pre></div></td>
+"1 ph"^^cdt:illuminance # phot</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="length" about="cdt:length" typeof="rdf:Datatype">
-          <h3 id="x1-20-cdt-length"><span class="secno">1.20 </span><a href="#length">cdt:length</a></h3>
+          <h3 id="x1-21-cdt-length"><span class="secno">1.21 </span><a href="#length">cdt:length</a><a class="self-link" aria-label="§" href="#length"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#length">http://w3id.org/lindt/custom_datatypes#length</a></p>
           <table>
@@ -1190,7 +1337,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a length unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a length unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1198,21 +1345,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a length unit to their corresponding length measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a length UCUM unit expression to their corresponding length measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all length literals below are well formed, <a class="playground" href="/lindt/playground.html?example=length">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 19</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">km</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span>
+<div class="example" id="ex-20-example-20-1-km-cdt-length-1-609344e-6-mm-cdt-length-5280-ft_i-cdt-length">
+          <div class="marker"><a class="self-link" href="#ex-20-example-20-1-km-cdt-length-1-609344e-6-mm-cdt-length-5280-ft_i-cdt-length">Example 20</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">km</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span>
 "1<span class="hljs-selector-class">.609344E</span>+6 <span class="hljs-selector-tag">mm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span>
-"5280 <span class="hljs-selector-attr">[ft_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span></pre></div></td>
+"5280 <span class="hljs-selector-attr">[ft_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:length</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="luminousFlux" about="cdt:luminousFlux" typeof="rdf:Datatype">
-          <h3 id="x1-21-cdt-luminousflux"><span class="secno">1.21 </span><a href="#luminousFlux">cdt:luminousFlux</a></h3>
+          <h3 id="x1-22-cdt-luminousflux"><span class="secno">1.22 </span><a href="#luminousFlux">cdt:luminousFlux</a><a class="self-link" aria-label="§" href="#luminousFlux"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#luminousFlux">http://w3id.org/lindt/custom_datatypes#luminousFlux</a></p>
           <table>
@@ -1224,7 +1374,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousFlux unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1232,19 +1382,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a luminousFlux unit to their corresponding luminousFlux measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a luminousFlux UCUM unit expression to their corresponding luminousFlux measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all luminousFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousFlux">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 20</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">lm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousFlux</span> # <span class="hljs-selector-tag">lumen</span></pre></div></td>
+<div class="example" id="ex-21-example-21-1-lm-cdt-luminousflux-lumen">
+          <div class="marker"><a class="self-link" href="#ex-21-example-21-1-lm-cdt-luminousflux-lumen">Example 21</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">lm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousFlux</span> # <span class="hljs-selector-tag">lumen</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="luminousIntensity" about="cdt:luminousIntensity" typeof="rdf:Datatype">
-          <h3 id="x1-22-cdt-luminousintensity"><span class="secno">1.22 </span><a href="#luminousIntensity">cdt:luminousIntensity</a></h3>
+          <h3 id="x1-23-cdt-luminousintensity"><span class="secno">1.23 </span><a href="#luminousIntensity">cdt:luminousIntensity</a><a class="self-link" aria-label="§" href="#luminousIntensity"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#luminousIntensity">http://w3id.org/lindt/custom_datatypes#luminousIntensity</a></p>
           <table>
@@ -1256,7 +1409,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousIntensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a luminousIntensity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1264,19 +1417,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a luminousIntensity unit to their corresponding luminousIntensity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a luminousIntensity UCUM unit expression to their corresponding luminousIntensity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all luminousIntensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=luminousIntensity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 21</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">cd</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousIntensity</span> # <span class="hljs-selector-tag">candela</span></pre></div></td>
+<div class="example" id="ex-22-example-22-1-cd-cdt-luminousintensity-candela">
+          <div class="marker"><a class="self-link" href="#ex-22-example-22-1-cd-cdt-luminousintensity-candela">Example 22</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">cd</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:luminousIntensity</span> # <span class="hljs-selector-tag">candela</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="magneticFlux" about="cdt:magneticFlux" typeof="rdf:Datatype">
-          <h3 id="x1-23-cdt-magneticflux"><span class="secno">1.23 </span><a href="#magneticFlux">cdt:magneticFlux</a></h3>
+          <h3 id="x1-24-cdt-magneticflux"><span class="secno">1.24 </span><a href="#magneticFlux">cdt:magneticFlux</a><a class="self-link" aria-label="§" href="#magneticFlux"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#magneticFlux">http://w3id.org/lindt/custom_datatypes#magneticFlux</a></p>
           <table>
@@ -1288,7 +1444,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFlux unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFlux unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1296,19 +1452,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a magneticFlux unit to their corresponding magneticFlux measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a magneticFlux UCUM unit expression to their corresponding magneticFlux measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all magneticFlux literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFlux">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 22</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Wb</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:magneticFlux</span> # <span class="hljs-selector-tag">weber</span></pre></div></td>
+<div class="example" id="ex-23-example-23-1-wb-cdt-magneticflux-weber">
+          <div class="marker"><a class="self-link" href="#ex-23-example-23-1-wb-cdt-magneticflux-weber">Example 23</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Wb</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:magneticFlux</span> # <span class="hljs-selector-tag">weber</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="magneticFluxDensity" about="cdt:magneticFluxDensity" typeof="rdf:Datatype">
-          <h3 id="x1-24-cdt-magneticfluxdensity"><span class="secno">1.24 </span><a href="#magneticFluxDensity">cdt:magneticFluxDensity</a></h3>
+          <h3 id="x1-25-cdt-magneticfluxdensity"><span class="secno">1.25 </span><a href="#magneticFluxDensity">cdt:magneticFluxDensity</a><a class="self-link" aria-label="§" href="#magneticFluxDensity"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#magneticFluxDensity">http://w3id.org/lindt/custom_datatypes#magneticFluxDensity</a></p>
           <table>
@@ -1320,7 +1479,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFluxDensity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a magneticFluxDensity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1328,21 +1487,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a magneticFluxDensity unit to their corresponding magneticFluxDensity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a magneticFluxDensity UCUM unit expression to their corresponding magneticFluxDensity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all magneticFluxDensity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=magneticFluxDensity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 23</span></div><pre class="hljs" aria-busy="false">"1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
+<div class="example" id="ex-24-example-24-1-wb-m2-cdt-magneticfluxdensity-weber-per-square-meter-1-t-cdt-magneticfluxdensity-tesla-1-g-cdt-magneticfluxdensity-gauss">
+          <div class="marker"><a class="self-link" href="#ex-24-example-24-1-wb-m2-cdt-magneticfluxdensity-weber-per-square-meter-1-t-cdt-magneticfluxdensity-tesla-1-g-cdt-magneticfluxdensity-gauss">Example 24</a></div>
+          <pre class="hljs" aria-busy="false">"1 Wb/m2"^^cdt:magneticFluxDensity # weber per square meter
 "1 T"^^cdt:magneticFluxDensity # tesla
-"1 G"^^cdt:magneticFluxDensity # gauss</pre></div></td>
+"1 G"^^cdt:magneticFluxDensity # gauss</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="mass" about="cdt:mass" typeof="rdf:Datatype">
-          <h3 id="x1-25-cdt-mass"><span class="secno">1.25 </span><a href="#mass">cdt:mass</a></h3>
+          <h3 id="x1-26-cdt-mass"><span class="secno">1.26 </span><a href="#mass">cdt:mass</a><a class="self-link" aria-label="§" href="#mass"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#mass">http://w3id.org/lindt/custom_datatypes#mass</a></p>
           <table>
@@ -1354,7 +1516,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a mass unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a mass unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1362,25 +1524,28 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a mass unit to their corresponding mass measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a mass UCUM unit expression to their corresponding mass measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all mass literals below are well formed, <a class="playground" href="/lindt/playground.html?example=mass">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 24</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">gram</span>
+<div class="example" id="ex-25-example-25-1-g-cdt-mass-gram-1-kg-cdt-mass-kilogram-1-t-cdt-mass-tonne-1-u-cdt-mass-unified-atomic-mass-unit-1-m_e-cdt-mass-electron-mass-1-gr-cdt-mass-grain-avoirdupois-weight-system-1-oz_av-cdt-mass-ounce-avoirdupois-weight-system">
+          <div class="marker"><a class="self-link" href="#ex-25-example-25-1-g-cdt-mass-gram-1-kg-cdt-mass-kilogram-1-t-cdt-mass-tonne-1-u-cdt-mass-unified-atomic-mass-unit-1-m_e-cdt-mass-electron-mass-1-gr-cdt-mass-grain-avoirdupois-weight-system-1-oz_av-cdt-mass-ounce-avoirdupois-weight-system">Example 25</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">gram</span>
 "1 <span class="hljs-selector-tag">kg</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">kilogram</span>
 "1 <span class="hljs-selector-tag">t</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">tonne</span>
 "1 <span class="hljs-selector-tag">u</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">unified</span> <span class="hljs-selector-tag">atomic</span> <span class="hljs-selector-tag">mass</span> <span class="hljs-selector-tag">unit</span> 
 "1 <span class="hljs-selector-attr">[m_e]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">electron</span> <span class="hljs-selector-tag">mass</span> 
 "1 <span class="hljs-selector-attr">[gr]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">grain</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)
-"1 <span class="hljs-selector-attr">[oz_av]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">ounce</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)</pre></div></td>
+"1 <span class="hljs-selector-attr">[oz_av]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:mass</span> # <span class="hljs-selector-tag">ounce</span> (<span class="hljs-selector-tag">avoirdupois</span> <span class="hljs-selector-tag">weight</span> <span class="hljs-selector-tag">system</span>)</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="power" about="cdt:power" typeof="rdf:Datatype">
-          <h3 id="x1-26-cdt-power"><span class="secno">1.26 </span><a href="#power">cdt:power</a></h3>
+          <h3 id="x1-27-cdt-power"><span class="secno">1.27 </span><a href="#power">cdt:power</a><a class="self-link" aria-label="§" href="#power"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#power">http://w3id.org/lindt/custom_datatypes#power</a></p>
           <table>
@@ -1392,7 +1557,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a power unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a power unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1400,22 +1565,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a power unit to their corresponding power measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a power UCUM unit expression to their corresponding power measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all power literals below are well formed, <a class="playground" href="/lindt/playground.html?example=power">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 25</span></div><pre class="hljs" aria-busy="false">"1 J/s"^^cdt:power # joule per second
+<div class="example" id="ex-26-example-26-1-j-s-cdt-power-joule-per-second-1-w-cdt-power-watt-1-ft_i-lbf_av-s-cdt-power-definition-of-horse-power-1-hp-cdt-power-horsepower">
+          <div class="marker"><a class="self-link" href="#ex-26-example-26-1-j-s-cdt-power-joule-per-second-1-w-cdt-power-watt-1-ft_i-lbf_av-s-cdt-power-definition-of-horse-power-1-hp-cdt-power-horsepower">Example 26</a></div>
+          <pre class="hljs" aria-busy="false">"1 J/s"^^cdt:power # joule per second
 "1 W"^^cdt:power # watt
 "1 [ft_i].[lbf_av]/s"^^cdt:power # definition of horse power
-"1 [HP]"^^cdt:power # horsepower</pre></div></td>
+"1 [HP]"^^cdt:power # horsepower</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="pressure" about="cdt:pressure" typeof="rdf:Datatype">
-          <h3 id="x1-27-cdt-pressure"><span class="secno">1.27 </span><a href="#pressure">cdt:pressure</a></h3>
+          <h3 id="x1-28-cdt-pressure"><span class="secno">1.28 </span><a href="#pressure">cdt:pressure</a><a class="self-link" aria-label="§" href="#pressure"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#pressure">http://w3id.org/lindt/custom_datatypes#pressure</a></p>
           <table>
@@ -1427,7 +1595,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a pressure unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a pressure unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1435,22 +1603,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a pressure unit to their corresponding pressure measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a pressure UCUM unit expression to their corresponding pressure measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all pressure literals below are well formed, <a class="playground" href="/lindt/playground.html?example=pressure">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 26</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Pa</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">pascal</span>
+<div class="example" id="ex-27-example-27-1-pa-cdt-pressure-pascal-1-bar-cdt-pressure-bar-1-atm-cdt-pressure-standard-atmosphere-1-att-cdt-pressure-technical-atmosphere">
+          <div class="marker"><a class="self-link" href="#ex-27-example-27-1-pa-cdt-pressure-pascal-1-bar-cdt-pressure-bar-1-atm-cdt-pressure-standard-atmosphere-1-att-cdt-pressure-technical-atmosphere">Example 27</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">Pa</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">pascal</span>
 "1 <span class="hljs-selector-tag">bar</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">bar</span>
 "1 <span class="hljs-selector-tag">atm</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">standard</span> <span class="hljs-selector-tag">atmosphere</span> 
-"1 <span class="hljs-selector-tag">att</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">technical</span> <span class="hljs-selector-tag">atmosphere</span></pre></div></td>
+"1 <span class="hljs-selector-tag">att</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:pressure</span> # <span class="hljs-selector-tag">technical</span> <span class="hljs-selector-tag">atmosphere</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="radiationDoseAbsorbed" about="cdt:radiationDoseAbsorbed" typeof="rdf:Datatype">
-          <h3 id="x1-28-cdt-radiationdoseabsorbed"><span class="secno">1.28 </span><a href="#radiationDoseAbsorbed">cdt:radiationDoseAbsorbed</a></h3>
+          <h3 id="x1-29-cdt-radiationdoseabsorbed"><span class="secno">1.29 </span><a href="#radiationDoseAbsorbed">cdt:radiationDoseAbsorbed</a><a class="self-link" aria-label="§" href="#radiationDoseAbsorbed"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#radiationDoseAbsorbed">http://w3id.org/lindt/custom_datatypes#radiationDoseAbsorbed</a></p>
           <table>
@@ -1462,7 +1633,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseAbsorbed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseAbsorbed unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1470,20 +1641,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a radiationDoseAbsorbed unit to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a radiationDoseAbsorbed UCUM unit expression to their corresponding radiationDoseAbsorbed measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radiationDoseAbsorbed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseAbsorbed">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 27</span></div><pre class="hljs" aria-busy="false">"1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
-"1 RAD"^^cdt:radiationDoseAbsorbed # radiation absorbed dose</pre></div></td>
+<div class="example" id="ex-28-example-28-1-erg-g-cdt-radiationdoseabsorbed-erg-per-gram-1-rad-cdt-radiationdoseabsorbed-radiation-absorbed-dose">
+          <div class="marker"><a class="self-link" href="#ex-28-example-28-1-erg-g-cdt-radiationdoseabsorbed-erg-per-gram-1-rad-cdt-radiationdoseabsorbed-radiation-absorbed-dose">Example 28</a></div>
+          <pre class="hljs" aria-busy="false">"1 erg/g"^^cdt:radiationDoseAbsorbed # erg per gram
+"1 RAD"^^cdt:radiationDoseAbsorbed # radiation absorbed dose</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="radiationDoseEffective" about="cdt:radiationDoseEffective" typeof="rdf:Datatype">
-          <h3 id="x1-29-cdt-radiationdoseeffective"><span class="secno">1.29 </span><a href="#radiationDoseEffective">cdt:radiationDoseEffective</a></h3>
+          <h3 id="x1-30-cdt-radiationdoseeffective"><span class="secno">1.30 </span><a href="#radiationDoseEffective">cdt:radiationDoseEffective</a><a class="self-link" aria-label="§" href="#radiationDoseEffective"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#radiationDoseEffective">http://w3id.org/lindt/custom_datatypes#radiationDoseEffective</a></p>
           <table>
@@ -1495,7 +1669,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseEffective unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radiationDoseEffective unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1503,20 +1677,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a radiationDoseEffective unit to their corresponding radiationDoseEffective measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a radiationDoseEffective UCUM unit expression to their corresponding radiationDoseEffective measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radiationDoseEffective literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radiationDoseEffective">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 28</span></div><pre class="hljs" aria-busy="false">"1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
-"1 Sv"^^cdt:radiationDoseEffective # sievert</pre></div></td>
+<div class="example" id="ex-29-example-29-1-j-kg-cdt-radiationdoseeffective-joule-per-kilogram-1-sv-cdt-radiationdoseeffective-sievert">
+          <div class="marker"><a class="self-link" href="#ex-29-example-29-1-j-kg-cdt-radiationdoseeffective-joule-per-kilogram-1-sv-cdt-radiationdoseeffective-sievert">Example 29</a></div>
+          <pre class="hljs" aria-busy="false">"1 J/kg"^^cdt:radiationDoseEffective # Joule per kilogram
+"1 Sv"^^cdt:radiationDoseEffective # sievert</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="radioactivity" about="cdt:radioactivity" typeof="rdf:Datatype">
-          <h3 id="x1-30-cdt-radioactivity"><span class="secno">1.30 </span><a href="#radioactivity">cdt:radioactivity</a></h3>
+          <h3 id="x1-31-cdt-radioactivity"><span class="secno">1.31 </span><a href="#radioactivity">cdt:radioactivity</a><a class="self-link" aria-label="§" href="#radioactivity"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#radioactivity">http://w3id.org/lindt/custom_datatypes#radioactivity</a></p>
           <table>
@@ -1528,7 +1705,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radioactivity unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a radioactivity unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1536,21 +1713,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a radioactivity unit to their corresponding radioactivity measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a radioactivity UCUM unit expression to their corresponding radioactivity measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all radioactivity literals below are well formed, <a class="playground" href="/lindt/playground.html?example=radioactivity">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 29</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">s-1</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">second</span> 
+<div class="example" id="ex-30-example-30-1-s-1-cdt-radioactivity-per-second-1-bq-cdt-radioactivity-becquerel-1-ci-cdt-radioactivity-curie">
+          <div class="marker"><a class="self-link" href="#ex-30-example-30-1-s-1-cdt-radioactivity-per-second-1-bq-cdt-radioactivity-becquerel-1-ci-cdt-radioactivity-curie">Example 30</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">s-1</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">per</span> <span class="hljs-selector-tag">second</span> 
 "1 <span class="hljs-selector-tag">Bq</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">becquerel</span>
-"1 <span class="hljs-selector-tag">Ci</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">Curie</span> </pre></div></td>
+"1 <span class="hljs-selector-tag">Ci</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:radioactivity</span> # <span class="hljs-selector-tag">Curie</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="solidAngle" about="cdt:solidAngle" typeof="rdf:Datatype">
-          <h3 id="x1-31-cdt-solidangle"><span class="secno">1.31 </span><a href="#solidAngle">cdt:solidAngle</a></h3>
+          <h3 id="x1-32-cdt-solidangle"><span class="secno">1.32 </span><a href="#solidAngle">cdt:solidAngle</a><a class="self-link" aria-label="§" href="#solidAngle"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#solidAngle">http://w3id.org/lindt/custom_datatypes#solidAngle</a></p>
           <table>
@@ -1562,7 +1742,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a solidAngle unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a solidAngle unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1570,20 +1750,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a solidAngle unit to their corresponding solidAngle measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a solidAngle UCUM unit expression to their corresponding solidAngle measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all solidAngle literals below are well formed, <a class="playground" href="/lindt/playground.html?example=solidAngle">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 30</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">sr</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">steradian</span> 
-"1 <span class="hljs-selector-tag">sph</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">sphere</span></pre></div></td>
+<div class="example" id="ex-31-example-31-1-sr-cdt-solidangle-steradian-1-sph-cdt-solidangle-sphere">
+          <div class="marker"><a class="self-link" href="#ex-31-example-31-1-sr-cdt-solidangle-steradian-1-sph-cdt-solidangle-sphere">Example 31</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">sr</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">steradian</span> 
+"1 <span class="hljs-selector-tag">sph</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:solidAngle</span> # <span class="hljs-selector-tag">sphere</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="speed" about="cdt:speed" typeof="rdf:Datatype">
-          <h3 id="x1-32-cdt-speed"><span class="secno">1.32 </span><a href="#speed">cdt:speed</a></h3>
+          <h3 id="x1-33-cdt-speed"><span class="secno">1.33 </span><a href="#speed">cdt:speed</a><a class="self-link" aria-label="§" href="#speed"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#speed">http://w3id.org/lindt/custom_datatypes#speed</a></p>
           <table>
@@ -1595,7 +1778,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a speed unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a speed unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1603,21 +1786,24 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a speed unit to their corresponding speed measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a speed UCUM unit expression to their corresponding speed measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all speed literals below are well formed, <a class="playground" href="/lindt/playground.html?example=speed">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 31</span></div><pre class="hljs" aria-busy="false">"120 m/s"^^cdt:speed # meter per second 
+<div class="example" id="ex-32-example-32-120-m-s-cdt-speed-meter-per-second-90-km-h-cdt-speed-kilometer-per-hour-90-km-h-1-cdt-speed-kilometer-per-hour">
+          <div class="marker"><a class="self-link" href="#ex-32-example-32-120-m-s-cdt-speed-meter-per-second-90-km-h-cdt-speed-kilometer-per-hour-90-km-h-1-cdt-speed-kilometer-per-hour">Example 32</a></div>
+          <pre class="hljs" aria-busy="false">"120 m/s"^^cdt:speed # meter per second 
 "90 km/h"^^cdt:speed # kilometer per hour
-"90 km.h-1"^^cdt:speed # kilometer per hour</pre></div></td>
+"90 km.h-1"^^cdt:speed # kilometer per hour</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="temperature" about="cdt:temperature" typeof="rdf:Datatype">
-          <h3 id="x1-33-cdt-temperature"><span class="secno">1.33 </span><a href="#temperature">cdt:temperature</a></h3>
+          <h3 id="x1-34-cdt-temperature"><span class="secno">1.34 </span><a href="#temperature">cdt:temperature</a><a class="self-link" aria-label="§" href="#temperature"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#temperature">http://w3id.org/lindt/custom_datatypes#temperature</a></p>
           <table>
@@ -1629,7 +1815,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a temperature unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a temperature unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1637,23 +1823,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a temperature unit to their corresponding temperature measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a temperature UCUM unit expression to their corresponding temperature measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all temperature literals below are well formed, <a class="playground" href="/lindt/playground.html?example=temperature">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 32</span></div><pre class="hljs css" aria-busy="false">"273<span class="hljs-selector-class">.15</span> <span class="hljs-selector-tag">K</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">kelvin</span> 
+<div class="example" id="ex-33-example-33-273-15-k-cdt-temperature-kelvin-37-5-cel-cdt-temperature-degree-celsius-100-degf-cdt-temperature-degree-fahrenheit-100-degr-cdt-temperature-degree-rankine-100-degre-cdt-temperature-degree-reaumur">
+          <div class="marker"><a class="self-link" href="#ex-33-example-33-273-15-k-cdt-temperature-kelvin-37-5-cel-cdt-temperature-degree-celsius-100-degf-cdt-temperature-degree-fahrenheit-100-degr-cdt-temperature-degree-rankine-100-degre-cdt-temperature-degree-reaumur">Example 33</a></div>
+          <pre class="hljs css" aria-busy="false">"273<span class="hljs-selector-class">.15</span> <span class="hljs-selector-tag">K</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">kelvin</span> 
 "37<span class="hljs-selector-class">.5</span> <span class="hljs-selector-tag">Cel</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Celsius</span>
 "100 <span class="hljs-selector-attr">[degF]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Fahrenheit</span>
 "100 <span class="hljs-selector-attr">[degR]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">Rankine</span>
-"100 <span class="hljs-selector-attr">[degRe]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">R</span>é<span class="hljs-selector-tag">aumur</span> </pre></div></td>
+"100 <span class="hljs-selector-attr">[degRe]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:temperature</span> # <span class="hljs-selector-tag">degree</span> <span class="hljs-selector-tag">R</span>é<span class="hljs-selector-tag">aumur</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="time" about="cdt:time" typeof="rdf:Datatype">
-          <h3 id="x1-34-cdt-time"><span class="secno">1.34 </span><a href="#time">cdt:time</a></h3>
+          <h3 id="x1-35-cdt-time"><span class="secno">1.35 </span><a href="#time">cdt:time</a><a class="self-link" aria-label="§" href="#time"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#time">http://w3id.org/lindt/custom_datatypes#time</a></p>
           <table>
@@ -1665,7 +1854,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a time unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a time unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1673,13 +1862,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a time unit to their corresponding time measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a time UCUM unit expression to their corresponding time measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all time literals below are well formed, <a class="playground" href="/lindt/playground.html?example=time">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 33</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">ns</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">nanosecond</span>
+<div class="example" id="ex-34-example-34-1-ns-cdt-time-nanosecond-1-s-cdt-time-second-1-min-cdt-time-minute-1-h-cdt-time-hour-1-d-cdt-time-day-1-a_t-cdt-time-tropical-year-1-a_j-cdt-time-mean-julian-year-1-a_g-cdt-time-mean-gregorian-year-1-a-cdt-time-year-1-wk-cdt-time-week-1-mo_s-cdt-time-synodal-month-1-mo_j-cdt-time-mean-julian-month-1-mo_g-cdt-time-mean-gregorian-month-1-mo-cdt-time-month">
+          <div class="marker"><a class="self-link" href="#ex-34-example-34-1-ns-cdt-time-nanosecond-1-s-cdt-time-second-1-min-cdt-time-minute-1-h-cdt-time-hour-1-d-cdt-time-day-1-a_t-cdt-time-tropical-year-1-a_j-cdt-time-mean-julian-year-1-a_g-cdt-time-mean-gregorian-year-1-a-cdt-time-year-1-wk-cdt-time-week-1-mo_s-cdt-time-synodal-month-1-mo_j-cdt-time-mean-julian-month-1-mo_g-cdt-time-mean-gregorian-month-1-mo-cdt-time-month">Example 34</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">ns</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">nanosecond</span>
 "1 <span class="hljs-selector-tag">s</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">second</span>
 "1 <span class="hljs-selector-tag">min</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">minute</span>
 "1 <span class="hljs-selector-tag">h</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">hour</span>
@@ -1692,13 +1883,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 "1 <span class="hljs-selector-tag">mo_s</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">synodal</span> <span class="hljs-selector-tag">month</span>   
 "1 <span class="hljs-selector-tag">mo_j</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">mean</span> <span class="hljs-selector-tag">Julian</span> <span class="hljs-selector-tag">month</span>   
 "1 <span class="hljs-selector-tag">mo_g</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">mean</span> <span class="hljs-selector-tag">Gregorian</span> <span class="hljs-selector-tag">month</span>   
-"1 <span class="hljs-selector-tag">mo</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">month</span></pre></div></td>
+"1 <span class="hljs-selector-tag">mo</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:time</span> # <span class="hljs-selector-tag">month</span></pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
         </section>
         <section class="specterm" id="volume" about="cdt:volume" typeof="rdf:Datatype">
-          <h3 id="x1-35-cdt-volume"><span class="secno">1.35 </span><a href="#volume">cdt:volume</a></h3>
+          <h3 id="x1-36-cdt-volume"><span class="secno">1.36 </span><a href="#volume">cdt:volume</a><a class="self-link" aria-label="§" href="#volume"></a></h3>
           <p class="crossreference"></p>
           <p><strong>RDF Datatype with IRI:</strong> <a href="http://w3id.org/lindt/custom_datatypes#volume">http://w3id.org/lindt/custom_datatypes#volume</a></p>
           <table>
@@ -1710,7 +1902,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical space</th>
-                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a volume unit chosen in the <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
+                <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a volume unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></td>
               </tr>
               <tr>
                 <th>Value space Includes</th>
@@ -1718,19 +1910,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a volume unit to their corresponding volume measures according to the International Systems of Quantities.</td>
+                <td>Maps lexical forms with a volume UCUM unit expression to their corresponding volume measures according to the International Systems of Quantities.</td>
               </tr>
               <tr>
                 <th>Examples</th>
                 <td>
                   <p>For example, all volume literals below are well formed, <a class="playground" href="/lindt/playground.html?example=volume">test them online</a>.</p>
-<div class="example"><div class="example-title marker"><span>Example 34</span></div><pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">L</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">liter</span>
+<div class="example" id="ex-35-example-35-1-l-cdt-volume-liter-1-dm3-cdt-volume-1-m3-cdt-volume-cubic-meter-1-m-m-m-cdt-volume-cubic-meter-100-cin_i-cdt-volume-cubic-inch-international-customary-units-100-gal_br-cdt-volume-gallon-british-imperial-volumes-100-pt_br-cdt-volume-pint-british-imperial-volumes">
+          <div class="marker"><a class="self-link" href="#ex-35-example-35-1-l-cdt-volume-liter-1-dm3-cdt-volume-1-m3-cdt-volume-cubic-meter-1-m-m-m-cdt-volume-cubic-meter-100-cin_i-cdt-volume-cubic-inch-international-customary-units-100-gal_br-cdt-volume-gallon-british-imperial-volumes-100-pt_br-cdt-volume-pint-british-imperial-volumes">Example 35</a></div>
+          <pre class="hljs css" aria-busy="false">"1 <span class="hljs-selector-tag">L</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">liter</span>
 "1 <span class="hljs-selector-tag">dm3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> 
 "1 <span class="hljs-selector-tag">m3</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
 "1 <span class="hljs-selector-tag">m</span><span class="hljs-selector-class">.m</span><span class="hljs-selector-class">.m</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">meter</span>
 "100 <span class="hljs-selector-attr">[cin_i]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">cubic</span> <span class="hljs-selector-tag">inch</span> (<span class="hljs-selector-tag">International</span> <span class="hljs-selector-tag">customary</span> <span class="hljs-selector-tag">units</span>)
 "100 <span class="hljs-selector-attr">[gal_br]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">gallon</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)
-"100 <span class="hljs-selector-attr">[pt_br]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">pint</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)</pre></div></td>
+"100 <span class="hljs-selector-attr">[pt_br]</span>"^^<span class="hljs-selector-tag">cdt</span><span class="hljs-selector-pseudo">:volume</span> # <span class="hljs-selector-tag">pint</span> (<span class="hljs-selector-tag">British</span> <span class="hljs-selector-tag">Imperial</span> <span class="hljs-selector-tag">volumes</span>)</pre>
+        </div></td>
               </tr>
             </tbody>
           </table>
@@ -1738,9 +1933,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
     </section>
 
       <section id="implementation">
-        <!--OddPage--><h2 id="x2-implementation"><span class="secno">2. </span>Implementation</h2>
+        <!--OddPage--><h2 id="x2-implementation"><span class="secno">2. </span>Implementation<a class="self-link" aria-label="§" href="#implementation"></a></h2>
         <section id="on-apache-jena">
-          <h3 id="x2-1-on-apache-jena"><span class="secno">2.1 </span>On Apache Jena</h3>
+          <h3 id="x2-1-on-apache-jena"><span class="secno">2.1 </span>On Apache Jena<a class="self-link" aria-label="§" href="#on-apache-jena"></a></h3>
             <p>See <a href="https://github.com/OpenSensingCity/jena-ucum">https://github.com/OpenSensingCity/jena-ucum</a></p>
             <iframe src="https://ghbtns.com/github-btn.html?user=OpenSensingCity&amp;repo=jena-ucum&amp;type=star&amp;count=true&amp;size=medium" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
             <p>Features</p>
@@ -1760,6 +1955,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
           </section>
       </section>
     
-<section id="references" class="appendix"><!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References</h2><section id="informative-references"><h3 id="a-1-informative-references"><span class="secno">A.1 </span>Informative references</h3><dl class="bibliography"><dt id="bib-rdf11-concepts">[rdf11-concepts]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
-</dd><dt id="bib-UCUM">[UCUM]</dt><dd><a href="http://unitsofmeasure.org/ucum.html"><cite>The Unified Code for Units of Measure</cite></a>. Gunther Schadow; Clement J. McDonald.21 November 2017. URL: <a href="http://unitsofmeasure.org/ucum.html">http://unitsofmeasure.org/ucum.html</a>
-</dd></dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+<section id="references" class="appendix">
+      <!--OddPage--><h2 id="a-references"><span class="secno">A. </span>References<a class="self-link" aria-label="§" href="#references"></a></h2>
+      
+    <section id="normative-references">
+        <h3 id="a-1-normative-references"><span class="secno">A.1 </span>Normative references<a class="self-link" aria-label="§" href="#normative-references"></a></h3>
+      <dl class="bibliography">
+        <dt id="bib-rdf11-concepts">[rdf11-concepts]</dt><dd><a href="https://www.w3.org/TR/rdf11-concepts/"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd><dt id="bib-ucum">[UCUM]</dt><dd><a href="http://unitsofmeasure.org/ucum.html"><cite>The Unified Code for Units of Measure</cite></a>. Gunther Schadow; Clement J. McDonald.21 November 2017. URL: <a href="http://unitsofmeasure.org/ucum.html">http://unitsofmeasure.org/ucum.html</a></dd>
+      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

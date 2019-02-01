@@ -300,7 +300,7 @@ $(document).ready(function() {
   $(".main-body").parent().empty().removeClass("container").addClass("container-fluid").append(`
   <h1>Linked Datatypes Playground</h1>
 
-  <p>Check out <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></p>
+  <p>Check out <a href="https://ci.mines-stetienne.fr/lindt/custom_datatypes.html">The Specification of cdt:ucum and other UCUM datatypes</a> - <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a></p>
   <p>You can <label for="example">load and try one of the examples:</label> <select name="example" id="examples"><option value="---">---</option></select></p>
 
   <div id="form" class="row"></div>`);
