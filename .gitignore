@@ -25,3 +25,6 @@ dependency-reduced-pom.xml
 # idea
 .idea
 *.iml
+
+# readme
+SERVER.md
