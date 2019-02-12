@@ -15,6 +15,9 @@
  */
 package com.github.opensensingcity.lindt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +31,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet({"/custom_datatypes","/custom_datatypes.html","/custom_datatypes.ttl","/custom_datatypes.js"})
 public class LatestCustomDatatypes extends HttpServlet {
-    
+
+    private static final Logger LOG = LoggerFactory.getLogger(LatestCustomDatatypes.class);
     final String path = "/v2";
 
     @Override
@@ -36,17 +40,22 @@ public class LatestCustomDatatypes extends HttpServlet {
         final String context = req.getSession().getServletContext().getContextPath();
         final String pathInfo = req.getServletPath();
         if(pathInfo.contains(".")) {
+            LOG.info("Loading {} ", path + pathInfo);
             resp.sendRedirect(context + path + pathInfo);
-            return; 
+            return;
         }
         final String accept = req.getHeader("Accept");
         if(accept == null) {
+            LOG.info("Loading {} ", path + pathInfo + ".html");
             resp.sendRedirect(context + path + pathInfo + ".html");
         } else if (accept.contains("text/turtle")) {
+            LOG.info("Loading {} ", path + pathInfo + ".ttl");
             resp.sendRedirect(context + path + pathInfo + ".ttl");
         } else if (accept.contains("application/javascript")) {
+            LOG.info("Loading {} ", path + pathInfo + ".js");
             resp.sendRedirect(context + path + pathInfo + ".js");
         } else {
+            LOG.info("Loading {} ", path + pathInfo + ".html");
             resp.sendRedirect(context + path + pathInfo + ".html");
         }
     }

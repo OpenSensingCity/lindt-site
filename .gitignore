@@ -1,7 +1,8 @@
 target/
-nb-configuration.xml
-
 *.class
+
+# netbeans
+nb-configuration.xml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -18,3 +19,9 @@ hs_err_pid*
 *.sh
 *.bat
 
+# temporary pom
+dependency-reduced-pom.xml
+
+# idea
+.idea
+*.iml

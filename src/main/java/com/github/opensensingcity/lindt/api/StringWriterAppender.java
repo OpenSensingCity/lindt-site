@@ -34,7 +34,7 @@ public class StringWriterAppender extends AppenderSkeleton {
     
     private static final Gson gson = new Gson();
 
-    private final Map<String,Session> sessions = new HashMap<>();
+    private final Map<String, Session> sessions = new HashMap<>();
         
     public void putSession(Thread thread, Session session) {
         this.sessions.put(thread.getName(), session);

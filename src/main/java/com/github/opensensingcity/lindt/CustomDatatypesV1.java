@@ -15,6 +15,9 @@
  */
 package com.github.opensensingcity.lindt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,20 +31,25 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/v1/custom_datatypes")
 public class CustomDatatypesV1 extends HttpServlet {
-    
-    final String path = "/v1/custom_datatypes"; 
+
+    private static final Logger LOG = LoggerFactory.getLogger(CustomDatatypesV1.class);
+    final String path = "/v1/custom_datatypes";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String context = req.getSession().getServletContext().getContextPath();
         final String accept = req.getHeader("Accept");
         if(accept == null) {
+            LOG.info("Loading {} ", path + ".html");
             resp.sendRedirect(context + path + ".html");
         } else if (accept.contains("text/turtle")) {
+            LOG.info("Loading {} ", path + ".ttl");
             resp.sendRedirect(context + path + ".ttl");
         } else if (accept.contains("application/javascript")) {
+            LOG.info("Loading {} ", path + ".js");
             resp.sendRedirect(context + path + ".js");
         } else {
+            LOG.info("Loading {} ", path + ".html");
             resp.sendRedirect(context + path + ".html");
         }
     }

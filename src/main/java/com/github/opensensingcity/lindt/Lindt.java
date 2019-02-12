@@ -15,6 +15,9 @@
  */
 package com.github.opensensingcity.lindt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,12 +31,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/voc")
 public class Lindt extends HttpServlet {
-    
-    final String path = "/voc"; 
+
+    private static final Logger LOG = LoggerFactory.getLogger(Lindt.class);
+    final String path = "/voc";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String context = req.getSession().getServletContext().getContextPath();
+        LOG.info("Loading /voc.ttl ");
         resp.sendRedirect(context + path + ".ttl");
     }
 

@@ -45,6 +45,7 @@ public class ListExamples extends HttpServlet {
 
     @GET
     public Response doGet() throws IOException, URISyntaxException {
+        LOG.info("Loading list of examples");
         File examples = new File(ListExamples.class.getClassLoader().getResource("examples").toURI());
 
         StringBuilder sb = new StringBuilder();
@@ -65,21 +66,20 @@ public class ListExamples extends HttpServlet {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public Response doGet(@PathParam("id") String id) throws IOException, URISyntaxException, Exception {
+        LOG.info("Loading example {}", id);
         File example = new File(ListExamples.class.getClassLoader().getResource("examples/" + id).toURI());
-
         Request request = new Request();
-
         try {
             request.query = IOUtils.toString(new BOMInputStream(new FileInputStream(new File(example, "query.rq"))), "UTF-8");
         } catch (Exception ex) {
             request.query = "";
-            LOG.warn(ex.getMessage());
+            LOG.trace(ex.getMessage());
         }
         try {
             request.graph = IOUtils.toString(new BOMInputStream(new FileInputStream(new File(example, "graph.ttl"))), "UTF-8");
         } catch (Exception ex) {
             request.graph = "";
-            LOG.warn(ex.getMessage());
+            LOG.trace(ex.getMessage());
         }
         Response.ResponseBuilder res = Response.ok(gson.toJson(request), "application/json");
         return res.build();
