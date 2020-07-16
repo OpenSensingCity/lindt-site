@@ -610,12 +610,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>Any unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
               </tr>
               <tr>
-                <th>Value space Includes</th>
-                <td>Set of units as defined by the International Systems of Quantities.</td>
+                <th>Value space</th>
+                <td>The value space is the underlying set of the <a href="http://unitsofmeasure.org/ucum.html#para-18">algebra of units</a> as defined in <a href="http://unitsofmeasure.org/ucum.html#section-Semantics">Section&nbsp;3</a> of [<cite><a class="bibref" href="#bib-ucum">UCUM</a></cite>].</td>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps UCUM unit expressions to a unit semantic element according to the International Systems of Quantities.</td>
+                <td>Maps UCUM unit expressions to a <em>unit</em> according to <a href="http://unitsofmeasure.org/ucum.html#section-Semantics">Section&nbsp;3</a> of [<cite><a class="bibref" href="#bib-ucum">UCUM</a></cite>].</td>
               </tr>
               <tr>
                 <th>Examples</th>
@@ -650,12 +650,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
                 <td>Concatenation of the lexical form of an <code>xsd:decimal</code>, optionally followed by <code>e</code> or <code>E</code> and the lexical form of an <code>xsd:integer</code>, at least one space, and a unit expression constructed using <a href="http://unitsofmeasure.org/ucum.html">The Unified Code for Units of Measure code system</a>.</td>
               </tr>
               <tr>
-                <th>Value space Includes</th>
-                <td>Set of measures, or quantity values as defined by the International Systems of Quantities.</td>
+                <th>Value space</th>
+                <td>The set of pairs (<em>v</em>, <strong>u</strong>) such that <em>v</em> is a real number and <strong>u</strong> is any unit with <a href="http://unitsofmeasure.org/ucum.html#para-19">magnitude</a> 1 regarding the base units of <a href="http://unitsofmeasure.org/ucum.html#section-Base-Units">Section&nbsp;4.2</a> of [<cite><a class="bibref" href="#bib-ucum">UCUM</a></cite>].</td>
               </tr>
               <tr>
                 <th>Lexical-to-value mapping</th>
-                <td>Maps lexical forms with a UCUM unit expression to their corresponding measures according to the International Systems of Quantities.</td>
+                <td>The first part of the lexical form defines a number <em>v</em>&nbsp;=&nbsp;<em>m</em>&nbsp;×&nbsp;10<sup><em>e</em></sup> where <em>m</em> is represented by the mandatory <code>xsd:decimal</code> and <em>e</em> is represented by the optional <code>xsd:integer</code>, or equal to 0 if omitted. The second part of the lexical form defines a unit <strong>u</strong>&nbsp;=&nbsp;<em>r</em>·<strong>b</strong> where <em>r</em> is the <a href="http://unitsofmeasure.org/ucum.html#para-19">magnitude</a> of <em>u</em> regarding the base units of <a href="http://unitsofmeasure.org/ucum.html#section-Base-Units">Section&nbsp;4.2</a> of [<cite><a class="bibref" href="#bib-ucum">UCUM</a></cite>]. The lexical-to-value mapping maps the lexical form to the pair (<em>v</em>&nbsp;×&nbsp;<em>r</em>, <strong>b</strong>).</td>
               </tr>
               <tr>
                 <th>Examples</th>
